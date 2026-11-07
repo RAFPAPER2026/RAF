@@ -1,0 +1,385 @@
+{
+  "id": "earnings_report",
+  "name": "Earnings Report Comparison",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There are earnings_q1.txt and earnings_q2.txt in the earnings_data folder on the desktop, containing quarterly earnings data.\n\nTasks:\n1. Parse the two earnings files and extract the KPIs: revenue, cost_of_revenue, gross_profit, operating_income, net_income, eps, gross_margin, operating_margin, net_margin\n2. Calculate the quarter-over-quarter changes (absolute values and percentages)\n3. Write the comparison results into the earnings_comparison.csv file, with columns: metric, q1_value, q2_value, change, change_pct. Save it on the desktop\n4. Write the summary into earnings_summary.json and save it to the desktop\n\nOutput format:\n{\n  \"q1\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"q2\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"trend\": \"improving\" or \"declining\" or \"mixed\"\n}\n\nTrend judgment rules:\n- Both revenue and net_income grow => \"improving\"\n- Both decline => \"declining\"\n- Other cases => \"mixed\"",
+  "rubric": {
+    "query": "There are earnings_q1.txt and earnings_q2.txt in the earnings_data folder on the desktop, containing quarterly earnings data.\n\nTasks:\n1. Parse the two earnings files and extract the KPIs: revenue, cost_of_revenue, gross_profit, operating_income, net_income, eps, gross_margin, operating_margin, net_margin\n2. Calculate the quarter-over-quarter changes (absolute values and percentages)\n3. Write the comparison results into the earnings_comparison.csv file, with columns: metric, q1_value, q2_value, change, change_pct. Save it on the desktop\n4. Write the summary into earnings_summary.json and save it to the desktop\n\nOutput format:\n{\n  \"q1\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"q2\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"trend\": \"improving\" or \"declining\" or \"mixed\"\n}\n\nTrend judgment rules:\n- Both revenue and net_income grow => \"improving\"\n- Both decline => \"declining\"\n- Other cases => \"mixed\"",
+    "query_id": "earnings_report",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e15c2d0e746c",
+        "type": "leaf",
+        "name": "Correctly read earnings_q1.txt and earnings_q2.txt in the desktop earnings_data folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Retrieval Strategy"
+        ]
+      },
+      {
+        "id": "node-e9475cc41c71",
+        "type": "group",
+        "name": "Earnings comparison data generated",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-074fd05d1473",
+            "type": "leaf",
+            "name": "Correctly extracted the revenue, cost_of_revenue, gross_profit, operating_income, net_income, eps, gross_margin, operating_margin, and net_margin of q1",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3b240c492aac",
+            "type": "leaf",
+            "name": "Correctly extracted the revenue, cost_of_revenue, gross_profit, operating_income, net_income, eps, gross_margin, operating_margin, and net_margin of q2",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-25af51771485",
+            "type": "leaf",
+            "name": "Correctly calculated the absolute value of the quarter-over-quarter change for each KPI",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-eb1c9757a27b",
+            "type": "leaf",
+            "name": "Correctly calculated the quarter-over-quarter change percentage for each KPI",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-eecf67f11a03",
+        "type": "group",
+        "name": "Specified deliverables produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-beef6e282ebe",
+            "type": "leaf",
+            "name": "Generated the earnings_comparison.csv file on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-ea9343c322b1",
+            "type": "leaf",
+            "name": "Generated the earnings_summary.json file on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-384452514065",
+            "type": "leaf",
+            "name": "earnings_summary.json contains the three top-level fields q1, q2, and trend",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-f9614e9429eb",
+            "type": "leaf",
+            "name": "Correctly determined trend as one of improving, declining, or mixed",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-08b3e77bedaa",
+          "type": "leaf",
+          "name": "Correctly located the desktop earnings_data folder and read the two target earnings files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-762ce840e466",
+          "type": "group",
+          "name": "Earnings data parsing quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ad84c23b77ef",
+              "type": "leaf",
+              "name": "Accurately identified the numerical value corresponding to each KPI in the earnings text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b8400a83bcfb",
+              "type": "leaf",
+              "name": "Correctly distinguished the source files of the q1 data and the q2 data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3892ec14f8f8",
+              "type": "leaf",
+              "name": "Correctly handled currency symbols, thousands separators, percent signs, or negative signs in the numerical values",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5c70e1e03cdc",
+          "type": "group",
+          "name": "Quarter-over-quarter calculation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d05b561fe8e8",
+              "type": "leaf",
+              "name": "Accurately calculated change for each metric as q2_value minus q1_value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-38a3b5363c5c",
+              "type": "leaf",
+              "name": "Accurately calculated change_pct for each metric using q1_value as the denominator",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d1029e94c69c",
+              "type": "leaf",
+              "name": "Adopted a judgeable exception handling result for change_pct when q1_value is 0",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e29c181348f7",
+          "type": "group",
+          "name": "Trend determination quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-df2f843da1d4",
+              "type": "leaf",
+              "name": "Checked the direction of change of both revenue and net_income when accurately determining trend",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-e937b3e15302",
+              "type": "leaf",
+              "name": "The output trend value strictly belongs to improving, declining, or mixed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-72a41689c801",
+          "type": "group",
+          "name": "Deliverable result usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9255b8b104fe",
+              "type": "leaf",
+              "name": "earnings_comparison.csv contains the five columns metric, q1_value, q2_value, change, and change_pct",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-26d6ac682b20",
+              "type": "leaf",
+              "name": "earnings_comparison.csv provides one readable data record for each required KPI",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-cf7b98050ef8",
+              "type": "leaf",
+              "name": "earnings_summary.json can be parsed normally as JSON and its field structure meets the requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-647a93014123",
+              "type": "leaf",
+              "name": "The q1 and q2 objects in earnings_summary.json contain the three fields revenue, net_income, and eps",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f4d3f47c1a19",
+          "type": "group",
+          "name": "Exception handling and result feedback quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-27b127ae52d6",
+              "type": "leaf",
+              "name": "Gave a traceable error result when reading files failed or fields were missing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-bfd5f6eb09be",
+              "type": "leaf",
+              "name": "The final reply contains the result objects for q1, q2, and trend",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-46f206689f30",
+    "language": "en"
+  }
+}

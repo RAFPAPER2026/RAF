@@ -1,0 +1,288 @@
+{
+  "id": "excel_plugin_generation",
+  "name": "Excel估值插件",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "开发一个Excel估值插件，嵌入常用的DCF、PE、PB估值公式，点击按钮即可自动计算个股合理价格，支持手动调整参数，插件保存到Excel加载项，给一个可验证的示例文件放到/root/Desktop的excel插件文件夹。",
+  "rubric": {
+    "query": "开发一个Excel估值插件，嵌入常用的DCF、PE、PB估值公式，点击按钮即可自动计算个股合理价格，支持手动调整参数，插件保存到Excel加载项，给一个可验证的示例文件放到/root/Desktop的excel插件文件夹。",
+    "query_id": "excel_plugin_generation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-56ee92679ace",
+        "type": "group",
+        "name": "Excel估值插件功能已完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-6a1ee7da067b",
+            "type": "leaf",
+            "name": "开发了包含DCF、PE、PB估值功能和按钮触发计算的Excel插件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-0fcd5a0802e5",
+            "type": "leaf",
+            "name": "在插件中提供了可手动调整估值参数的输入区域或配置入口",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-a58d1bbca5a3",
+        "type": "group",
+        "name": "交付物已生成并放置到指定位置",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b8c8c1960f1f",
+            "type": "leaf",
+            "name": "将插件保存为了Excel可加载的加载项文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-b660fa1075d8",
+            "type": "leaf",
+            "name": "生成了一个可用于验证插件功能的示例Excel文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-7f841938b1b4",
+            "type": "leaf",
+            "name": "将加载项文件和示例文件放到了/root/Desktop的excel插件文件夹",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2785b33ccac5",
+          "type": "leaf",
+          "name": "正确选择了Excel加载项实现方式并生成了可被Excel识别的加载项格式",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "通用知识",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d4a60e86bf26",
+          "type": "group",
+          "name": "估值模型实现质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7b7b0a19965d",
+              "type": "leaf",
+              "name": "准确实现了DCF估值计算所需的关键输入和输出关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a80075d7022a",
+              "type": "leaf",
+              "name": "准确实现了PE估值计算所需的关键输入和输出关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f830a17c5fbd",
+              "type": "leaf",
+              "name": "准确实现了PB估值计算所需的关键输入和输出关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-847539cdfca6",
+          "type": "group",
+          "name": "交互与参数联动质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1a139402f42d",
+              "type": "leaf",
+              "name": "正确将按钮操作绑定到估值计算流程",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-fccf6942336d",
+              "type": "leaf",
+              "name": "正确将手动调整的参数传递到对应估值公式计算中",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-521e4d3eb305",
+          "type": "group",
+          "name": "示例交付物可验证性与可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-50b7f64cbdc6",
+              "type": "leaf",
+              "name": "示例文件中包含可直接触发插件计算的测试数据和操作入口",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-7c8d5a17edad",
+              "type": "leaf",
+              "name": "示例文件中的预置数据能够产出可核对的估值结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-c4a9822d2345",
+              "type": "leaf",
+              "name": "示例文件可正常打开且公式、按钮、单元格内容无乱码或引用错误",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-723a1bd5f982",
+          "type": "group",
+          "name": "异常处理与结果说明质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1a5801f60902",
+              "type": "leaf",
+              "name": "在执行过程中识别了Excel宏、加载项保存或路径写入失败等错误并进行了修正",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-cb9c789bfb29",
+              "type": "leaf",
+              "name": "向用户说明了加载项安装方式、示例文件用途和验证步骤",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-fcd5251a0bda",
+    "language": "zh"
+  }
+}

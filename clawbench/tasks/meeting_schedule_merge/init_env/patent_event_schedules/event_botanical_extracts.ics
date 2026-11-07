@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//BioPharm Training Center//Workshop//CN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20231005T133000
+DTEND:20231005T170000
+SUMMARY:植物提取物数据库检索培训
+LOCATION:广州科学城生物医药产业园A座3楼培训室（广州市黄埔区科丰路31号）
+DESCRIPTION:本次培训旨在提升专利查新人员在天然植物提取物领域的数据库检索能力，涵盖中药及植物活性成分相关专利文献的高效检索策略。\n\n培训课程安排：\n1. 13:30-14:15 植物提取物专利分类号体系精讲（IPC/CPC）（讲师：刘教授，中国科学院华南植物园）\n2. 14:15-15:00 CNKI、万方、维普三大中文数据库高级检索技巧（讲师：黄老师，国家知识产权局培训中心）\n3. 15:00-15:15 课间休息\n4. 15:15-16:00 SciFinder及Reaxys在天然产物检索中的应用实操（讲师：Dr. Sarah Wang，CAS亚太区）\n5. 16:00-16:45 综合案例演练：以白藜芦醇衍生物为例的全链条检索实战（全体学员）\n6. 16:45-17:00 总结与培训考核说明\n\n参训人员：专利查新部全体成员（共12人）\n携带物品：个人笔记本电脑，提前安装好各数据库客户端。
+ORGANIZER;CN=培训管理科:mailto:training@biopharmpark.cn
+UID:evt-botanical-20231005@biopharmpark.cn
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

@@ -1,0 +1,320 @@
+{
+  "id": "hidden_life_cost_analysis",
+  "name": "隐形生活成本分析",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解",
+    "数值分析与推理-多步骤数值计算",
+    "上下文管理-状态跟踪与一致性维护"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "plan.numeric",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我分析一下我的生活习惯，看看有哪些事情正在偷偷浪费我的时间和钱。\n数据都在桌面上：calendar.ics（近三个月日程）、bank_records.csv（近三个月银行流水，含备注）、subscriptions.txt（我订阅的所有服务，含价格）、habits.md（我自己记录的日常习惯）。\n请交叉分析这些数据，找出：1）花钱但使用频率极低的订阅或消费；2）占用大量时间但价值不高的习惯性安排；3）可以合并或取消的开支。每条结论都要给出数据依据（花了多少钱/多少小时），并估算每月可节省的金额和时间。\n输出到 /root/Desktop/生活成本分析.md。",
+  "rubric": {
+    "query": "帮我分析一下我的生活习惯，看看有哪些事情正在偷偷浪费我的时间和钱。\n数据都在桌面上：calendar.ics（近三个月日程）、bank_records.csv（近三个月银行流水，含备注）、subscriptions.txt（我订阅的所有服务，含价格）、habits.md（我自己记录的日常习惯）。\n请交叉分析这些数据，找出：1）花钱但使用频率极低的订阅或消费；2）占用大量时间但价值不高的习惯性安排；3）可以合并或取消的开支。每条结论都要给出数据依据（花了多少钱/多少小时），并估算每月可节省的金额和时间。\n输出到 /root/Desktop/生活成本分析.md。",
+    "query_id": "hidden_life_cost_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-7e7759061009",
+        "type": "leaf",
+        "name": "正确读取了桌面上的四个数据文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-cc163f36df12",
+        "type": "group",
+        "name": "完成生活成本分析交付物",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0bf4706a796f",
+            "type": "leaf",
+            "name": "生成了包含低频高花费订阅或消费结论及数据依据的分析文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-3aac367dd656",
+            "type": "leaf",
+            "name": "生成了包含高耗时低价值习惯性安排结论及数据依据的分析文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "时间推理"
+            ]
+          },
+          {
+            "id": "node-9bb52d6cf58f",
+            "type": "leaf",
+            "name": "生成了包含可合并或取消开支结论及数据依据的分析文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-862526191120",
+            "type": "leaf",
+            "name": "将每条结论写入了 /root/Desktop/生活成本分析.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-8327c318a760",
+          "type": "leaf",
+          "name": "准确读取了 calendar.ics、bank_records.csv、subscriptions.txt 和 habits.md 中与分析相关的数据",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e64c8e687607",
+          "type": "group",
+          "name": "跨文件数据整合质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-325a964e5389",
+              "type": "leaf",
+              "name": "准确关联了订阅清单与银行流水中的对应支出记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d988cd58d75c",
+              "type": "leaf",
+              "name": "准确计算了近三个月各类订阅或消费的使用频率、总金额和月均金额",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-42faf4ac613d",
+              "type": "leaf",
+              "name": "准确计算了近三个月习惯性安排占用的总时长和月均时长",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-18861113c426",
+          "type": "group",
+          "name": "结论判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-273d0b00dc21",
+              "type": "leaf",
+              "name": "正确识别了花钱但使用频率极低的订阅或消费",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-67247d133fb2",
+              "type": "leaf",
+              "name": "正确识别了占用大量时间但价值不高的习惯性安排",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-c7c4320b5284",
+              "type": "leaf",
+              "name": "正确识别了可以合并或取消的开支",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-96bc924aa155",
+              "type": "leaf",
+              "name": "未编造数据文件中不存在的消费记录、使用记录或时间记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a6540afb1249",
+          "type": "group",
+          "name": "量化估算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-00c15af32735",
+              "type": "leaf",
+              "name": "每条结论都给出了可追溯的数据依据数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-6713ea90da36",
+              "type": "leaf",
+              "name": "每条结论都估算了每月可节省的金额",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c9763584b86d",
+              "type": "leaf",
+              "name": "每条结论都估算了每月可节省的时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e65646b8db88",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3dafab44e52f",
+              "type": "leaf",
+              "name": "输出的 Markdown 文件包含三类结论的分节结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-54b6cb0a3631",
+              "type": "leaf",
+              "name": "输出的 Markdown 文件中的金额、时长和结论对应关系可直接供用户决策使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-9f3d77446806",
+              "type": "leaf",
+              "name": "输出的 Markdown 文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1f762cf1a9a8",
+    "language": "zh"
+  },
+  "note": "我的隐形生活成本\n“分析一下我的生活习惯，有哪些事情正在偷偷浪费我的时间和钱？”\n需要：\n•\tcalendar \n•\tbank records \n•\tsubscriptions \n•\thabits",
+  "env_description": "calendar.ics（英语课/开黑/钓鱼/健身房四类日程）+ bank_records.csv（三个月流水，含订阅扣款）+ subscriptions.txt + habits.md；低使用率订阅与时间黑洞埋设可交叉验证"
+}

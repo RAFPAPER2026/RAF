@@ -1,0 +1,456 @@
+{
+  "id": "research_checkpoint_recovery",
+  "name": "Research Checkpoint Recovery Report",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "State Tracking & Consistency",
+    "General Planning & Strategy"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.state",
+    "plan.strategy"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The research_archive/ folder on the desktop contains all the materials of a research direction (agent evaluation) that I worked on over the past year: paper PDFs, reading notes (notes/), experiment code documentation, experiment logs (experiment_logs/), Git commit records, report documents for my advisor, and meeting records. This project has been stalled for half a year.\nI forget where I got to with this idea back then. Please help me restore the full picture of this research project:\n1. Restore the research question as it was then (it may need to be pieced together from the report documents and notes);\n2. Identify the hypotheses that have been validated and those that have been refuted;\n3. Determine which experimental results are credible based on the experiment logs (note: several sets of experiments had their configurations changed midway, so the results may not be comparable);\n4. Reconstruct the specific state at the time of the last work (what I was doing last and where I got stuck);\n5. Identify the open questions that were recorded but not resolved at the time;\n6. Check the scattered notes I wrote later (during the stalled period) to see whether there are new ideas that can connect to the original research;\n7. Finally generate a “research state reconstruction report” saved to /root/Desktop/research_archive/research_state.md, and give the most worthwhile next-step experiment plan (ordered by priority).",
+  "rubric": {
+    "query": "The research_archive/ folder on the desktop contains all the materials of a research direction (agent evaluation) that I worked on over the past year: paper PDFs, reading notes (notes/), experiment code documentation, experiment logs (experiment_logs/), Git commit records, report documents for my advisor, and meeting records. This project has been stalled for half a year.\nI forget where I got to with this idea back then. Please help me restore the full picture of this research project:\n1. Restore the research question as it was then (it may need to be pieced together from the report documents and notes);\n2. Identify the hypotheses that have been validated and those that have been refuted;\n3. Determine which experimental results are credible based on the experiment logs (note: several sets of experiments had their configurations changed midway, so the results may not be comparable);\n4. Reconstruct the specific state at the time of the last work (what I was doing last and where I got stuck);\n5. Identify the open questions that were recorded but not resolved at the time;\n6. Check the scattered notes I wrote later (during the stalled period) to see whether there are new ideas that can connect to the original research;\n7. Finally generate a “research state reconstruction report” saved to /root/Desktop/research_archive/research_state.md, and give the most worthwhile next-step experiment plan (ordered by priority).",
+    "query_id": "research_checkpoint_recovery",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1fca6aee765b",
+        "type": "leaf",
+        "name": "Correctly extracted the research question of this research project",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-bba5ce61145f",
+        "type": "group",
+        "name": "Research Evidence Status Restored",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7d3cac136c40",
+            "type": "leaf",
+            "name": "Correctly compiled the hypotheses that have been validated",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-375b8b7dafcb",
+            "type": "leaf",
+            "name": "Correctly compiled the hypotheses that have been refuted",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-e553d80cf5cd",
+            "type": "leaf",
+            "name": "Correctly marked the experimental results that cannot be directly compared due to configuration changes",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Exception Handling"
+            ]
+          },
+          {
+            "id": "node-344633ae0cff",
+            "type": "leaf",
+            "name": "Correctly determined which experimental results are credible",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Conditional Judgment",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ad144dc41623",
+        "type": "group",
+        "name": "Current Project Continuation State Restored",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-17a79cdfcad3",
+            "type": "leaf",
+            "name": "Correctly reconstructed the specific state at the time of the last work",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Context Retention",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-0343783650ee",
+            "type": "leaf",
+            "name": "Correctly extracted the open questions that were recorded but unresolved at the time",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-6ac2a8db3033",
+            "type": "leaf",
+            "name": "Correctly identified new ideas in the scattered notes from the stalled period that can continue the original research",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-cb96b3c63376",
+        "type": "group",
+        "name": "Final Deliverable Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-851b918ec3ff",
+            "type": "leaf",
+            "name": "Successfully generated the research state reconstruction report file research_state.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-cc0cec3a66c3",
+            "type": "leaf",
+            "name": "Correctly wrote it to /root/Desktop/research_archive/research_state.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-fe32aa430110",
+            "type": "leaf",
+            "name": "The report includes a next-step experiment plan ordered by priority",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-050859855025",
+          "type": "group",
+          "name": "Material Retrieval and Scope Definition Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7dc44caf5fe3",
+              "type": "leaf",
+              "name": "Accurately retrieved the relevant content from the report documents, reading notes, experiment logs, code documentation, Git commit records, and meeting records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-3a3d632b4b49",
+              "type": "leaf",
+              "name": "Correctly distinguished the pre-stall materials from the scattered notes newly added during the stalled period",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Conditional Judgment",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-672ae81d709d",
+          "type": "group",
+          "name": "Research Content Reconstruction and Timeline Reasoning Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6c020098ff60",
+              "type": "leaf",
+              "name": "Accurately pieced together the research question statements appearing across documents",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-7fa3c7599445",
+              "type": "leaf",
+              "name": "Correctly distinguished the three types of records: hypotheses, open questions, and execution plans",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-faa6ae360759",
+              "type": "leaf",
+              "name": "Accurately reconstructed the task chain of the last work in chronological order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c6f83a1e22cc",
+          "type": "group",
+          "name": "Experiment Credibility Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c021986e8219",
+              "type": "leaf",
+              "name": "Accurately identified the configuration-change nodes that occurred during the experiments",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-c3ca78b7155c",
+              "type": "leaf",
+              "name": "Correctly judged whether the results are horizontally comparable based on configuration consistency",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-be27997b7af4",
+              "type": "leaf",
+              "name": "Correctly judged the credibility of the experimental results based on log completeness, run status, and recorded evidence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1f1f67b511c1",
+          "type": "group",
+          "name": "Research Continuation Plan Design Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6e16fc03ff6e",
+              "type": "leaf",
+              "name": "Correctly filtered out the new ideas directly related to the original research question from the notes added during the stalled period",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-5108bd9f96fe",
+              "type": "leaf",
+              "name": "Correctly explained the basis for connecting each new idea to the main line of the original research",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-170cb387f870",
+              "type": "leaf",
+              "name": "Correctly prioritized the next-step experiment plan according to the strength of evidence and dependencies",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-09594e19ae6b",
+          "type": "group",
+          "name": "Deliverable Usability and Traceability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ab432c724b88",
+              "type": "leaf",
+              "name": "The generated research_state.md contains independent sections for the research question, hypothesis status, experiment credibility, last work state, open questions, new ideas, and experiment plan",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-6ae5a9f0b709",
+              "type": "leaf",
+              "name": "Every conclusion in the generated research_state.md is annotated with the corresponding material source or evidence location",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-fdba21a90f95",
+              "type": "leaf",
+              "name": "The generated research_state.md opens normally and is Markdown-formatted text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-61363c9a284a",
+          "type": "group",
+          "name": "Insufficient-Evidence Scenario Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f5111fff6bdd",
+              "type": "leaf",
+              "name": "Correctly explained the scope of insufficient evidence when missing files, interrupted logs, or conflicting records were found",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-f2bf20cd9c1a",
+              "type": "leaf",
+              "name": "Did not present speculative content as confirmed facts when evidence was insufficient",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-bcc1e0848e58",
+    "language": "en"
+  },
+  "note": "Research project “checkpoint recovery”. The agent is given: the user's paper PDFs + reading notes + experiment code documentation + experiment logs + Git commit notes + Word/PPT reports + meeting records for a certain research direction over the past year, where the project has been stalled for half a year. The user says: “I forgot where I got to with this idea. Help me restore this research project and tell me what is most worth continuing now.” The agent needs to: ① restore the research question as it was then; ② identify the validated/refuted hypotheses; ③ determine which results are credible based on the experiment records; ④ find the specific state of the last work; ⑤ identify the open questions that were not resolved at the time; ⑥ search the user's own notes to determine whether new ideas that appeared later can connect; ⑦ finally generate a “research state reconstruction” and give the next-step experiment plan. Difficulty: this is a very typical long-term memory + temporal reconstruction + research reasoning case, and “where I got to last” often does not exist in any single file.",
+  "env_description": "research_archive/: notes/ (4 notes, including new notes from the stalled period that can connect to the original research), experiment_logs/ (4 logs, with planted experiment configuration changes that make results incomparable, and the blocker of the last experiment), git_log.txt (the WIP commit shows the last blocker was the DAG parser), 汇报/ (the final open questions), papers/README.md; the research question needs to be pieced together from multiple files."
+}

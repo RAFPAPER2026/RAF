@@ -1,0 +1,327 @@
+{
+  "id": "moving_coordination_planner",
+  "name": "Moving Coordination Plan",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "Long-Context Understanding",
+    "Instruction Following",
+    "Constraint Satisfaction & Scheduling",
+    "State Tracking & Consistency",
+    "Exception Identification"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long",
+    "instruction.follow",
+    "plan.scheduling",
+    "context.state",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I plan to move next month (November 2026), and at the same time I need to handle work, travel, family matters, and budget.\nThe relevant information is in the moving_plan/ folder on the desktop: 日历.ics, 旅行计划.docx, 家庭安排.xlsx, 财务记录.xlsx, 搬家清单.docx, and my historical notes (notes.md).\nPlease help me make a complete plan for next month:\n1. Comprehensively considering work meetings, travel dates, moving time, family members' availability, and budget, arrange moving tasks, purchases, cleaning, address changes, and necessary administrative matters;\n2. Do not just execute according to my checklist — please check whether there are conflicts between different files, for example a moving task scheduled during my business trip, insufficient budget, family members being unavailable, or two important matters overlapping in time;\n3. For conflicts that can be resolved on your own, adjust the plan (and explain in the results what you adjusted and why);\n4. For conflicts that cannot be judged, list them for me to choose from; do not decide for me;\n5. Finally generate a new monthly calendar (moving_calendar.ics), a moving task list, and a budget table, and provide a list of “the 5 things most likely to fail if the current plan is executed”.\nSave all outputs to the /root/Desktop/moving_plan/output/ directory.",
+  "rubric": {
+    "query": "I plan to move next month (November 2026), and at the same time I need to handle work, travel, family matters, and budget.\nThe relevant information is in the moving_plan/ folder on the desktop: 日历.ics, 旅行计划.docx, 家庭安排.xlsx, 财务记录.xlsx, 搬家清单.docx, and my historical notes (notes.md).\nPlease help me make a complete plan for next month:\n1. Comprehensively considering work meetings, travel dates, moving time, family members' availability, and budget, arrange moving tasks, purchases, cleaning, address changes, and necessary administrative matters;\n2. Do not just execute according to my checklist — please check whether there are conflicts between different files, for example a moving task scheduled during my business trip, insufficient budget, family members being unavailable, or two important matters overlapping in time;\n3. For conflicts that can be resolved on your own, adjust the plan (and explain in the results what you adjusted and why);\n4. For conflicts that cannot be judged, list them for me to choose from; do not decide for me;\n5. Finally generate a new monthly calendar (moving_calendar.ics), a moving task list, and a budget table, and provide a list of “the 5 things most likely to fail if the current plan is executed”.\nSave all outputs to the /root/Desktop/moving_plan/output/ directory.",
+    "query_id": "moving_coordination_planner",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-33762d1c3bc6",
+        "type": "leaf",
+        "name": "Generated the new monthly calendar file moving_calendar.ics and saved it to /root/Desktop/moving_plan/output/",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Temporal Reasoning"
+        ]
+      },
+      {
+        "id": "node-a031cfba21d7",
+        "type": "group",
+        "name": "Generated the Remaining File Deliverables",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3dc5b741eb1f",
+            "type": "leaf",
+            "name": "Generated the moving task list file and saved it to /root/Desktop/moving_plan/output/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-7ecb29d65b27",
+            "type": "leaf",
+            "name": "Generated the budget table file and saved it to /root/Desktop/moving_plan/output/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c8c82e9be2f2",
+        "type": "group",
+        "name": "Comprehensive Moving Arrangement Objective for Next Month Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a3b5f6b1daee",
+            "type": "leaf",
+            "name": "Created a complete November 2026 plan covering work meetings, travel dates, moving time, family members' availability, and budget constraints",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-2a26861fbc59",
+            "type": "leaf",
+            "name": "Arranged moving tasks, purchases, cleaning, address changes, and necessary administrative matters",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ea44fbd0e6ec",
+        "type": "group",
+        "name": "Conflict Escalation and Risk Summary Objective Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-82a0e9c53ff8",
+            "type": "leaf",
+            "name": "Listed the conflicts that cannot be judged for the user to choose from",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-2ec5d8fcfe92",
+            "type": "leaf",
+            "name": "Gave the 5 things most likely to fail if the current plan is executed",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-529dfe287531",
+          "type": "leaf",
+          "name": "Accurately read the information related to the November 2026 arrangement in 日历.ics, 旅行计划.docx, 家庭安排.xlsx, 财务记录.xlsx, 搬家清单.docx, and notes.md",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-275cd37d43da",
+          "type": "group",
+          "name": "Conflict Identification and Fact Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1eba643ab84c",
+              "type": "leaf",
+              "name": "Accurately identified time overlaps or infeasible arrangements among work meetings, travel dates, moving time, and family members' availability",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Conditional Judgment"
+              ]
+            },
+            {
+              "id": "node-670855f4a6f5",
+              "type": "leaf",
+              "name": "Accurately identified the risk of insufficient funds between the known expenses in the budget table and the newly added moving arrangements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-785dac6febdc",
+              "type": "leaf",
+              "name": "Did not disguise missing information as confirmed facts",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4aac57907fa3",
+          "type": "group",
+          "name": "Conflict Handling Branch Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-558d782aff04",
+              "type": "leaf",
+              "name": "Correctly adjusted the conflict arrangements that could be resolved on their own while keeping the related task sequence executable",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-78814f5f9c2a",
+              "type": "leaf",
+              "name": "For each adjusted arrangement, explained what was adjusted and the basis that triggered the adjustment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b771e51a7e73",
+              "type": "leaf",
+              "name": "Kept the conflicts that cannot be judged as items awaiting the user's choice without deciding on the user's behalf",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-2b8ee54dde2e",
+          "type": "group",
+          "name": "File Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bddf4e85d29c",
+              "type": "leaf",
+              "name": "The generated moving_calendar.ics contains the key events in the November 2026 arrangement and the calendar file can be opened by standard calendar applications",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-3d56ee12b257",
+              "type": "leaf",
+              "name": "The generated moving task list is organized by time or stage and can be used directly for execution and checking off",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-d078d9be91c3",
+              "type": "leaf",
+              "name": "The generated budget table lists the main moving-related items, amounts, and remaining budget or gap",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-759c44afc8e3",
+          "type": "group",
+          "name": "Result Communication and Context Retention Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5b407fe34a7d",
+              "type": "leaf",
+              "name": "The result explanation separately lists the resolved conflicts, the conflicts awaiting the user's decision, and the 5 failure risks",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-86eb7780db2c",
+              "type": "leaf",
+              "name": "Kept dates, budget figures, and family member arrangements consistent throughout the multi-step generation process",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-630549491ccb",
+    "language": "en"
+  },
+  "note": "I plan to move next month, and at the same time I need to handle work, travel, family matters, and budget. The relevant information is in 日历.ics, 旅行计划.docx, 家庭安排.xlsx, 财务记录.xlsx, 搬家清单.docx, and my historical notes. Please help me make a complete plan for next month. I need to comprehensively consider work meetings, travel dates, moving time, family members' availability, and budget, and arrange moving tasks, purchases, cleaning, address changes, and necessary administrative matters. Do not just execute according to my checklist: please check whether there are conflicts between different files, for example a moving task scheduled during my business trip, insufficient budget, family members being unavailable, or two important matters overlapping in time. For conflicts that can be resolved on your own, adjust the plan; for conflicts that cannot be judged, list them for me to choose from. Finally generate a new monthly calendar, a moving task list, and a budget table, and provide a list of “the 5 things most likely to fail if the current plan is executed”.",
+  "env_description": "moving_plan/: 日历.ics (hard constraints such as 11/9-12 business trip, 11/20-21 wedding, 11/28 dentist), 旅行计划.docx (11/14-16 non-cancellable), 家庭安排.xlsx (11/7-8 child's exam, 11/15 grandpa's birthday, 11/21-22 in-laws' visit, 11/30 level exam), 财务记录.xlsx (total budget 26000 vs expenses 37000, a gap of 11000), 搬家清单.docx (the user's preliminary arrangement has several hidden conflicts: 11/10 signing vs. business trip 11/9-12, 11/15 address change vs. grandpa's birthday, 11/16 lease termination vs. rushing back after the business trip + the Chaozhou trip), notes.md (the new home must be signed by 11/13 at the latest; the in-laws want to see the new home, so it must be tidied up)"
+}

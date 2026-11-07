@@ -1,0 +1,282 @@
+{
+  "id": "paper_search_2",
+  "name": "首篇引用检索",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "反思和修复-异常处理和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 500,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "总结桌面上的《Benchmarking Instruction Following of Large Language Models in Agentic Scenarios》的核心内容，并找一下它引用的的第一篇文献下载下来,打包成压缩文件放到桌面的result目录下，也输出一个表格保存到result目录，表格包括这1篇论文的名称，下载链接，作者，主要解决的问题",
+  "rubric": {
+    "query": "总结桌面上的《Benchmarking Instruction Following of Large Language Models in Agentic Scenarios》的核心内容，并找一下它引用的的第一篇文献下载下来,打包成压缩文件放到桌面的result目录下，也输出一个表格保存到result目录，表格包括这1篇论文的名称，下载链接，作者，主要解决的问题",
+    "query_id": "paper_search_2",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8fd8531cc189",
+        "type": "leaf",
+        "name": "正确读取了桌面上的《Benchmarking Instruction Following of Large Language Models in Agentic Scenarios》论文内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-e99591638cf5",
+        "type": "group",
+        "name": "论文内容提取与引用定位目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-daaadc2e4f58",
+            "type": "leaf",
+            "name": "正确总结了该论文的核心内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "逻辑推理",
+              "事实准确性",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-29a3b7e786cb",
+            "type": "leaf",
+            "name": "正确识别了该论文引用的第一篇文献",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "检索策略",
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-21910c908eda",
+        "type": "group",
+        "name": "交付物生成目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-618856b8c398",
+            "type": "leaf",
+            "name": "成功下载了该第一篇引用文献的文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "检索策略",
+              "异常处理"
+            ]
+          },
+          {
+            "id": "node-baa7ba72d635",
+            "type": "leaf",
+            "name": "成功生成了包含下载文献的压缩文件并放到桌面的result目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-4a18d3a76f6c",
+            "type": "leaf",
+            "name": "成功生成了包含论文名称、下载链接、作者、主要解决的问题的表格文件并保存到桌面的result目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-7bcc8d0b0d26",
+          "type": "leaf",
+          "name": "准确定位了桌面目标论文文件并读取了与核心内容和参考文献相关的章节",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d515fe19fa16",
+          "type": "leaf",
+          "name": "准确提取了目标论文的研究目标、方法、评测设置和主要结论",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-df1cccb81c2f",
+          "type": "group",
+          "name": "引用文献信息定位质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-11f1cd9d6bd8",
+              "type": "leaf",
+              "name": "准确识别了参考文献列表中排在第一位的文献条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-1e86d65fe47a",
+              "type": "leaf",
+              "name": "准确提取了该文献的论文名称、作者和可访问下载链接",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-10e847adcd3b",
+          "type": "group",
+          "name": "文献下载执行质量",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-6ff4e1973a36",
+              "type": "leaf",
+              "name": "正确使用了下载工具或网页访问工具获取目标文献文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "检索策略",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-914dbedb6e7f",
+              "type": "leaf",
+              "name": "遇到链接失效或权限限制时执行了替代检索并重新获取可下载来源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "检索策略",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-cb1f916525a1",
+          "type": "group",
+          "name": "结果交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cb35e0f7581c",
+              "type": "leaf",
+              "name": "生成的压缩文件可正常打开并包含目标文献文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-1bdf55702dde",
+              "type": "leaf",
+              "name": "生成的表格文件包含论文名称、下载链接、作者、主要解决的问题这四列且对应信息未错位",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-10a45119fe63",
+          "type": "leaf",
+          "name": "向用户输出了论文总结结果并明确说明了压缩文件和表格已保存到桌面的result目录下",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f7f0edbf3ea0",
+    "language": "zh"
+  },
+  "note": "测试网络搜索的能力，以及长下文识别能力"
+}

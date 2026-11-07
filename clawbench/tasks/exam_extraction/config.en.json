@@ -1,0 +1,303 @@
+{
+  "id": "exam_extraction",
+  "name": "Exam Question Extraction",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "context.long"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me extract the multiple-choice questions and fill-in-the-blank questions from all .docx exam questions (each file is one set of questions) in the /root/Desktop folder, merge them into a new practice_questions.docx placed on /root/Desktop, and shuffle the order of the options for the multiple-choice questions.",
+  "rubric": {
+    "query": "Help me extract the multiple-choice questions and fill-in-the-blank questions from all .docx exam questions (each file is one set of questions) in the /root/Desktop folder, merge them into a new practice_questions.docx placed on /root/Desktop, and shuffle the order of the options for the multiple-choice questions.",
+    "query_id": "exam_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-93755de58ca3",
+        "type": "leaf",
+        "name": "Extracted the multiple-choice questions from all .docx files under /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-85ffbfc54d0a",
+        "type": "leaf",
+        "name": "Extracted the fill-in-the-blank questions from all .docx files under /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-bacfbdee0bdf",
+        "type": "group",
+        "name": "Generated and processed the target deliverable",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-769241938a8f",
+            "type": "leaf",
+            "name": "Merged the extracted questions to generate the /root/Desktop/practice_questions.docx file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-21ae990bc6ce",
+            "type": "leaf",
+            "name": "Shuffled the option order of the multiple-choice questions in the merged result",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-19fd7c9a1b57",
+          "type": "leaf",
+          "name": "Accurately identified the scope of .docx files under /root/Desktop that needed to be processed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7e9dc8e85291",
+          "type": "group",
+          "name": "Question type identification and content filtering quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bce5347ffc2d",
+              "type": "leaf",
+              "name": "Accurately distinguished the multiple-choice question type among the questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3302da72541f",
+              "type": "leaf",
+              "name": "Accurately distinguished the fill-in-the-blank question type among the questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-65ebc4ad6107",
+              "type": "leaf",
+              "name": "Correctly excluded content that is neither multiple-choice nor fill-in-the-blank questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fb28a03d2572",
+          "type": "group",
+          "name": "Multiple-choice question rewriting quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c6607c870cea",
+              "type": "leaf",
+              "name": "Correctly maintained the matching relationship between each multiple-choice question stem and its corresponding options",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c3d09f4f8f34",
+              "type": "leaf",
+              "name": "Correctly shuffled the option order of the multiple-choice questions without omitting any original option",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eeb84b5fc7c1",
+          "type": "group",
+          "name": "Merged result content completeness",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1d5d1a91be28",
+              "type": "leaf",
+              "name": "Correctly merged the questions from multiple documents without inserting the same question twice",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3f2b883023b7",
+              "type": "leaf",
+              "name": "Accurately retained the blank lines, numbering, or necessary structural information of the questions in the question text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a35b74da9bf5",
+          "type": "group",
+          "name": "Deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4ec1764731e2",
+              "type": "leaf",
+              "name": "The generated practice_questions.docx file opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-3c9237811c92",
+              "type": "leaf",
+              "name": "In the generated practice_questions.docx file, the question content has no garbled characters and the paragraph structure is readable",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-83e19c2305a3",
+              "type": "leaf",
+              "name": "The path and file name of the generated practice_questions.docx file meet the user's requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-b2e5dc8a17c5",
+          "type": "group",
+          "name": "Exception handling and result explanation",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ad9ba7d8c9cf",
+              "type": "leaf",
+              "name": "Correctly recorded the unprocessed files when documents were corrupted or content could not be parsed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-4449f2128475",
+              "type": "leaf",
+              "name": "Clearly stated the scope of successfully processed files and the output results in the reply",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-63f16f319af1",
+    "language": "en"
+  }
+}

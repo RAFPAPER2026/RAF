@@ -1,0 +1,238 @@
+{
+  "id": "market_sizing",
+  "name": "市场规模测算",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 market_data 文件夹里有 market_data.csv 和 company_data.json 两个文件。根据这两个文件计算市场容量：\n- TAM：所有细分市场的总潜在市场 = population * avg_spend 之和\n- SAM：可服务市场 = serviceable_regions 中各细分市场的 population * adoption_rate * avg_spend 之和\n- SOM：可获得市场 = SAM * market_share\n\n结果保留两位小数，输出到桌面的 market_sizing.json 文件。",
+  "rubric": {
+    "query": "桌面上 market_data 文件夹里有 market_data.csv 和 company_data.json 两个文件。根据这两个文件计算市场容量：\n- TAM：所有细分市场的总潜在市场 = population * avg_spend 之和\n- SAM：可服务市场 = serviceable_regions 中各细分市场的 population * adoption_rate * avg_spend 之和\n- SOM：可获得市场 = SAM * market_share\n\n结果保留两位小数，输出到桌面的 market_sizing.json 文件。",
+    "query_id": "market_sizing",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-3acde1df683c",
+        "type": "leaf",
+        "name": "正确读取了桌面上 market_data 文件夹中的 market_data.csv 和 company_data.json",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "检索策略"
+        ]
+      },
+      {
+        "id": "node-852e3263b43a",
+        "type": "group",
+        "name": "市场容量结果计算完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e21086bd7fed",
+            "type": "leaf",
+            "name": "正确计算了 TAM 为所有细分市场的 population 乘以 avg_spend 之和",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-0da16ecc75a9",
+            "type": "leaf",
+            "name": "正确计算了 SAM 为 serviceable_regions 中各细分市场的 population 乘以 adoption_rate 乘以 avg_spend 之和",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-9b93fbbc0a7a",
+            "type": "leaf",
+            "name": "正确计算了 SOM 为 SAM 乘以 market_share",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ec723004fc5a",
+            "type": "leaf",
+            "name": "正确将 TAM、SAM、SOM 保留两位小数",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f510dd4498a4",
+        "type": "leaf",
+        "name": "正确生成了桌面上的 market_sizing.json 文件并写入计算结果",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2ac7d93ccbd8",
+          "type": "leaf",
+          "name": "准确定位了桌面上 market_data 文件夹中的两个输入文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-60b88814a464",
+          "type": "leaf",
+          "name": "正确解析了 market_data.csv 中用于计算的 population、avg_spend、region 字段和 company_data.json 中的 serviceable_regions、adoption_rate、market_share 字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-30cd95c3dd1c",
+          "type": "group",
+          "name": "市场容量计算过程质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-51c957125ca1",
+              "type": "leaf",
+              "name": "准确筛选了 region 属于 serviceable_regions 的细分市场用于 SAM 计算",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-35af831aa1e4",
+              "type": "leaf",
+              "name": "准确执行了 TAM、SAM、SOM 三个公式且未混淆计算顺序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-f63cd4001c28",
+              "type": "leaf",
+              "name": "正确按两位小数输出数值且未改变数值含义",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-3a60464cbeab",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-870184263d2c",
+              "type": "leaf",
+              "name": "正确将输出文件保存为 JSON 格式并包含 TAM、SAM、SOM 三个结果字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-67fc2f120337",
+              "type": "leaf",
+              "name": "生成的 market_sizing.json 文件可正常打开和解析且数值字段可被后续程序直接使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-78829cff2ce5",
+          "type": "leaf",
+          "name": "在输入文件缺失、字段缺失或数值不可计算时识别了错误并停止输出不可信结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-e84204970993",
+    "language": "zh"
+  }
+}

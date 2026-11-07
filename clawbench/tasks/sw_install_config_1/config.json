@@ -1,0 +1,328 @@
+{
+  "id": "sw_install_config_1",
+  "name": "Neovim安装配置",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "反思和修复-异常处理和修复",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "reflection.repair",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 500,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "根据在桌面上的《如何安装和使用Neovim.pdf》文件内容，访问网络安装和配置Neovim到我的电脑上，并完成配置，并把你安装的过程记录到docx文件，并把安装好的截图也保存到docx里，放到桌面的result目录下",
+  "rubric": {
+    "query": "根据在桌面上的《如何安装和使用Neovim.pdf》文件内容，访问网络安装和配置Neovim到我的电脑上，并完成配置，并把你安装的过程记录到docx文件，并把安装好的截图也保存到docx里，放到桌面的result目录下",
+    "query_id": "sw_install_config_1",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a30008d7d1cb",
+        "type": "leaf",
+        "name": "正确读取了桌面上的《如何安装和使用Neovim.pdf》文件内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-6661c4e0997b",
+        "type": "group",
+        "name": "Neovim安装与配置目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-215b652a241a",
+            "type": "leaf",
+            "name": "正确安装了Neovim到用户电脑上",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "检索策略",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-0debc4e338ef",
+            "type": "leaf",
+            "name": "正确完成了Neovim的配置",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-764662ee3e9d",
+        "type": "group",
+        "name": "交付物产出目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-64d4b09335ba",
+            "type": "leaf",
+            "name": "正确生成了记录安装过程的docx文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-0902d102b435",
+            "type": "leaf",
+            "name": "正确将安装完成截图保存到了docx文件中",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-01bf3444ba0c",
+            "type": "leaf",
+            "name": "正确将docx文件放到了桌面的result目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4fc25f4b285f",
+          "type": "leaf",
+          "name": "准确提取了PDF中与Neovim安装和配置相关的操作要求",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e952fb199b44",
+          "type": "group",
+          "name": "Neovim安装路径选择与执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9a34834acf29",
+              "type": "leaf",
+              "name": "正确识别了用户电脑的操作系统和对应的Neovim安装方式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "工具使用",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-8ff737ba7920",
+              "type": "leaf",
+              "name": "准确使用了与操作系统匹配的安装命令或安装包参数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4bdc167ba9e2",
+          "type": "group",
+          "name": "Neovim配置执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5dccc58b2cde",
+              "type": "leaf",
+              "name": "正确创建了Neovim配置文件所在目录和文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-89a3107cb363",
+              "type": "leaf",
+              "name": "准确写入了可被Neovim正常加载的配置内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-46aa96eceff9",
+              "type": "leaf",
+              "name": "正确验证了配置生效结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-c3d23becb430",
+          "type": "group",
+          "name": "异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-efbfbf82210d",
+              "type": "leaf",
+              "name": "正确识别了安装或配置过程中的报错信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-8203686401d4",
+              "type": "leaf",
+              "name": "准确执行了针对报错原因的修正操作",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a2b095d15428",
+          "type": "group",
+          "name": "docx交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5c44a4831243",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的docx文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-af2f6d4f2263",
+              "type": "leaf",
+              "name": "准确记录了安装与配置的关键步骤和对应结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6d0815412ff3",
+              "type": "leaf",
+              "name": "正确插入了能够显示安装完成状态的截图",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-389d609a391d",
+              "type": "leaf",
+              "name": "正确将docx文件保存到桌面的result目录且文件名符合文档格式要求",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2fef3f2d4421",
+          "type": "leaf",
+          "name": "准确向用户说明了安装结果、配置结果和交付物保存位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-eeab430cf4b6",
+    "language": "zh"
+  },
+  "note": "测试读取html文件，以及学习内容并拆解规划成动作的能力"
+}

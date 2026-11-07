@@ -1,0 +1,332 @@
+{
+  "id": "pitch_ppt_summary",
+  "name": "Extract Visual Outline from Pitch PPT",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a '品牌年度焕新比稿策略推导.pptx' in the pitch_strategy_summary folder on the desktop. This PPT has more than a dozen pages, all densely packed with text. Help me quickly squeeze out the core content and output a minimalist Markdown outline file, saved in the pitch_strategy_summary folder on the desktop, with the file name '比稿核心视觉提纲.md'.\n\nI only want three blocks, clearly separated with H2 headings: the first block is **核心品牌定位**, keeping only the final conclusive positioning description; the second block is **本品与竞品的优劣势对比**, listed clearly with unordered lists; the third block is **提炼出3到5句最有视觉张力的短句** — that is, those ruthless lines that can be used directly for big-character poster layout or torn-paper-style cover slogans: the emotion must be intense, the word count small, and the impact strong.\n\nIf there is subdivided content under the three major sections, use H3; present all specific points with unordered lists, not paragraphs. Bold the core keywords, brand names, competitor names, and key positioning terms.",
+  "rubric": {
+    "query": "There is a '品牌年度焕新比稿策略推导.pptx' in the pitch_strategy_summary folder on the desktop. This PPT has more than a dozen pages, all densely packed with text. Help me quickly squeeze out the core content and output a minimalist Markdown outline file, saved in the pitch_strategy_summary folder on the desktop, with the file name '比稿核心视觉提纲.md'.\n\nI only want three blocks, clearly separated with H2 headings: the first block is **核心品牌定位**, keeping only the final conclusive positioning description; the second block is **本品与竞品的优劣势对比**, listed clearly with unordered lists; the third block is **提炼出3到5句最有视觉张力的短句** — that is, those ruthless lines that can be used directly for big-character poster layout or torn-paper-style cover slogans: the emotion must be intense, the word count small, and the impact strong.\n\nIf there is subdivided content under the three major sections, use H3; present all specific points with unordered lists, not paragraphs. Bold the core keywords, brand names, competitor names, and key positioning terms.",
+    "query_id": "pitch_ppt_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1ecdd0688356",
+        "type": "leaf",
+        "name": "Correctly read the content of ‘品牌年度焕新比稿策略推导.pptx’ in the pitch_strategy_summary folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-15a05fb44932",
+        "type": "group",
+        "name": "Markdown Deliverable Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0c45e23a3c69",
+            "type": "leaf",
+            "name": "Generated a Markdown file named ‘比稿核心视觉提纲.md’",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-2b90cf6c9598",
+            "type": "leaf",
+            "name": "Saved ‘比稿核心视觉提纲.md’ in the pitch_strategy_summary folder on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7e377e61de63",
+        "type": "group",
+        "name": "Delivered Content Meets the Specified Structure and Format Requirements",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9846cebcfe0f",
+            "type": "leaf",
+            "name": "The output content contains the H2 heading ‘核心品牌定位’ and keeps only conclusive positioning descriptions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-783ce9adfc53",
+            "type": "leaf",
+            "name": "The output content contains the H2 heading ‘本品与竞品的优劣势对比’ and presents the comparison points in unordered lists",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-4388d829b09a",
+            "type": "leaf",
+            "name": "The output content contains the H2 heading ‘提炼出3到5句最有视觉张力的短句’ and lists 3 to 5 short sentences",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-047d64d7a9ea",
+            "type": "leaf",
+            "name": "The specific points under the three major sections are all presented with unordered lists",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-7e74e154e904",
+            "type": "leaf",
+            "name": "Core keywords, brand names, competitor names, and key positioning terms are marked in bold",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-cddd1a9deffd",
+          "type": "leaf",
+          "name": "Correctly selected a tool or method capable of reading the PPT's text content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ab958d615567",
+          "type": "leaf",
+          "name": "Accurately extracted the information related to brand positioning, competitor comparison, and visual short sentences from the PPT",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0f9afa7be078",
+          "type": "leaf",
+          "name": "Accurately determined which statements are final conclusive brand positioning rather than process-analysis information",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Information Filtering",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-bd59d831a23b",
+          "type": "group",
+          "name": "Competitor Comparison Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ad80a2841788",
+              "type": "leaf",
+              "name": "Correctly distinguished the respective strength information of our product and the competitors",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-cfa5045b0b93",
+              "type": "leaf",
+              "name": "Correctly distinguished the respective weakness information of our product and the competitors",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-36ede4cf322f",
+          "type": "group",
+          "name": "Markdown Deliverable Usability and Format Compliance",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f5dd4170e12f",
+              "type": "leaf",
+              "name": "The Markdown file contains the 3 specified H2 headings",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-cc03d52bbb1b",
+              "type": "leaf",
+              "name": "The subdivided content in the Markdown file is organized with H3 headings",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-4247047c9649",
+              "type": "leaf",
+              "name": "The specific points in the Markdown file are all presented with unordered lists",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-d83c679d80dc",
+              "type": "leaf",
+              "name": "The core keywords, brand names, competitor names, and key positioning terms in the Markdown file are marked with Markdown bold syntax",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-a214941ed359",
+              "type": "leaf",
+              "name": "The Markdown file opens normally with no garbled text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-abdd1f5871e6",
+          "type": "group",
+          "name": "Visual Short Sentence Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8c3a42a7c822",
+              "type": "leaf",
+              "name": "The extracted short sentences come from information already present in the PPT rather than newly invented claims",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-19d514319f29",
+              "type": "leaf",
+              "name": "The length of each extracted short sentence is kept within a range that can be used directly for big-character poster layout",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-dd797917c713",
+              "type": "leaf",
+              "name": "The extracted short sentences retain the highly recognizable keywords from the brand's competitive claims",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-223cd3825692",
+    "language": "en"
+  },
+  "note": "Extract a core visual outline from the pitch strategy PPT."
+}

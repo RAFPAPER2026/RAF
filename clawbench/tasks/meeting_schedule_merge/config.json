@@ -1,0 +1,308 @@
+{
+  "id": "meeting_schedule_merge",
+  "name": "会议日程合并PDF",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从",
+    "任务规划-任务分解"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow",
+    "plan.decompose"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面patent_event_schedules目录下有四份.ics格式的会议日程文件：event_internal_review.ics（内部防晒霜配方规避设计研讨会）、event_el_packaging.ics（雅诗兰黛泵头外观专利说明会）、event_loreal_q3.ics（欧莱雅抗衰老新原料发布会）、event_botanical_extracts.ics（植物提取物数据库检索培训）。\n\n帮我把这些.ics文件全部读取解析，提取每个日程事件的主题（SUMMARY）、开始时间（DTSTART）、地点（LOCATION）和描述（DESCRIPTION）等详细信息，然后按照会议开始时间从早到晚的升序整合到一份PDF文档中。排版上每个会议事件必须单独占满一整页，不能出现多个会议挤在同一页或者内容被分页截断的情况。另外，生成的PDF需要自动带有全局目录书签，书签名称直接用各会议的主题命名。\n\n最终输出文件保存为桌面patent_event_schedules/Schedule_Summary.pdf。",
+  "rubric": {
+    "query": "桌面patent_event_schedules目录下有四份.ics格式的会议日程文件：event_internal_review.ics（内部防晒霜配方规避设计研讨会）、event_el_packaging.ics（雅诗兰黛泵头外观专利说明会）、event_loreal_q3.ics（欧莱雅抗衰老新原料发布会）、event_botanical_extracts.ics（植物提取物数据库检索培训）。\n\n帮我把这些.ics文件全部读取解析，提取每个日程事件的主题（SUMMARY）、开始时间（DTSTART）、地点（LOCATION）和描述（DESCRIPTION）等详细信息，然后按照会议开始时间从早到晚的升序整合到一份PDF文档中。排版上每个会议事件必须单独占满一整页，不能出现多个会议挤在同一页或者内容被分页截断的情况。另外，生成的PDF需要自动带有全局目录书签，书签名称直接用各会议的主题命名。\n\n最终输出文件保存为桌面patent_event_schedules/Schedule_Summary.pdf。",
+    "query_id": "meeting_schedule_merge",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ac8e5026649b",
+        "type": "group",
+        "name": "会议日程数据提取目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-108faffea23a",
+            "type": "leaf",
+            "name": "正确读取了解析所需的四份.ics会议日程文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-cc285a6af2e7",
+            "type": "leaf",
+            "name": "正确提取了每个日程事件的SUMMARY、DTSTART、LOCATION和DESCRIPTION信息",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9341fe9571e8",
+        "type": "group",
+        "name": "PDF交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-32eadec05ad0",
+            "type": "leaf",
+            "name": "按会议开始时间从早到晚生成了整合后的PDF文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-5e40574865e2",
+            "type": "leaf",
+            "name": "将PDF文件保存为桌面patent_event_schedules/Schedule_Summary.pdf",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-64f1c117f0e6",
+        "type": "group",
+        "name": "PDF版式与导航目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ed3eb6f01b56",
+            "type": "leaf",
+            "name": "为每个会议事件生成了以会议主题命名的全局目录书签",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-5573b0112239",
+            "type": "leaf",
+            "name": "使每个会议事件在PDF中单独占用一整页",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-5302855675ec",
+          "type": "leaf",
+          "name": "准确读取了四份指定文件名的.ics文件且未遗漏或替换其他文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fcb0533df5a2",
+          "type": "group",
+          "name": "时间解析与排序质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a095f584f688",
+              "type": "leaf",
+              "name": "准确解析了每个事件的DTSTART原始时间值并转换为可排序的开始时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-28adb183dc82",
+              "type": "leaf",
+              "name": "正确按照开始时间升序排列了全部会议事件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-019823f4dcc5",
+          "type": "group",
+          "name": "事件字段提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fcb99583f18d",
+              "type": "leaf",
+              "name": "准确提取了每个事件的SUMMARY字段内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-4fb292b8fd1a",
+              "type": "leaf",
+              "name": "准确提取了每个事件的LOCATION字段内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-dc59ccaf6489",
+              "type": "leaf",
+              "name": "准确提取了每个事件的DESCRIPTION字段内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f93fa4a38e64",
+          "type": "group",
+          "name": "PDF交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-49f70d9f4f54",
+              "type": "leaf",
+              "name": "生成的PDF中每个会议事件内容完整呈现在单独一页内且未跨页截断",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-06febe659801",
+              "type": "leaf",
+              "name": "生成的PDF目录书签可正常跳转到对应会议页面且书签名称与SUMMARY一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c88c3d871424",
+              "type": "leaf",
+              "name": "生成的PDF文件可正常打开且页面顺序与会议开始时间顺序一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-d1f861356528",
+          "type": "group",
+          "name": "异常处理与事实约束质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7554342f9005",
+              "type": "leaf",
+              "name": "正确处理了.ics字段缺失或空值情况并在PDF中保留可判定的缺失标记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a392d807c872",
+              "type": "leaf",
+              "name": "未编造.ics文件中不存在的会议字段内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-f728adc9422a",
+    "language": "zh"
+  },
+  "note": "从多个ICS文件提取会议信息，按时间排序生成带书签的PDF文档"
+}

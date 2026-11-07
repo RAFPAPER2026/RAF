@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//LOreal//Q3 Launch//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20230922T100000
+DTEND:20230922T123000
+SUMMARY:欧莱雅抗衰老新原料发布会
+LOCATION:北京朝阳区欧莱雅中国总部报告厅（朝阳区酒仙桥路6号欧莱雅大厦1层）
+DESCRIPTION:欧莱雅研发与创新中心将正式发布其历时5年研发的全新抗衰老活性原料「Pro-Xylane Plus」第二代升级版本。\n\n发布会议程：\n1. 10:00-10:15 欧莱雅中国研发中心负责人开场致辞\n2. 10:15-11:00 Pro-Xylane Plus原料技术路线与核心专利披露（首席科学家 Dr. Marie Dubois）\n3. 11:00-11:30 临床功效数据公开与同类原料对比分析（临床研究总监 孙博士）\n4. 11:30-11:45 茶歇\n5. 11:45-12:15 原料供应链合作模式与许可授权方案说明（商务拓展经理 陈总）\n6. 12:15-12:30 媒体及嘉宾提问环节\n\n特别提示：本次发布会涉及多项未公开专利申请内容，参会人员须签署保密协议（NDA）。会后将提供技术白皮书电子版。
+ORGANIZER;CN=LOreal R&I:mailto:events@loreal.com.cn
+UID:evt-loreal-q3-20230922@loreal.com.cn
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

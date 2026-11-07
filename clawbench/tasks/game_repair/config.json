@@ -1,0 +1,163 @@
+{
+  "id": "game_repair",
+  "name": "修复贪吃蛇游戏",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "反思和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop/的贪吃蛇游戏运行的时候有问题，帮我修复好并写个调试笔记",
+  "rubric": {
+    "query": "/root/Desktop/的贪吃蛇游戏运行的时候有问题，帮我修复好并写个调试笔记",
+    "query_id": "game_repair",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-166493000eaf",
+        "type": "leaf",
+        "name": "修复了 /root/Desktop/ 的贪吃蛇游戏运行问题",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "异常处理"
+        ]
+      },
+      {
+        "id": "node-2b6fc0355e48",
+        "type": "leaf",
+        "name": "生成了调试笔记交付物",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fd9f21b60832",
+          "type": "leaf",
+          "name": "准确定位了导致贪吃蛇游戏无法正常运行的具体错误原因",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5ae2063ed2e7",
+          "type": "leaf",
+          "name": "正确修改了相关代码或配置并消除了运行报错或异常行为",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "异常处理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a4b1d54f77cb",
+          "type": "group",
+          "name": "调试笔记内容质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-08e689b60da1",
+              "type": "leaf",
+              "name": "正确记录了复现步骤和触发条件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-be93649b7870",
+              "type": "leaf",
+              "name": "正确记录了根因分析与对应修复动作",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-2c8582143e61",
+              "type": "leaf",
+              "name": "正确记录了修复后的验证结果与剩余限制",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3c2cd16184b4",
+          "type": "leaf",
+          "name": "正确使用了能够读取项目文件、编辑代码和执行程序的工具或命令",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2fc923bb1555",
+          "type": "leaf",
+          "name": "回复中包含了修复结果、调试笔记位置或内容摘要以及后续可执行的验证方式",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-fe2d40f92d9c",
+    "language": "zh"
+  }
+}

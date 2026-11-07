@@ -1,0 +1,198 @@
+{
+  "id": "reimbursement_statistics",
+  "name": "报销发票汇总",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用",
+    "反思和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "把 /root/Desktop/ 目录下所有的报销发票图片汇总成一张表格，列出日期和金额。做完告诉我一共报销了多少钱。”",
+  "rubric": {
+    "query": "把 /root/Desktop/ 目录下所有的报销发票图片汇总成一张表格，列出日期和金额。做完告诉我一共报销了多少钱。”",
+    "query_id": "reimbursement_statistics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c157635c389d",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/ 目录下的报销发票图片",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-086963dc5899",
+        "type": "group",
+        "name": "报销信息汇总目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-052487fa9189",
+            "type": "leaf",
+            "name": "生成了包含每张报销发票日期和金额的表格交付物",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-63e7d5be42f8",
+            "type": "leaf",
+            "name": "告知了所有报销发票金额汇总后的总金额",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "沟通表达",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f5ccb5f5ff98",
+          "type": "leaf",
+          "name": "准确筛选了 /root/Desktop/ 目录下与报销相关的发票图片文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-52def93ee9d2",
+          "type": "group",
+          "name": "发票关键信息提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0c7909b06a6a",
+              "type": "leaf",
+              "name": "准确提取了每张发票中的开票日期",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-523d01e6c6be",
+              "type": "leaf",
+              "name": "准确提取了每张发票中的报销金额",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f7f7cbf7d737",
+          "type": "group",
+          "name": "金额汇总与结果传达质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f9946544dfa9",
+              "type": "leaf",
+              "name": "正确汇总了表格中的全部金额总和",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-03a2f330dc42",
+              "type": "leaf",
+              "name": "回复中包含了总金额的明确数值说明",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-54b6d7680ab1",
+          "type": "group",
+          "name": "表格交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b1c410ab2ee5",
+              "type": "leaf",
+              "name": "生成的表格包含日期和金额两列且每张发票各占一行",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-cd7164ff69ee",
+              "type": "leaf",
+              "name": "生成的表格文件能够被正常打开并读取内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-0054a553f7d6",
+    "language": "zh"
+  }
+}

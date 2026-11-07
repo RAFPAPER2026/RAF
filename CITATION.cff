@@ -1,0 +1,19 @@
+cff-version: 1.2.0
+message: "If you use this software or benchmark, please cite the paper below."
+title: "RAF: Rubric Auto-generation Framework for Auditable Evaluation of Long-Horizon LLM Agents"
+abstract: "RAF generates and iteratively refines case-level AND-OR rubric trees for evaluating long-horizon LLM agents. The repository also releases ClawBench, a benchmark of 121 personal-assistant tasks with verified rubrics."
+type: software
+authors:
+  - name: "The RAF Authors"
+version: 1.0.0
+date-released: "2026-11-07"
+repository-code: "https://github.com/RAFPAPER2026/RAF"
+url: "https://github.com/RAFPAPER2026/RAF"
+license: Apache-2.0
+license-url: "https://github.com/RAFPAPER2026/RAF/blob/main/LICENSE"
+keywords:
+  - LLM agents
+  - rubric evaluation
+  - benchmark
+  - long-horizon tasks
+  - personal assistants

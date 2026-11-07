@@ -1,0 +1,195 @@
+{
+  "version": "1.0",
+  "scenes": {
+    "个人生活助手": {
+      "id": "personal",
+      "en": "Personal Life Assistant"
+    },
+    "学习与知识管理": {
+      "id": "knowledge",
+      "en": "Learning and Knowledge Management"
+    },
+    "基础办公与效率": {
+      "id": "office",
+      "en": "Basic Office and Productivity"
+    }
+  },
+  "sub_scenes": {
+    "会议协同": "Meeting Coordination",
+    "知识沉淀": "Knowledge Capture",
+    "流程自动化": "Process Automation",
+    "创意生成": "Creative Generation",
+    "数据分析": "Data Analysis",
+    "财务咨询": "Financial Advisory",
+    "日程规划": "Schedule Planning",
+    "学习辅助": "Learning Assistance",
+    "信息检索": "Information Retrieval",
+    "资料获取": "Resource Acquisition",
+    "文档处理": "Document Processing",
+    "邮件管理": "Email Management",
+    "出行建议": "Travel Planning"
+  },
+  "competency_parents": {
+    "tool": {
+      "zh": "工具调用",
+      "en": "Tool Calling"
+    },
+    "plan": {
+      "zh": "任务规划",
+      "en": "Task Planning"
+    },
+    "context": {
+      "zh": "上下文管理",
+      "en": "Context Management"
+    },
+    "instruction": {
+      "zh": "指令遵循",
+      "en": "Instruction Following"
+    },
+    "reflection": {
+      "zh": "反思与修复",
+      "en": "Reflection & Repair"
+    }
+  },
+  "competencies": {
+    "tool.use": {
+      "parent": "tool",
+      "zh": "工具调用",
+      "en": "Tool Use"
+    },
+    "tool.cli": {
+      "parent": "tool",
+      "zh": "CLI 调用",
+      "en": "CLI Invocation"
+    },
+    "tool.api": {
+      "parent": "tool",
+      "zh": "API 调用",
+      "en": "API Calling"
+    },
+    "tool.skill": {
+      "parent": "tool",
+      "zh": "Skill 使用",
+      "en": "Skill Usage"
+    },
+    "tool.env": {
+      "parent": "tool",
+      "zh": "环境配置",
+      "en": "Environment Configuration"
+    },
+    "plan.general": {
+      "parent": "plan",
+      "zh": "任务规划",
+      "en": "Task Planning"
+    },
+    "plan.decompose": {
+      "parent": "plan",
+      "zh": "任务分解",
+      "en": "Task Decomposition"
+    },
+    "plan.strategy": {
+      "parent": "plan",
+      "zh": "通用规划与策略制定",
+      "en": "General Planning & Strategy"
+    },
+    "plan.scheduling": {
+      "parent": "plan",
+      "zh": "约束满足与调度",
+      "en": "Constraint Satisfaction & Scheduling"
+    },
+    "plan.numeric": {
+      "parent": "plan",
+      "zh": "数值分析与推理",
+      "en": "Numerical Analysis & Reasoning"
+    },
+    "context.general": {
+      "parent": "context",
+      "zh": "上下文管理",
+      "en": "Context Management"
+    },
+    "context.long": {
+      "parent": "context",
+      "zh": "长上下文理解",
+      "en": "Long-Context Understanding"
+    },
+    "context.compress": {
+      "parent": "context",
+      "zh": "上下文压缩与摘要",
+      "en": "Context Compression & Summarization"
+    },
+    "context.longdoc": {
+      "parent": "context",
+      "zh": "长文档关键信息提取",
+      "en": "Long-Document Key-Information Extraction"
+    },
+    "context.state": {
+      "parent": "context",
+      "zh": "状态跟踪与一致性维护",
+      "en": "State Tracking & Consistency"
+    },
+    "instruction.follow": {
+      "parent": "instruction",
+      "zh": "指令遵从",
+      "en": "Instruction Following"
+    },
+    "instruction.constraints": {
+      "parent": "instruction",
+      "zh": "内容约束与条件筛选",
+      "en": "Content Constraints & Filtering"
+    },
+    "reflection.general": {
+      "parent": "reflection",
+      "zh": "反思和修复",
+      "en": "Reflection & Repair"
+    },
+    "reflection.detect": {
+      "parent": "reflection",
+      "zh": "异常识别和理解",
+      "en": "Exception Identification"
+    },
+    "reflection.repair": {
+      "parent": "reflection",
+      "zh": "异常处理和修复",
+      "en": "Exception Handling & Repair"
+    },
+    "reflection.verify": {
+      "parent": "reflection",
+      "zh": "结果验证与自检",
+      "en": "Result Verification & Self-Check"
+    }
+  },
+  "capabilities": {
+    "意图理解": "Intent Understanding",
+    "条件判断": "Conditional Judgment",
+    "逻辑推理": "Logical Reasoning",
+    "时间推理": "Temporal Reasoning",
+    "检索策略": "Retrieval Strategy",
+    "信息筛选": "Information Filtering",
+    "工具使用": "Tool Usage",
+    "上下文保持": "Context Retention",
+    "异常处理": "Exception Handling",
+    "事实准确性": "Factual Accuracy",
+    "通用知识": "General Knowledge",
+    "沟通表达": "Communication"
+  },
+  "skills": {
+    "baidu-search": {
+      "zh": "联网检索技能（不随仓库分发；放入 init_env/.skills/baidu-search/）",
+      "en": "Web search skill (not distributed; place under init_env/.skills/baidu-search/)"
+    },
+    "rapid-ocr-reader": {
+      "zh": "图片文字识别技能（不随仓库分发；放入 init_env/.skills/rapid-ocr-reader/）",
+      "en": "Image OCR skill (not distributed; place under init_env/.skills/rapid-ocr-reader/)"
+    }
+  },
+  "difficulty": {
+    "easy": "Easy",
+    "medium": "Medium",
+    "hard": "Hard"
+  },
+  "complexity": {
+    "simple": "Simple",
+    "moderate": "Moderate",
+    "complex": "Complex"
+  }
+}

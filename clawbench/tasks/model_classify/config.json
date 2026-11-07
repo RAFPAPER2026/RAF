@@ -1,0 +1,206 @@
+{
+  "id": "model_classify",
+  "name": "DeepSeek归类",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "deepseek属于/root/Desktop/llm_architecture_summary.csv里的大模型架构类型里的哪种类型，如果表格里没有就加上；并且分析一下，这个架构的模型还有什么",
+  "rubric": {
+    "query": "deepseek属于/root/Desktop/llm_architecture_summary.csv里的大模型架构类型里的哪种类型，如果表格里没有就加上；并且分析一下，这个架构的模型还有什么",
+    "query_id": "model_classify",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-92344edce8e7",
+        "type": "leaf",
+        "name": "正确读取了/root/Desktop/llm_architecture_summary.csv中的大模型架构类型信息",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-55e329717d9f",
+        "type": "group",
+        "name": "DeepSeek架构类型更新目标",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-abf9a8d53ca7",
+            "type": "leaf",
+            "name": "正确判断了DeepSeek是否已存在于表格中的架构类型映射",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-82a66a5be7de",
+            "type": "leaf",
+            "name": "表格中没有对应类型时，已将DeepSeek及其架构类型写入CSV",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "工具使用",
+              "异常处理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-42d59a38560a",
+        "type": "leaf",
+        "name": "给出了DeepSeek所属架构类型及该架构其他模型的分析结果",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "逻辑推理",
+          "通用知识",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ea343d1a95c8",
+          "type": "leaf",
+          "name": "准确定位了CSV中用于表示大模型名称和架构类型的列",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7e6c202f4558",
+          "type": "leaf",
+          "name": "准确判断了DeepSeek应归属的架构类型且未编造表格中不存在的映射关系",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5f994ead9b19",
+          "type": "group",
+          "name": "CSV更新执行质量",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-a4c087246cac",
+              "type": "leaf",
+              "name": "表格中已存在对应信息时，没有重复写入冲突记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "上下文保持",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-56efef566205",
+              "type": "leaf",
+              "name": "表格中不存在对应信息时，写入的DeepSeek记录字段格式与现有CSV结构一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-469a36a4c3f1",
+          "type": "group",
+          "name": "同架构模型分析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-afb756fc288d",
+              "type": "leaf",
+              "name": "分析中列举了至少两个与DeepSeek同架构的模型或明确说明无法从表格与已知信息中确认",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-32bc9902776d",
+              "type": "leaf",
+              "name": "分析中说明了这些模型与DeepSeek同属该架构的依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-1c2a9a7de0a3",
+          "type": "leaf",
+          "name": "回复中明确说明了是否修改CSV以及DeepSeek对应的架构类型结论",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-af32c30cfa9e",
+    "language": "zh"
+  },
+  "note": "按要求补充到表格中"
+}

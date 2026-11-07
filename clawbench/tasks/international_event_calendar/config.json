@@ -1,0 +1,192 @@
+{
+  "id": "international_event_calendar",
+  "name": "国际赛事合规日历",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面international_event_schedule文件夹里有个Global_Event_Preparation_Schedule.pptx的幻灯片，是跨国赛事的筹备排期，每页都是不同工作组的会议安排，各个时区都有。\n\n只需要把里面跟'合规'、'法务'、'安保'、'版权'相关的会议筛出来，其他开幕式彩排、票务营销之类的不要。筛出来之后，所有会议时间统一按原文标注的时区换算成北京时间。每条会议标题前面加'[合规部]'标签。\n\n输出一个标准的ics日历文件，存到同一个文件夹下面，命名为Compliance_Schedule_BeijingTime.ics。",
+  "rubric": {
+    "query": "桌面international_event_schedule文件夹里有个Global_Event_Preparation_Schedule.pptx的幻灯片，是跨国赛事的筹备排期，每页都是不同工作组的会议安排，各个时区都有。\n\n只需要把里面跟'合规'、'法务'、'安保'、'版权'相关的会议筛出来，其他开幕式彩排、票务营销之类的不要。筛出来之后，所有会议时间统一按原文标注的时区换算成北京时间。每条会议标题前面加'[合规部]'标签。\n\n输出一个标准的ics日历文件，存到同一个文件夹下面，命名为Compliance_Schedule_BeijingTime.ics。",
+    "query_id": "international_event_calendar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8666dcfc5934",
+        "type": "leaf",
+        "name": "正确读取了桌面international_event_schedule文件夹中的Global_Event_Preparation_Schedule.pptx内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "检索策略"
+        ]
+      },
+      {
+        "id": "node-7e30b880289c",
+        "type": "leaf",
+        "name": "正确筛出了与合规、法务、安保、版权相关的会议",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-6daee57eed99",
+        "type": "leaf",
+        "name": "正确将筛出会议的时间按原文标注时区换算为北京时间",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "时间推理",
+          "逻辑推理",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-d5dfbf0db173",
+        "type": "leaf",
+        "name": "正确生成了同文件夹下名为Compliance_Schedule_BeijingTime.ics的日历文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ab8ddf9339e7",
+          "type": "leaf",
+          "name": "准确提取了幻灯片中每页会议的标题、日期、开始时间、结束时间和原文时区标注",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "检索策略",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ac3ecdde8867",
+          "type": "leaf",
+          "name": "准确判断了会议内容是否属于合规、法务、安保、版权范围且排除了开幕式彩排、票务营销等无关会议",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "条件判断",
+            "逻辑推理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5cfecbbce420",
+          "type": "leaf",
+          "name": "正确依据原文标注时区将每条会议开始时间和结束时间换算为北京时间",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-7a99ce19646b",
+          "type": "leaf",
+          "name": "正确为每条输出会议标题添加了[合规部]前缀且未改写原有会议主题关键信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "上下文保持",
+            "沟通表达",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c32e15f52e11",
+          "type": "leaf",
+          "name": "生成的ics文件可被标准日历应用正常导入且每个事件包含可解析的开始时间、结束时间和标题字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-98793563e62e",
+          "type": "group",
+          "name": "异常记录处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9789aac2c9ab",
+              "type": "leaf",
+              "name": "识别了幻灯片中缺失时区、时间格式异常或跨日信息不完整的会议记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-20e12a8abd3b",
+              "type": "leaf",
+              "name": "对异常会议记录采取了跳过、保留原始标注或在输出中使用可解析替代值的修正措施",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e0faf774fbca",
+    "language": "zh"
+  },
+  "note": "从PPT筛选合规/法务/安保/版权相关会议，转换时区为北京时间生成ICS日历"
+}

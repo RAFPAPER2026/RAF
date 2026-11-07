@@ -1,0 +1,343 @@
+{
+  "id": "family_schedule_coordination",
+  "name": "家庭日程协调",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "上下文管理-长上下文理解",
+    "任务规划-约束满足与调度",
+    "上下文管理-状态跟踪与一致性维护"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long",
+    "plan.scheduling",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我安排下个月（2026年10月）的家庭事务。桌面 family_calendars/ 文件夹里有我们一家四口各自的日历（爸爸.ics、妈妈.ics、孩子A.ics、孩子B.ics），还有一个 family_notes.md 记录了固定安排（如每周三钢琴课）和待办事项（如疫苗预约、家长会）。\n请：1）汇总全家下个月的日程，生成一份共享日历 family_october.ics；2）标注出有时间冲突需要协调的事项；3）把所有待办事项分配到具体的日期和负责人，确保没人会忘记重要事情；4）生成一份 /root/Desktop/家庭事务安排.md 的文字版说明，包含每人的视图。",
+  "rubric": {
+    "query": "帮我安排下个月（2026年10月）的家庭事务。桌面 family_calendars/ 文件夹里有我们一家四口各自的日历（爸爸.ics、妈妈.ics、孩子A.ics、孩子B.ics），还有一个 family_notes.md 记录了固定安排（如每周三钢琴课）和待办事项（如疫苗预约、家长会）。\n请：1）汇总全家下个月的日程，生成一份共享日历 family_october.ics；2）标注出有时间冲突需要协调的事项；3）把所有待办事项分配到具体的日期和负责人，确保没人会忘记重要事情；4）生成一份 /root/Desktop/家庭事务安排.md 的文字版说明，包含每人的视图。",
+    "query_id": "family_schedule_coordination",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-6d5b60b58f33",
+        "type": "leaf",
+        "name": "生成了下个月全家共享日历文件 family_october.ics",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-c94fdab76cec",
+        "type": "group",
+        "name": "完成了时间冲突识别与呈现",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2ca0782e76a4",
+            "type": "leaf",
+            "name": "标注了共享日历中需要协调的时间冲突事项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-2e4cca3b44c0",
+            "type": "leaf",
+            "name": "在文字版说明中列出了需要协调的时间冲突事项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-cd52e81e79ba",
+        "type": "group",
+        "name": "完成了待办事项排期与责任分配",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c62780e3e778",
+            "type": "leaf",
+            "name": "将 family_notes.md 中的待办事项分配到了 2026年10月 的具体日期",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "时间推理"
+            ]
+          },
+          {
+            "id": "node-a038cc47df2b",
+            "type": "leaf",
+            "name": "为每个待办事项指定了负责人",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9b0dc8f2fdb2",
+        "type": "group",
+        "name": "完成了文字版说明交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a4dc48c6f687",
+            "type": "leaf",
+            "name": "生成了 /root/Desktop/家庭事务安排.md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-0bda04c7db20",
+            "type": "leaf",
+            "name": "在文字版说明中包含了爸爸、妈妈、孩子A、孩子B各自的视图",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-b3e48b36f30f",
+          "type": "leaf",
+          "name": "正确读取了 family_calendars/ 目录中的四个个人日历文件和 family_notes.md",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-cce5b7440fd5",
+          "type": "group",
+          "name": "源信息提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-55c2f9d6b41a",
+              "type": "leaf",
+              "name": "准确提取了 2026年10月 范围内的日历事件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-53e3cc6bf5b6",
+              "type": "leaf",
+              "name": "正确识别了 family_notes.md 中的固定安排与待办事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-04923aba0d44",
+          "type": "group",
+          "name": "冲突识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fdcef542b9a2",
+              "type": "leaf",
+              "name": "准确判断了共享日历中存在时间重叠或相邻不可兼容的事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-0dc68bed0fad",
+              "type": "leaf",
+              "name": "正确保留了冲突事项涉及的人员和时间信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9fa29d7cc22a",
+          "type": "group",
+          "name": "待办排期与分工质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-115db35fc3ff",
+              "type": "leaf",
+              "name": "正确将每个待办事项安排到 2026年10月 的具体日期",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-da1429d5d1c6",
+              "type": "leaf",
+              "name": "正确为每个待办事项分配了唯一负责人或明确的共同负责人",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-2558da6d6d15",
+              "type": "leaf",
+              "name": "未遗漏 family_notes.md 中记录的重要待办事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9e25a498d2db",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4beeb3264943",
+              "type": "leaf",
+              "name": "生成的 family_october.ics 文件可被日历应用正常打开并包含事件开始时间信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-bce9b3070050",
+              "type": "leaf",
+              "name": "生成的 /root/Desktop/家庭事务安排.md 文件包含共享概览、冲突事项、待办分配和四个人员视图",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-35fd8589fe48",
+          "type": "group",
+          "name": "异常处理与结果沟通质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-15816b62fa98",
+              "type": "leaf",
+              "name": "在文件缺失、解析失败或日期信息不足时明确记录了异常并采取了修正措施",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-db2b31c56d19",
+              "type": "leaf",
+              "name": "回复中说明了已生成的文件及其对应用途",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e8a64df99a6b",
+    "language": "zh"
+  },
+  "note": "家庭协调\n\n“帮我安排下个月家庭事务，确保没人忘记重要事情。”\n\n需要：\n\n多人calendar reasoning。",
+  "env_description": "family_calendars/（四口人ics）+ family_notes.md（固定安排+待办优先级）；家长会与爸妈双方10月8日冲突、疫苗/驾照/全家福等硬约束埋设"
+}

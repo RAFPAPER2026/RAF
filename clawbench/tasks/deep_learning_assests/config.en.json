@@ -1,0 +1,300 @@
+{
+  "id": "deep_learning_assests",
+  "name": "Paper Download and Translation",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Task Decomposition",
+    "Skill Usage"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.skill"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Help me find 5 papers about ‘the application of deep learning in image recognition’, download the PDFs from arXiv, and if the papers are in English, choose the newest paper and translate it into Chinese. Save all the materials to the ‘论文’ folder on /root/Desktop, using the title as the file name, and the translated one using the translated title.",
+  "rubric": {
+    "query": "Help me find 5 papers about ‘the application of deep learning in image recognition’, download the PDFs from arXiv, and if the papers are in English, choose the newest paper and translate it into Chinese. Save all the materials to the ‘论文’ folder on /root/Desktop, using the title as the file name, and the translated one using the translated title.",
+    "query_id": "deep_learning_assests",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-91c96b9cc38a",
+        "type": "leaf",
+        "name": "Correctly retrieved 5 papers about the application of deep learning in image recognition",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-0bd382c706c2",
+        "type": "leaf",
+        "name": "Downloaded from arXiv and generated PDF files of the 5 papers",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-17f5760713c0",
+        "type": "group",
+        "name": "English paper translation objective",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-c2bec33b8274",
+            "type": "leaf",
+            "name": "When English papers exist among the 5 papers, selected the newest English paper and generated a Chinese translation file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-46170daa77cc",
+            "type": "leaf",
+            "name": "When no English paper exists among the 5 papers, did not generate a translation file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e967a03c5db4",
+        "type": "group",
+        "name": "Material saving objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7a2e82d7507f",
+            "type": "leaf",
+            "name": "Saved 5 PDF files in the 论文 folder on /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-f84c4958fe84",
+            "type": "leaf",
+            "name": "The file names of the 5 PDFs use their respective paper titles",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-07996190be56",
+            "type": "leaf",
+            "name": "The translation file is saved in the 论文 folder on /root/Desktop and its file name uses the translated title",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-1b34b603b2ae",
+          "type": "leaf",
+          "name": "Accurately constructed retrieval conditions related to deep learning, image recognition, and applications",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4a71bf56d83b",
+          "type": "leaf",
+          "name": "Correctly selected 5 papers whose topics are directly related to image recognition applications",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f57f5dc0419d",
+          "type": "group",
+          "name": "English paper selection quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-51b97f8148ff",
+              "type": "leaf",
+              "name": "Accurately identified which of the 5 papers are in English",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5dda175bd277",
+              "type": "leaf",
+              "name": "Correctly compared the publication times of the English papers and selected the newest one",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9aa419eb4d3b",
+          "type": "group",
+          "name": "PDF acquisition execution quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ef95a9228a78",
+              "type": "leaf",
+              "name": "Correctly used arXiv source links to download the PDF files of the corresponding papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-01d38b7f315d",
+              "type": "leaf",
+              "name": "Correctly handled download failures or unavailable links and completed retries or alternative acquisition",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-83f7497171cf",
+          "type": "group",
+          "name": "Deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fae25f887930",
+              "type": "leaf",
+              "name": "The generated PDF files can be opened normally and are consistent with the corresponding paper titles",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-96efdae88ab4",
+              "type": "leaf",
+              "name": "The generated Chinese translation file contains the main content of the original paper and its text encoding is normal with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-1a1088a148ba",
+              "type": "leaf",
+              "name": "The saved file names are consistent with the user's requirements and all files are located in the 论文 folder on /root/Desktop",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-e24b152224a6",
+          "type": "leaf",
+          "name": "Explained the saved paper titles, the translation target, and the save location to the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-d3bca186f14b",
+    "language": "en"
+  },
+  "note": "Requires internet search"
+}

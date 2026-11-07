@@ -1,0 +1,217 @@
+{
+  "id": "popular_internet_terms",
+  "name": "Internet Buzzword Short Video Storyboard",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Creative Generation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Look up recent popular internet buzzwords, create a 30-second short-video storyboard script, attach the source links for the information, and save it as a .md file in /root/Desktop.",
+  "rubric": {
+    "query": "Look up recent popular internet buzzwords, create a 30-second short-video storyboard script, attach the source links for the information, and save it as a .md file in /root/Desktop.",
+    "query_id": "popular_internet_terms",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d783fb8ad9ae",
+        "type": "leaf",
+        "name": "Correctly looked up recent popular internet buzzwords",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-197fef9658a5",
+        "type": "group",
+        "name": "Completed Script Content Delivery",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2cd10b02e36b",
+            "type": "leaf",
+            "name": "Created a 30-second short-video storyboard script",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Context Retention",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-d275f522a031",
+            "type": "leaf",
+            "name": "Attached the source links of the information",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Factual Accuracy",
+              "Information Filtering",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7534ea7c961f",
+        "type": "leaf",
+        "name": "Generated a .md file saved to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2f12d8e3b272",
+          "type": "leaf",
+          "name": "Accurately constructed the search queries for finding recent popular internet buzzwords",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8ed77c3dea84",
+          "type": "leaf",
+          "name": "Accurately filtered the popular buzzword information that can support a recent-time judgment",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-33b79ade1124",
+          "type": "leaf",
+          "name": "Correctly kept the total duration in the storyboard script close to 30 seconds",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-997dd140244d",
+          "type": "group",
+          "name": "Script Content Organization Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a4d14a5e169a",
+              "type": "leaf",
+              "name": "Correctly integrated the popular buzzwords into the visual and dialogue design of the storyboard script",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-80c6f449f76d",
+              "type": "leaf",
+              "name": "The reply includes an accessible link for each key information source",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f9b672569981",
+          "type": "group",
+          "name": "Markdown Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d6aed9e453f5",
+              "type": "leaf",
+              "name": "Correctly generated a Markdown file that opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-cc3e1b2d5903",
+              "type": "leaf",
+              "name": "Correctly organized the Markdown file structure so that the user can directly view the storyboard script and source links",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-0513098c3028",
+          "type": "leaf",
+          "name": "Correctly handled retries or error explanations when retrieval or writing failed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-24d6173057e9",
+    "language": "en"
+  }
+}

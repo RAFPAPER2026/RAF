@@ -1,0 +1,11 @@
+QUARTERLY EARNINGS REPORT - Q2 2024
+========================================
+Revenue: 13800
+Cost of Revenue: 7898
+Gross Profit: 5902
+Operating Income: 2718
+Net Income: 2178
+EPS: 4.36
+Gross Margin: 42.8%
+Operating Margin: 19.7%
+Net Margin: 15.8%

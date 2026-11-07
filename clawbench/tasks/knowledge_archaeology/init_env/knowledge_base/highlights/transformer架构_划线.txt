@@ -1,0 +1,6 @@
+# 《Attention is All You Need》划线
+
+- "we propose a new simple network architecture, the Transformer..."
+- "the Transformer allows for significantly more parallelization..."
+- "Multi-Head Attention... attend to information from different representation subspaces..."
+（仅划线，无批注）

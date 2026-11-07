@@ -1,0 +1,302 @@
+{
+  "id": "contradiction_resolution",
+  "name": "Specification Contradiction Resolution",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Look at spec.txt in the spec_data folder on the desktop; it contains a technical specification for a data processing pipeline. However, there are some contradictory places in this specification.\n\nYou need to do two things:\n1. Read through the entire specification, find all contradictions, and write them to resolution.txt. For each contradiction, explain: what one part says, what the conflicting part says, and how it was resolved. The format is roughly like this:\n   CONTRADICTION 1:\n   - Section A says: <quote the original text>\n   - Section B says: <quote the conflicting part>\n   - Resolution: <which one takes precedence, and why>\n\n2. Based on the resolved specification, generate the pipeline_config.json configuration file; output both generated files to the desktop.\n\nPriority rules for resolving contradictions: Processing Rules take precedence over Output Format, and Output Format takes precedence over General Notes.\n\nOutput format example:\n{\n  \"delimiter\": \"<string - separator>\",\n  \"max_rows\": <int - maximum number of rows>,\n  \"include_header\": <boolean - whether to include the header>,\n  \"date_format\": \"<string - date format>\",\n  \"null_handling\": \"<skip or replace>\",\n  \"null_replacement\": \"<string - required if null_handling is replace>\"\n}",
+  "rubric": {
+    "query": "Look at spec.txt in the spec_data folder on the desktop; it contains a technical specification for a data processing pipeline. However, there are some contradictory places in this specification.\n\nYou need to do two things:\n1. Read through the entire specification, find all contradictions, and write them to resolution.txt. For each contradiction, explain: what one part says, what the conflicting part says, and how it was resolved. The format is roughly like this:\n   CONTRADICTION 1:\n   - Section A says: <quote the original text>\n   - Section B says: <quote the conflicting part>\n   - Resolution: <which one takes precedence, and why>\n\n2. Based on the resolved specification, generate the pipeline_config.json configuration file; output both generated files to the desktop.\n\nPriority rules for resolving contradictions: Processing Rules take precedence over Output Format, and Output Format takes precedence over General Notes.\n\nOutput format example:\n{\n  \"delimiter\": \"<string - separator>\",\n  \"max_rows\": <int - maximum number of rows>,\n  \"include_header\": <boolean - whether to include the header>,\n  \"date_format\": \"<string - date format>\",\n  \"null_handling\": \"<skip or replace>\",\n  \"null_replacement\": \"<string - required if null_handling is replace>\"\n}",
+    "query_id": "contradiction_resolution",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-cd723e5c3c9e",
+        "type": "leaf",
+        "name": "Correctly read the complete content of spec.txt in the spec_data folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-1e1596df7d0b",
+        "type": "group",
+        "name": "Deliverable generation objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d8ce91eed353",
+            "type": "leaf",
+            "name": "Correctly produced the resolution.txt file on the desktop containing all contradiction points and their resolutions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-31761881ec9d",
+            "type": "leaf",
+            "name": "Correctly produced the pipeline_config.json file on the desktop based on the resolved specification",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-90180f10f2d4",
+        "type": "group",
+        "name": "Contradiction resolution follows the priority rules",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7052c16e3dc8",
+            "type": "leaf",
+            "name": "Correctly resolved the relevant contradictions according to the rule that Processing Rules take precedence over Output Format",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-1d1abd86efd3",
+            "type": "leaf",
+            "name": "Correctly resolved the relevant contradictions according to the rule that Output Format takes precedence over General Notes",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9872abb35923",
+          "type": "leaf",
+          "name": "Accurately read all specification information in spec.txt related to the configuration fields and constraints",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-68f7960f94aa",
+          "type": "leaf",
+          "name": "Accurately identified the mutually conflicting field requirements and rule statements in spec.txt",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d7e5a8442e9c",
+          "type": "group",
+          "name": "Contradiction ruling and configuration mapping quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9024d7a31a38",
+              "type": "leaf",
+              "name": "Correctly applied the specified priority order to each contradiction based on the section source",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-58bc0e0de7aa",
+              "type": "leaf",
+              "name": "Correctly mapped each resolved conclusion to the corresponding configuration value in pipeline_config.json",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-99d064612ef3",
+          "type": "group",
+          "name": "resolution.txt content usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-76eee77aa6ab",
+              "type": "leaf",
+              "name": "resolution.txt lists the original text quotes of the conflicting positions item by item",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-cf095de8062c",
+              "type": "leaf",
+              "name": "resolution.txt states item by item which part takes precedence and the corresponding reason",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8a81082a0ba7",
+          "type": "group",
+          "name": "pipeline_config.json deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e3e3f1e047d3",
+              "type": "leaf",
+              "name": "pipeline_config.json contains the required fields delimiter, max_rows, include_header, date_format, null_handling, and null_replacement",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-701d969f7933",
+              "type": "leaf",
+              "name": "The data types and value formats of the fields in pipeline_config.json conform to the constraints of the JSON example given by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "General Knowledge",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-1987e3a16f12",
+              "type": "leaf",
+              "name": "The content of the pipeline_config.json file can be parsed normally as valid JSON",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a01350768515",
+          "type": "group",
+          "name": "Exception handling and factual constraint quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fd0199b0320e",
+              "type": "leaf",
+              "name": "Correctly identified exceptions when reading or writing failed and performed retries or used alternative paths",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-58851a3ab5db",
+              "type": "leaf",
+              "name": "Did not fabricate section content, field requirements, or contradiction items that do not exist in spec.txt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1ac303a1b624",
+    "language": "en"
+  }
+}

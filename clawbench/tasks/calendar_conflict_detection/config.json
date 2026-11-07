@@ -1,0 +1,378 @@
+{
+  "id": "calendar_conflict_detection",
+  "name": "日历冲突检测",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "给定一个日历文件，路径为桌面上 workspace/calendar.json，其中包含12个会议安排。其中部分会议存在时间重叠。\n\n请检测所有日程冲突（即同一日期上时间范围存在重叠的会议对），并将结果写入 workspace/conflicts.json。\n\n每个冲突应表示为如下JSON格式：\n```json\n{\n  \"meeting_a\": \"<会议id>\",\n  \"meeting_b\": \"<会议id>\",\n  \"date\": \"YYYY-MM-DD\",\n  \"overlap_start\": \"HH:MM\",\n  \"overlap_end\": \"HH:MM\",\n  \"overlap_minutes\": <整数>\n}\n```\n\n对于每个冲突对，meeting_a 应为开始时间较早的会议（如果开始时间相同，则取字典序较小的id）。同一对冲突不要重复列出。\n\n输出要求：将结果写入桌面 workspace/conflicts.json，格式为包含 \"conflicts\" 键的JSON对象，冲突数组按日期升序排列，同一日期内按 meeting_a 的id升序排列。",
+  "rubric": {
+    "query": "给定一个日历文件，路径为桌面上 workspace/calendar.json，其中包含12个会议安排。其中部分会议存在时间重叠。\n\n请检测所有日程冲突（即同一日期上时间范围存在重叠的会议对），并将结果写入 workspace/conflicts.json。\n\n每个冲突应表示为如下JSON格式：\n```json\n{\n  \"meeting_a\": \"<会议id>\",\n  \"meeting_b\": \"<会议id>\",\n  \"date\": \"YYYY-MM-DD\",\n  \"overlap_start\": \"HH:MM\",\n  \"overlap_end\": \"HH:MM\",\n  \"overlap_minutes\": <整数>\n}\n```\n\n对于每个冲突对，meeting_a 应为开始时间较早的会议（如果开始时间相同，则取字典序较小的id）。同一对冲突不要重复列出。\n\n输出要求：将结果写入桌面 workspace/conflicts.json，格式为包含 \"conflicts\" 键的JSON对象，冲突数组按日期升序排列，同一日期内按 meeting_a 的id升序排列。",
+    "query_id": "calendar_conflict_detection",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d1d0c0dfab0f",
+        "type": "leaf",
+        "name": "正确读取了桌面 workspace/calendar.json 中的会议安排",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-7c9ac4d249a4",
+        "type": "group",
+        "name": "冲突检测结果已正确生成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-eca2536abde5",
+            "type": "leaf",
+            "name": "正确识别了同一日期上时间范围存在重叠的所有会议对",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-38dd3620adc6",
+            "type": "leaf",
+            "name": "正确计算了每个冲突对的重叠开始时间、重叠结束时间和重叠分钟数",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-c8de895c0fa0",
+            "type": "leaf",
+            "name": "正确确定了每个冲突对象中的 meeting_a 和 meeting_b 排序规则结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-7204d1672184",
+            "type": "leaf",
+            "name": "正确去除了重复的冲突对",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-2a0cb9a3fb11",
+        "type": "group",
+        "name": "冲突结果文件已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e2b83039d6ff",
+            "type": "leaf",
+            "name": "正确生成了包含 conflicts 键的 JSON 对象文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-c213d03d2b1b",
+            "type": "leaf",
+            "name": "正确将结果写入了桌面 workspace/conflicts.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-c1f58e2645b7",
+          "type": "leaf",
+          "name": "准确读取了桌面 workspace/calendar.json 中全部会议字段且未编造缺失数据",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4e2df6d6b595",
+          "type": "group",
+          "name": "冲突判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1081c602c3df",
+              "type": "leaf",
+              "name": "准确判断了仅同一日期内的会议是否存在时间范围重叠",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-1dbf7ea220ef",
+              "type": "leaf",
+              "name": "准确排除了仅边界相接而无时间交集的会议对",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-8bd413ee67da",
+              "type": "leaf",
+              "name": "准确识别了全部冲突对且未遗漏或误报",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-098a83859a94",
+          "type": "group",
+          "name": "重叠区间计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d32dcc478026",
+              "type": "leaf",
+              "name": "准确计算了每个冲突对的 overlap_start",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-796c0e7b440c",
+              "type": "leaf",
+              "name": "准确计算了每个冲突对的 overlap_end",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3939a1ae6eb8",
+              "type": "leaf",
+              "name": "准确计算了每个冲突对的 overlap_minutes 为重叠时长的整数分钟数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-160d5b0e9984",
+          "type": "group",
+          "name": "结果规范化质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bd63b8d33360",
+              "type": "leaf",
+              "name": "准确按照开始时间较早优先且开始时间相同时按 id 字典序较小优先确定了 meeting_a",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e6c75cd62612",
+              "type": "leaf",
+              "name": "准确保证了同一对冲突未重复出现在结果中",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-8eda32d78768",
+              "type": "leaf",
+              "name": "准确按照日期升序排列 conflicts 数组且同一日期内按 meeting_a 的 id 升序排列",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-891817c18b17",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-971eec0ee38b",
+              "type": "leaf",
+              "name": "生成的 conflicts.json 可被正常解析为 JSON 对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a31c3cd664bb",
+              "type": "leaf",
+              "name": "生成的 conflicts.json 顶层包含 conflicts 键且其值为冲突对象数组",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-8e2d77379596",
+              "type": "leaf",
+              "name": "每个冲突对象均包含 meeting_a、meeting_b、date、overlap_start、overlap_end、overlap_minutes 六个字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-0298ba97a6df",
+          "type": "group",
+          "name": "异常与状态处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e2406bd3b95b",
+              "type": "leaf",
+              "name": "执行过程中识别了输入文件缺失或字段异常时的错误并停止输出不可信结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-12e1eb1a29c4",
+              "type": "leaf",
+              "name": "执行过程中在多步处理后仍保持了输入路径和输出路径未混淆",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-dac1f7c9da78",
+    "language": "zh"
+  },
+  "note": "检测日历会议时间冲突并计算重叠时长"
+}

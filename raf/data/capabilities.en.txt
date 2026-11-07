@@ -1,0 +1,12 @@
+Intent Understanding: Accurately understand the user's core goal, explicit requirements, and implicit constraints.
+Conditional Judgment: Recognize conditional branches ("if there is a conflict then... otherwise...") and implicit premises.
+Logical Reasoning: Derive correct conclusions from known information and make sound judgments (conflict detection, priority ordering, etc.).
+Temporal Reasoning: Handle time calculations, temporal relations, schedule conflicts, and other time-related problems.
+Retrieval Strategy: Formulate effective search keywords and choose appropriate information sources.
+Information Filtering: Identify and extract task-relevant information from returned results.
+Tool Usage: Choose the right tool/API and provide accurate parameters.
+Context Retention: Do not forget or confuse key information across multi-step operations.
+Exception Handling: Identify errors during execution and take reasonable corrective actions.
+Factual Accuracy: Do not fabricate non-existent information, data, or citations.
+General Knowledge: Apply domain knowledge and common sense correctly to complete tasks.
+Communication: Explain operation results and decision rationale clearly and completely to the user.

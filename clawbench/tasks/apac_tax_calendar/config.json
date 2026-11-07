@@ -1,0 +1,329 @@
+{
+  "id": "apac_tax_calendar",
+  "name": "APAC税务日历生成",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面APAC_Tax_Calendar_Project文件夹下有个'亚太区税务非工作日备忘_2024H2.md'文件。\n\n帮我把备忘录里的关键日期提取出来，生成ics日历文件。备忘录里日期条目分三类标签：'法定公众假期'、'税务机关休假日'、'内部调休建议'。只要前两类，'内部调休建议'跳过。日期格式是YYYY-MM-DD，跨连续多日的事件要正确处理成日期区间。\n\n每条日历事件设为全天事件，忙闲状态标记为透明（TRANSP:TRANSPARENT）。输出文件命名为 APAC_Tax_Holidays_2024H2.ics，放到桌面 APAC_Tax_Calendar_Project/ 下。",
+  "rubric": {
+    "query": "桌面APAC_Tax_Calendar_Project文件夹下有个'亚太区税务非工作日备忘_2024H2.md'文件。\n\n帮我把备忘录里的关键日期提取出来，生成ics日历文件。备忘录里日期条目分三类标签：'法定公众假期'、'税务机关休假日'、'内部调休建议'。只要前两类，'内部调休建议'跳过。日期格式是YYYY-MM-DD，跨连续多日的事件要正确处理成日期区间。\n\n每条日历事件设为全天事件，忙闲状态标记为透明（TRANSP:TRANSPARENT）。输出文件命名为 APAC_Tax_Holidays_2024H2.ics，放到桌面 APAC_Tax_Calendar_Project/ 下。",
+    "query_id": "apac_tax_calendar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ca9013fed64c",
+        "type": "leaf",
+        "name": "正确读取了桌面 APAC_Tax_Calendar_Project 文件夹下的亚太区税务非工作日备忘_2024H2.md 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-e99ea66b8650",
+        "type": "group",
+        "name": "关键日期筛选目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-77eb87832fc0",
+            "type": "leaf",
+            "name": "正确提取了标签为法定公众假期的日期条目",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-f3e38022b120",
+            "type": "leaf",
+            "name": "正确提取了标签为税务机关休假日的日期条目",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-6d2eb96464fe",
+            "type": "leaf",
+            "name": "正确跳过了标签为内部调休建议的日期条目",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-25ea3898bc4b",
+        "type": "group",
+        "name": "ICS 交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4c6ddead617f",
+            "type": "leaf",
+            "name": "正确将单日日期条目生成到 ICS 全天事件中",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-0f871fc3aced",
+            "type": "leaf",
+            "name": "正确将跨连续多日的日期条目生成到 ICS 日期区间事件中",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-22a1e2c54f09",
+            "type": "leaf",
+            "name": "正确生成了名为 APAC_Tax_Holidays_2024H2.ics 的日历文件并放到桌面 APAC_Tax_Calendar_Project 目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4bb1e52ca7dd",
+          "type": "leaf",
+          "name": "正确定位了桌面 APAC_Tax_Calendar_Project 目录并读取了指定 Markdown 文件内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-83df390bccc6",
+          "type": "group",
+          "name": "日期条目识别与筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b8b2ba23c306",
+              "type": "leaf",
+              "name": "准确识别了日期条目的标签归属是否为法定公众假期或税务机关休假日",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "条件判断",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-2cf844159949",
+              "type": "leaf",
+              "name": "准确排除了标签归属为内部调休建议的日期条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-9c67515aef95",
+              "type": "leaf",
+              "name": "准确提取了 Markdown 中符合 YYYY-MM-DD 格式的日期值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "检索策略"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-893263f2301c",
+          "type": "group",
+          "name": "ICS 事件建模质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-64886a8f681c",
+              "type": "leaf",
+              "name": "准确判断了连续多日条目的起止日期边界",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6cdb10339d8f",
+              "type": "leaf",
+              "name": "正确将全天事件写为不带具体时刻的日期型事件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "工具使用",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-1baad9359332",
+              "type": "leaf",
+              "name": "正确为每条事件写入了 TRANSP:TRANSPARENT",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d61168514a04",
+          "type": "group",
+          "name": "ICS 交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bd5e834174a0",
+              "type": "leaf",
+              "name": "生成的 ICS 文件包含可被日历客户端解析的基础日历结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f9c9b4ff8f6e",
+              "type": "leaf",
+              "name": "生成的 ICS 文件中的事件数量与被保留的日期条目数量一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-71cc3312565a",
+              "type": "leaf",
+              "name": "生成的 ICS 文件保存为 APAC_Tax_Holidays_2024H2.ics 且可在桌面 APAC_Tax_Calendar_Project 目录中正常打开",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a1f18dfbd5aa",
+          "type": "group",
+          "name": "异常处理与结果反馈质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d837acd20213",
+              "type": "leaf",
+              "name": "在写入文件失败或路径不存在时执行了重新定位或重试操作",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-71fd956f677d",
+              "type": "leaf",
+              "name": "向用户说明了输出文件名和保存位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-01ea4ee36c86",
+    "language": "zh"
+  },
+  "note": "从Markdown备忘录提取税务非工作日生成ICS日历"
+}

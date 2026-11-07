@@ -1,0 +1,212 @@
+{
+  "id": "review_notes",
+  "name": "Merge Study Notes and Mark Conflicts",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I have two versions of the “Data Structures” review notes in /root/Desktop: notes_v1.docx and notes_v2.docx. Help me merge them into a new document notes_merged.docx placed in /root/Desktop. If the same knowledge point is described inconsistently in the two versions, mark the differences in red, and list all conflict points at the end.",
+  "rubric": {
+    "query": "I have two versions of the “Data Structures” review notes in /root/Desktop: notes_v1.docx and notes_v2.docx. Help me merge them into a new document notes_merged.docx placed in /root/Desktop. If the same knowledge point is described inconsistently in the two versions, mark the differences in red, and list all conflict points at the end.",
+    "query_id": "review_notes",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-7da37ef6c7c8",
+        "type": "leaf",
+        "name": "Correctly read notes_v1.docx and notes_v2.docx under /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-13d9b1a07abe",
+        "type": "leaf",
+        "name": "Generated the merged document notes_merged.docx placed in /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      },
+      {
+        "id": "node-df6f72ace0df",
+        "type": "group",
+        "name": "Conflict Handling Results Written into the Merged Document",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9866576cf749",
+            "type": "leaf",
+            "name": "Marked the differences in red for content where the same knowledge point is described inconsistently",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-a5b88db7770e",
+            "type": "leaf",
+            "name": "Listed all conflict points at the end of the merged document",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Context Retention",
+              "Communication",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a306f8e0acf0",
+          "type": "leaf",
+          "name": "Correctly selected tools capable of reading and writing DOCX and used the accurate file paths",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2291ebf72a80",
+          "type": "leaf",
+          "name": "Accurately identified the corresponding content of the same knowledge point in the two versions of the notes",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-64ca9bcb67df",
+          "type": "group",
+          "name": "Conflict Identification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e8a846e6af11",
+              "type": "leaf",
+              "name": "Accurately determined which knowledge point descriptions are substantively inconsistent",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a2729b1c3884",
+              "type": "leaf",
+              "name": "Correctly extracted the differing content corresponding to each conflict point",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-baab7c36340d",
+          "type": "group",
+          "name": "Merged Document Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4f16a523d9fc",
+              "type": "leaf",
+              "name": "Correctly set the differing text to red font",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-28b8d9a59de1",
+              "type": "leaf",
+              "name": "Correctly appended the summary of all conflict points at the end of the document",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-bbdac82bb467",
+              "type": "leaf",
+              "name": "The generated notes_merged.docx opens normally and the red markings and the end-of-document conflict list can be viewed directly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-b44abad2c810",
+          "type": "leaf",
+          "name": "Identified errors and stopped fabricating merge results when reading failed, the document was corrupted, or the format was abnormal",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-48ebbd3e1aa3",
+    "language": "en"
+  }
+}

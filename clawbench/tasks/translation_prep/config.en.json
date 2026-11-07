@@ -1,0 +1,272 @@
+{
+  "id": "translation_prep",
+  "name": "Generate Translation String File",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Data Analysis",
+  "ability_category": [
+    "API Calling"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Read the /root/Desktop/messages.json file. This file contains an object where each key is a message ID and the corresponding value is an object that may have fields such as title, body, button_text, and error_message. Extract the string values from all fields (that is, the text that users see), and then generate a new JSON file /root/Desktop/strings.json. The new file is flat: each key is written in the form “message ID.field name”, for example welcome.title, and the value is the original English string. Finally, sort the keys in the new file in alphabetical order.",
+  "rubric": {
+    "query": "Read the /root/Desktop/messages.json file. This file contains an object where each key is a message ID and the corresponding value is an object that may have fields such as title, body, button_text, and error_message. Extract the string values from all fields (that is, the text that users see), and then generate a new JSON file /root/Desktop/strings.json. The new file is flat: each key is written in the form “message ID.field name”, for example welcome.title, and the value is the original English string. Finally, sort the keys in the new file in alphabetical order.",
+    "query_id": "translation_prep",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-153af3b499e4",
+        "type": "leaf",
+        "name": "Correctly read the message objects in /root/Desktop/messages.json",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-d51845ad3cb9",
+        "type": "group",
+        "name": "Completed the Field Extraction of User-Facing Strings",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7020cd44f2bb",
+            "type": "leaf",
+            "name": "Extracted the string value in the title field of each message",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-13d35f1e60ad",
+            "type": "leaf",
+            "name": "Extracted the string value in the body field of each message",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-2b6a4bcbe7b8",
+            "type": "leaf",
+            "name": "Extracted the string value in the button_text field of each message",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-bfaf6956efc1",
+            "type": "leaf",
+            "name": "Extracted the string value in the error_message field of each message",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-a2f1b315cbf9",
+        "type": "group",
+        "name": "Completed the strings.json Deliverable Production and Formatting",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a7b57d21695c",
+            "type": "leaf",
+            "name": "Generated the /root/Desktop/strings.json file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-06eda9ed60c5",
+            "type": "leaf",
+            "name": "Wrote the keys of the output JSON in the flat format message ID.field name",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-4e45fa9fc502",
+            "type": "leaf",
+            "name": "Sorted the keys in the output JSON in alphabetical order",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5341f044937b",
+          "type": "leaf",
+          "name": "Accurately identified that only the string values in the four field types title, body, button_text, and error_message need to be processed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-290d8f308378",
+          "type": "leaf",
+          "name": "Correctly read the correspondence between message IDs and field names without confusing the string sources under different messages",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-87ec0f60fb61",
+          "type": "group",
+          "name": "Output Structure Conversion Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-23cf76ea18fc",
+              "type": "leaf",
+              "name": "Correctly constructed flat key names in the form message ID.field name",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-92ac91406297",
+              "type": "leaf",
+              "name": "Accurately preserved the original English string values without rewriting the content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-4956ab3e29f9",
+              "type": "leaf",
+              "name": "Correctly output the JSON entries in alphabetical key order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-78cc1ad9915b",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fc466f07db4a",
+              "type": "leaf",
+              "name": "The generated /root/Desktop/strings.json file can be parsed normally as a JSON object",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-21ae6ed8c36f",
+              "type": "leaf",
+              "name": "All entries in the generated JSON file are string mappings that can be used directly by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2374ed5d8eb3",
+          "type": "leaf",
+          "name": "Correctly skipped missing optional fields and did not fabricate output entries when the source file lacked some of them",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Exception Handling",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-43ef98bde8dc",
+          "type": "leaf",
+          "name": "Explained to the user the generated file path and the range of processed entries",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-e4b2b38a73ca",
+    "language": "en"
+  },
+  "note": "Extract all user-visible strings from the message definition file and generate a translation preparation file."
+}

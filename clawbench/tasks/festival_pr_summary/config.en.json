@@ -1,0 +1,275 @@
+{
+  "id": "festival_pr_summary",
+  "name": "Festival PR Summary",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a file '粉丝长文吐槽汇总.md' in the desktop festival_pr_crisis folder. Help me distill the core summary, focusing only on two dimensions: fans' dissatisfaction points about the ticket price gradient between the VIP area and the general area; and hard evidence clues of scalpers using scripts to snap up tickets.\n\nFilter out the other useless content such as fan-circle infighting and putting others down. Keep the summary within 400 characters, use Markdown format, and separate the two dimensions with headings of different levels. Save it to desktop festival_pr_crisis/摘要汇报.md.",
+  "rubric": {
+    "query": "There is a file '粉丝长文吐槽汇总.md' in the desktop festival_pr_crisis folder. Help me distill the core summary, focusing only on two dimensions: fans' dissatisfaction points about the ticket price gradient between the VIP area and the general area; and hard evidence clues of scalpers using scripts to snap up tickets.\n\nFilter out the other useless content such as fan-circle infighting and putting others down. Keep the summary within 400 characters, use Markdown format, and separate the two dimensions with headings of different levels. Save it to desktop festival_pr_crisis/摘要汇报.md.",
+    "query_id": "festival_pr_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4fd4a867a830",
+        "type": "leaf",
+        "name": "Correctly read the content of 《粉丝长文吐槽汇总.md》 in the desktop festival_pr_crisis folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-5c13056c24e2",
+        "type": "group",
+        "name": "Completed the summary content according to the specified scope and format",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-897dfd8a2073",
+            "type": "leaf",
+            "name": "Generated summary content focusing only on the dissatisfaction points about the ticket price gradient between the VIP area and the general area",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-5c48c80834c9",
+            "type": "leaf",
+            "name": "Generated summary content focusing only on the hard evidence clues of scalpers using scripts to snap up tickets",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-525d29cd9c5e",
+            "type": "leaf",
+            "name": "Filtered out the irrelevant content such as fan-circle infighting and putting others down",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-40f4ced7a35b",
+            "type": "leaf",
+            "name": "Kept the summary within 400 characters and used Markdown headings of different levels to separate the two dimensions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-2ee4c22a69a4",
+        "type": "leaf",
+        "name": "Produced the 《摘要汇报.md》 file at the desktop festival_pr_crisis path",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-0abaa5488fd1",
+          "type": "leaf",
+          "name": "Correctly located and read the target Markdown file in the desktop festival_pr_crisis folder",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8d1fcbdb6bfc",
+          "type": "group",
+          "name": "Information filtering quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7a3d7005ff02",
+              "type": "leaf",
+              "name": "Accurately filtered the source information related to the ticket price gradient between the VIP area and the general area",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-12ab0a5f3624",
+              "type": "leaf",
+              "name": "Accurately filtered the source information related to the hard evidence clues of scalpers using scripts to snap up tickets",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-83b458b4b731",
+              "type": "leaf",
+              "name": "Correctly excluded the source information unrelated to the task, such as fan-circle infighting and putting others down",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d6a9b00fb427",
+          "type": "group",
+          "name": "Summary distillation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-81ad4de2f3f1",
+              "type": "leaf",
+              "name": "Accurately distilled the core conclusions of the dissatisfaction points about the ticket price gradient based on the source text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-57fac9a9be96",
+              "type": "leaf",
+              "name": "Accurately distilled the source or manifestation of the evidence clues about scalpers snapping up tickets with scripts based on the source text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-70eb3504b846",
+              "type": "leaf",
+              "name": "Did not fabricate accusations, data, or conclusions that do not exist in the source text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2b607c7ba6b5",
+          "type": "group",
+          "name": "Deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4e451fac68a0",
+              "type": "leaf",
+              "name": "Correctly used Markdown headings to distinguish the two summary dimensions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-b30a7155de03",
+              "type": "leaf",
+              "name": "The total word count of the summary body is kept within 400 characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-ae063d7bf648",
+              "type": "leaf",
+              "name": "The output file content opens normally and the Markdown text contains no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-516e295049a4",
+          "type": "leaf",
+          "name": "Correctly wrote the summary content to the desktop festival_pr_crisis/摘要汇报.md path",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-89b9d8b53172",
+    "language": "en"
+  },
+  "note": "Distill the core public-opinion summary from a long fan complaint post"
+}

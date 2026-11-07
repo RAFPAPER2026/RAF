@@ -1,0 +1,157 @@
+{
+  "id": "physics_examples",
+  "name": "初中物理电路例题",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "查一查初中物理电路相关的十道简单例题，带解析的，整理成一份ppt讲解例题放/root/Desktop给我",
+  "rubric": {
+    "query": "查一查初中物理电路相关的十道简单例题，带解析的，整理成一份ppt讲解例题放/root/Desktop给我",
+    "query_id": "physics_examples",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1da38870150c",
+        "type": "leaf",
+        "name": "正确检索了十道初中物理电路相关的简单例题及对应解析",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-4b4edc1d1a18",
+        "type": "leaf",
+        "name": "成功生成了一份用于讲解例题的PPT文件并放置到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "事实准确性"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-1db0c977cef3",
+          "type": "leaf",
+          "name": "准确识别了题目范围为初中物理电路且难度为简单例题",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "通用知识",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0ec3a517a919",
+          "type": "leaf",
+          "name": "正确检索并筛选了十道与电路主题直接相关且每道都包含题目和解析的内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-af9ade7bc928",
+          "type": "leaf",
+          "name": "正确使用了PPT生成与文件保存工具并将输出文件写入/root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fdef9703e0c2",
+          "type": "group",
+          "name": "PPT交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-deb794be5882",
+              "type": "leaf",
+              "name": "完整整理了十道例题及对应解析到PPT页面中",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-0bf3f7ac2156",
+              "type": "leaf",
+              "name": "正确组织了PPT结构使用户可按题目与解析顺序逐页讲解",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-aa6f20d50e6d",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的PPT文件且页面中无乱码或内容缺失",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ac82ae8325fe",
+          "type": "leaf",
+          "name": "回复中明确说明了PPT已生成并给出了放置位置/root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-37b8b51029e8",
+    "language": "zh"
+  }
+}

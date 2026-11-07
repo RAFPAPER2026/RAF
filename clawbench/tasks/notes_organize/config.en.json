@@ -1,0 +1,147 @@
+{
+  "id": "notes_organize",
+  "name": "Junior High Math Notes Organization",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Handling & Repair",
+    "Context Compression & Summarization"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair",
+    "context.compress"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Help me search for the study notes for one semester of second-year junior high school math, mark the key content, then arrange them by chapter, and save them to /root/Desktop.",
+  "rubric": {
+    "query": "Help me search for the study notes for one semester of second-year junior high school math, mark the key content, then arrange them by chapter, and save them to /root/Desktop.",
+    "query_id": "notes_organize",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5abd27ce319f",
+        "type": "leaf",
+        "name": "Correctly retrieved content related to the study notes for one semester of second-year junior high school math",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-7d477bca16f8",
+        "type": "leaf",
+        "name": "Generated the study notes file organized by chapter with key content marked to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f0fc476f0db7",
+          "type": "leaf",
+          "name": "Accurately constructed search keywords matching the scope of one semester of second-year junior high school math",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-007db79a9792",
+          "type": "leaf",
+          "name": "Accurately filtered information directly related to the chapter content of one semester of second-year junior high school math",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4e653575de36",
+          "type": "leaf",
+          "name": "Correctly organized the study notes content in chapter order",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a6207360bd6f",
+          "type": "leaf",
+          "name": "Accurately marked the key content such as formulas, theorems, and question-type methods in each chapter",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "General Knowledge",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0f18eca38998",
+          "type": "leaf",
+          "name": "The generated study notes file opens normally and its content contains chapter headings and key-point annotations",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-c36738b24ca7",
+          "type": "leaf",
+          "name": "Clearly stated the save location and the scope of generated content in the result explanation",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-c19f889ce72d",
+    "language": "en"
+  },
+  "note": "File retrieval, data analysis, and organization"
+}

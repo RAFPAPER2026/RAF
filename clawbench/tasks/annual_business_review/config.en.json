@@ -1,0 +1,555 @@
+{
+  "id": "annual_business_review",
+  "name": "Annual Business Review",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Data Analysis",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "Numerical Analysis & Reasoning",
+    "State Tracking & Consistency",
+    "Content Constraints & Filtering"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "plan.decompose",
+    "plan.numeric",
+    "context.state",
+    "instruction.constraints"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The company's sales data for the past 4 quarters is saved in Q1.xlsx, Q2.xlsx, Q3.xlsx, and Q4.xlsx in the desktop sales_review/ folder, along with customer feedback (客户反馈.docx), sales meeting records (销售会议/), and regional manager reports (区域汇报/).\nPlease help me produce a complete annual business review:\n1. First unify the fields across the Excel files of different quarters (field naming and definitions are inconsistent across quarters) and check the data for anomalies;\n2. Analyze the changes in sales amount, customer count, average order value, regions, and sales staff performance;\n3. Do not only look for growth and decline — focus on finding places where “the data performance and management's explanation are inconsistent”. For example, if sales in a region declined and the meeting records consider the main reason to be customer churn, please check the customer data to judge whether this explanation holds;\n4. For questions whose causes cannot be determined from the available data, list the possible causes and the data that needs to be further collected;\n5. Finally, generate a PPT that management can use directly (save it to the desktop sales_review/), and add a final page “What we don't know yet” that lists at least 5 questions that cannot be answered with the available data alone.",
+  "rubric": {
+    "query": "The company's sales data for the past 4 quarters is saved in Q1.xlsx, Q2.xlsx, Q3.xlsx, and Q4.xlsx in the desktop sales_review/ folder, along with customer feedback (客户反馈.docx), sales meeting records (销售会议/), and regional manager reports (区域汇报/).\nPlease help me produce a complete annual business review:\n1. First unify the fields across the Excel files of different quarters (field naming and definitions are inconsistent across quarters) and check the data for anomalies;\n2. Analyze the changes in sales amount, customer count, average order value, regions, and sales staff performance;\n3. Do not only look for growth and decline — focus on finding places where “the data performance and management's explanation are inconsistent”. For example, if sales in a region declined and the meeting records consider the main reason to be customer churn, please check the customer data to judge whether this explanation holds;\n4. For questions whose causes cannot be determined from the available data, list the possible causes and the data that needs to be further collected;\n5. Finally, generate a PPT that management can use directly (save it to the desktop sales_review/), and add a final page “What we don't know yet” that lists at least 5 questions that cannot be answered with the available data alone.",
+    "query_id": "annual_business_review",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-0cd73df883c9",
+        "type": "group",
+        "name": "Annual sales data preparation objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bcfcfca816e8",
+            "type": "leaf",
+            "name": "Unified the fields across the four quarterly Excel files and produced an analyzable annual dataset",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-f5d91b76f534",
+            "type": "leaf",
+            "name": "Identified anomalous records or definition anomalies in the four quarters of sales data",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Exception Handling",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9352c9032f39",
+        "type": "group",
+        "name": "Business performance change analysis objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2464e8f6172f",
+            "type": "leaf",
+            "name": "Analyzed the change in sales amount across the four quarters",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-0dc4a23ef05e",
+            "type": "leaf",
+            "name": "Analyzed the change in customer count across the four quarters",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-b1e779fd762e",
+            "type": "leaf",
+            "name": "Analyzed the change in average order value across the four quarters",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-85177ff4f0ec",
+            "type": "leaf",
+            "name": "Analyzed the changes in regional performance",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-485d011e6a8e",
+            "type": "leaf",
+            "name": "Analyzed the changes in sales staff performance",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-de144cc31d97",
+        "type": "group",
+        "name": "Cause verification and unknown-issue identification objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1994ff58b7de",
+            "type": "leaf",
+            "name": "Identified the cases where the data performance is inconsistent with management's explanation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-4ceba6867133",
+            "type": "leaf",
+            "name": "Listed possible causes for the questions whose causes cannot be determined from the available data",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-0ed2a2168fa9",
+            "type": "leaf",
+            "name": "Listed the data that needs to be further collected for the questions whose causes cannot be determined from the available data",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-007b818b11bd",
+        "type": "group",
+        "name": "Review deliverable production objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-65972f421ef1",
+            "type": "leaf",
+            "name": "Generated an annual business review PPT file that can be opened",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-9f77fdf9e674",
+            "type": "leaf",
+            "name": "Saved the annual business review PPT in the desktop sales_review/ folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-c03f0da13ed0",
+            "type": "leaf",
+            "name": "Added a final page in the PPT listing at least 5 questions that cannot be answered with the available data alone",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6bfc4df5b6c8",
+          "type": "group",
+          "name": "Annual data consolidation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-eae04003eac5",
+              "type": "leaf",
+              "name": "Accurately identified the correspondence between synonymous fields in the four quarterly Excel files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-003ce3b1a1cd",
+              "type": "leaf",
+              "name": "Correctly unified the time ranges and statistical units in the metric definitions across the four quarters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-1e94af3126bd",
+              "type": "leaf",
+              "name": "Accurately flagged missing values, duplicate values, outliers, or records with conflicting definitions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6238ed140232",
+          "type": "group",
+          "name": "Cross-source evidence integration quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bdbe5aae3310",
+              "type": "leaf",
+              "name": "Correctly used the relevant information from customer feedback, sales meeting records, and regional manager reports",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-f4a39da6bd7a",
+              "type": "leaf",
+              "name": "Accurately linked the textual evidence to the corresponding quarter, region, sales staff member, or customer group",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cd8779cb3406",
+          "type": "group",
+          "name": "Business analysis reasoning quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-805fbd2e5e6a",
+              "type": "leaf",
+              "name": "Accurately calculated the quarterly changes in sales amount, customer count, and average order value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7460da44be71",
+              "type": "leaf",
+              "name": "Accurately distinguished the scope of impact of regional performance changes from that of sales staff performance changes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-76c878917f9d",
+              "type": "leaf",
+              "name": "Correctly cited the data metrics or record sources that support the conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f0a578e0719a",
+          "type": "group",
+          "name": "Management explanation verification quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-02512690e40f",
+              "type": "leaf",
+              "name": "Accurately identified the verifiable causal claims in management's explanation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-53705c633d4a",
+              "type": "leaf",
+              "name": "Correctly used the available customer data to test whether the explanation is supported by the data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b1a584eb8d5f",
+              "type": "leaf",
+              "name": "Clearly distinguished the three conclusions of supported by data, refuted by data, and insufficient data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b70b852c7ba4",
+          "type": "group",
+          "name": "Unknown-issue identification quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-09adec512371",
+              "type": "leaf",
+              "name": "Correctly listed testable candidate causes for the questions whose causes cannot be determined from the available data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6507a7d655ea",
+              "type": "leaf",
+              "name": "Correctly listed the types of data or collection targets needed to supplement each unknown question",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-997248fc46fc",
+              "type": "leaf",
+              "name": "Listed no fewer than 5 unknown questions, all directly related to the business review conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8d9a3af885d4",
+          "type": "group",
+          "name": "PPT deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-67554cf8a1a7",
+              "type": "leaf",
+              "name": "The generated PPT file opens normally and the page order is complete",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-ca2f2524d8fc",
+              "type": "leaf",
+              "name": "The PPT contains pages for annual overview, metric changes, explanation verification, data to be supplemented, and unknown questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-47e9963b713a",
+              "type": "leaf",
+              "name": "The chart titles, axis labels, number formats, and text content in the PPT have no garbled characters or obvious misalignment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-4de5fa5f7251",
+              "type": "leaf",
+              "name": "The PPT content allows management to directly locate the conclusions, evidence, and questions pending decision",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-779ecf4040a1",
+          "type": "group",
+          "name": "Exception and uncertainty handling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b2d1ba66a59c",
+              "type": "leaf",
+              "name": "Recorded the affected scope when source files were found missing, abnormal in format, or failed to be read",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-a311f19b36ab",
+              "type": "leaf",
+              "name": "Did not fabricate causes or missing data content when the evidence was insufficient",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-c7adddc01b72",
+    "language": "en"
+  },
+  "note": "The company's sales data for the past 4 quarters is saved in Q1.xlsx, Q2.xlsx, Q3.xlsx, and Q4.xlsx, along with customer feedback 客户反馈.docx, sales meeting records 销售会议/, and regional manager reports 区域汇报/. Please help me produce a complete annual business review. First unify the fields across the Excel files of different quarters and check the data for anomalies, then analyze the changes in sales amount, customer count, average order value, regions, and sales staff performance. Do not only look for growth and decline, but find places where “the data performance and management's explanation are inconsistent”. For example, if sales in a region declined but the meeting records consider the main reason to be customer churn, please check the customer data to judge whether this explanation holds. For questions whose causes cannot be determined from the available data, list the possible causes and the data that needs to be further collected. Finally, generate a PPT that management can use directly, and add a final page “What we don't know yet” that lists at least 5 questions that cannot be answered with the available data alone.",
+  "env_description": "sales_review/: four Excel files Q1-Q4 (field names differ between Chinese and English; Q3 only splits new/old customers), 客户反馈.docx, 销售会议/ (core contradiction planted: management attributes the decline to “industry environment + customer churn”, but the number of customers in North China only fluctuated slightly from 39 to 33; the real anomaly is that the Q4 average order value plunged from 69000 to 51000, and the timing coincides with Wang Qiang's parental leave), 区域汇报/ (Wang Qiang himself repeats the wrong attribution “winning back churned customers”; the claim of “large orders delayed” cannot be verified with the available data)"
+}

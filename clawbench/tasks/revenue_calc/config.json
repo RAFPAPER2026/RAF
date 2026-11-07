@@ -1,0 +1,210 @@
+{
+  "id": "revenue_calc",
+  "name": "餐馆营业额核算",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-API 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "tool.api",
+    "context.long"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "算一下天天开心餐馆今天的营业额，假设每个月餐馆固定开销是3万，会亏钱吗，今天的账目在/root/Desktop",
+  "rubric": {
+    "query": "算一下天天开心餐馆今天的营业额，假设每个月餐馆固定开销是3万，会亏钱吗，今天的账目在/root/Desktop",
+    "query_id": "revenue_calc",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1c8c35f79807",
+        "type": "leaf",
+        "name": "正确读取了/root/Desktop中今天的账目数据",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-1a833ca7e4c6",
+        "type": "leaf",
+        "name": "正确计算了天天开心餐馆今天的营业额",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "逻辑推理",
+          "事实准确性",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-900049d0d0e1",
+        "type": "group",
+        "name": "经营结论交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2a789bafeeba",
+            "type": "leaf",
+            "name": "正确根据每月固定开销3万元判断了餐馆是否会亏钱",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-a1a5cd3a3342",
+            "type": "leaf",
+            "name": "明确告知了用户今天营业额与是否亏钱的结论",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "上下文保持",
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e5127afac667",
+          "type": "leaf",
+          "name": "正确定位了/root/Desktop中与今天账目相关的文件或记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1b32da4056bb",
+          "type": "leaf",
+          "name": "准确提取了今天账目中的收入数据并排除了非今日记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e16cb6fae87b",
+          "type": "leaf",
+          "name": "正确计算了今天营业额数值且计算过程与账目记录一致",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d914777ec769",
+          "type": "group",
+          "name": "亏损判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-af69d791e1f6",
+              "type": "leaf",
+              "name": "正确将每月固定开销3万元换算为可用于判断今日是否亏钱的比较基准",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "条件判断"
+              ]
+            },
+            {
+              "id": "node-2036c770fdae",
+              "type": "leaf",
+              "name": "准确根据比较结果得出今天是否亏钱的结论",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4a0f4fbdc6bb",
+          "type": "group",
+          "name": "结果说明质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8642ca9c44b0",
+              "type": "leaf",
+              "name": "在回复中包含了今天营业额的明确数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-932e156ecafb",
+              "type": "leaf",
+              "name": "在回复中包含了是否亏钱的明确判断依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a8cc47f98b60",
+    "language": "zh"
+  },
+  "note": "按要求回答，回答正确"
+}

@@ -1,0 +1,221 @@
+{
+  "id": "leetcode_practice_plan",
+  "name": "LeetCode刷题",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "长上下管理"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我把LeetCode上hot100的题目列表抓下来并保存到/root/Desktop，按难度分类，然后给我每天安排3道题的刷题计划",
+  "rubric": {
+    "query": "帮我把LeetCode上hot100的题目列表抓下来并保存到/root/Desktop，按难度分类，然后给我每天安排3道题的刷题计划",
+    "query_id": "leetcode_practice_plan",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-563e42fb106c",
+        "type": "leaf",
+        "name": "正确抓取了 LeetCode Hot100 题目列表",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-77c7bd6415f0",
+        "type": "group",
+        "name": "学习资料与刷题计划已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-10e004d479e5",
+            "type": "leaf",
+            "name": "生成了按难度分类的题目列表交付物",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-7296d9c286a4",
+            "type": "leaf",
+            "name": "生成了每天安排 3 道题的刷题计划交付物",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "时间推理",
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-fd7a050ae6b8",
+        "type": "leaf",
+        "name": "将交付物保存到了 /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-0f091d647aac",
+          "type": "leaf",
+          "name": "准确选择了可获取 LeetCode Hot100 题目列表的信息源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-42682963c57d",
+          "type": "leaf",
+          "name": "准确提取了题目名称和对应难度信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9bee2ef9c334",
+          "type": "leaf",
+          "name": "正确按题目难度完成分类且未遗漏已抓取题目",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "信息筛选",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0216880070bc",
+          "type": "group",
+          "name": "刷题计划编排质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9dab199f30f5",
+              "type": "leaf",
+              "name": "正确计算了按每天 3 道题完成全部题目所需的天数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-877e7f74066e",
+              "type": "leaf",
+              "name": "正确为每一天分配了 3 道不重复题目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6aed0f55e18a",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-80a5ce798e43",
+              "type": "leaf",
+              "name": "生成的分类题目列表文件可正常打开且内容包含题目名称与难度字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-2610b38a9b63",
+              "type": "leaf",
+              "name": "生成的刷题计划文件可正常打开且每天都有明确日期或天次标识",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-55c70c53b40b",
+          "type": "leaf",
+          "name": "在抓取失败或字段缺失时记录了异常并采取了重试或降级处理",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-4a0be62b6d9c",
+    "language": "zh"
+  }
+}

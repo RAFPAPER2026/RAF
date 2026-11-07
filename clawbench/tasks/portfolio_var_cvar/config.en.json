@@ -1,0 +1,350 @@
+{
+  "id": "portfolio_var_cvar",
+  "name": "Portfolio VaR and CVaR Risk Analysis",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a portfolio_returns.csv in the portfolio_data folder on the desktop, containing 500 days of historical return data.\n\nTask:\n1. Read portfolio_returns.csv\n2. Compute the following risk metrics:\n   - 95% VaR (historical simulation method)\n   - 99% VaR (historical simulation method)\n   - 95% CVaR (historical simulation method)\n   - 99% CVaR (historical simulation method)\n   - 95% VaR (parametric method, normal distribution)\n   - 99% VaR (parametric method, normal distribution)\n   - 95% CVaR (parametric method, normal distribution)\n   - 99% CVaR (parametric method, normal distribution)\n3. Determine which method (historical simulation or parametric) gives a more conservative risk estimate\n4. Write the results into risk_report.json and save it to the desktop\n\nOutput format:\n{\n    \"historical\": {\n        \"var_95\": -0.0234,\n        \"var_99\": -0.0345,\n        \"cvar_95\": -0.0289,\n        \"cvar_99\": -0.0421\n    },\n    \"parametric\": {\n        \"var_95\": -0.0211,\n        \"var_99\": -0.0312,\n        \"cvar_95\": -0.0265,\n        \"cvar_99\": -0.0387\n    },\n    \"summary\": \"historical method is more conservative\"\n}\n\nNotes:\n- VaR = the maximum loss a portfolio may suffer within a specific period at a given confidence level\n- CVaR = the average loss when VaR is breached (also called Expected Shortfall)\n- Historical simulation method: computed using quantiles of historical data\n- Parametric method: computed using the mean and standard deviation of a normal distribution",
+  "rubric": {
+    "query": "There is a portfolio_returns.csv in the portfolio_data folder on the desktop, containing 500 days of historical return data.\n\nTask:\n1. Read portfolio_returns.csv\n2. Compute the following risk metrics:\n   - 95% VaR (historical simulation method)\n   - 99% VaR (historical simulation method)\n   - 95% CVaR (historical simulation method)\n   - 99% CVaR (historical simulation method)\n   - 95% VaR (parametric method, normal distribution)\n   - 99% VaR (parametric method, normal distribution)\n   - 95% CVaR (parametric method, normal distribution)\n   - 99% CVaR (parametric method, normal distribution)\n3. Determine which method (historical simulation or parametric) gives a more conservative risk estimate\n4. Write the results into risk_report.json and save it to the desktop\n\nOutput format:\n{\n    \"historical\": {\n        \"var_95\": -0.0234,\n        \"var_99\": -0.0345,\n        \"cvar_95\": -0.0289,\n        \"cvar_99\": -0.0421\n    },\n    \"parametric\": {\n        \"var_95\": -0.0211,\n        \"var_99\": -0.0312,\n        \"cvar_95\": -0.0265,\n        \"cvar_99\": -0.0387\n    },\n    \"summary\": \"historical method is more conservative\"\n}\n\nNotes:\n- VaR = the maximum loss a portfolio may suffer within a specific period at a given confidence level\n- CVaR = the average loss when VaR is breached (also called Expected Shortfall)\n- Historical simulation method: computed using quantiles of historical data\n- Parametric method: computed using the mean and standard deviation of a normal distribution",
+    "query_id": "portfolio_var_cvar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-3aa6ecb5dda4",
+        "type": "leaf",
+        "name": "Correctly read the portfolio_returns.csv in the portfolio_data folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-9f8ad02ac857",
+        "type": "group",
+        "name": "Risk Analysis Results Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1b01769b70a8",
+            "type": "leaf",
+            "name": "Correctly calculated the 95% VaR, 99% VaR, 95% CVaR, and 99% CVaR of the historical simulation method",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-0ad65ea80e8c",
+            "type": "leaf",
+            "name": "Correctly calculated the 95% VaR, 99% VaR, 95% CVaR, and 99% CVaR of the parametric method (normal distribution)",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-f5b15dd1f819",
+            "type": "leaf",
+            "name": "Correctly determined which of the historical simulation method and the parametric method gives the more conservative risk estimate",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-587b6868cacf",
+        "type": "group",
+        "name": "Risk Report File Delivered",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-39ba5d52965e",
+            "type": "leaf",
+            "name": "Generated risk_report.json containing the historical, parametric, and summary fields",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-cdc3eebf392c",
+            "type": "leaf",
+            "name": "Saved risk_report.json to the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-01002e07f0af",
+          "type": "leaf",
+          "name": "Accurately located and read the content of the portfolio_returns.csv file in the portfolio_data folder on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-dd87c061aa92",
+          "type": "group",
+          "name": "Data Preprocessing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-70d45f27e772",
+              "type": "leaf",
+              "name": "Accurately identified the numeric column used for the return calculations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-801c13e5baaa",
+              "type": "leaf",
+              "name": "Correctly handled the impact of missing values, non-numeric cells, or empty rows on the risk metric calculations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Information Filtering",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-03a1dc68432c",
+          "type": "group",
+          "name": "Historical Simulation Calculation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fd92445887ae",
+              "type": "leaf",
+              "name": "Accurately calculated the 95% and 99% VaR using historical-simulation quantiles",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-f47f400917b7",
+              "type": "leaf",
+              "name": "Accurately calculated the 95% and 99% CVaR as the average of samples below the VaR threshold",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-7d4c24cef2ec",
+              "type": "leaf",
+              "name": "Accurately kept the sign direction of the loss metrics consistent with the example required by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-98ea9dc3326e",
+          "type": "group",
+          "name": "Parametric Method Calculation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f3f8d8931cb7",
+              "type": "leaf",
+              "name": "Accurately calculated the 95% and 99% VaR of the normal-distribution parametric method based on the sample mean and sample standard deviation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3410db9def6a",
+              "type": "leaf",
+              "name": "Accurately calculated the 95% and 99% CVaR using the normal-distribution tail expectation formula",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3414d5c3e3d6",
+              "type": "leaf",
+              "name": "Accurately used the normal-distribution quantiles corresponding to the 95% and 99% confidence levels",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a3c9302890b7",
+          "type": "group",
+          "name": "Conservativeness Judgment and Result Explanation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0002908b4761",
+              "type": "leaf",
+              "name": "Accurately compared the conservativeness of the two methods based on the more negative VaR and CVaR values",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-99d174bd2293",
+              "type": "leaf",
+              "name": "The reply includes the conservativeness judgment result and the basis for the comparison",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8afe56867b86",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-41ba9a5f7cfe",
+              "type": "leaf",
+              "name": "risk_report.json can be opened and parsed normally by a standard JSON parser",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-bcc21b9e16d9",
+              "type": "leaf",
+              "name": "The field names in risk_report.json exactly match the historical, parametric, and summary fields required by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5125fdb723cc",
+              "type": "leaf",
+              "name": "In risk_report.json, all eight risk metrics are numeric values and summary is a string",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-91ace29f45a8",
+    "language": "en"
+  }
+}

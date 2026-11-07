@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Patent Research Dept//Meeting Scheduler//CN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20230715T090000
+DTEND:20230715T120000
+SUMMARY:内部防晒霜配方规避设计研讨会
+LOCATION:公司总部3号会议室（深圳南山区科技园路88号创新大厦18层）
+DESCRIPTION:会议主题：针对竞争对手最新授权的防晒霜核心配方专利（专利号CN202210456789.X），组织研发团队进行规避设计方案讨论。\n\n会议议程：\n1. 09:00-09:30 竞品专利技术要点分析（主讲：王博士）\n2. 09:30-10:15 现有配方与竞品专利权利要求对比（主讲：李研究员）\n3. 10:15-10:30 茶歇\n4. 10:30-11:30 规避设计方案头脑风暴（全体参会人员）\n5. 11:30-12:00 方案可行性评估与后续计划\n\n参会人员：研发一部全体成员、专利法务部张律师、配方工程师陈工\n\n注意事项：请各参会人员提前阅读专利原文并准备至少一个规避设计思路。
+ORGANIZER;CN=罗玉:mailto:luoyu@company.com
+UID:evt-internal-review-20230715@company.com
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

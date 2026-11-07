@@ -1,0 +1,54 @@
+name: CI
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  raf-python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: raf
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  clawbench-python:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: clawbench
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          python-version: "3.12"
+      - run: uv sync --frozen
+      - run: uv run pytest -q
+
+  frontends:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project:
+          - raf/frontend
+          - clawbench/web
+          - clawbench/manual_scorer/web
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - run: npm ci
+        working-directory: ${{ matrix.project }}
+      - run: npm run build
+        working-directory: ${{ matrix.project }}

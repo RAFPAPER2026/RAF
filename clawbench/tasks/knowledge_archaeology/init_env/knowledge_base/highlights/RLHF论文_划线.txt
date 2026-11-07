@@ -1,0 +1,5 @@
+# InstructGPT 划线
+
+- "align language models with user intent..."
+- "RLHF three steps: SFT, reward model, PPO..."
+（仅划线，无批注）

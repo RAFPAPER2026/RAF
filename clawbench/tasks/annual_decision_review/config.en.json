@@ -1,0 +1,385 @@
+{
+  "id": "annual_decision_review",
+  "name": "Annual Decision Review",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Task Planning",
+    "State Tracking & Consistency",
+    "General Planning & Strategy"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.general",
+    "context.state",
+    "plan.strategy"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "In the life_review/ folder on the desktop is my life data from the past year: calendar.ics (schedule), notes.md (casual notes), spending.csv (spending records), travel_records.csv (travel records), journal/ (personal diary, by month), and todo_list.md.\nHelp me review the important decisions I made over the past year — for example, changing gyms, buying equipment, taking courses, traveling, subscribing to services, adjusting work arrangements, etc.\nFor each decision:\n1. Find out from the data when the decision was made and what the background/goal was at the time (I wrote my thoughts at the time in my diary and notes);\n2. Find out what actually happened afterwards (how many times I actually went, how much I used it, how much time I spent);\n3. Compare expected outcome vs actual outcome, and judge whether this decision met expectations;\n4. If I could do it again, give advice based on the preferences I recorded.\nNote: the data will not directly say “这是一个决定”, so you need to identify them yourself; also do not simply judge success or failure by how much money was spent — combine it with the goal at the time.\nFinally, summarize my recurring decision patterns (for example, always overestimating my usage frequency), and output to /root/Desktop/life_review/年度决策复盘.md.",
+  "rubric": {
+    "query": "In the life_review/ folder on the desktop is my life data from the past year: calendar.ics (schedule), notes.md (casual notes), spending.csv (spending records), travel_records.csv (travel records), journal/ (personal diary, by month), and todo_list.md.\nHelp me review the important decisions I made over the past year — for example, changing gyms, buying equipment, taking courses, traveling, subscribing to services, adjusting work arrangements, etc.\nFor each decision:\n1. Find out from the data when the decision was made and what the background/goal was at the time (I wrote my thoughts at the time in my diary and notes);\n2. Find out what actually happened afterwards (how many times I actually went, how much I used it, how much time I spent);\n3. Compare expected outcome vs actual outcome, and judge whether this decision met expectations;\n4. If I could do it again, give advice based on the preferences I recorded.\nNote: the data will not directly say “这是一个决定”, so you need to identify them yourself; also do not simply judge success or failure by how much money was spent — combine it with the goal at the time.\nFinally, summarize my recurring decision patterns (for example, always overestimating my usage frequency), and output to /root/Desktop/life_review/年度决策复盘.md.",
+    "query_id": "annual_decision_review",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-926ab91d5a0e",
+        "type": "group",
+        "name": "Completed the identification of annual decision information",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9069a861897c",
+            "type": "leaf",
+            "name": "Correctly read the core data files and subdirectories in the life_review folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-180344b7acd2",
+            "type": "leaf",
+            "name": "Correctly extracted the candidate records related to important decisions from the past year",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Retrieval Strategy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-af8deb42ab2d",
+        "type": "group",
+        "name": "Completed the review content for each important decision",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c0b30610f777",
+            "type": "leaf",
+            "name": "Gave the occurrence time for each identified important decision",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-01b4318adcda",
+            "type": "leaf",
+            "name": "Gave the background or goal at the time for each identified important decision",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-5d0519294d05",
+            "type": "leaf",
+            "name": "Gave the actual outcome that occurred afterwards for each identified important decision",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-358f28add922",
+            "type": "leaf",
+            "name": "Gave the comparison conclusion between expected and actual for each identified important decision",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Conditional Judgment",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-55c4aacc2681",
+            "type": "leaf",
+            "name": "Gave redo advice based on the recorded preferences for each identified important decision",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "General Knowledge",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-60e53652b2dc",
+        "type": "group",
+        "name": "Completed the summary and file delivery",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b176d671aeb2",
+            "type": "leaf",
+            "name": "Identified the recurring decision patterns from the past year",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-7ec0253d8f18",
+            "type": "leaf",
+            "name": "Generated the 年度决策复盘.md file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-388a8541c303",
+            "type": "leaf",
+            "name": "Wrote 年度决策复盘.md into the /root/Desktop/life_review/ directory",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5611561a7f68",
+          "type": "leaf",
+          "name": "Accurately located and read the content relevant to the decision review in calendar.ics, notes.md, spending.csv, travel_records.csv, journal/, and todo_list.md",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-44bb88c63cfa",
+          "type": "group",
+          "name": "Important decision identification quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-70916d1fee1d",
+              "type": "leaf",
+              "name": "Accurately identified the important decisions implied in the records rather than merely extracting spending items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-0a35c36676ae",
+              "type": "leaf",
+              "name": "Correctly excluded items of insufficient importance that lack supporting evidence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-517257a97378",
+          "type": "group",
+          "name": "Evidence linkage and factual constraint quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-decd0b3dc605",
+              "type": "leaf",
+              "name": "Accurately matched the occurrence time of each decision with the relevant background records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7373039c98fb",
+              "type": "leaf",
+              "name": "Correctly linked the actual usage counts, time investment, or spending records after each decision",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-db8d18b35a0b",
+              "type": "leaf",
+              "name": "Did not write outcomes or motives into the review that cannot be supported by the data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4caea613b227",
+          "type": "group",
+          "name": "Evaluation and advice quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9fe3ca790141",
+              "type": "leaf",
+              "name": "Correctly distinguished the comparison dimensions of expected goals and actual results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-c749d16755f0",
+              "type": "leaf",
+              "name": "Cited the goals in the records rather than only the amount spent when judging whether expectations were met",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Conditional Judgment"
+              ]
+            },
+            {
+              "id": "node-44cd15fea9fd",
+              "type": "leaf",
+              "name": "The redo advice cited observable personal preferences or behavior patterns in the records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-aabaa2f31504",
+          "type": "group",
+          "name": "Deliverable usability and content organization quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e6f71bd7cf79",
+              "type": "leaf",
+              "name": "Presented, decision by decision in 年度决策复盘.md, the time, background goal, actual outcome, comparison conclusion, and redo advice",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-2316a719bea0",
+              "type": "leaf",
+              "name": "Included the recurring decision patterns summarized across cases in 年度决策复盘.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-ca57c5ecab8f",
+              "type": "leaf",
+              "name": "The 年度决策复盘.md file opens normally and its Markdown structure is complete",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-ccb9b7f01761",
+          "type": "leaf",
+          "name": "Correctly marked uncertain items and adopted a traceable handling approach when records were missing, time ranges were inconsistent, or evidence conflicted",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy",
+            "Temporal Reasoning"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-1e606e70a6a0",
+    "language": "en"
+  },
+  "note": "Personal annual “decision review” given to the agent: the user's calendar + notes + spending records + travel records + personal journal + task list from the past year. The user says: “Help me review the important decisions I made over the past year; which decisions actually failed to meet expectations? If I could do it again, what would you advise me to do?” The agent needs to: first identify “important decisions” from fragmented information, for example changing gyms, buying equipment, taking courses, traveling, moving, subscribing to services, adjusting work arrangements, etc.; then find the background of when the decision was made, the goal at the time, and what actually happened afterwards; finally compare expected outcome vs actual outcome and find the recurring decision patterns. Difficulty: the data does not directly say “this is a decision”, so the agent must discover it itself; at the same time, it cannot simply judge failure based on spending — it needs to reconstruct the goal at the time. Tests longitudinal reasoning + causal/counterfactual reasoning + personal memory",
+  "env_description": "life_review/: journal/ (4 months of diaries recording the goal at the time of each decision), notes.md (random thoughts), spending.csv (quantifiable actual usage: fitness 12 times / English 15 times / drone lens unopened), travel_records.csv, calendar.ics (cross-validate attendance against the spending records), todo_list.md (comparison of New Year resolutions with actuals); decisions must be identified by the agent itself, and expected vs actual requires cross-file reasoning"
+}

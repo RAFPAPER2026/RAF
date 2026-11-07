@@ -1,0 +1,159 @@
+{
+  "id": "ollama_setup",
+  "name": "Configure and Run Ollama Locally",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Reflection & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a qwen3 0.6b model in /root/Desktop. Set up the Ollama environment on the current machine, get the model running properly, and provide a log record of one request and its corresponding reply in /root/Desktop.",
+  "rubric": {
+    "query": "There is a qwen3 0.6b model in /root/Desktop. Set up the Ollama environment on the current machine, get the model running properly, and provide a log record of one request and its corresponding reply in /root/Desktop.",
+    "query_id": "ollama_setup",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5c580a77d9d4",
+        "type": "leaf",
+        "name": "Completed the Ollama runtime environment configuration and made the Ollama service callable on the local machine",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Exception Handling"
+        ]
+      },
+      {
+        "id": "node-ee94871beb32",
+        "type": "leaf",
+        "name": "Successfully ran the qwen3 0.6b model from /root/Desktop on the current machine",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-2c497dba4504",
+        "type": "leaf",
+        "name": "Generated a log record file in /root/Desktop containing one request and its corresponding reply",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-15de879ed743",
+          "type": "leaf",
+          "name": "Accurately identified the target model file in /root/Desktop and confirmed that it can be imported or mapped for use by Ollama",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7ec2822fb9e0",
+          "type": "leaf",
+          "name": "Correctly executed the steps required to install or start Ollama and used commands matching the current system",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "General Knowledge",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f93358d4697a",
+          "type": "leaf",
+          "name": "Accurately configured the model import or creation parameters and successfully issued an inference request that returned content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ea45a0e090dd",
+          "type": "leaf",
+          "name": "Correctly handled execution errors caused by the model path, spaces in the name, or version compatibility and completed the fixes",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a80b13d00a62",
+          "type": "leaf",
+          "name": "The generated log record file contains verifiable request text, model reply text, and the corresponding execution result",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Factual Accuracy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-08a6ef2568ae",
+          "type": "leaf",
+          "name": "The reply clearly states the model's running status, how to invoke it, and the exact location of the log file in /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-12adb2f9d880",
+    "language": "en"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "id": "format_message_multi_channel",
+  "name": "Multi-Channel Message Formatting",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 120,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Read the message.json file on the desktop. Create a new outputs folder on the desktop, and then generate the following three files:\n\n1. outputs/telegram.txt: plain text. Use *subject* for the bold subject, then a blank line, then the body, then a blank line, and finally each link on its own line in the format “label: link address”.\n2. outputs/slack.json: a JSON object containing a blocks array. Use the Slack format: one header block for the subject, one section block for the body (type mrkdwn), and then a separate section block for each link, with the link written as <link address|label>.\n3. outputs/email.txt: email format. The first line is Subject: ..., the second line is From: ..., the third line is To: ... (these contents are taken from the message JSON), then a blank line, then the body, then a blank line, and finally each link on its own line in the format “label — link address”.\n\nThe original subject, body, sender, recipient, and links in the message must be fully retained in every format without omission.",
+  "rubric": {
+    "query": "Read the message.json file on the desktop. Create a new outputs folder on the desktop, and then generate the following three files:\n\n1. outputs/telegram.txt: plain text. Use *subject* for the bold subject, then a blank line, then the body, then a blank line, and finally each link on its own line in the format “label: link address”.\n2. outputs/slack.json: a JSON object containing a blocks array. Use the Slack format: one header block for the subject, one section block for the body (type mrkdwn), and then a separate section block for each link, with the link written as <link address|label>.\n3. outputs/email.txt: email format. The first line is Subject: ..., the second line is From: ..., the third line is To: ... (these contents are taken from the message JSON), then a blank line, then the body, then a blank line, and finally each link on its own line in the format “label — link address”.\n\nThe original subject, body, sender, recipient, and links in the message must be fully retained in every format without omission.",
+    "query_id": "format_message_multi_channel",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c0b23da22934",
+        "type": "leaf",
+        "name": "Correctly read the message.json file on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-3a1c0361a8fd",
+        "type": "group",
+        "name": "Produced the Three Target Files as Required",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ac3cb51b4742",
+            "type": "leaf",
+            "name": "Created the outputs folder on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-7e0d649d2901",
+            "type": "leaf",
+            "name": "Generated the outputs/telegram.txt file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-e7ea84275509",
+            "type": "leaf",
+            "name": "Generated the outputs/slack.json file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-5db90c9e85a0",
+            "type": "leaf",
+            "name": "Generated the outputs/email.txt file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-3cb332421ad5",
+        "type": "group",
+        "name": "All Three Formats Retained the Required Message Information",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-67516fa77cef",
+            "type": "leaf",
+            "name": "Fully retained the subject, body, and all links in telegram.txt",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-9c230dc82240",
+            "type": "leaf",
+            "name": "Fully retained the subject, body, and all links in slack.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-d4774db553c7",
+            "type": "leaf",
+            "name": "Fully retained the subject, body, sender, recipient, and all links in email.txt",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1601870db87a",
+        "type": "group",
+        "name": "All Three Files Match Their Specified Formats",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a93cc274a879",
+            "type": "leaf",
+            "name": "telegram.txt uses the format of *subject*, then a blank line, then the body, then a blank line, then one “label: link address” per line",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-eb7610212c71",
+            "type": "leaf",
+            "name": "slack.json generated a blocks JSON object containing a header, a body section, and one section per link",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-7fb91a5621ac",
+            "type": "leaf",
+            "name": "email.txt uses Subject, From, and To headers, then a blank line, then the body, then a blank line, then one “label — link address” per line",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-eb0870aa29dc",
+          "type": "leaf",
+          "name": "Accurately extracted the subject, body, sender, recipient, and link fields from message.json",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-620b7a98470f",
+          "type": "leaf",
+          "name": "Correctly wrote the desktop path, the outputs folder path, and the three output file paths to the target locations",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-dc46a7c1f9cd",
+          "type": "group",
+          "name": "Format Mapping Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a1fb8234008c",
+              "type": "leaf",
+              "name": "Accurately determined that telegram.txt does not include the sender and recipient fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-cff2929cbfbe",
+              "type": "leaf",
+              "name": "Accurately determined that email.txt must include the Subject, From, and To headers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-7c95e72ded21",
+              "type": "leaf",
+              "name": "Accurately determined that the link blocks in slack.json use the <link address|label> expression",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "General Knowledge",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8652385a8700",
+          "type": "group",
+          "name": "Deliverable Result Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a69570996d0f",
+              "type": "leaf",
+              "name": "The paragraph order, number of blank lines, and per-line link format of telegram.txt meet the user's requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-ccd38a89e01f",
+              "type": "leaf",
+              "name": "slack.json can be parsed as a JSON object and contains a blocks array",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b5014869f870",
+              "type": "leaf",
+              "name": "In the blocks of slack.json, the header holds the subject, the body section uses mrkdwn, and each link has its own section",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-1af54ae7e632",
+              "type": "leaf",
+              "name": "The email header order, blank-line placement, and per-line link format of email.txt meet the user's requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-40df3a4c7cd4",
+          "type": "group",
+          "name": "Exception Handling Quality",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-102d3c2d67a6",
+              "type": "leaf",
+              "name": "Reported an error that message.json could not be accessed or parsed when reading failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-f16d28bfc60c",
+              "type": "leaf",
+              "name": "Reported the specific failed file or directory when writing failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-5f99f8b38e3f",
+    "language": "en"
+  },
+  "note": "Convert the message JSON file into three channel formats: Telegram plain text, Slack Block Kit JSON, and formatted email."
+}

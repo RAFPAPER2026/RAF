@@ -1,0 +1,293 @@
+{
+  "id": "ip_hearing_calendar",
+  "name": "IP Hearing Schedule Calendar",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Instruction Following",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "instruction.follow",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "In the ip_hearing_schedule folder on the desktop there is an Excel file named '11月第一周出庭排期表', which is a two-dimensional cross table: the columns are Monday through Friday, the rows are time periods, and the cells contain lawyer names.\n\nPlease convert the schedules containing '张伟' into an ics calendar file and ignore the other lawyers. Monday corresponds to November 6, 2023, and the following days advance in order. Use the time periods written in the first column of the table.\n\nUse '[商标复审出庭]' uniformly as the calendar event title and write '国知局第一审理庭' as the location. Set a 30-minute advance reminder for each schedule. Name the output ics file '张伟_出庭日历.ics' and put it in the ip_hearing_schedule directory on the desktop.",
+  "rubric": {
+    "query": "In the ip_hearing_schedule folder on the desktop there is an Excel file named '11月第一周出庭排期表', which is a two-dimensional cross table: the columns are Monday through Friday, the rows are time periods, and the cells contain lawyer names.\n\nPlease convert the schedules containing '张伟' into an ics calendar file and ignore the other lawyers. Monday corresponds to November 6, 2023, and the following days advance in order. Use the time periods written in the first column of the table.\n\nUse '[商标复审出庭]' uniformly as the calendar event title and write '国知局第一审理庭' as the location. Set a 30-minute advance reminder for each schedule. Name the output ics file '张伟_出庭日历.ics' and put it in the ip_hearing_schedule directory on the desktop.",
+    "query_id": "ip_hearing_calendar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-268e8c7999cb",
+        "type": "leaf",
+        "name": "Correctly read the weekday column, time period column, and the cells containing “张伟” in “11月第一周出庭排期表”",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-25143015adac",
+        "type": "group",
+        "name": "The Extracted Zhang Wei Schedule Matches the User's Filtering Conditions",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a3597f428f73",
+            "type": "leaf",
+            "name": "Correctly converted the schedules containing “张伟” into calendar events for the corresponding dates from November 6 to November 10, 2023 and the table time periods",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3cf7a31ab495",
+            "type": "leaf",
+            "name": "Correctly ignored the schedules of other lawyers that do not contain “张伟”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4c483fbddf39",
+        "type": "group",
+        "name": "ICS Deliverable Produced with the Specified Name and Location",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4026238fd0a3",
+            "type": "leaf",
+            "name": "Correctly generated the ICS calendar file named “张伟_出庭日历.ics”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-8bf2b3d10db0",
+            "type": "leaf",
+            "name": "Correctly saved the ICS calendar file in the ip_hearing_schedule directory on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-87e3229ba836",
+          "type": "leaf",
+          "name": "Accurately identified the correspondence among the weekday column, time period rows, and lawyer-name cells in the two-dimensional cross table",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Logical Reasoning",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-32b719230e59",
+          "type": "group",
+          "name": "Time Mapping and Time Period Parsing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e19c2fb6b0ad",
+              "type": "leaf",
+              "name": "Accurately mapped Monday through Friday to November 6, 2023 through November 10, 2023",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-fb5d93c0f51f",
+              "type": "leaf",
+              "name": "Accurately parsed the time periods in the first column of the table and used them to generate event start and end times",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ad2421cc17dd",
+          "type": "group",
+          "name": "Event Generation Parameter Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a2b38063f8e2",
+              "type": "leaf",
+              "name": "Correctly created events only for the cells containing “张伟”",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f9656d29c295",
+              "type": "leaf",
+              "name": "Correctly wrote the title “[商标复审出庭]” for each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-71e747d76b05",
+              "type": "leaf",
+              "name": "Correctly wrote the location “国知局第一审理庭” for each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ca0505e00bf1",
+              "type": "leaf",
+              "name": "Correctly set a 30-minute advance reminder for each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0c0328444425",
+          "type": "group",
+          "name": "ICS Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-203dc5142dee",
+              "type": "leaf",
+              "name": "The generated ICS file can be imported or opened normally by calendar software",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-fbf000290b9c",
+              "type": "leaf",
+              "name": "Every event in the ICS file contains the start time, end time, title, location, and reminder fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2097b3580cb8",
+          "type": "group",
+          "name": "Execution Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ac1e0ca7021f",
+              "type": "leaf",
+              "name": "Correctly identified the error cause when reading the Excel file or writing the ICS file failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-b18f78ea411c",
+              "type": "leaf",
+              "name": "Took measures such as re-reading, correcting the format, or retrying the save after a read or write error occurred",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-eed92c8ce5eb",
+    "language": "en"
+  },
+  "note": "Extract a specific lawyer's hearing schedule from a two-dimensional Excel cross table and generate an ICS calendar file."
+}

@@ -1,0 +1,225 @@
+{
+  "id": "competitive_analysis",
+  "name": "Competitive Intelligence Comparison",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a competitor analysis report pdf on /root/Desktop. Help me search the internet for the latest developments of this company, compare the online information with that in the report, and write a comparison summary in the same directory.",
+  "rubric": {
+    "query": "There is a competitor analysis report pdf on /root/Desktop. Help me search the internet for the latest developments of this company, compare the online information with that in the report, and write a comparison summary in the same directory.",
+    "query_id": "competitive_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5a85c7082b1d",
+        "type": "leaf",
+        "name": "Correctly read the content of the competitor analysis report PDF in the desktop directory",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-55c98c22534b",
+        "type": "leaf",
+        "name": "Correctly retrieved the latest development information about the company",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-f69f850abc89",
+        "type": "group",
+        "name": "Comparison summary delivery objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-90df683fd6a1",
+            "type": "leaf",
+            "name": "Completed the comparison summary between the report content and the latest developments",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3fa92808c339",
+            "type": "leaf",
+            "name": "Generated a comparison summary file in the same desktop directory",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-6a2a960dbdb2",
+          "type": "leaf",
+          "name": "Accurately located and read the key information of the target competitor analysis report PDF under /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Information Filtering",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eacb1b4e9002",
+          "type": "leaf",
+          "name": "Correctly identified the company name corresponding to the report and constructed the search keywords based on it",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Retrieval Strategy",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d07422493a24",
+          "type": "group",
+          "name": "Latest development information acquisition quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-13287f880316",
+              "type": "leaf",
+              "name": "Accurately retrieved public information sources that can be used to judge the company's latest developments",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3d66103a527f",
+              "type": "leaf",
+              "name": "Correctly extracted the time, event, and subject information from the public sources",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-23b777000622",
+          "type": "group",
+          "name": "Comparison analysis quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-772ad0208fdf",
+              "type": "leaf",
+              "name": "Accurately aligned the key judgments in the report with the corresponding topics of the latest online developments",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-afe3fd35770c",
+              "type": "leaf",
+              "name": "Correctly marked the consistent points, changed points, or newly added information in the comparison conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-92305aa11607",
+          "type": "group",
+          "name": "Comparison summary file usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-96bfacb55157",
+              "type": "leaf",
+              "name": "The generated comparison summary file contains the target company, information sources, comparison conclusions, and the basis for the conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-7f5be188df3a",
+              "type": "leaf",
+              "name": "The generated comparison summary file opens normally and its text content contains no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-cafeb94cc2c3",
+    "language": "en"
+  }
+}

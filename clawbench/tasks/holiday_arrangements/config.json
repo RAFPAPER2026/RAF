@@ -1,0 +1,302 @@
+{
+  "id": "holiday_arrangements",
+  "name": "劳动节三天行程",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "出行建议",
+  "ability_category": [
+    "工具调用-Skill 使用"
+  ],
+  "ability_category_canonical": [
+    "tool.skill"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "劳动节假期我想出去玩，请帮我规划一个为期3天的行程安排。坐标深圳，要去惠州、汕头、潮州3个城市，领略当地的风景和美食，请每个城市推荐3个景点和1-2种美食，不去热门人多的地方。总预算3000元，请综合出行、住宿、饮食、天气状况等综合因素，给出一份合理的行程安排，放在/root/Desktop的'旅游安排.md'中。",
+  "rubric": {
+    "query": "劳动节假期我想出去玩，请帮我规划一个为期3天的行程安排。坐标深圳，要去惠州、汕头、潮州3个城市，领略当地的风景和美食，请每个城市推荐3个景点和1-2种美食，不去热门人多的地方。总预算3000元，请综合出行、住宿、饮食、天气状况等综合因素，给出一份合理的行程安排，放在/root/Desktop的'旅游安排.md'中。",
+    "query_id": "holiday_arrangements",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5d49e6066d2e",
+        "type": "leaf",
+        "name": "生成了包含3天行程安排的旅游安排.md文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      },
+      {
+        "id": "node-eac7f75708af",
+        "type": "group",
+        "name": "目的地与推荐内容达成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-725d752c2d87",
+            "type": "leaf",
+            "name": "覆盖了惠州、汕头、潮州3个城市的行程安排",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-6f893e211356",
+            "type": "leaf",
+            "name": "每个城市推荐了3个景点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "检索策略"
+            ]
+          },
+          {
+            "id": "node-05f9c9810d34",
+            "type": "leaf",
+            "name": "每个城市推荐了1-2种美食",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-b21c7896ee86",
+        "type": "group",
+        "name": "约束条件满足",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-77125a88f9a0",
+            "type": "leaf",
+            "name": "给出了总预算不超过3000元的安排",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-d97356fe6684",
+            "type": "leaf",
+            "name": "行程中避开了热门人多的景点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-84ac1b576279",
+            "type": "leaf",
+            "name": "行程纳入了出行、住宿、饮食和天气因素",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d0e459d1079e",
+          "type": "leaf",
+          "name": "准确识别了用户要求的交付物路径和Markdown文件格式",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-7222c3191d4e",
+          "type": "group",
+          "name": "目的地信息获取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-45c364bff51c",
+              "type": "leaf",
+              "name": "准确筛选了惠州、汕头、潮州中非热门且可游览的景点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-99fa97539d8e",
+              "type": "leaf",
+              "name": "正确提取了每个城市可代表当地特色的1-2种美食",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "通用知识",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-669b701a338a",
+          "type": "group",
+          "name": "行程规划推理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-47970179f963",
+              "type": "leaf",
+              "name": "准确判断了3天内跨越深圳、惠州、汕头、潮州的移动顺序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-0034e99494fc",
+              "type": "leaf",
+              "name": "正确估算了出行、住宿和饮食费用是否可控制在3000元内",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-edd75f8df870",
+              "type": "leaf",
+              "name": "准确结合天气状况调整了每日活动安排",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-100f83c2c41b",
+          "type": "group",
+          "name": "结果写入执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6699e623e73e",
+              "type": "leaf",
+              "name": "正确使用了文件写入工具将结果保存到/root/Desktop/旅游安排.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-bcc330cee782",
+              "type": "leaf",
+              "name": "写入的Markdown文件包含按天分段的行程、预算和城市推荐内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-253d9552e501",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9604531a0dc8",
+              "type": "leaf",
+              "name": "Markdown文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-badad5215d66",
+              "type": "leaf",
+              "name": "Markdown文件中的每日行程、交通、住宿、饮食和预算信息具备可直接执行的具体内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-31b935871168",
+              "type": "leaf",
+              "name": "Markdown文件中的景点与美食推荐按城市归类且便于用户查阅",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1196929da474",
+    "language": "zh"
+  },
+  "note": "需要联网搜索"
+}

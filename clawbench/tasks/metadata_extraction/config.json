@@ -1,0 +1,442 @@
+{
+  "id": "metadata_extraction",
+  "name": "论文元数据提取",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从",
+    "任务规划-任务分解"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow",
+    "plan.decompose"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上有个 `papers/` 文件夹，里面放着几篇学术论文的文本文件。每篇论文大概长这样：有标题、作者、年份、关键词、摘要，还有参考文献。\n\n你帮我做下面这些事：\n\n1. 读取桌面上 `papers/` 文件夹里的所有文本文件。\n2. 从每篇论文里提取下面这些信息：\n   - 标题 (title)：字符串\n   - 作者列表 (authors)：字符串数组，每个作者单独一个元素\n   - 年份 (year)：整数\n   - 关键词列表 (keywords)：字符串数组，每个关键词单独一个元素\n   - 摘要 (abstract)：字符串\n   - 参考文献列表 (references)：字符串数组\n3. 在桌面上生成两个文件：\n   - `bibliography.csv`：CSV 文件，列包括 `title`, `authors`, `year`, `keywords`。其中作者和关键词如果有多个，中间用分号 `;` 隔开。\n   - `metadata.json`：JSON 文件，里面放一个列表，每个元素是一篇论文的元数据，格式如下：\n     - `title`：字符串\n     - `authors`：字符串数组，例如 `[\"Alice Smith\", \"Bob Johnson\"]`\n     - `year`：整数\n     - `keywords`：字符串数组，例如 `[\"deep learning\", \"NLP\"]`\n     - `abstract`：字符串\n     - `references`：字符串数组\n\n论文文件的内容格式大概是这样：\n```\nTitle: <论文标题>\nAuthors: <作者1>; <作者2>; ...\nYear: <年份>\nKeywords: <关键词1>; <关键词2>; ...\n\nAbstract:\n<摘要内容，可能会跨好几行>\n\nReferences:\n<参考文献1>\n<参考文献2>\n...\n```\n\n另外注意几点：\n- 必须把 `papers/` 里所有的论文都解析出来。\n- 按文件名的字母顺序排，保持这个顺序。\n- 提取出来的字段，前后多余的空白要去掉。\n- 摘要和参考文献可能会跨多行，你要正确处理。\n- 输出的两个文件编码必须是 UTF-8。\n- `metadata.json` 里的 `authors` 和 `keywords` 必须是数组类型，不能是字符串。",
+  "rubric": {
+    "query": "桌面上有个 `papers/` 文件夹，里面放着几篇学术论文的文本文件。每篇论文大概长这样：有标题、作者、年份、关键词、摘要，还有参考文献。\n\n你帮我做下面这些事：\n\n1. 读取桌面上 `papers/` 文件夹里的所有文本文件。\n2. 从每篇论文里提取下面这些信息：\n   - 标题 (title)：字符串\n   - 作者列表 (authors)：字符串数组，每个作者单独一个元素\n   - 年份 (year)：整数\n   - 关键词列表 (keywords)：字符串数组，每个关键词单独一个元素\n   - 摘要 (abstract)：字符串\n   - 参考文献列表 (references)：字符串数组\n3. 在桌面上生成两个文件：\n   - `bibliography.csv`：CSV 文件，列包括 `title`, `authors`, `year`, `keywords`。其中作者和关键词如果有多个，中间用分号 `;` 隔开。\n   - `metadata.json`：JSON 文件，里面放一个列表，每个元素是一篇论文的元数据，格式如下：\n     - `title`：字符串\n     - `authors`：字符串数组，例如 `[\"Alice Smith\", \"Bob Johnson\"]`\n     - `year`：整数\n     - `keywords`：字符串数组，例如 `[\"deep learning\", \"NLP\"]`\n     - `abstract`：字符串\n     - `references`：字符串数组\n\n论文文件的内容格式大概是这样：\n```\nTitle: <论文标题>\nAuthors: <作者1>; <作者2>; ...\nYear: <年份>\nKeywords: <关键词1>; <关键词2>; ...\n\nAbstract:\n<摘要内容，可能会跨好几行>\n\nReferences:\n<参考文献1>\n<参考文献2>\n...\n```\n\n另外注意几点：\n- 必须把 `papers/` 里所有的论文都解析出来。\n- 按文件名的字母顺序排，保持这个顺序。\n- 提取出来的字段，前后多余的空白要去掉。\n- 摘要和参考文献可能会跨多行，你要正确处理。\n- 输出的两个文件编码必须是 UTF-8。\n- `metadata.json` 里的 `authors` 和 `keywords` 必须是数组类型，不能是字符串。",
+    "query_id": "metadata_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5045821600b1",
+        "type": "leaf",
+        "name": "正确读取了桌面上 papers 文件夹中的所有文本文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-89ddeface120",
+        "type": "group",
+        "name": "论文元数据提取目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-91e37a8b7952",
+            "type": "leaf",
+            "name": "正确提取了每篇论文的标题字段并去除了前后空白",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-14627ce861af",
+            "type": "leaf",
+            "name": "正确提取了每篇论文的作者列表字段并保存为字符串数组",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-e70f36d6c477",
+            "type": "leaf",
+            "name": "正确提取了每篇论文的年份字段并保存为整数",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-c09b90701bb1",
+            "type": "leaf",
+            "name": "正确提取了每篇论文的关键词列表字段并保存为字符串数组",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-411db0543e5f",
+            "type": "leaf",
+            "name": "正确提取了每篇论文的摘要字段并去除了前后空白",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-32d639bad6a5",
+            "type": "leaf",
+            "name": "正确提取了每篇论文的参考文献列表字段并保存为字符串数组",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f44e2539fd93",
+        "type": "group",
+        "name": "文件交付物已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-eb47e20a7a53",
+            "type": "leaf",
+            "name": "生成了桌面上的 bibliography.csv 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-1995c1c8e9bf",
+            "type": "leaf",
+            "name": "生成了桌面上的 metadata.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-893b86e70569",
+        "type": "group",
+        "name": "输出格式与顺序要求已满足",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2af81aaa31db",
+            "type": "leaf",
+            "name": "正确按文件名字母顺序排列了所有论文记录",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-717307eb39c1",
+            "type": "leaf",
+            "name": "正确将 bibliography.csv 以 UTF-8 编码写出且 authors 与 keywords 使用分号分隔",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-9e4e494109e0",
+            "type": "leaf",
+            "name": "正确将 metadata.json 以 UTF-8 编码写出且 authors 与 keywords 保持为数组类型",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-54bfc4f98fd5",
+          "type": "leaf",
+          "name": "准确定位了桌面上 papers 文件夹中的文本文件并未遗漏可解析文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c38ac07ee9d1",
+          "type": "group",
+          "name": "结构化字段解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-00798bf9779e",
+              "type": "leaf",
+              "name": "准确识别了标题 作者 年份 关键词字段对应的行标签",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7bc98a0e0269",
+              "type": "leaf",
+              "name": "正确按分号拆分作者字段并去除了每个作者元素的前后空白",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3fde960faa84",
+              "type": "leaf",
+              "name": "正确按分号拆分关键词字段并去除了每个关键词元素的前后空白",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-4ab8df60f3d2",
+              "type": "leaf",
+              "name": "正确将年份字段解析为整数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b621d8f432dc",
+          "type": "group",
+          "name": "跨行字段边界处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9bb86fd8d397",
+              "type": "leaf",
+              "name": "正确识别了 Abstract 段落的起止位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5677d57b6aaf",
+              "type": "leaf",
+              "name": "正确保留了摘要中的跨行内容且未混入 References 段落文本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ecdf44d95a12",
+              "type": "leaf",
+              "name": "正确识别了 References 段落的起始位置并提取了后续参考文献条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-e84b2f587f34",
+          "type": "group",
+          "name": "多文件顺序与上下文保持质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-faac2d6a39fa",
+              "type": "leaf",
+              "name": "正确按文件名字母顺序输出了 CSV 与 JSON 中的论文记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-f66cd95370a1",
+              "type": "leaf",
+              "name": "正确在多篇论文处理过程中保持了每篇论文字段不串位不混淆",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1fb1b47ae7f1",
+          "type": "group",
+          "name": "交付物可用性与格式质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a19cf04a51c8",
+              "type": "leaf",
+              "name": "正确生成了包含 title authors year keywords 列的 bibliography.csv 内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-39f258eead88",
+              "type": "leaf",
+              "name": "正确生成了包含 title authors year keywords abstract references 键的 metadata.json 内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e4425911a194",
+              "type": "leaf",
+              "name": "正确将 bibliography.csv 与 metadata.json 写为 UTF-8 编码且文件可正常打开读取",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-48d35e246765",
+              "type": "leaf",
+              "name": "正确保证 metadata.json 中 authors keywords references 为数组类型且 bibliography.csv 中 authors keywords 为分号连接字符串",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6c43480ba76d",
+          "type": "group",
+          "name": "异常处理与结果沟通质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6aeac8284612",
+              "type": "leaf",
+              "name": "正确识别了解析失败或缺失字段的论文文件并避免编造不存在的字段值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f61639d65c54",
+              "type": "leaf",
+              "name": "正确在结果说明中报告了处理文件数量和生成文件位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1f863170b3a4",
+    "language": "zh"
+  },
+  "note": "从学术论文文本文件中提取元数据，生成 CSV 与 JSON 输出"
+}

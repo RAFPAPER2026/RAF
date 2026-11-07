@@ -1,0 +1,350 @@
+{
+  "id": "expense_email_desensitization",
+  "name": "Expense Email Desensitization",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Email Management",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a travel_expense_emails folder on the desktop, containing these three .eml emails: 顾问A_华东区经销商走访报销.eml, 顾问B_上海工厂灌装线测时差旅.eml, 顾问C_5S巡检项目住宿报销.eml.\n\nExtract the body content of all three emails and merge them into one Markdown document, saved in the same folder. All ID card numbers (18-digit numbers) and bank card numbers (16 to 19-digit numbers) in the email bodies must be replaced with asterisks *.\n\nThen generate a PDF file with the same desensitized content, protected with an open password; the password is Travel2023!.",
+  "rubric": {
+    "query": "There is a travel_expense_emails folder on the desktop, containing these three .eml emails: 顾问A_华东区经销商走访报销.eml, 顾问B_上海工厂灌装线测时差旅.eml, 顾问C_5S巡检项目住宿报销.eml.\n\nExtract the body content of all three emails and merge them into one Markdown document, saved in the same folder. All ID card numbers (18-digit numbers) and bank card numbers (16 to 19-digit numbers) in the email bodies must be replaced with asterisks *.\n\nThen generate a PDF file with the same desensitized content, protected with an open password; the password is Travel2023!.",
+    "query_id": "expense_email_desensitization",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a7e5533c4315",
+        "type": "group",
+        "name": "Email body extraction and merging objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a9440e06a13e",
+            "type": "leaf",
+            "name": "Extracted the body content of the three specified .eml emails",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-c04dc55fe9a4",
+            "type": "leaf",
+            "name": "Merged the body content of the three emails",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ccafd2000da5",
+        "type": "group",
+        "name": "Sensitive information desensitization objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7a3751416e17",
+            "type": "leaf",
+            "name": "Replaced the 18-digit ID card numbers in the email bodies with asterisks",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-a387de6ecd2f",
+            "type": "leaf",
+            "name": "Replaced the 16 to 19-digit bank card numbers in the email bodies with asterisks",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d69245b6ef20",
+        "type": "group",
+        "name": "Deliverable generation objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f03ea338b4a0",
+            "type": "leaf",
+            "name": "Generated a Markdown document saved in the same folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-4dc709d577c8",
+            "type": "leaf",
+            "name": "Generated a PDF file saved in the same folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-05f28328c4a1",
+            "type": "leaf",
+            "name": "Set the open password Travel2023! for the PDF file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-6317b64f92f3",
+          "type": "leaf",
+          "name": "Accurately located the three specified .eml files in the travel_expense_emails folder on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-2f561337542c",
+          "type": "group",
+          "name": "Email content parsing quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fbefd41400f1",
+              "type": "leaf",
+              "name": "Correctly extracted the body content of each .eml email without mixing in the email header fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-35b551bd9fc0",
+              "type": "leaf",
+              "name": "Correctly preserved the boundary information between the three email bodies to support merged output",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e2cc3d369415",
+          "type": "group",
+          "name": "Desensitization quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-021859cc6acb",
+              "type": "leaf",
+              "name": "Accurately identified all 18-digit ID card number patterns in the bodies",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-0f5328e37515",
+              "type": "leaf",
+              "name": "Accurately identified all 16 to 19-digit bank card number patterns in the bodies",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-def5244840c3",
+              "type": "leaf",
+              "name": "Correctly replaced the identified sensitive numbers without modifying the non-sensitive body content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d0cbce472fe5",
+          "type": "group",
+          "name": "Markdown deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-616bd2c71367",
+              "type": "leaf",
+              "name": "Correctly generated a Markdown document structure containing the three desensitized email bodies",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-2d9ecbe9a227",
+              "type": "leaf",
+              "name": "The generated Markdown document content is complete and can be read and used directly by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9d3c8015ea92",
+          "type": "group",
+          "name": "PDF deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-82e9317431e8",
+              "type": "leaf",
+              "name": "Correctly generated a PDF file containing the three desensitized email bodies",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-4bf20a586cc8",
+              "type": "leaf",
+              "name": "The generated PDF file opens normally and its open password is Travel2023!",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-961e43251cde",
+              "type": "leaf",
+              "name": "The desensitized content in the PDF is readable with no garbled characters or missing content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-40afad96d0d6",
+          "type": "group",
+          "name": "Result communication quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d98af202e375",
+              "type": "leaf",
+              "name": "Clearly stated the generated Markdown and PDF files in the result feedback",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-9cc4255d3e36",
+              "type": "leaf",
+              "name": "Clearly stated in the result feedback that ID card numbers and bank card numbers had been desensitized",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-b2118765337c",
+    "language": "en"
+  },
+  "note": "Extract email content from .eml files, desensitize sensitive data (ID and bank card numbers), output Markdown and encrypted PDF"
+}

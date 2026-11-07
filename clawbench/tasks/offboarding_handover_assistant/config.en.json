@@ -1,0 +1,424 @@
+{
+  "id": "offboarding_handover_assistant",
+  "name": "Offboarding Handover Assistant",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Task Decomposition",
+    "Long-Context Understanding",
+    "Exception Identification",
+    "State Tracking & Consistency"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long",
+    "reflection.detect",
+    "context.state",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I will be leaving the team next month. The offboarding_workspace/ folder on the desktop contains all my project-related materials from the past six months, including: project documents (word/ppt/excel), emails, meeting transcripts, chat records, and a current_tasks.csv which is the current project task list.\nPlease help me do the handover well:\n1. From all the materials, find the projects I have actually been responsible for and my implicit responsibilities (some responsibilities are not written in any document and were only mentioned in meetings and chats);\n2. Divide the things on my plate into four categories: completed, in progress, verbally promised but no ticket created, and dependent on my personal knowledge/connections;\n3. Based on the participation of other team members in each project, suggest potential successors for each piece of work;\n4. Read the schedules and workloads of colleagues in team_calendar/ and check whether the successors you suggest are feasible;\n5. Generate a complete handover document handover.md (save it under offboarding_workspace/ on the desktop), and update the task status of the tasks under my name in current_tasks.csv to 「待交接」, noting the suggested successor;\n6. For the parts where no owner can be found or information in different materials conflicts, do not guess; organize them separately into a “needs confirmation with me and my supervisor” list at the end of the handover document.",
+  "rubric": {
+    "query": "I will be leaving the team next month. The offboarding_workspace/ folder on the desktop contains all my project-related materials from the past six months, including: project documents (word/ppt/excel), emails, meeting transcripts, chat records, and a current_tasks.csv which is the current project task list.\nPlease help me do the handover well:\n1. From all the materials, find the projects I have actually been responsible for and my implicit responsibilities (some responsibilities are not written in any document and were only mentioned in meetings and chats);\n2. Divide the things on my plate into four categories: completed, in progress, verbally promised but no ticket created, and dependent on my personal knowledge/connections;\n3. Based on the participation of other team members in each project, suggest potential successors for each piece of work;\n4. Read the schedules and workloads of colleagues in team_calendar/ and check whether the successors you suggest are feasible;\n5. Generate a complete handover document handover.md (save it under offboarding_workspace/ on the desktop), and update the task status of the tasks under my name in current_tasks.csv to 「待交接」, noting the suggested successor;\n6. For the parts where no owner can be found or information in different materials conflicts, do not guess; organize them separately into a “needs confirmation with me and my supervisor” list at the end of the handover document.",
+    "query_id": "offboarding_handover_assistant",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-9ca6a944b338",
+        "type": "group",
+        "name": "Responsibility Scope Identification Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-97f8ac04d04e",
+            "type": "leaf",
+            "name": "Correctly identified the projects actually responsible for over the past six months",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-1cbbb4b0fc47",
+            "type": "leaf",
+            "name": "Correctly identified the traceable implicit responsibilities in the materials",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d3fa61ba1fc8",
+        "type": "group",
+        "name": "Item Classification Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-af2c1f9d838b",
+            "type": "leaf",
+            "name": "Correctly classified the items on hand into the completed category",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-f342f0936059",
+            "type": "leaf",
+            "name": "Correctly classified the items on hand into the in-progress category",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-1040af781ef2",
+            "type": "leaf",
+            "name": "Correctly classified the items on hand into the verbally promised but no ticket created category",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ca8f48b8288c",
+            "type": "leaf",
+            "name": "Correctly classified the items on hand into the dependent on personal knowledge or connections category",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4596e15f8e7c",
+        "type": "group",
+        "name": "Successor Recommendation Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-85b70700af25",
+            "type": "leaf",
+            "name": "Gave potential successor recommendations for each piece of work",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-5fa4de9fe974",
+            "type": "leaf",
+            "name": "Completed the successor feasibility check based on the schedules and workloads in team_calendar",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Retrieval Strategy",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1064694f67bd",
+        "type": "group",
+        "name": "Delivery and Exception Organization Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-21508c72a697",
+            "type": "leaf",
+            "name": "Generated the handover.md handover document under offboarding_workspace on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-5fd56e0ee4a2",
+            "type": "leaf",
+            "name": "Updated the status of the relevant tasks in current_tasks.csv to 待交接 and noted the suggested successor",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-fc699bcee791",
+            "type": "leaf",
+            "name": "Organized the parts where no owner could be found or information conflicted into a needs-confirmation-with-me-and-my-supervisor list at the end of the handover document",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Exception Handling",
+              "Factual Accuracy",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-2363c494779d",
+          "type": "group",
+          "name": "Source Material Acquisition and Information Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4cebadc5e91c",
+              "type": "leaf",
+              "name": "Accurately retrieved the project documents, emails, meeting transcripts, chat records, and current_tasks.csv in offboarding_workspace",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-64617a7346bb",
+              "type": "leaf",
+              "name": "Accurately extracted the project names, responsibility descriptions, task statuses, participating members, and timeline information in the materials",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5047a34e8c23",
+          "type": "group",
+          "name": "Responsibility Identification and Item Classification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2aa2df204ab7",
+              "type": "leaf",
+              "name": "Accurately identified responsibility clues not written in formal documents based on statements in meetings and chats",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-95ae883d4425",
+              "type": "leaf",
+              "name": "Accurately distinguished completed, in-progress, verbally promised but no ticket created, and dependent on personal knowledge or connections items based on the evidence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-100eb2f1c924",
+          "type": "group",
+          "name": "Successor Decision and Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-77f2a25f2854",
+              "type": "leaf",
+              "name": "Accurately matched candidate successors based on the team members' historical participation records in each project",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-8eef810b2a76",
+              "type": "leaf",
+              "name": "Accurately judged the candidate successors' capacity to take over based on the schedules and workloads in team_calendar",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-b4e318d4e677",
+              "type": "leaf",
+              "name": "Listed items in the to-be-confirmed list without fabricating conclusions when no owner could be found or materials conflicted",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6127c821c88e",
+          "type": "group",
+          "name": "Task Table Update Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b2f9ab0f4888",
+              "type": "leaf",
+              "name": "Correctly wrote the 待交接 status and suggested successor into the corresponding task records in current_tasks.csv",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-934d4119d970",
+              "type": "leaf",
+              "name": "The reply explained the scope of updated tasks and the exception items whose reasons for not being updated were clear",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fc1f4c3d121b",
+          "type": "group",
+          "name": "Handover Document Result Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-26baa87eaabd",
+              "type": "leaf",
+              "name": "handover.md contains the project and responsibility overview, the four-category item lists, the suggested successors, the feasibility check results, and the to-be-confirmed list",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Intent Understanding",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-4075f12f66c5",
+              "type": "leaf",
+              "name": "The items, successors, and to-be-confirmed entries in handover.md can be matched to the source materials or current_tasks.csv records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-5229d0a80eab",
+              "type": "leaf",
+              "name": "The handover.md file opens normally and its Markdown structure can be used directly by subsequent successors",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-93c3bb285d3e",
+          "type": "leaf",
+          "name": "Clearly stated in the reply the save location of the handover document and the update result of current_tasks.csv",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-ee180dee9236",
+    "language": "en"
+  },
+  "note": "Offboarding / project handover assistant. Given to the agent: all project-related word / ppt / excel / email / meeting transcript / chat documents of an employee from the past six months, as well as the current project task list. The user: “I am leaving the team next month. Help me organize everything that needs to be handed over, tell me which things cannot be handed over directly to others, and help me prepare the handover document.” The agent needs to: ① find from different sources the projects the user has actually been responsible for and the implicit responsibilities; ② distinguish “already completed / in progress / verbally promised but no ticket / dependent on the user's personal knowledge”; ③ find potential successors for each piece of work; ④ check the successors' schedules and current workloads; ⑤ generate the handover document and modify/supplement the original project documents; ⑥ proactively ask about the parts where no owner can be found or information conflicts. Difficulty: the user's “responsibilities” do not exist completely in a single file; much information needs to be inferred from historical meetings and chats; tests cross-source entity resolution + implicit responsibility + conflict resolution + action execution.",
+  "env_description": "offboarding_workspace/: project documents (2 docx summaries + an on-call duty schedule csv), emails/ (3 emails, including external contact dependencies), meeting_transcripts/ (3 meetings, with 3 implicit responsibilities planted: SMS gateway degradation strategy, Qingyun alert specification, mentoring an intern), chats/ (3 people, with verbal promises and unarchived personal knowledge planted), current_tasks.csv (8 tasks), team_calendar/ (ics for 5 people, with feasibility constraints planted: 张磊 is in closed development, 小林 has no calendar file and needs to be asked)"
+}

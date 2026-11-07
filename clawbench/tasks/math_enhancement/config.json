@@ -1,0 +1,302 @@
+{
+  "id": "math_enhancement",
+  "name": "数学强化资料整理",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "反思和修复-异常处理和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "女儿今年5年级，数学成绩不太好。帮我搜索整理下载10篇5年级数学学习笔记，包含测验真题详解、知识点强化、易错题训练，并附上5套测试试卷(pdf格式)，存到/root/Desktop上“数学强化”的文件夹中",
+  "rubric": {
+    "query": "女儿今年5年级，数学成绩不太好。帮我搜索整理下载10篇5年级数学学习笔记，包含测验真题详解、知识点强化、易错题训练，并附上5套测试试卷(pdf格式)，存到/root/Desktop上“数学强化”的文件夹中",
+    "query_id": "math_enhancement",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d767fbba99c1",
+        "type": "leaf",
+        "name": "创建了位于/root/Desktop的“数学强化”文件夹并产出了学习资料文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-933bca9aa8af",
+        "type": "group",
+        "name": "完成了学习笔记整理目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-85b8c860b74f",
+            "type": "leaf",
+            "name": "整理了10篇适用于5年级数学的学习笔记",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-356993d652b9",
+            "type": "leaf",
+            "name": "学习笔记覆盖了测验真题详解",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-226e59a9b415",
+            "type": "leaf",
+            "name": "学习笔记覆盖了知识点强化",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-603a041f5d46",
+            "type": "leaf",
+            "name": "学习笔记覆盖了易错题训练",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7f63a883e54d",
+        "type": "leaf",
+        "name": "下载了5套5年级数学测试试卷并保存为PDF格式",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "检索策略"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ae4e2f62a1fb",
+          "type": "leaf",
+          "name": "准确理解了目标对象为5年级数学学习资料且未混入其他年级内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-26cbccac292d",
+          "type": "group",
+          "name": "学习笔记检索与筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-355d96ef0da2",
+              "type": "leaf",
+              "name": "正确检索了可下载的5年级数学学习笔记来源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-806e28a62698",
+              "type": "leaf",
+              "name": "正确筛选了与测验真题详解相关的学习笔记内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-378b3b4ff039",
+              "type": "leaf",
+              "name": "正确筛选了与知识点强化相关的学习笔记内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ed0fd2307733",
+              "type": "leaf",
+              "name": "正确筛选了与易错题训练相关的学习笔记内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-c8d7c6c00808",
+          "type": "group",
+          "name": "文件获取与保存执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3b261917f51d",
+              "type": "leaf",
+              "name": "正确下载了10篇学习笔记文件且文件内容与整理结果一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ece88aa6637d",
+              "type": "leaf",
+              "name": "正确下载了5套测试试卷PDF且文件内容与5年级数学测试相关",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-56e1d415b597",
+              "type": "leaf",
+              "name": "正确将全部文件保存到/root/Desktop/数学强化路径下",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8bf1a0cc7473",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b03d0b22d701",
+              "type": "leaf",
+              "name": "产出的学习笔记文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-821041c0a314",
+              "type": "leaf",
+              "name": "产出的学习笔记内容包含标题或来源标识便于区分10篇材料",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-41af6c897875",
+              "type": "leaf",
+              "name": "产出的5套测试试卷PDF可正常打开且页内容完整",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f65b171bc724",
+          "type": "group",
+          "name": "异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-35f261634379",
+              "type": "leaf",
+              "name": "正确识别了下载失败或链接失效的异常情况",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-4262aa4525e7",
+              "type": "leaf",
+              "name": "正确更换来源或重试以补齐10篇学习笔记和5套试卷数量",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-b9b3e720710f",
+    "language": "zh"
+  },
+  "note": "需要联网搜索"
+}

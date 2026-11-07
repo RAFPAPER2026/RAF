@@ -1,0 +1,446 @@
+{
+  "id": "personal_knowledge_map",
+  "name": "Build a Maintainable Personal Knowledge Map",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "Context Compression & Summarization",
+    "State Tracking & Consistency",
+    "Exception Identification"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.compress",
+    "context.state",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "My personal knowledge base is stored in the knowledge_vault/ folder on the desktop and consists of about several dozen PDFs, Word notes, course materials, and web bookmarks accumulated over the past three years, mainly covering machine learning, LLM, and Agent.\nPlease help me build a personal knowledge map that can be maintained continuously:\n1. Identify the core concepts discussed in the different files and merge synonymous concepts (for example, “工具调用” and “tool use”);\n2. Based on file time and content, determine which knowledge is an early view and which has since been overturned by my own learning or experiments;\n3. Focus on finding mutually contradictory conclusions in my notes, and go back to the corresponding original papers or course materials to determine whether the contradiction comes from a conceptual misunderstanding, different experimental conditions, or the literature itself having different conclusions;\n4. Generate a knowledge map that divides my knowledge state into five categories: solidly grasped, encountered but not solid, conflicting, possibly outdated, and clearly missing;\n5. For the three most important knowledge gaps, automatically design a 4-week study plan and generate the first week's learning materials and test questions.\nNote: do not directly treat “I have saved a certain paper” as “I have mastered this knowledge”. Save the output under /root/Desktop/knowledge_vault/.",
+  "rubric": {
+    "query": "My personal knowledge base is stored in the knowledge_vault/ folder on the desktop and consists of about several dozen PDFs, Word notes, course materials, and web bookmarks accumulated over the past three years, mainly covering machine learning, LLM, and Agent.\nPlease help me build a personal knowledge map that can be maintained continuously:\n1. Identify the core concepts discussed in the different files and merge synonymous concepts (for example, “工具调用” and “tool use”);\n2. Based on file time and content, determine which knowledge is an early view and which has since been overturned by my own learning or experiments;\n3. Focus on finding mutually contradictory conclusions in my notes, and go back to the corresponding original papers or course materials to determine whether the contradiction comes from a conceptual misunderstanding, different experimental conditions, or the literature itself having different conclusions;\n4. Generate a knowledge map that divides my knowledge state into five categories: solidly grasped, encountered but not solid, conflicting, possibly outdated, and clearly missing;\n5. For the three most important knowledge gaps, automatically design a 4-week study plan and generate the first week's learning materials and test questions.\nNote: do not directly treat “I have saved a certain paper” as “I have mastered this knowledge”. Save the output under /root/Desktop/knowledge_vault/.",
+    "query_id": "personal_knowledge_map",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-46d9f2295f86",
+        "type": "group",
+        "name": "Knowledge Source Parsing and Concept Merging Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-db44424331f9",
+            "type": "leaf",
+            "name": "Correctly read the relevant material content in the knowledge_vault folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Retrieval Strategy",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-1c36b4e8d8b8",
+            "type": "leaf",
+            "name": "Correctly merged synonymous core concepts across files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f46f1b497a8d",
+        "type": "group",
+        "name": "Viewpoint Evolution and Conflict Tracing Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-32f4c73ba331",
+            "type": "leaf",
+            "name": "Correctly distinguished early views from views later overturned by learning or experiments",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-faa188400537",
+            "type": "leaf",
+            "name": "Correctly identified mutually contradictory conclusions in the notes",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-db1aceadf8a4",
+            "type": "leaf",
+            "name": "Correctly traced back to the corresponding original paper or course material and determined the type of source of the contradiction",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d5e2ffae92a2",
+        "type": "group",
+        "name": "Deliverable Generation Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bd0a4840530c",
+            "type": "leaf",
+            "name": "Generated a knowledge map file that divides the knowledge states into five categories",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-e35a52f1a510",
+            "type": "leaf",
+            "name": "Generated a four-week study plan file targeting the three most important knowledge gaps",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Communication",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-a606bea519fc",
+            "type": "leaf",
+            "name": "Generated the first-week learning materials and test question files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "General Knowledge",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5c841dc381b0",
+          "type": "leaf",
+          "name": "Accurately extracted the time information of each file and used it to determine the chronological order of viewpoints",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1e4110b107e5",
+          "type": "leaf",
+          "name": "Correctly merged synonymous concepts expressed in different languages or different wordings into unified concept nodes",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f045fff69c6d",
+          "type": "group",
+          "name": "Contradiction Source Judgment Quality",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-f23a894534ab",
+              "type": "leaf",
+              "name": "Accurately located the original paper or course material supporting the contradictory conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b52d391ce797",
+              "type": "leaf",
+              "name": "Correctly judged that the contradiction came from a conceptual misunderstanding",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-34f55b593a2a",
+              "type": "leaf",
+              "name": "Correctly judged that the contradiction came from differences in experimental conditions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e0466256b19f",
+              "type": "leaf",
+              "name": "Correctly judged that the contradiction came from differing conclusions in the literature",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-2e20fec23e68",
+          "type": "group",
+          "name": "Knowledge State Classification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3f224b7dd61a",
+              "type": "leaf",
+              "name": "Correctly assigned knowledge points to the solidly grasped category and gave evidence from notes or experiment records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-bd7c8be21d71",
+              "type": "leaf",
+              "name": "Correctly assigned knowledge points to the encountered but not solid category and gave evidence from notes or experiment records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-baa401388542",
+              "type": "leaf",
+              "name": "Correctly assigned knowledge points to the conflicting category and gave the corresponding conflict evidence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-1e2316a526f1",
+              "type": "leaf",
+              "name": "Correctly assigned knowledge points to the possibly outdated category and gave temporal or source evidence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-17520fcfa013",
+              "type": "leaf",
+              "name": "Correctly assigned knowledge points to the clearly missing category and gave evidence of the gap with the existing knowledge structure",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-31d2f95e8768",
+              "type": "leaf",
+              "name": "Did not treat having saved a certain paper directly as evidence of having mastered that knowledge",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-bb000a410a43",
+          "type": "group",
+          "name": "Study Plan and First-Week Content Design Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-931cd701f9e8",
+              "type": "leaf",
+              "name": "Correctly selected the three most important knowledge gaps based on the evidence in the knowledge map",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-dcaa8eee9bdf",
+              "type": "leaf",
+              "name": "Correctly organized the four-week study plan according to prerequisite relationships and progressive topics",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-e6b9085eb9d1",
+              "type": "leaf",
+              "name": "Correctly made the first-week learning materials cover the target concepts and required readings for that week",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Communication",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-433c658c3f5f",
+              "type": "leaf",
+              "name": "Correctly made the first-week test questions cover conceptual understanding and application judgment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-74d9d837cc7e",
+          "type": "group",
+          "name": "Deliverable File Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ed10102d934f",
+              "type": "leaf",
+              "name": "The generated knowledge map file opens normally and its structure contains concept nodes, relationships, or classification results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-6c347bbe6505",
+              "type": "leaf",
+              "name": "The generated study plan and first-week material files open normally and their content sections are complete",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-1dd34a23b30e",
+              "type": "leaf",
+              "name": "The output files are saved under /root/Desktop/knowledge_vault/ and the file names can distinguish the different deliverables",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-0f0c834e370d",
+    "language": "en"
+  },
+  "note": "My personal knowledge base contains about 500 PDFs, Word notes, course materials, and web bookmarks accumulated over the past three years, mainly covering machine learning, LLM, and Agent. Please help me build a personal knowledge map that can be maintained continuously. First identify the core concepts discussed in the different files and merge synonymous concepts; then, based on file time and content, determine which knowledge is an early view and which has since been overturned by my own learning or experiments. Focus on finding mutually contradictory conclusions in my notes, and go back to the corresponding original papers or course materials to determine whether the contradiction comes from a conceptual misunderstanding, different experimental conditions, or the literature itself having different conclusions. Finally generate a knowledge map and divide my knowledge state into the five categories “solidly grasped, encountered but not solid, conflicting, possibly outdated, clearly missing”. For the three most important knowledge gaps, automatically design a 4-week study plan and generate the first week's learning materials and test questions. Do not directly treat “I have saved a certain paper” as “I have mastered this knowledge”.",
+  "env_description": "knowledge_vault/: notes/ (6 notes, with 3 types of contradiction structures planted: the 2024 early view on attention mechanisms is overturned by the user in 2025; two RAG experiments reach conflicting conclusions and the cause has not been identified; the viewpoint on agent memory is partially revised by the user's own experiments), course_materials/ (CS336 / Statistical Learning Methods collected but never studied), bookmarks/ (two knowledge gaps planted: probability theory and experimental design, bookmarked but never viewed), papers/PDF清单 (marked as intensive reading / read / unread)."
+}

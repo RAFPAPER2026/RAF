@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Company//Cross-Platform Sync Tool//CN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:xbox-api-deprecate-v3-20260402@company.com
+DTSTART:20260402T200000Z
+DTEND:20260402T210000Z
+SUMMARY:Xbox Network API废弃迁移讨论会 - V3.0兼容性评估
+ORGANIZER;CN=Organizer:MAILTO:david.liu@company.com
+DESCRIPTION:Team,\n\n关于Xbox平台Network API废弃问题的紧急讨论。\n\n背景：Microsoft在最新的GDK版本(2026.03)中正式将Xbox旧版Multiplayer Networking API标记为deprecated，要求所有开发者在下一个certification window前迁移到新的PlayFab Multiplayer SDK。这直接影响到我们V3.0版本中Xbox端的Network API模块。\n\n当前影响范围评估：\n- Matchmaking服务：依赖旧版SecureDeviceAssociation API\n- Voice Chat：使用了即将移除的GameChat 1.0 interface\n- Session Management：基于旧版MPSD协议\n\nDavid作为Xbox平台负责人已经开始评估迁移方案，但由于新SDK的文档仍在更新中，且部分API在新版GDK中的行为发生了变化，目前还无法给出准确的迁移工时估计。我们需要在会上讨论以下几个关键点：\n\n1. 是否可以在V3.0中采用兼容层方案作为临时过渡\n2. 新旧API的功能对等性验证\n3. 与Microsoft技术支持团队的沟通进展\n4. 影响到的测试用例范围\n\n注意：此问题的复杂度较高，涉及到第三方SDK迁移，需要多方协调。请各位务必参加。\n\nRegards,\nDavid
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

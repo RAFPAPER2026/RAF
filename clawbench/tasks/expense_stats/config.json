@@ -1,0 +1,129 @@
+{
+  "id": "expense_stats",
+  "name": "月度开销统计",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我算算这个月的日常开销一共花了多少，看看哪项花得最多，明细在/root/Desktop家庭月度日常开销明细.md。",
+  "rubric": {
+    "query": "帮我算算这个月的日常开销一共花了多少，看看哪项花得最多，明细在/root/Desktop家庭月度日常开销明细.md。",
+    "query_id": "expense_stats",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a28c1228591f",
+        "type": "leaf",
+        "name": "正确读取了/root/Desktop家庭月度日常开销明细.md中的本月开销明细",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-b870d0e2ea80",
+        "type": "leaf",
+        "name": "正确计算了这个月日常开销总金额",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "逻辑推理",
+          "事实准确性",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-e357eb1fe544",
+        "type": "leaf",
+        "name": "正确识别了本月花费金额最高的开销项",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "逻辑推理",
+          "信息筛选",
+          "事实准确性"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f94d1d00841a",
+          "type": "leaf",
+          "name": "正确读取了/root/Desktop家庭月度日常开销明细.md中的全部有效开销记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3f73dce3d9e7",
+          "type": "leaf",
+          "name": "准确识别了属于本月且应计入日常开销的金额记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "条件判断",
+            "信息筛选",
+            "时间推理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8c9b35538649",
+          "type": "leaf",
+          "name": "准确计算了各项开销分类金额并据此比较最高花费项",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4d3b825af9b8",
+          "type": "leaf",
+          "name": "回复中包含了总开销金额和最高花费项的明确说明",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-847c01bf1fda",
+    "language": "zh"
+  },
+  "note": "文件检索、数据分析与整理"
+}

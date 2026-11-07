@@ -1,0 +1,225 @@
+{
+  "id": "competitive_analysis",
+  "name": "竞品动态对比分析",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop上有一份竞品分析报告 pdf，帮我上网搜一下这家公司的最新动态，把网上的信息和报告里的做对比，写一份对比总结放在同一目录。",
+  "rubric": {
+    "query": "/root/Desktop上有一份竞品分析报告 pdf，帮我上网搜一下这家公司的最新动态，把网上的信息和报告里的做对比，写一份对比总结放在同一目录。",
+    "query_id": "competitive_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5a85c7082b1d",
+        "type": "leaf",
+        "name": "正确读取了桌面目录中的竞品分析报告 PDF 内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-55c98c22534b",
+        "type": "leaf",
+        "name": "正确检索了该公司的最新动态信息",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-f69f850abc89",
+        "type": "group",
+        "name": "对比总结交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-90df683fd6a1",
+            "type": "leaf",
+            "name": "完成了报告内容与最新动态的对比总结",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3fa92808c339",
+            "type": "leaf",
+            "name": "在桌面同一目录生成了对比总结文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-6a2a960dbdb2",
+          "type": "leaf",
+          "name": "准确定位并读取了 /root/Desktop 下目标竞品分析报告 PDF 的关键信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "信息筛选",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eacb1b4e9002",
+          "type": "leaf",
+          "name": "正确识别了报告对应的公司名称并据此构造了检索关键词",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "检索策略",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d07422493a24",
+          "type": "group",
+          "name": "最新动态信息获取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-13287f880316",
+              "type": "leaf",
+              "name": "准确检索了可用于判断公司最新动态的公开信息来源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3d66103a527f",
+              "type": "leaf",
+              "name": "正确提取了公开来源中的时间、事件和主体信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-23b777000622",
+          "type": "group",
+          "name": "对比分析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-772ad0208fdf",
+              "type": "leaf",
+              "name": "准确对齐了报告中的关键判断与网上最新动态的对应主题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-afe3fd35770c",
+              "type": "leaf",
+              "name": "正确标注了对比结论中的一致点、变化点或新增信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-92305aa11607",
+          "type": "group",
+          "name": "对比总结文件可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-96bfacb55157",
+              "type": "leaf",
+              "name": "生成的对比总结文件内容包含公司对象、信息来源、对比结论和结论依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-7f5be188df3a",
+              "type": "leaf",
+              "name": "生成的对比总结文件可正常打开且文本内容无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-cafeb94cc2c3",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "id": "coffee_creativity",
+  "name": "咖啡创意图文",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "创意生成",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "搜索清晨咖啡高清图片并下载，根据图片写配套短句，整理保存成咖啡创意，以合适的格式存放在/root/Desktop",
+  "rubric": {
+    "query": "搜索清晨咖啡高清图片并下载，根据图片写配套短句，整理保存成咖啡创意，以合适的格式存放在/root/Desktop",
+    "query_id": "coffee_creativity",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d360c0d64351",
+        "type": "leaf",
+        "name": "正确检索并下载了清晨咖啡高清图片",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-7bc0108cc060",
+        "type": "leaf",
+        "name": "根据已下载图片生成了配套短句",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "上下文保持",
+          "通用知识",
+          "沟通表达"
+        ]
+      },
+      {
+        "id": "node-7ac506f1e91b",
+        "type": "leaf",
+        "name": "生成了名为咖啡创意的交付物并存放在/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f25494477970",
+          "type": "leaf",
+          "name": "准确构造了与清晨咖啡高清图片相关的检索条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8a75b2e8dc22",
+          "type": "leaf",
+          "name": "正确筛选了分辨率较高且主题符合清晨咖啡的图片",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d7b1fd6211b2",
+          "type": "leaf",
+          "name": "正确使用下载与文件保存工具将图片写入/root/Desktop下的咖啡创意交付物目录或文件中",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-81d5f3001646",
+          "type": "group",
+          "name": "图片配套短句生成质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e62b41093b46",
+              "type": "leaf",
+              "name": "准确提取了图片中的咖啡场景元素用于生成短句",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-afe644d8feea",
+              "type": "leaf",
+              "name": "生成的短句与对应图片内容一致且未编造图片中不存在的元素",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-94e63ab55828",
+          "type": "group",
+          "name": "咖啡创意交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-78ac2a759b55",
+              "type": "leaf",
+              "name": "交付物中的图片与短句一一对应且顺序可识别",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-face1e107624",
+              "type": "leaf",
+              "name": "交付物可在常见应用中正常打开且图片与文字无乱码或丢失",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-29b595273b9f",
+              "type": "leaf",
+              "name": "交付物文件名或目录名使用咖啡创意并存放在/root/Desktop",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-f843d8f4ea86",
+    "language": "zh"
+  },
+  "note": "回复暂时无法直接访问外网图片网站（浏览器策略限制）"
+}

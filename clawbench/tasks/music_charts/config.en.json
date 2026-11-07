@@ -1,0 +1,145 @@
+{
+  "id": "music_charts",
+  "name": "Music Chart Moments Copy",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Creative Generation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Open the popular music chart web page, extract the song names, pair them with heartfelt short sentences, and write a WeChat Moments post.",
+  "rubric": {
+    "query": "Open the popular music chart web page, extract the song names, pair them with heartfelt short sentences, and write a WeChat Moments post.",
+    "query_id": "music_charts",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1ef625a85721",
+        "type": "leaf",
+        "name": "Correctly opened the popular music chart web page",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-adb5b186b515",
+        "type": "leaf",
+        "name": "Correctly extracted the song names in the chart",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-67c0e7899c9f",
+        "type": "leaf",
+        "name": "Successfully produced a WeChat Moments copy containing song names and heartfelt short sentences",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Communication",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-182e149c6961",
+          "type": "leaf",
+          "name": "Correctly selected an accessible web source corresponding to the popular music chart",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c68a963fc714",
+          "type": "leaf",
+          "name": "Accurately extracted the song names that actually appear on the web page",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8710f4f822b3",
+          "type": "group",
+          "name": "WeChat Moments Copy Result Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fcbdba5220af",
+              "type": "leaf",
+              "name": "Correctly cited the extracted song names in the WeChat Moments copy",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-fae49b9843b3",
+              "type": "leaf",
+              "name": "Correctly paired each cited song name with a heartfelt short sentence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-e6da80d780b8",
+              "type": "leaf",
+              "name": "Correctly output a WeChat Moments copy format that can be published directly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-59dab1694bc8",
+    "language": "en"
+  },
+  "note": "The Moments copy pairs with some recent popular songs that come to mind."
+}

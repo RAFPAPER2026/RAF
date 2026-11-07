@@ -1,0 +1,13 @@
+Title: Quantum Computing: An Introduction (Version 22)
+Authors: Carol White
+Year: 2021
+Keywords: quantum computing; qubits; algorithms
+
+Abstract:
+Quantum computing promises to revolutionize computation by
+using quantum bits. This introduction covers fundamental
+concepts.
+
+References:
+A. Einstein, Quantum Theory, 1925.
+R. Feynman, Simulating Physics with Computers, 1982.

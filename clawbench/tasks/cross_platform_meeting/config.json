@@ -1,0 +1,308 @@
+{
+  "id": "cross_platform_meeting",
+  "name": "跨平台会议汇报邮件",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面cross_platform_sync_meetings文件夹下有四个ics文件：meeting_ps5_render_conflict.ics、meeting_ios_memory_leak.ics、meeting_xbox_api_deprecate.ics、meeting_android_build_farm.ics。\n\n帮我看看这几个文件的DESCRIPTION字段，提取出平台、核心冲突模块、预计修复工时、责任负责人这四个信息。然后生成一封.eml格式的汇报邮件，保存到桌面 cross_platform_sync_meetings/v3_conflict_summary.eml。邮件正文用Markdown表格列出这四个维度。\n\n注意：预计修复工时统一用\"X小时\"格式，1天等于8小时换算。如果没提到工时，就填\"待定\"。",
+  "rubric": {
+    "query": "桌面cross_platform_sync_meetings文件夹下有四个ics文件：meeting_ps5_render_conflict.ics、meeting_ios_memory_leak.ics、meeting_xbox_api_deprecate.ics、meeting_android_build_farm.ics。\n\n帮我看看这几个文件的DESCRIPTION字段，提取出平台、核心冲突模块、预计修复工时、责任负责人这四个信息。然后生成一封.eml格式的汇报邮件，保存到桌面 cross_platform_sync_meetings/v3_conflict_summary.eml。邮件正文用Markdown表格列出这四个维度。\n\n注意：预计修复工时统一用\"X小时\"格式，1天等于8小时换算。如果没提到工时，就填\"待定\"。",
+    "query_id": "cross_platform_meeting",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-2dd55cc73aa4",
+        "type": "leaf",
+        "name": "正确读取了四个指定的ics文件的DESCRIPTION字段",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-b9b07c057f97",
+        "type": "group",
+        "name": "会议信息整理目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9287f801f478",
+            "type": "leaf",
+            "name": "正确提取了四个文件中的平台、核心冲突模块、预计修复工时、责任负责人",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-cd1109429412",
+            "type": "leaf",
+            "name": "正确将未提到的工时填写为待定并将天数换算为X小时格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-323f1ba72bd0",
+        "type": "group",
+        "name": "邮件交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-526f0f45026b",
+            "type": "leaf",
+            "name": "成功生成了eml格式的汇报邮件文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-1eb26eab26cd",
+            "type": "leaf",
+            "name": "正确将邮件文件保存到桌面cross_platform_sync_meetings/v3_conflict_summary.eml",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-035243ac40f3",
+            "type": "leaf",
+            "name": "邮件正文包含了按Markdown表格列出的平台、核心冲突模块、预计修复工时、责任负责人",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d34939673b40",
+          "type": "leaf",
+          "name": "正确定位了桌面cross_platform_sync_meetings目录下的四个指定ics文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3ee4bc71b668",
+          "type": "group",
+          "name": "字段提取准确性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a404bb12992e",
+              "type": "leaf",
+              "name": "准确提取了DESCRIPTION中的平台信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-99901f3d69af",
+              "type": "leaf",
+              "name": "准确提取了DESCRIPTION中的核心冲突模块信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7b35dd998df1",
+              "type": "leaf",
+              "name": "准确提取了DESCRIPTION中的责任负责人信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-3272f9493da8",
+          "type": "group",
+          "name": "工时判断与格式化质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0df5a8328ce1",
+              "type": "leaf",
+              "name": "准确识别了DESCRIPTION中是否提到预计修复工时",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-c2dd5441c322",
+              "type": "leaf",
+              "name": "正确将天数工时按1天等于8小时换算为X小时格式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-b03a32a42404",
+              "type": "leaf",
+              "name": "正确将缺失工时填写为待定",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-808b05346cb1",
+          "type": "group",
+          "name": "邮件交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-888a7c3f4228",
+              "type": "leaf",
+              "name": "正确为四个会议各生成了一行Markdown表格内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-891f9a7508db",
+              "type": "leaf",
+              "name": "正确在表格列中包含了平台、核心冲突模块、预计修复工时、责任负责人",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-e07e7c02e310",
+              "type": "leaf",
+              "name": "正确生成的eml文件可被邮件客户端正常识别为邮件内容且正文包含Markdown表格",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ba69bc9c30ee",
+          "type": "group",
+          "name": "多文件处理稳定性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bc7d4d8b0d4c",
+              "type": "leaf",
+              "name": "正确在提取结果与邮件生成过程中保持了四个文件与对应会议信息的一一对应",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-37903e89ee79",
+              "type": "leaf",
+              "name": "正确处理了DESCRIPTION缺失字段或格式不一致时的空值填充与结果输出",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-50ad695c1d0c",
+    "language": "zh"
+  },
+  "note": "从ICS日历文件提取会议信息生成汇报邮件"
+}

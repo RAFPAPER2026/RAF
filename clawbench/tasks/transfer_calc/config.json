@@ -1,0 +1,282 @@
+{
+  "id": "transfer_calc",
+  "name": "开源基准论文总结",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "反思和修复-异常识别和理解",
+    "反思和修复-异常处理和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.detect",
+    "reflection.repair"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "搜索一下最新的大模型开源Benchmark论文，帮我总结一下，记在/root/Desktop里。",
+  "rubric": {
+    "query": "搜索一下最新的大模型开源Benchmark论文，帮我总结一下，记在/root/Desktop里。",
+    "query_id": "transfer_calc",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-235522534619",
+        "type": "group",
+        "name": "完成论文搜索目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-76a96257f10a",
+            "type": "leaf",
+            "name": "正确检索了最新的大模型开源Benchmark论文",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-8d7e1edfe395",
+            "type": "leaf",
+            "name": "正确识别了与大模型开源Benchmark主题直接相关的论文",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-aac00af4a33d",
+        "type": "group",
+        "name": "完成总结与交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-cd9174c74638",
+            "type": "leaf",
+            "name": "正确总结了检索到的最新大模型开源Benchmark论文的关键信息",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-533dd996b9ae",
+            "type": "leaf",
+            "name": "在/root/Desktop中产出了论文总结交付物",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2ff94cdae5d8",
+          "type": "leaf",
+          "name": "准确构造了用于检索最新大模型开源Benchmark论文的查询条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2572842e6cff",
+          "type": "group",
+          "name": "论文筛选与时效性判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8138bbaf83ea",
+              "type": "leaf",
+              "name": "准确筛除了与Benchmark无关或非开源的大模型论文",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-02317ee99733",
+              "type": "leaf",
+              "name": "准确依据发布时间或版本信息判断了论文的新近性",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2798dedba673",
+          "type": "group",
+          "name": "总结内容质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d13245d561d3",
+              "type": "leaf",
+              "name": "正确提取了每篇论文的任务范围方法特点数据集或评测维度等关键信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-c90b1629577f",
+              "type": "leaf",
+              "name": "准确区分了论文原文结论与Agent自行归纳的总结内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e5f606399fe7",
+              "type": "leaf",
+              "name": "未编造未检索到的论文名称作者结论或开源信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-ca0305002257",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c8851278694c",
+              "type": "leaf",
+              "name": "生成的总结文件可正常打开且文件格式与内容编码无异常",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-7271104e7591",
+              "type": "leaf",
+              "name": "生成的总结文件包含可直接使用的论文列表与对应摘要结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-5dbfb577b02d",
+              "type": "leaf",
+              "name": "生成的总结文件在/root/Desktop中的文件名或内容中明确标识主题为最新大模型开源Benchmark论文总结",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-b824804f7ac6",
+          "type": "group",
+          "name": "执行一致性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cb19fb79893c",
+              "type": "leaf",
+              "name": "正确使用了检索与写文件工具并给出了与目标一致的参数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-b1f90f20e031",
+              "type": "leaf",
+              "name": "在多步检索总结写入过程中保持了论文主题最新性与保存位置的一致性",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-c18bc4b49a9d",
+    "language": "zh"
+  },
+  "note": "文件检索、数据分析与整理"
+}

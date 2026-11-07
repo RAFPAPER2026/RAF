@@ -1,0 +1,6 @@
+=== EXP-01 失败案例聚类 v1 ===
+日期：2025-12-20
+数据：AgentBench 500条失败trace
+配置：embeddings=text-embedding-v2, cluster=kmeans(k=4)
+结果：轮廓系数 0.18
+结论：聚类效果差，失败案例噪声大。

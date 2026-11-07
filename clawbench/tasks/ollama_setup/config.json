@@ -1,0 +1,159 @@
+{
+  "id": "ollama_setup",
+  "name": "Ollama部署",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "反思和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop中有qwen3 0.6b模型，在当前机器上设置好Ollama环境，让模型正常运行，给出一个请求和回复的日志记录放在/root/Desktop",
+  "rubric": {
+    "query": "/root/Desktop中有qwen3 0.6b模型，在当前机器上设置好Ollama环境，让模型正常运行，给出一个请求和回复的日志记录放在/root/Desktop",
+    "query_id": "ollama_setup",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5c580a77d9d4",
+        "type": "leaf",
+        "name": "完成了Ollama运行环境配置并使本机可调用Ollama服务",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "异常处理"
+        ]
+      },
+      {
+        "id": "node-ee94871beb32",
+        "type": "leaf",
+        "name": "让/root/Desktop中的qwen3 0.6b模型在当前机器上成功运行",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-2c497dba4504",
+        "type": "leaf",
+        "name": "在/root/Desktop生成了包含一次请求与对应回复的日志记录文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-15de879ed743",
+          "type": "leaf",
+          "name": "准确识别了/root/Desktop中的目标模型文件并确认其可被Ollama导入或映射使用",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7ec2822fb9e0",
+          "type": "leaf",
+          "name": "正确执行了Ollama安装或启动所需步骤并使用了与当前系统匹配的命令",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "通用知识",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f93358d4697a",
+          "type": "leaf",
+          "name": "准确配置了模型导入或创建参数并成功发起可返回内容的推理请求",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ea45a0e090dd",
+          "type": "leaf",
+          "name": "正确处理了模型路径、名称含空格或版本兼容性导致的执行错误并完成修正",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a80b13d00a62",
+          "type": "leaf",
+          "name": "生成的日志记录文件包含可核对的请求文本、模型回复文本和对应执行结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "事实准确性",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-08a6ef2568ae",
+          "type": "leaf",
+          "name": "回复中明确说明了模型运行状态、调用方式和日志文件在/root/Desktop的具体位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-12adb2f9d880",
+    "language": "zh"
+  }
+}

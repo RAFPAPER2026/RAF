@@ -1,0 +1,341 @@
+{
+  "id": "trend_extraction",
+  "name": "Trend Extraction and Forecast",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "API Calling"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The monthly_sales.csv in the sales_data folder on the desktop has 36 months of sales data, with two columns month and sales.\n\nTask:\n1. Read the monthly_sales.csv file\n2. Calculate the 3-month and 6-month moving average sales\n3. Detect seasonality by calculating the seasonal index for each month of the year\n4. Forecast the sales for the 3 months after the last month in the data\n5. Determine the overall trend based on the moving averages (\"increasing\", \"decreasing\", or \"stable\")\n6. Write the results into trend_analysis.json and save the file to the desktop\n\nOutput format example:\n{\n  \"moving_averages\": {\n    \"3_month\": [float, ...],\n    \"6_month\": [float, ...]\n  },\n  \"seasonal_indices\": {\n    \"01\": float,\n    \"02\": float,\n    ...\n    \"12\": float\n  },\n  \"forecast\": [\n    {\"month\": \"YYYY-MM\", \"forecasted_sales\": float},\n    ... (3 entries)\n  ],\n  \"overall_trend\": \"increasing\" | \"decreasing\" | \"stable\"\n}\n\nNotes:\n- The seasonal index is the average of the ratios of the actual sales of that month to the moving average\n- If the 6-month moving average shows a clear upward trend, the overall trend is \"increasing\"; if downward, \"decreasing\"; otherwise \"stable\"",
+  "rubric": {
+    "query": "The monthly_sales.csv in the sales_data folder on the desktop has 36 months of sales data, with two columns month and sales.\n\nTask:\n1. Read the monthly_sales.csv file\n2. Calculate the 3-month and 6-month moving average sales\n3. Detect seasonality by calculating the seasonal index for each month of the year\n4. Forecast the sales for the 3 months after the last month in the data\n5. Determine the overall trend based on the moving averages (\"increasing\", \"decreasing\", or \"stable\")\n6. Write the results into trend_analysis.json and save the file to the desktop\n\nOutput format example:\n{\n  \"moving_averages\": {\n    \"3_month\": [float, ...],\n    \"6_month\": [float, ...]\n  },\n  \"seasonal_indices\": {\n    \"01\": float,\n    \"02\": float,\n    ...\n    \"12\": float\n  },\n  \"forecast\": [\n    {\"month\": \"YYYY-MM\", \"forecasted_sales\": float},\n    ... (3 entries)\n  ],\n  \"overall_trend\": \"increasing\" | \"decreasing\" | \"stable\"\n}\n\nNotes:\n- The seasonal index is the average of the ratios of the actual sales of that month to the moving average\n- If the 6-month moving average shows a clear upward trend, the overall trend is \"increasing\"; if downward, \"decreasing\"; otherwise \"stable\"",
+    "query_id": "trend_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-338ccb7b8151",
+        "type": "leaf",
+        "name": "Correctly read the monthly_sales.csv file",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-08ba9eeb024f",
+        "type": "group",
+        "name": "Sales Analysis Result Calculations Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c3ee47e5c71c",
+            "type": "leaf",
+            "name": "Correctly calculated the 3-month moving average sales",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-4d83a6062252",
+            "type": "leaf",
+            "name": "Correctly calculated the 6-month moving average sales",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-08ba83fde8f5",
+            "type": "leaf",
+            "name": "Correctly calculated the seasonal index for each month of the year",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-d3ebfbdd9973",
+            "type": "leaf",
+            "name": "Correctly forecast the sales for the 3 months after the last month",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-b9683deccef1",
+            "type": "leaf",
+            "name": "Correctly determined the overall trend as one of increasing, decreasing, or stable",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ad83e320339c",
+        "type": "leaf",
+        "name": "Generated the trend_analysis.json file and saved it to the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a91c8cba82d4",
+          "type": "leaf",
+          "name": "Correctly used monthly_sales.csv on the desktop as the only input data source",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7f2e96e13ebd",
+          "type": "group",
+          "name": "Moving Average Calculation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3dfda8393228",
+              "type": "leaf",
+              "name": "Accurately calculated the 3-month moving average in the chronological order of month",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-8a9a4981671f",
+              "type": "leaf",
+              "name": "Accurately calculated the 6-month moving average in the chronological order of month",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-4138954fda74",
+              "type": "leaf",
+              "name": "Correctly handled the representation of results for months where the preceding window for the moving average was insufficient",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cdc9b9b0e97c",
+          "type": "group",
+          "name": "Seasonality Detection Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6553b14e9f16",
+              "type": "leaf",
+              "name": "Accurately computed the seasonal index samples using the ratio of the actual sales of the month to the corresponding moving average",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-581ab95fe312",
+              "type": "leaf",
+              "name": "Correctly grouped the same-month samples from the 36 months of data by month and output 12 seasonal indices",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0a4d29f50fb3",
+          "type": "group",
+          "name": "Forecast and Trend Determination Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0fc2cfb6174f",
+              "type": "leaf",
+              "name": "Accurately derived the month identifiers for the 3 consecutive months after the last month",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-44b2a030ffa3",
+              "type": "leaf",
+              "name": "Correctly generated 3 forecast values based on the trend and the seasonal indices of the corresponding months",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-b561d2bff893",
+              "type": "leaf",
+              "name": "Accurately determined overall_trend based on the direction of the 6-month moving average",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2c6cb70154fd",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f8b96ba83ab6",
+              "type": "leaf",
+              "name": "Correctly generated a JSON file containing the four top-level fields moving_averages, seasonal_indices, forecast, and overall_trend",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-f19385a601e0",
+              "type": "leaf",
+              "name": "Correctly output seasonal_indices with month keys from 01 to 12",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-9e5b5d78337c",
+              "type": "leaf",
+              "name": "Correctly output forecast as 3 objects containing month and forecasted_sales",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-4efb07762a4d",
+              "type": "leaf",
+              "name": "The generated trend_analysis.json file opens normally and is successfully parsed by a JSON parser",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a48fd0e11eb0",
+          "type": "leaf",
+          "name": "The reply clearly states that the output file has been saved to the desktop and explains the overall trend result",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-23ea65a97e84",
+    "language": "en"
+  }
+}

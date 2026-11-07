@@ -1,0 +1,134 @@
+{
+  "id": "excel_conditionnalsearch_nest",
+  "name": "Empty Excel File Search",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me find the empty excel files among the files and folders on /root/Desktop, and return the names in sample.txt on /root/Desktop.",
+  "rubric": {
+    "query": "Help me find the empty excel files among the files and folders on /root/Desktop, and return the names in sample.txt on /root/Desktop.",
+    "query_id": "excel_conditionnalsearch_nest",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b7cb412dba70",
+        "type": "group",
+        "name": "Empty Excel search objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c172e3011329",
+            "type": "leaf",
+            "name": "Correctly searched the Excel files among the files and folders on /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-63958c72da01",
+            "type": "leaf",
+            "name": "Correctly identified the Excel files whose content is empty",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-18c1c0395fa8",
+        "type": "leaf",
+        "name": "Correctly wrote the names of the empty Excel files into sample.txt on /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4623d670e2fb",
+          "type": "leaf",
+          "name": "Correctly traversed the Excel file paths in /root/Desktop and its subfolders",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5136ba18cbf5",
+          "type": "leaf",
+          "name": "Accurately determined whether the content of each Excel file is empty",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-662093fa519f",
+          "type": "leaf",
+          "name": "Correctly handled read exceptions for protected files, corrupted files, or files without permission",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-40aa87ffabeb",
+          "type": "leaf",
+          "name": "Correctly wrote the result file to /root/Desktop/sample.txt with content containing only the names of empty Excel files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention",
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-b183fcc450d3",
+    "language": "en"
+  }
+}

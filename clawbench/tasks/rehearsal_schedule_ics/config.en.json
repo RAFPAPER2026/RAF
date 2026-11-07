@@ -1,0 +1,352 @@
+{
+  "id": "rehearsal_schedule_ics",
+  "name": "Generate Rehearsal Task ICS Schedule",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "From Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx on the desktop, extract all tasks marked with “【待办-仿真组】” and “【待办-机械组】”; do not include those from other departments.\n\nEach task is followed by an expected completion time. If only a date is given without a specific time, set the calendar event start time to 2 p.m. on that day, lasting 2 hours (until 4 p.m.). If a specific time is given, follow the document.\n\nUse the task description directly as the event title. Generate an .ics file named “彩排任务排期表.ics” and save it in the Project_Beast_Simulation/ directory on the desktop.",
+  "rubric": {
+    "query": "From Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx on the desktop, extract all tasks marked with “【待办-仿真组】” and “【待办-机械组】”; do not include those from other departments.\n\nEach task is followed by an expected completion time. If only a date is given without a specific time, set the calendar event start time to 2 p.m. on that day, lasting 2 hours (until 4 p.m.). If a specific time is given, follow the document.\n\nUse the task description directly as the event title. Generate an .ics file named “彩排任务排期表.ics” and save it in the Project_Beast_Simulation/ directory on the desktop.",
+    "query_id": "rehearsal_schedule_ics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1bc58612ba17",
+        "type": "leaf",
+        "name": "Correctly read the content of Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-cb87c5793fd1",
+        "type": "group",
+        "name": "To-Do Task Filtering Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c52492e7252d",
+            "type": "leaf",
+            "name": "Correctly extracted all tasks marked “【待办-仿真组】” and their expected completion times",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Retrieval Strategy",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-6d5b134164ca",
+            "type": "leaf",
+            "name": "Correctly extracted all tasks marked “【待办-机械组】” and their expected completion times",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Retrieval Strategy",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-66b0a29a9a08",
+            "type": "leaf",
+            "name": "Correctly excluded tasks marked for other departments",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5a4f062b5c7d",
+        "type": "group",
+        "name": "Calendar Deliverable Generation Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-98a9222bfbcf",
+            "type": "leaf",
+            "name": "Tasks with only a date were set to start at 2 p.m. and end at 4 p.m. on that day",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-fa1a3db53411",
+            "type": "leaf",
+            "name": "Tasks with a specified time had calendar events generated according to the time in the document",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ee44206357e4",
+            "type": "leaf",
+            "name": "The event title directly used the task description",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-71f649bd05b0",
+            "type": "leaf",
+            "name": "Generated a file named “彩排任务排期表.ics” and saved it in the Project_Beast_Simulation/ directory on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2cffde85f9ab",
+          "type": "leaf",
+          "name": "Correctly located Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx on the desktop and obtained the body text in a way that can read .docx content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a9ee905bec77",
+          "type": "group",
+          "name": "Task Filtering and Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4dee1449ca52",
+              "type": "leaf",
+              "name": "Accurately identified the task boundaries and task descriptions corresponding to the “【待办-仿真组】” markers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-0e3876df5acd",
+              "type": "leaf",
+              "name": "Accurately identified the task boundaries and task descriptions corresponding to the “【待办-机械组】” markers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-8fd2bdc13d3b",
+              "type": "leaf",
+              "name": "Accurately excluded tasks without the “【待办-仿真组】” or “【待办-机械组】” markers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6de1f78bd078",
+          "type": "group",
+          "name": "Time Parsing and Event Conversion Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9457b0fd82b6",
+              "type": "leaf",
+              "name": "Accurately extracted the expected completion date corresponding to each task",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-5dabc19e8ad3",
+              "type": "leaf",
+              "name": "Accurately identified whether the expected completion time included a specific time of day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-e5d655027072",
+              "type": "leaf",
+              "name": "Tasks with only a date were correctly converted to start at 14:00 and end at 16:00",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-542b8b999e86",
+              "type": "leaf",
+              "name": "Tasks with a specified time were correctly converted to start and end times consistent with the document",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0f391f69fe3c",
+          "type": "group",
+          "name": "Calendar Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a8be3b5f130d",
+              "type": "leaf",
+              "name": "Correctly set each event title to the original text of the corresponding task description",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-2df45ddeba11",
+              "type": "leaf",
+              "name": "The generated .ics file contains all target tasks, and each event has start and end time fields that calendar applications can read",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c47e72679367",
+              "type": "leaf",
+              "name": "The extension, file name, and save directory of the generated .ics file match the user's requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f33d59c694be",
+          "type": "group",
+          "name": "Exception Handling and Result Explanation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9e675b068761",
+              "type": "leaf",
+              "name": "Identified the specific errors and took corresponding corrective or notification actions when document reading failed, time fields were missing, or saving failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-ca0c31a26077",
+              "type": "leaf",
+              "name": "The reply includes the location of the generated file and an explanation of the task processing results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e7e4bf0433d1",
+    "language": "en"
+  },
+  "note": "Extract to-dos for specific departments from meeting minutes and generate an ICS calendar file."
+}

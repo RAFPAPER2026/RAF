@@ -1,0 +1,147 @@
+{
+  "id": "calendar_list_today_schedule",
+  "name": "当日日程提取",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "你收到一个日历文件，位于`/root/Desktop/calendar.json`，其中包含多天的事件安排。请提取**2026-03-15**这一天的所有事件，并将它们写入`/root/Desktop/today.json`文件，按`start_time`升序排列。输出格式为JSON对象，包含`\"events\"`键，值为排序后的事件数组。每个事件需保留所有原始字段。",
+  "rubric": {
+    "query": "你收到一个日历文件，位于`/root/Desktop/calendar.json`，其中包含多天的事件安排。请提取**2026-03-15**这一天的所有事件，并将它们写入`/root/Desktop/today.json`文件，按`start_time`升序排列。输出格式为JSON对象，包含`\"events\"`键，值为排序后的事件数组。每个事件需保留所有原始字段。",
+    "query_id": "calendar_list_today_schedule",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4186af99123b",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/calendar.json 中 2026-03-15 这一天的事件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-b3c713f8ad36",
+        "type": "leaf",
+        "name": "成功生成了 /root/Desktop/today.json 文件且内容为包含 events 键的 JSON 对象",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-4330a96486a6",
+        "type": "leaf",
+        "name": "正确按 start_time 升序写入了 2026-03-15 的全部事件且每个事件保留了所有原始字段",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "条件判断",
+          "逻辑推理",
+          "时间推理",
+          "上下文保持",
+          "事实准确性"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-399afc9d7960",
+          "type": "leaf",
+          "name": "准确定位了 /root/Desktop/calendar.json 并正确读取了可解析的日历数据",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7d27beab35f7",
+          "type": "leaf",
+          "name": "正确筛选了事件日期等于 2026-03-15 的记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "信息筛选",
+            "条件判断",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b884c74d6b8a",
+          "type": "leaf",
+          "name": "准确按 start_time 对筛选结果执行了升序排序",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-42a925a03cb7",
+          "type": "leaf",
+          "name": "正确保留了每个事件的全部原始字段且未新增或编造字段值",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-cbb379747dda",
+          "type": "leaf",
+          "name": "生成的 /root/Desktop/today.json 文件可正常解析为 JSON 对象且顶层仅包含 events 键，events 值为数组",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-978ee8d59d04",
+    "language": "zh"
+  },
+  "note": "从日历中提取并列出指定日期的日程"
+}

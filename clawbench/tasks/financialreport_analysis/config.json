@@ -1,0 +1,318 @@
+{
+  "id": "financialreport_analysis",
+  "name": "财务报告分析",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用",
+    "上下文管理",
+    "指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "context.general",
+    "instruction.follow"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我读一下/root/Desktop/上那份 20页的公司年度财务报告.pdf。总结出他们过去三年的净利润增长率和主要的风险因素。要求：利润数据用 Markdown 表格形式，风险因素只要前三条，直接给结果，保存在桌面上。",
+  "rubric": {
+    "query": "帮我读一下/root/Desktop/上那份 20页的公司年度财务报告.pdf。总结出他们过去三年的净利润增长率和主要的风险因素。要求：利润数据用 Markdown 表格形式，风险因素只要前三条，直接给结果，保存在桌面上。",
+    "query_id": "financialreport_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e98bfa6a57ce",
+        "type": "group",
+        "name": "净利润增长率提取目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3a23b62e5071",
+            "type": "leaf",
+            "name": "正确读取了桌面上的公司年度财务报告.pdf",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-bc8ca7886264",
+            "type": "leaf",
+            "name": "正确提取了过去三年的净利润数据",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3daa45a58886",
+            "type": "leaf",
+            "name": "正确计算了过去三年的净利润增长率",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d3233739bf75",
+        "type": "group",
+        "name": "风险因素总结目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-43a5bae05068",
+            "type": "leaf",
+            "name": "正确识别了报告中的主要风险因素",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-864b032418f4",
+            "type": "leaf",
+            "name": "输出了前三条风险因素",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f1e7bb589012",
+        "type": "group",
+        "name": "结果交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-30e2e8376351",
+            "type": "leaf",
+            "name": "生成了包含利润数据 Markdown 表格和前三条风险因素的结果文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-0008bd69b739",
+            "type": "leaf",
+            "name": "将结果文件保存到了桌面上",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a2f59419a77d",
+          "type": "leaf",
+          "name": "准确定位了桌面上的目标 PDF 文件并读取了与净利润和风险因素相关的页面内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cfb4e361f4e7",
+          "type": "group",
+          "name": "利润数据处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c5f8563b956d",
+              "type": "leaf",
+              "name": "准确识别了过去三年对应的会计期间和净利润数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-e35a9e2e8e49",
+              "type": "leaf",
+              "name": "准确判断了净利润增长率的计算基准为相邻年份净利润变化",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-fee5eae60e9c",
+              "type": "leaf",
+              "name": "准确计算了各年度净利润增长率数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d86304999502",
+          "type": "group",
+          "name": "风险因素筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bdbae3efe193",
+              "type": "leaf",
+              "name": "准确提取了报告中列示的风险因素内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-98308b6fe899",
+              "type": "leaf",
+              "name": "正确按报告中的主次顺序或章节顺序选取了前三条风险因素",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-71c979df4d62",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-709a7a75beef",
+              "type": "leaf",
+              "name": "生成的结果文件包含 Markdown 表格且表头与数据行完整",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-517b2e08f969",
+              "type": "leaf",
+              "name": "生成的结果文件中风险因素列表仅包含三条且内容可对应到原报告",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a34d8fdbd895",
+              "type": "leaf",
+              "name": "生成的结果文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-b9e4d7b6ed4d",
+          "type": "group",
+          "name": "结果沟通与事实约束质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4b43992e0e99",
+              "type": "leaf",
+              "name": "在结果中明确说明了净利润增长率和风险因素的提取结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-6906def8bc4a",
+              "type": "leaf",
+              "name": "未编造报告中不存在的利润数据或风险因素表述",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-74345889059c",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,352 @@
+{
+  "id": "format_message_multi_channel",
+  "name": "多渠道消息格式化",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 120,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "读取桌面上的 message.json 文件。在桌面上新建一个 outputs 文件夹，然后生成下面三个文件：\n\n1. outputs/telegram.txt：纯文本。主题用 *主题* 这种粗体，后面空一行，再写正文，再空一行，最后每个链接单独占一行，格式是“标签: 链接地址”。\n2. outputs/slack.json：一个JSON对象，里面要有 blocks 数组。按 Slack 的那种格式：一个 header 块放主题，一个 section 块放正文（类型是 mrkdwn），然后每个链接单独一个 section 块，链接写成 <链接地址|标签>。\n3. outputs/email.txt：邮件格式。第一行 Subject: ...，第二行 From: ...，第三行 To: ...（这些内容从消息JSON里取），然后空一行，写正文，再空一行，最后每个链接单独一行，格式是“标签 — 链接地址”。\n\n消息里原本的主题、正文、发件人、收件人、链接，在每种格式里都要完整保留，不能漏。",
+  "rubric": {
+    "query": "读取桌面上的 message.json 文件。在桌面上新建一个 outputs 文件夹，然后生成下面三个文件：\n\n1. outputs/telegram.txt：纯文本。主题用 *主题* 这种粗体，后面空一行，再写正文，再空一行，最后每个链接单独占一行，格式是“标签: 链接地址”。\n2. outputs/slack.json：一个JSON对象，里面要有 blocks 数组。按 Slack 的那种格式：一个 header 块放主题，一个 section 块放正文（类型是 mrkdwn），然后每个链接单独一个 section 块，链接写成 <链接地址|标签>。\n3. outputs/email.txt：邮件格式。第一行 Subject: ...，第二行 From: ...，第三行 To: ...（这些内容从消息JSON里取），然后空一行，写正文，再空一行，最后每个链接单独一行，格式是“标签 — 链接地址”。\n\n消息里原本的主题、正文、发件人、收件人、链接，在每种格式里都要完整保留，不能漏。",
+    "query_id": "format_message_multi_channel",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c0b23da22934",
+        "type": "leaf",
+        "name": "正确读取了桌面上的 message.json 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-3a1c0361a8fd",
+        "type": "group",
+        "name": "按要求产出了三个目标文件",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ac3cb51b4742",
+            "type": "leaf",
+            "name": "在桌面上创建了 outputs 文件夹",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-7e0d649d2901",
+            "type": "leaf",
+            "name": "生成了 outputs/telegram.txt 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-e7ea84275509",
+            "type": "leaf",
+            "name": "生成了 outputs/slack.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-5db90c9e85a0",
+            "type": "leaf",
+            "name": "生成了 outputs/email.txt 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-3cb332421ad5",
+        "type": "group",
+        "name": "三种格式都保留了消息中的必需信息",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-67516fa77cef",
+            "type": "leaf",
+            "name": "在 telegram.txt 中完整保留了主题、正文和全部链接",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-9c230dc82240",
+            "type": "leaf",
+            "name": "在 slack.json 中完整保留了主题、正文和全部链接",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-d4774db553c7",
+            "type": "leaf",
+            "name": "在 email.txt 中完整保留了主题、正文、发件人、收件人和全部链接",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1601870db87a",
+        "type": "group",
+        "name": "三个文件都符合各自指定格式",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a93cc274a879",
+            "type": "leaf",
+            "name": "telegram.txt 使用了“*主题*”后空一行再写正文再空一行再逐行写“标签: 链接地址”的格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-eb7610212c71",
+            "type": "leaf",
+            "name": "slack.json 生成了包含 header、正文 section 和逐链接 section 的 blocks JSON 对象",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-7fb91a5621ac",
+            "type": "leaf",
+            "name": "email.txt 使用了 Subject、From、To 头部后空一行正文再空一行逐行写“标签 — 链接地址”的格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-eb0870aa29dc",
+          "type": "leaf",
+          "name": "准确提取了 message.json 中的主题、正文、发件人、收件人和链接字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-620b7a98470f",
+          "type": "leaf",
+          "name": "正确将桌面路径、outputs 文件夹路径和三个输出文件路径写入到目标位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-dc46a7c1f9cd",
+          "type": "group",
+          "name": "格式映射判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a1fb8234008c",
+              "type": "leaf",
+              "name": "准确判断 telegram.txt 不包含发件人和收件人字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-cff2929cbfbe",
+              "type": "leaf",
+              "name": "准确判断 email.txt 需要包含 Subject、From 和 To 头部",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-7c95e72ded21",
+              "type": "leaf",
+              "name": "准确判断 slack.json 的链接块使用 <链接地址|标签> 表达式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "通用知识",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8652385a8700",
+          "type": "group",
+          "name": "交付物结果可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a69570996d0f",
+              "type": "leaf",
+              "name": "telegram.txt 的段落顺序、空行数量和每行链接格式符合用户要求",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-ccd38a89e01f",
+              "type": "leaf",
+              "name": "slack.json 可被解析为 JSON 对象且包含 blocks 数组",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b5014869f870",
+              "type": "leaf",
+              "name": "slack.json 的 blocks 中 header 放置主题、正文 section 使用 mrkdwn、每个链接单独一个 section",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-1af54ae7e632",
+              "type": "leaf",
+              "name": "email.txt 的邮件头顺序、空行位置和每行链接格式符合用户要求",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-40df3a4c7cd4",
+          "type": "group",
+          "name": "异常处理质量",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-102d3c2d67a6",
+              "type": "leaf",
+              "name": "读取失败时报告了 message.json 无法访问或无法解析的错误",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-f16d28bfc60c",
+              "type": "leaf",
+              "name": "写入失败时报告了具体失败文件或目录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-5f99f8b38e3f",
+    "language": "zh"
+  },
+  "note": "将消息JSON文件转换为Telegram纯文本、Slack Block Kit JSON和格式化邮件三种渠道格式"
+}

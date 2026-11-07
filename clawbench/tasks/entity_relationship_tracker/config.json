@@ -1,0 +1,322 @@
+{
+  "id": "entity_relationship_tracker",
+  "name": "人员团队关系追踪",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "读取桌面下的文件夹'events_data'下面的events.jsonl 文件，里面是一系列人员加入、离开团队以及团队合并的事件记录。处理完所有事件后，把当前的人员和团队关系整理成 JSON 格式，输出到桌面下面，文件名为'entity_graph.json'文件。\n\n输出格式示例：\n{\n  \"teams\": {\n    \"<team_name>\": {\n      \"members\": [\"<person>\", ...],\n      \"lead\": \"<person or null>\",\n      \"active\": true/false\n    }\n  },\n  \"people\": {\n    \"<person_name>\": {\n      \"current_team\": \"<team or null>\",\n      \"history\": [\"<team1>\", \"<team2>\", ...]\n    }\n  },\n  \"dissolved_teams\": [\"<team_name>\", ...],\n  \"total_events\": <int>\n}\n\n具体要求：\n- teams 下面列出每个团队，包含成员列表、组长和是否活跃\n- people 下面列出每个人，包含当前所在团队和历史所在团队记录\n- dissolved_teams 列出被合并的团队\n- total_events 记录总事件数\n- members 列表要按字母顺序排序\n- 历史记录要按时间顺序排列\n- 一个人员同时只能在一个团队里",
+  "rubric": {
+    "query": "读取桌面下的文件夹'events_data'下面的events.jsonl 文件，里面是一系列人员加入、离开团队以及团队合并的事件记录。处理完所有事件后，把当前的人员和团队关系整理成 JSON 格式，输出到桌面下面，文件名为'entity_graph.json'文件。\n\n输出格式示例：\n{\n  \"teams\": {\n    \"<team_name>\": {\n      \"members\": [\"<person>\", ...],\n      \"lead\": \"<person or null>\",\n      \"active\": true/false\n    }\n  },\n  \"people\": {\n    \"<person_name>\": {\n      \"current_team\": \"<team or null>\",\n      \"history\": [\"<team1>\", \"<team2>\", ...]\n    }\n  },\n  \"dissolved_teams\": [\"<team_name>\", ...],\n  \"total_events\": <int>\n}\n\n具体要求：\n- teams 下面列出每个团队，包含成员列表、组长和是否活跃\n- people 下面列出每个人，包含当前所在团队和历史所在团队记录\n- dissolved_teams 列出被合并的团队\n- total_events 记录总事件数\n- members 列表要按字母顺序排序\n- 历史记录要按时间顺序排列\n- 一个人员同时只能在一个团队里",
+    "query_id": "entity_relationship_tracker",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b73b8236e4db",
+        "type": "leaf",
+        "name": "正确读取了桌面下 events_data 文件夹中的 events.jsonl 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-056b9741facb",
+        "type": "group",
+        "name": "事件处理结果达成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ad60f65408dc",
+            "type": "leaf",
+            "name": "正确处理了全部事件并生成了当前团队状态数据",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-9c7a5c394a38",
+            "type": "leaf",
+            "name": "正确维护了每个人员同时只能在一个团队中的最终关系",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d05571d91ab0",
+        "type": "group",
+        "name": "JSON 交付物已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-cf6f36826b82",
+            "type": "leaf",
+            "name": "正确生成了包含 teams、people、dissolved_teams 和 total_events 四个顶层字段的 entity_graph.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-38100854da29",
+            "type": "leaf",
+            "name": "正确将 entity_graph.json 输出到了桌面目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-41959c99a916",
+          "type": "leaf",
+          "name": "准确读取了 events.jsonl 中的每一条事件记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-22819d1b9384",
+          "type": "group",
+          "name": "事件语义解析与状态推导质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6e5766057e7d",
+              "type": "leaf",
+              "name": "准确判断了加入、离开团队和团队合并事件对团队状态的影响",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3b5e27005193",
+              "type": "leaf",
+              "name": "正确保持了事件按原始顺序依次生效",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-e4a1a378f911",
+              "type": "leaf",
+              "name": "正确处理了人员跨团队变更时当前团队字段的唯一归属",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-3a0badbb6703",
+          "type": "group",
+          "name": "派生字段构建质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8d204211ab8e",
+              "type": "leaf",
+              "name": "正确记录了每个人历史所在团队的时间顺序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e1dab294ae75",
+              "type": "leaf",
+              "name": "准确统计了 total_events 的事件总数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f8a79a83c920",
+              "type": "leaf",
+              "name": "正确识别了被合并后失活的团队并写入 dissolved_teams",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5155a05c095b",
+          "type": "group",
+          "name": "交付物结果可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-43e432f11bba",
+              "type": "leaf",
+              "name": "正确生成了 teams 下每个团队的 members、lead 和 active 字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-790c8ecec6ef",
+              "type": "leaf",
+              "name": "正确生成了 people 下每个人的 current_team 和 history 字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-2d80bef935dd",
+              "type": "leaf",
+              "name": "正确按字母顺序排序了每个团队的 members 列表",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a8373df98acf",
+              "type": "leaf",
+              "name": "正确输出了可被 JSON 解析器直接读取的合法 JSON 文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-cdc7e8621c0b",
+          "type": "group",
+          "name": "异常与事实控制质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-111b646c322a",
+              "type": "leaf",
+              "name": "识别到事件记录缺失字段或格式异常时给出了可追踪的处理结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-ea59f1213f3e",
+              "type": "leaf",
+              "name": "未编造事件中不存在的人员、团队或组长信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-cf5679c4aa63",
+    "language": "zh"
+  }
+}

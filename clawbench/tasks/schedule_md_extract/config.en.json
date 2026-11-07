@@ -1,0 +1,227 @@
+{
+  "id": "schedule_md_extract",
+  "name": "Extract Next-Week Schedule to Markdown",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "API Calling"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a schedule_export.ics in the logistics_schedule folder on the desktop, containing data mixed from several weeks. I only need the schedule for the week of October 23 to October 29, and filter out those all-day placeholder events without specific start and end times (such as schedule freeze periods and annual leave), keeping only meetings with explicit start and end times.\n\nOutput it as a Markdown file placed at logistics_schedule/tasks_1023_1029.md on the desktop. Use a level-2 heading for each day's date and the to-do checkbox format for each meeting, written in the format 'HH:mm-HH:mm - 会议标题 (会议地点)'. Do not add extra explanatory text.",
+  "rubric": {
+    "query": "There is a schedule_export.ics in the logistics_schedule folder on the desktop, containing data mixed from several weeks. I only need the schedule for the week of October 23 to October 29, and filter out those all-day placeholder events without specific start and end times (such as schedule freeze periods and annual leave), keeping only meetings with explicit start and end times.\n\nOutput it as a Markdown file placed at logistics_schedule/tasks_1023_1029.md on the desktop. Use a level-2 heading for each day's date and the to-do checkbox format for each meeting, written in the format 'HH:mm-HH:mm - 会议标题 (会议地点)'. Do not add extra explanatory text.",
+    "query_id": "schedule_md_extract",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ac6b892e64c5",
+        "type": "leaf",
+        "name": "Correctly read the schedule_export.ics file in the logistics_schedule folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-4c16b9d34883",
+        "type": "group",
+        "name": "Target Time Range and Event Type Filtering Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e7d4e64b6271",
+            "type": "leaf",
+            "name": "Correctly filtered the meeting events with explicit start and end times during the period from October 23 to October 29",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-6c47ca090f04",
+            "type": "leaf",
+            "name": "Correctly filtered out the all-day placeholder events without specific start and end times",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-df5756de9504",
+        "type": "group",
+        "name": "Markdown Deliverable Produced and Written to the Specified Location",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0e990d0af82c",
+            "type": "leaf",
+            "name": "Generated the Markdown file logistics_schedule/tasks_1023_1029.md on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-b80d3d862e48",
+            "type": "leaf",
+            "name": "Wrote the output to the file in the format of a level-2 heading for each day's date and to-do checkboxes for the meetings",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d72758e05133",
+          "type": "leaf",
+          "name": "Accurately parsed the start time, end time, title, and location fields of the ICS events",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-45d812347ba1",
+          "type": "group",
+          "name": "Time Range and Event Type Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e1fa4e9eb51b",
+              "type": "leaf",
+              "name": "Accurately determined whether an event falls within the week of October 23 to October 29",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-10031fcf5c94",
+              "type": "leaf",
+              "name": "Accurately identified the all-day events without specific start and end times and excluded them from the results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ef728f4b9033",
+          "type": "group",
+          "name": "Markdown Content Organization and Formatting Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e82da23410d4",
+              "type": "leaf",
+              "name": "Correctly grouped the meetings by date and kept the meetings within each group sorted by start time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-c0e19d0eb737",
+              "type": "leaf",
+              "name": "Correctly formatted each meeting as HH:mm-HH:mm - 会议标题 (会议地点)",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a07c8fd1e00e",
+          "type": "group",
+          "name": "Markdown Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7a37b12be8d9",
+              "type": "leaf",
+              "name": "The generated Markdown file opens normally and is in Markdown text format",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-d73f5d35397c",
+              "type": "leaf",
+              "name": "The generated Markdown file contains only the date level-2 headings and meeting to-do items, with no extra explanatory text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-aebd54114172",
+    "language": "en"
+  },
+  "note": "Extract meetings within the specified date range from the ICS calendar and generate a Markdown file."
+}

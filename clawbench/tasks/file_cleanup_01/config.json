@@ -1,0 +1,142 @@
+{
+  "id": "file_cleanup_01",
+  "name": "清理重复文件",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我清理/root/Desktop/download上的重复文件，并且列出已清理文件的具体路径，不可修改电脑系统的文件",
+  "rubric": {
+    "query": "帮我清理/root/Desktop/download上的重复文件，并且列出已清理文件的具体路径，不可修改电脑系统的文件",
+    "query_id": "file_cleanup_01",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-04f420410017",
+        "type": "leaf",
+        "name": "清理了/root/Desktop/download中的重复文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-56b1f9d22fd5",
+        "type": "leaf",
+        "name": "列出了已清理文件的具体路径",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "沟通表达",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-863cd4e86ea6",
+        "type": "leaf",
+        "name": "未修改电脑系统文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "条件判断",
+          "异常处理"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d2a029152c90",
+          "type": "leaf",
+          "name": "准确识别了/root/Desktop/download范围内的重复文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-811db7e41da7",
+          "type": "leaf",
+          "name": "正确排除了电脑系统文件和非/root/Desktop/download路径下的文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "工具使用",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-771206f526ad",
+          "type": "leaf",
+          "name": "正确执行了重复文件清理操作且未清理非重复文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-a1ae8a898511",
+          "type": "leaf",
+          "name": "完整列出了已清理文件的具体路径",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-beb9f0ab1daa",
+          "type": "leaf",
+          "name": "在清理失败或权限受限时说明了未完成的文件路径和原因",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-0a33547ddde7",
+    "language": "zh"
+  }
+}

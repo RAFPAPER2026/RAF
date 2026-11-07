@@ -1,0 +1,204 @@
+{
+  "id": "video_conversion",
+  "name": "Batch Convert Videos to HEVC",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Write a script to batch convert the videos in /root/Desktop/Proactive_Video, converting them all to HEVC encoding, adjusting the resolution to 720p, keeping the original files, and generating a conversion report.",
+  "rubric": {
+    "query": "Write a script to batch convert the videos in /root/Desktop/Proactive_Video, converting them all to HEVC encoding, adjusting the resolution to 720p, keeping the original files, and generating a conversion report.",
+    "query_id": "video_conversion",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d766bc710f3b",
+        "type": "leaf",
+        "name": "Wrote a script for batch-converting the videos in /root/Desktop/Proactive_Video",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-3e2570b3fb59",
+        "type": "leaf",
+        "name": "The generated script converts the videos all to HEVC encoding and adjusts them to 720p resolution",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-a05756c931a2",
+        "type": "leaf",
+        "name": "The generated script keeps the original files and produces a conversion report",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7948d21585e9",
+          "type": "leaf",
+          "name": "Correctly identified the directory to process as /root/Desktop/Proactive_Video and did not overwrite the original files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ec9ce3198c39",
+          "type": "group",
+          "name": "Transcoding Parameter Configuration Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6ecc24cad04d",
+              "type": "leaf",
+              "name": "Correctly set the video encoding parameter to the ffmpeg encoder corresponding to HEVC",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-38c936e78bdd",
+              "type": "leaf",
+              "name": "Correctly set the resolution adjustment parameter so that the output video is 720p",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-b137e645a4c6",
+          "type": "group",
+          "name": "Batch Processing Logic Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f2bc509807af",
+              "type": "leaf",
+              "name": "Correctly iterated over the video files in the directory and avoided treating the generated output files as input again",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-61c8ea24a969",
+              "type": "leaf",
+              "name": "Correctly handled spaces and special characters in file names",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c52726715740",
+          "type": "group",
+          "name": "Conversion Report Content Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a9eb715f75b0",
+              "type": "leaf",
+              "name": "Correctly recorded the output file and conversion result status corresponding to each input file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-cf4714f4a898",
+              "type": "leaf",
+              "name": "Correctly recorded the error information or exit status when conversion failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-21a1840d5032",
+          "type": "leaf",
+          "name": "The generated script file content is directly executable, and the conversion report file uses a readable text or CSV format",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-2906a1c32f46",
+    "language": "en"
+  }
+}

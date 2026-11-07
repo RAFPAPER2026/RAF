@@ -1,0 +1,322 @@
+{
+  "id": "entity_relationship_tracker",
+  "name": "Entity Relationship Tracker",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Read the events.jsonl file in the folder 'events_data' on the desktop; it contains a series of event records about people joining and leaving teams and teams merging. After processing all events, organize the current person and team relationships into JSON format, and output it to the desktop with the file name 'entity_graph.json'.\n\nOutput format example:\n{\n  \"teams\": {\n    \"<team_name>\": {\n      \"members\": [\"<person>\", ...],\n      \"lead\": \"<person or null>\",\n      \"active\": true/false\n    }\n  },\n  \"people\": {\n    \"<person_name>\": {\n      \"current_team\": \"<team or null>\",\n      \"history\": [\"<team1>\", \"<team2>\", ...]\n    }\n  },\n  \"dissolved_teams\": [\"<team_name>\", ...],\n  \"total_events\": <int>\n}\n\nSpecific requirements:\n- List each team under teams, including the member list, team lead, and whether it is active\n- List each person under people, including the current team and the record of historical teams\n- List the teams that were merged under dissolved_teams\n- Record the total number of events in total_events\n- The members list must be sorted alphabetically\n- The history records must be arranged in chronological order\n- A person can only be in one team at a time",
+  "rubric": {
+    "query": "Read the events.jsonl file in the folder 'events_data' on the desktop; it contains a series of event records about people joining and leaving teams and teams merging. After processing all events, organize the current person and team relationships into JSON format, and output it to the desktop with the file name 'entity_graph.json'.\n\nOutput format example:\n{\n  \"teams\": {\n    \"<team_name>\": {\n      \"members\": [\"<person>\", ...],\n      \"lead\": \"<person or null>\",\n      \"active\": true/false\n    }\n  },\n  \"people\": {\n    \"<person_name>\": {\n      \"current_team\": \"<team or null>\",\n      \"history\": [\"<team1>\", \"<team2>\", ...]\n    }\n  },\n  \"dissolved_teams\": [\"<team_name>\", ...],\n  \"total_events\": <int>\n}\n\nSpecific requirements:\n- List each team under teams, including the member list, team lead, and whether it is active\n- List each person under people, including the current team and the record of historical teams\n- List the teams that were merged under dissolved_teams\n- Record the total number of events in total_events\n- The members list must be sorted alphabetically\n- The history records must be arranged in chronological order\n- A person can only be in one team at a time",
+    "query_id": "entity_relationship_tracker",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b73b8236e4db",
+        "type": "leaf",
+        "name": "Correctly read the events.jsonl file in the events_data folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-056b9741facb",
+        "type": "group",
+        "name": "Event processing results achieved",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ad60f65408dc",
+            "type": "leaf",
+            "name": "Correctly processed all events and generated the current team state data",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-9c7a5c394a38",
+            "type": "leaf",
+            "name": "Correctly maintained the final relationship in which each person can only be in one team at a time",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d05571d91ab0",
+        "type": "group",
+        "name": "JSON deliverable produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-cf6f36826b82",
+            "type": "leaf",
+            "name": "Correctly generated the entity_graph.json file containing the four top-level fields teams, people, dissolved_teams, and total_events",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-38100854da29",
+            "type": "leaf",
+            "name": "Correctly output entity_graph.json to the desktop directory",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-41959c99a916",
+          "type": "leaf",
+          "name": "Accurately read every event record in events.jsonl",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-22819d1b9384",
+          "type": "group",
+          "name": "Event semantic parsing and state inference quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6e5766057e7d",
+              "type": "leaf",
+              "name": "Accurately determined the impact of join-team, leave-team, and team-merge events on team states",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3b5e27005193",
+              "type": "leaf",
+              "name": "Correctly kept the events taking effect sequentially in their original order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-e4a1a378f911",
+              "type": "leaf",
+              "name": "Correctly handled the unique ownership of the current team field when a person moves between teams",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-3a0badbb6703",
+          "type": "group",
+          "name": "Derived field construction quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8d204211ab8e",
+              "type": "leaf",
+              "name": "Correctly recorded the chronological order of each person's historical teams",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e1dab294ae75",
+              "type": "leaf",
+              "name": "Accurately counted the total number of events for total_events",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f8a79a83c920",
+              "type": "leaf",
+              "name": "Correctly identified the teams that became inactive after merging and wrote them into dissolved_teams",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5155a05c095b",
+          "type": "group",
+          "name": "Deliverable result usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-43e432f11bba",
+              "type": "leaf",
+              "name": "Correctly generated the members, lead, and active fields for each team under teams",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-790c8ecec6ef",
+              "type": "leaf",
+              "name": "Correctly generated the current_team and history fields for each person under people",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-2d80bef935dd",
+              "type": "leaf",
+              "name": "Correctly sorted the members list of each team in alphabetical order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a8373df98acf",
+              "type": "leaf",
+              "name": "Correctly output a valid JSON file that can be read directly by a JSON parser",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-cdc7e8621c0b",
+          "type": "group",
+          "name": "Exception and fact control quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-111b646c322a",
+              "type": "leaf",
+              "name": "Gave a traceable handling result when event records were found with missing fields or abnormal formats",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-ea59f1213f3e",
+              "type": "leaf",
+              "name": "Did not fabricate person, team, or lead information that does not exist in the events",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-cf5679c4aa63",
+    "language": "en"
+  }
+}

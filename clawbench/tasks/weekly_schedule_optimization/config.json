@@ -1,0 +1,319 @@
+{
+  "id": "weekly_schedule_optimization",
+  "name": "周会议日程优化",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "你将获得以下文件：\n- /root/Desktop/draft_schedule.json — 2026年3月16日至3月20日这一周的20个待安排会议\n- /root/Desktop/workspace/preferences.json — 日程偏好和约束条件\n\n请优化日程安排，将每个会议分配到具体的日期和时间段，遵循以下规则：\n\n## 规则\n\n1. **无冲突：** 优化后的日程中任何两个会议不能有时间重叠。\n2. **仅限工作时间：** 所有会议必须安排在09:00至17:00之间。\n3. **包含所有会议：** 草案中的每个会议都必须出现在优化后的日程中。\n4. **尊重固定会议：** 标记为 `\"fixed\": true` 的会议必须保持原有的日期和时间不变。\n5. **尊重偏好日期：** 如果会议有 `\"preferred_day\"` 字段，尽可能将其安排在该日期。\n6. **主题分组：** 具有相同 `\"topic\"` 的会议尽可能安排在同一天。\n7. **长会议间隔：** 时长超过60分钟的会议，其后至少需要预留15分钟的间隔。\n\n## 输出\n\n将优化后的日程写入 /root/Desktop/workspace/optimized_schedule.json，格式为包含 `\"meetings\"` 数组的JSON对象。每个会议必须保留所有原始字段，并更新 `\"date\"`、`\"start_time\"` 和 `\"end_time\"` 字段。",
+  "rubric": {
+    "query": "你将获得以下文件：\n- /root/Desktop/draft_schedule.json — 2026年3月16日至3月20日这一周的20个待安排会议\n- /root/Desktop/workspace/preferences.json — 日程偏好和约束条件\n\n请优化日程安排，将每个会议分配到具体的日期和时间段，遵循以下规则：\n\n## 规则\n\n1. **无冲突：** 优化后的日程中任何两个会议不能有时间重叠。\n2. **仅限工作时间：** 所有会议必须安排在09:00至17:00之间。\n3. **包含所有会议：** 草案中的每个会议都必须出现在优化后的日程中。\n4. **尊重固定会议：** 标记为 `\"fixed\": true` 的会议必须保持原有的日期和时间不变。\n5. **尊重偏好日期：** 如果会议有 `\"preferred_day\"` 字段，尽可能将其安排在该日期。\n6. **主题分组：** 具有相同 `\"topic\"` 的会议尽可能安排在同一天。\n7. **长会议间隔：** 时长超过60分钟的会议，其后至少需要预留15分钟的间隔。\n\n## 输出\n\n将优化后的日程写入 /root/Desktop/workspace/optimized_schedule.json，格式为包含 `\"meetings\"` 数组的JSON对象。每个会议必须保留所有原始字段，并更新 `\"date\"`、`\"start_time\"` 和 `\"end_time\"` 字段。",
+    "query_id": "weekly_schedule_optimization",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5c8ed121d4ff",
+        "type": "leaf",
+        "name": "生成了包含 \"meetings\" 数组的 optimized_schedule.json 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-90e6a1372e51",
+        "type": "group",
+        "name": "日程结果完整性目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3d489b4cee83",
+            "type": "leaf",
+            "name": "为草案中的每个会议分配了具体的日期和时间段",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "时间推理"
+            ]
+          },
+          {
+            "id": "node-28cfa66cbb6b",
+            "type": "leaf",
+            "name": "保留了每个会议的所有原始字段并更新了 \"date\"、\"start_time\" 和 \"end_time\" 字段",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c9fd0d7f0c7e",
+        "type": "group",
+        "name": "硬性约束满足目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f4b0d7c8da02",
+            "type": "leaf",
+            "name": "固定会议保持了原有的日期和时间不变",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理"
+            ]
+          },
+          {
+            "id": "node-fdf7f1ffee24",
+            "type": "leaf",
+            "name": "所有会议都安排在 09:00 至 17:00 之间且不存在时间重叠",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "条件判断"
+            ]
+          },
+          {
+            "id": "node-fe5397d914ac",
+            "type": "leaf",
+            "name": "时长超过 60 分钟的会议后预留了至少 15 分钟间隔",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ba0a3f859df8",
+        "type": "group",
+        "name": "偏好日期处理目标",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-c572a2bde334",
+            "type": "leaf",
+            "name": "有 \"preferred_day\" 的会议被安排到其偏好日期",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "条件判断"
+            ]
+          },
+          {
+            "id": "node-6d36e48df307",
+            "type": "leaf",
+            "name": "无法安排到偏好日期的会议仍被分配了其他具体日期和时间段",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-457a79a31f5e",
+          "type": "leaf",
+          "name": "准确读取了草案日程中的全部会议字段与时间信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "事实准确性",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-8842a3ee4ead",
+          "type": "leaf",
+          "name": "正确读取了偏好文件中的日程约束与安排偏好",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5842768ea369",
+          "type": "group",
+          "name": "排程约束推理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-232dc80f64e2",
+              "type": "leaf",
+              "name": "准确判断了固定会议不可移动的约束范围",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-1e185dbd768d",
+              "type": "leaf",
+              "name": "准确计算了每个会议的结束时间与可用时间槽",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-dad08ff2bced",
+              "type": "leaf",
+              "name": "准确判断了长会议后 15 分钟缓冲对后续排程的影响",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c846b4993281",
+          "type": "group",
+          "name": "排程决策执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bc7a6eeabd54",
+              "type": "leaf",
+              "name": "正确选择了不产生重叠的时间段安排全部会议",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-cf44ed25614b",
+              "type": "leaf",
+              "name": "正确优先安排了带有 \"preferred_day\" 的会议到对应日期",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "条件判断",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-528fea36f113",
+              "type": "leaf",
+              "name": "正确优先将相同 \"topic\" 的会议集中安排到同一天",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8856607d6fd8",
+          "type": "leaf",
+          "name": "输出的 optimized_schedule.json 可正常解析为 JSON 且每个会议对象字段完整可用",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-e3efebf75351",
+          "type": "group",
+          "name": "结果一致性与异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b7c7ef11ecdc",
+              "type": "leaf",
+              "name": "写入结果前后保持了会议标识与原始字段对应关系不混淆",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-9cca1d387817",
+              "type": "leaf",
+              "name": "遇到约束冲突时对未满足的偏好进行了可追溯的取舍而未编造不存在的空闲时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-eb8079642823",
+    "language": "zh"
+  },
+  "note": "优化周会议日程安排，遵循无冲突、工作时间、固定会议、偏好日期、主题分组、长会议间隔等规则"
+}

@@ -1,0 +1,367 @@
+{
+  "id": "auto_research_demo_loop",
+  "name": "Auto Research Demo Loop",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Environment Configuration",
+    "Task Decomposition"
+  ],
+  "ability_category_canonical": [
+    "tool.env",
+    "plan.decompose",
+    "tool.env"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Auto research (automated scientific research) frameworks are very popular recently, such as STORM and AI Scientist. As a beginner, please:\n1. First search and understand the core ideas of auto research (the prompt loop of literature retrieval, hypothesis generation, and iterative verification);\n2. Help me build a runnable minimal demo: implement an auto research prompt loop in Python that includes at least the question-retrieval-summarization-reflection-iteration stages. I put the LLM API key in /root/Desktop/api_key.txt;\n3. Use “evaluation of large-model long-context capability” as the research question to run through one complete cycle, and save the code, run logs, and generated research notes to the /root/Desktop/auto_research_demo/ directory.",
+  "rubric": {
+    "query": "Auto research (automated scientific research) frameworks are very popular recently, such as STORM and AI Scientist. As a beginner, please:\n1. First search and understand the core ideas of auto research (the prompt loop of literature retrieval, hypothesis generation, and iterative verification);\n2. Help me build a runnable minimal demo: implement an auto research prompt loop in Python that includes at least the question-retrieval-summarization-reflection-iteration stages. I put the LLM API key in /root/Desktop/api_key.txt;\n3. Use “evaluation of large-model long-context capability” as the research question to run through one complete cycle, and save the code, run logs, and generated research notes to the /root/Desktop/auto_research_demo/ directory.",
+    "query_id": "auto_research_demo_loop",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-da7c5a0eb6c6",
+        "type": "leaf",
+        "name": "Correctly retrieved and organized the core ideas of auto research",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy",
+          "General Knowledge"
+        ]
+      },
+      {
+        "id": "node-31ef423ba052",
+        "type": "group",
+        "name": "auto research minimal demo building objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-84e7a92320dc",
+            "type": "leaf",
+            "name": "Generated runnable minimal Python demo code",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-becd041730b4",
+            "type": "leaf",
+            "name": "Implemented the question-retrieval-summarization-reflection-iteration stages",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-4be5d41cead0",
+            "type": "leaf",
+            "name": "Correctly read the configuration of the LLM API key in /root/Desktop/api_key.txt",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Exception Handling"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-47b858c2468b",
+        "type": "group",
+        "name": "Complete experiment delivery objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-fc1cafca7d8d",
+            "type": "leaf",
+            "name": "Ran one complete cycle around the evaluation of large-model long-context capability",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-ceb636b8339d",
+            "type": "leaf",
+            "name": "Generated the code files, run logs, and research notes",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-fa8fe5b79016",
+            "type": "leaf",
+            "name": "Saved the deliverables to the /root/Desktop/auto_research_demo/ directory",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-7dbab6dddcc8",
+          "type": "leaf",
+          "name": "Accurately constructed the retrieval queries related to the core ideas of auto research",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fff863e9c97e",
+          "type": "group",
+          "name": "Core idea information filtering quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a84a49b66620",
+              "type": "leaf",
+              "name": "Accurately extracted the key information about the literature retrieval process from the literature",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d951e04bdf9e",
+              "type": "leaf",
+              "name": "Accurately extracted the key information about the hypothesis generation process from the literature",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-19d7f44d9f15",
+              "type": "leaf",
+              "name": "Accurately extracted the key information about the iterative verification prompt loop from the literature",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-230af57d5d20",
+          "type": "group",
+          "name": "prompt loop implementation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-88de340f3d2a",
+              "type": "leaf",
+              "name": "Correctly implemented the input and state passing in the question stage",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-40e13e2f34c8",
+              "type": "leaf",
+              "name": "Correctly implemented the calls and result recording in the retrieval stage",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-220804999e8b",
+              "type": "leaf",
+              "name": "Correctly implemented the summarized output of the retrieval results in the summarization stage",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-2a80dfec6b99",
+              "type": "leaf",
+              "name": "Correctly implemented the identification of information gaps in the reflection stage",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment"
+              ]
+            },
+            {
+              "id": "node-576e20723b74",
+              "type": "leaf",
+              "name": "Correctly implemented the update of the next-round question in the iteration stage",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-09b0216f5426",
+          "type": "group",
+          "name": "Exception handling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-879fae6c8c7a",
+              "type": "leaf",
+              "name": "Correctly handled the error reporting and exit when reading the API key failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-041ea63c0242",
+              "type": "leaf",
+              "name": "Correctly handled the error logging when retrieval or model calls failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7c062851ecea",
+          "type": "group",
+          "name": "Deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fa16f393f684",
+              "type": "leaf",
+              "name": "The generated code files include a directly executable entry point and dependency description",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-eb07ab17f23c",
+              "type": "leaf",
+              "name": "The generated run logs record one complete round of the question-retrieval-summarization-reflection-iteration process",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-2cbfdda4c5f8",
+              "type": "leaf",
+              "name": "The generated research notes contain the research question, retrieval findings, reflection conclusions, and next-round questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-95a88af94872",
+              "type": "leaf",
+              "name": "The files in the delivery directory open normally, and each file's content matches its file name",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-d482a0b69de0",
+          "type": "leaf",
+          "name": "Explained to the user the experimental results of this round and the research directions that can be iterated on next",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Logical Reasoning"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-62f0edf2fa29",
+    "language": "en"
+  },
+  "note": "There are many auto research frameworks recently; as a beginner, I want you to help me build a runnable demo, using auto research ideas to build a runnable prompt loop",
+  "env_description": "api_key.txt (demo key)"
+}

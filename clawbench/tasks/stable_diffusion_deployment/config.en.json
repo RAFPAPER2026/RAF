@@ -1,0 +1,175 @@
+{
+  "id": "stable_diffusion_deployment",
+  "name": "Deploy Stable Diffusion Repository",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I want to learn the latest Stable Diffusion deployment. Please find the most downloaded repository for Stable Diffusion deployment on GitHub, clone it, and set up the environment for me according to the documentation.",
+  "rubric": {
+    "query": "I want to learn the latest Stable Diffusion deployment. Please find the most downloaded repository for Stable Diffusion deployment on GitHub, clone it, and set up the environment for me according to the documentation.",
+    "query_id": "stable_diffusion_deployment",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-08983d7309f7",
+        "type": "leaf",
+        "name": "Correctly identified the target repository with the highest download count for Stable Diffusion deployment on GitHub",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-b85764a1e2a1",
+        "type": "leaf",
+        "name": "Successfully cloned the target repository to the local environment",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-bc4a18995331",
+        "type": "leaf",
+        "name": "Completed the installation and configuration of the environment required for running according to the target repository's documentation",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention",
+          "Exception Handling",
+          "General Knowledge"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-04ce4df643cd",
+          "type": "leaf",
+          "name": "Accurately constructed the GitHub search criteria for finding Stable Diffusion deployment repositories",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-356ecf818c81",
+          "type": "leaf",
+          "name": "Correctly checked the observable metric used to determine the highest download count and selected the repository accordingly",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d44fb0f41d88",
+          "type": "leaf",
+          "name": "Correctly executed the repository clone command and used the repository address consistent with the target repository",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e92781d3be56",
+          "type": "group",
+          "name": "Environment Configuration Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f25e783b8797",
+              "type": "leaf",
+              "name": "Accurately identified the dependency versions and installation order required by the documentation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-02b513a45f7a",
+              "type": "leaf",
+              "name": "Correctly configured the environment variables and dependency components required for running",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a9590d2567ec",
+          "type": "leaf",
+          "name": "When installation or configuration failed, correctly identified the error messages and performed corrective actions corresponding to the errors",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-0acdf672dfe6",
+          "type": "leaf",
+          "name": "Explained to the user the basis for the selected repository, the clone result, and the environment configuration result",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f73cab25b095",
+    "language": "en"
+  }
+}

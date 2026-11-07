@@ -1,0 +1,318 @@
+{
+  "id": "financialreport_analysis",
+  "name": "Annual Financial Report Analysis",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Tool Use",
+    "Context Management",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "context.general",
+    "instruction.follow"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me read the 20-page 公司年度财务报告.pdf on /root/Desktop. Summarize the company's net profit growth rates over the past three years and the main risk factors. Requirements: present the profit data in a Markdown table, include only the top three risk factors, give the results directly, and save them to the desktop.",
+  "rubric": {
+    "query": "Help me read the 20-page 公司年度财务报告.pdf on /root/Desktop. Summarize the company's net profit growth rates over the past three years and the main risk factors. Requirements: present the profit data in a Markdown table, include only the top three risk factors, give the results directly, and save them to the desktop.",
+    "query_id": "financialreport_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e98bfa6a57ce",
+        "type": "group",
+        "name": "Net Profit Growth Rate Extraction Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3a23b62e5071",
+            "type": "leaf",
+            "name": "Correctly read 公司年度财务报告.pdf on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-bc8ca7886264",
+            "type": "leaf",
+            "name": "Correctly extracted the net profit data for the past three years",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3daa45a58886",
+            "type": "leaf",
+            "name": "Correctly calculated the net profit growth rates for the past three years",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d3233739bf75",
+        "type": "group",
+        "name": "Risk Factor Summary Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-43a5bae05068",
+            "type": "leaf",
+            "name": "Correctly identified the main risk factors in the report",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-864b032418f4",
+            "type": "leaf",
+            "name": "Output the top three risk factors",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f1e7bb589012",
+        "type": "group",
+        "name": "Result Delivery Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-30e2e8376351",
+            "type": "leaf",
+            "name": "Generated a result file containing the profit data Markdown table and the top three risk factors",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-0008bd69b739",
+            "type": "leaf",
+            "name": "Saved the result file to the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a2f59419a77d",
+          "type": "leaf",
+          "name": "Accurately located the target PDF file on the desktop and read the page content related to net profit and risk factors",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cfb4e361f4e7",
+          "type": "group",
+          "name": "Net Profit Data Processing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c5f8563b956d",
+              "type": "leaf",
+              "name": "Accurately identified the accounting periods and net profit values corresponding to the past three years",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-e35a9e2e8e49",
+              "type": "leaf",
+              "name": "Accurately determined that the net profit growth rate is calculated based on the change in net profit between adjacent years",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-fee5eae60e9c",
+              "type": "leaf",
+              "name": "Accurately calculated the net profit growth rate for each year",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d86304999502",
+          "type": "group",
+          "name": "Risk Factor Filtering Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bdbae3efe193",
+              "type": "leaf",
+              "name": "Accurately extracted the risk factors listed in the report",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-98308b6fe899",
+              "type": "leaf",
+              "name": "Correctly selected the top three risk factors in the order of importance or chapter order given in the report",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-71c979df4d62",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-709a7a75beef",
+              "type": "leaf",
+              "name": "The generated result file contains a Markdown table with complete header and data rows",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-517b2e08f969",
+              "type": "leaf",
+              "name": "The risk factor list in the generated result file contains exactly three entries, and the content can be matched to the original report",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a34d8fdbd895",
+              "type": "leaf",
+              "name": "The generated result file opens normally with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-b9e4d7b6ed4d",
+          "type": "group",
+          "name": "Result Communication and Factual Constraint Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4b43992e0e99",
+              "type": "leaf",
+              "name": "Clearly stated the extraction results of the net profit growth rates and risk factors in the result",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-6906def8bc4a",
+              "type": "leaf",
+              "name": "Did not fabricate profit data or risk factor statements that do not exist in the report",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-74345889059c",
+    "language": "en"
+  }
+}

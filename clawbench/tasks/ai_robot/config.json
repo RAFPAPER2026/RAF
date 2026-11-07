@@ -1,0 +1,169 @@
+{
+  "id": "ai_robot",
+  "name": "AI机器人推文",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "创意生成",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop上那个mp4是关于AI机器人的视频，帮我提炼出三个核心观点，编写一个推文，记得带上#AI标签。",
+  "rubric": {
+    "query": "/root/Desktop上那个mp4是关于AI机器人的视频，帮我提炼出三个核心观点，编写一个推文，记得带上#AI标签。",
+    "query_id": "ai_robot",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c0423397900d",
+        "type": "leaf",
+        "name": "正确读取了/root/Desktop上的目标mp4视频文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-78a9125c38b5",
+        "type": "group",
+        "name": "内容产出目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-66183461593b",
+            "type": "leaf",
+            "name": "正确提炼了视频中的三个核心观点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-9b9cc2414c87",
+            "type": "leaf",
+            "name": "编写了一个包含#AI标签的推文",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-34dd1df9f899",
+          "type": "leaf",
+          "name": "正确定位并读取了/root/Desktop中与用户描述相符的mp4视频文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-95f8294c4ab4",
+          "type": "leaf",
+          "name": "准确提取了视频中的关键信息且未编造视频未出现的观点",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e3d8fc8a420c",
+          "type": "leaf",
+          "name": "正确将视频内容归纳为三个彼此区分的核心观点",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "信息筛选",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-4f10c512e2f5",
+          "type": "group",
+          "name": "推文生成质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e65c4b4ad83e",
+              "type": "leaf",
+              "name": "准确在推文中反映了视频的主要主题和至少一个核心观点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-dfcd3f5bafb1",
+              "type": "leaf",
+              "name": "正确在推文中包含了#AI标签",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-0048c1371de8",
+          "type": "leaf",
+          "name": "在无法直接读取视频内容或解析失败时，正确说明限制并采取了重新定位文件或请求澄清的处理动作",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-7e15b115110c",
+    "language": "zh"
+  }
+}

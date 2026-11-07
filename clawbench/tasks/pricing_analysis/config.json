@@ -1,0 +1,261 @@
+{
+  "id": "pricing_analysis",
+  "name": "价格弹性与收益优化",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 pricing_data 文件夹里的 pricing_history.csv 。\n\n任务：\n1. 计算相邻月份之间的需求价格弹性。\n   公式：E = (Q变化率) / (P变化率) = ((Q下一月 - Q本月) / Q本月) / ((P下一月 - P本月) / P本月)\n2. 计算所有相邻月份对的平均价格弹性\n3. 用平均弹性和最后一个月的数据估算最优价格：\n   P* = |E| / (|E| + 1) × P最后\n4. 估算最优价格下的最大 revenue：\n   Q* = Q最后 × (P* / P最后)^|E|\n   R* = P* × Q*\n5. 将结果写入 pricing_analysis.json,保存在桌面。\n\n输出格式：\n{\n  \"elasticities\": [E1, E2, ...],\n  \"avg_elasticity\": 平均弹性值,\n  \"optimal_price\": 最优价格,\n  \"max_revenue_estimate\": 最大收入估算\n}\n\n示例：\n| month  | price | units_sold | revenue |\n|--------|-------|------------|---------|\n| 2023-01| 10.0  | 100        | 1000.0  |\n| 2023-02| 9.5   | 110        | 1045.0  |\n\n弹性 = ((110-100)/100) / ((9.5-10)/10) = 0.1 / -0.05 = -2.0",
+  "rubric": {
+    "query": "桌面上 pricing_data 文件夹里的 pricing_history.csv 。\n\n任务：\n1. 计算相邻月份之间的需求价格弹性。\n   公式：E = (Q变化率) / (P变化率) = ((Q下一月 - Q本月) / Q本月) / ((P下一月 - P本月) / P本月)\n2. 计算所有相邻月份对的平均价格弹性\n3. 用平均弹性和最后一个月的数据估算最优价格：\n   P* = |E| / (|E| + 1) × P最后\n4. 估算最优价格下的最大 revenue：\n   Q* = Q最后 × (P* / P最后)^|E|\n   R* = P* × Q*\n5. 将结果写入 pricing_analysis.json,保存在桌面。\n\n输出格式：\n{\n  \"elasticities\": [E1, E2, ...],\n  \"avg_elasticity\": 平均弹性值,\n  \"optimal_price\": 最优价格,\n  \"max_revenue_estimate\": 最大收入估算\n}\n\n示例：\n| month  | price | units_sold | revenue |\n|--------|-------|------------|---------|\n| 2023-01| 10.0  | 100        | 1000.0  |\n| 2023-02| 9.5   | 110        | 1045.0  |\n\n弹性 = ((110-100)/100) / ((9.5-10)/10) = 0.1 / -0.05 = -2.0",
+    "query_id": "pricing_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b0c89f49a64a",
+        "type": "leaf",
+        "name": "正确读取了桌面上 pricing_data 文件夹中的 pricing_history.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-fe463e38113f",
+        "type": "group",
+        "name": "正确完成了价格分析计算结果",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0c4e815b9ca",
+            "type": "leaf",
+            "name": "正确计算了所有相邻月份之间的需求价格弹性列表",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-e7e8761ee023",
+            "type": "leaf",
+            "name": "正确计算了所有相邻月份对的平均价格弹性",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-8c228f04d10a",
+            "type": "leaf",
+            "name": "正确估算了最优价格和最大收入",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-efc6254a6bad",
+        "type": "leaf",
+        "name": "正确生成了桌面上的 pricing_analysis.json 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e363a805ac76",
+          "type": "leaf",
+          "name": "准确定位并读取了指定路径下的 pricing_history.csv",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8faa93c4a251",
+          "type": "group",
+          "name": "计算过程质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1876691f68f2",
+              "type": "leaf",
+              "name": "准确按月份顺序配对了相邻月份记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "信息筛选",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-c35a50e6f5a4",
+              "type": "leaf",
+              "name": "正确使用了用户给定的弹性计算公式处理每一对相邻月份数据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-1b70bbf5d1fe",
+              "type": "leaf",
+              "name": "准确使用最后一个月的价格和销量估算了最优价格与最大收入",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-65f04e18409b",
+          "type": "group",
+          "name": "异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4cdbf0235c5f",
+              "type": "leaf",
+              "name": "在价格或销量作为分母时识别了零值或缺失值带来的计算错误风险",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a80e980e77c8",
+              "type": "leaf",
+              "name": "在遇到零值或缺失值时对受影响月份对采取了可追踪的跳过或报错处理",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-387102e00762",
+          "type": "group",
+          "name": "结果交付质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e9a3705018e2",
+              "type": "leaf",
+              "name": "生成的 JSON 包含 elasticities、avg_elasticity、optimal_price、max_revenue_estimate 四个指定字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-10b55b268e7c",
+              "type": "leaf",
+              "name": "生成的 JSON 数值结果与计算结果一致且文件可正常解析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6167fee06a48",
+              "type": "leaf",
+              "name": "生成的 pricing_analysis.json 保存在桌面",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-30b4e58c1fda",
+          "type": "leaf",
+          "name": "向用户说明了已输出文件的位置以及关键结果数值",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-ce43e0018bc5",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,210 @@
+{
+  "id": "image_2_word_1",
+  "name": "图片转Word文档",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "工具调用-Skill 使用"
+  ],
+  "ability_category_canonical": [
+    "tool.skill"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 500,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "rapid-ocr-reader"
+  ],
+  "language": "zh",
+  "prompt": "把桌面awsome_benchmark文件夹下的所有图片的内容读取出来保存到word文档里，注意要保持文档内容完全一致，格式和风格保持相同，内容不要遗漏，内容衔接的顺序要你要做判断后进行，word文档存到桌面的result目录下",
+  "rubric": {
+    "query": "把桌面awsome_benchmark文件夹下的所有图片的内容读取出来保存到word文档里，注意要保持文档内容完全一致，格式和风格保持相同，内容不要遗漏，内容衔接的顺序要你要做判断后进行，word文档存到桌面的result目录下",
+    "query_id": "image_2_word_1",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d92313ce58fa",
+        "type": "leaf",
+        "name": "正确读取了桌面 awsome_benchmark 文件夹中的所有图片内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-8a9b501d8d86",
+        "type": "leaf",
+        "name": "生成了包含图片内容转写结果的 Word 文档",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-b024ea46c552",
+        "type": "leaf",
+        "name": "将 Word 文档保存到了桌面的 result 目录下",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-ed135ba4aec0",
+        "type": "leaf",
+        "name": "按判断后的正确衔接顺序组织了文档内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "条件判断",
+          "逻辑推理",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-24590d6f1a11",
+          "type": "leaf",
+          "name": "准确定位了桌面 awsome_benchmark 文件夹中需要处理的所有图片文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b5c529eedeeb",
+          "type": "leaf",
+          "name": "准确识别了每张图片中的文字、段落和版面元素",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1222c0a5fd49",
+          "type": "leaf",
+          "name": "正确判断了跨图片内容的前后衔接关系和文档排序",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "逻辑推理",
+            "时间推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1ade109d7b7b",
+          "type": "group",
+          "name": "内容转写质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-189a0893ce0f",
+              "type": "leaf",
+              "name": "准确保留了原文中的文字内容而未添加图片中不存在的信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-bb0f8ee67038",
+              "type": "leaf",
+              "name": "完整保留了原文中的段落、标题、列表、表格或换行结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bdb350cb9296",
+          "type": "group",
+          "name": "Word 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3bfc05f4f387",
+              "type": "leaf",
+              "name": "生成的 Word 文档可以正常打开且文件格式为 Word 文档",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-43560371d2c6",
+              "type": "leaf",
+              "name": "生成的 Word 文档中字体样式、段落排布和页面结构与图片内容对应一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "意图理解",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-60fd20964318",
+          "type": "leaf",
+          "name": "在图片无法识别、文件损坏或保存失败时采取了可观察的修正措施",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-be47d9c8f069",
+    "language": "zh"
+  },
+  "note": "测试使用OCR工具的能力，以及对文本内容的理解能力"
+}

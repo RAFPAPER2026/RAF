@@ -1,0 +1,277 @@
+{
+  "id": "portfolio_risk_metrics",
+  "name": "Portfolio Risk Metrics Calculation",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a portfolio_returns.csv in the portfolio_data folder on the desktop, containing daily return data for 500 trading days, with columns: date, return.\n\nTask:\n1. Read the CSV file\n2. Compute: mean daily return, standard deviation, annualized return (×252), annualized volatility (×√252)\n3. Compute VaR (95% and 99% confidence, historical simulation method: take the quantiles after sorting)\n4. Compute the Sharpe ratio: (annualized return - risk-free rate) / annualized volatility, risk-free rate = 0.04\n5. Compute the maximum drawdown from the cumulative returns\n6. Write the results into risk_report.json and save it on the desktop\n\nOutput format:\n{\n  \"mean_daily_return\": 0.0005,\n  \"daily_std\": 0.015,\n  \"annualized_return\": 0.126,\n  \"annualized_volatility\": 0.238,\n  \"var_95\": -0.023,\n  \"var_99\": -0.035,\n  \"sharpe_ratio\": 0.36,\n  \"max_drawdown\": -0.15,\n  \"risk_rating\": \"moderate\"\n}\n\nRisk rating rules:\n- sharpe < 0.5 => \"poor\"\n- 0.5-1.0 => \"moderate\"\n- 1.0-2.0 => \"good\"\n- > 2.0 => \"excellent\"",
+  "rubric": {
+    "query": "There is a portfolio_returns.csv in the portfolio_data folder on the desktop, containing daily return data for 500 trading days, with columns: date, return.\n\nTask:\n1. Read the CSV file\n2. Compute: mean daily return, standard deviation, annualized return (×252), annualized volatility (×√252)\n3. Compute VaR (95% and 99% confidence, historical simulation method: take the quantiles after sorting)\n4. Compute the Sharpe ratio: (annualized return - risk-free rate) / annualized volatility, risk-free rate = 0.04\n5. Compute the maximum drawdown from the cumulative returns\n6. Write the results into risk_report.json and save it on the desktop\n\nOutput format:\n{\n  \"mean_daily_return\": 0.0005,\n  \"daily_std\": 0.015,\n  \"annualized_return\": 0.126,\n  \"annualized_volatility\": 0.238,\n  \"var_95\": -0.023,\n  \"var_99\": -0.035,\n  \"sharpe_ratio\": 0.36,\n  \"max_drawdown\": -0.15,\n  \"risk_rating\": \"moderate\"\n}\n\nRisk rating rules:\n- sharpe < 0.5 => \"poor\"\n- 0.5-1.0 => \"moderate\"\n- 1.0-2.0 => \"good\"\n- > 2.0 => \"excellent\"",
+    "query_id": "portfolio_risk_metrics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-52e062169651",
+        "type": "leaf",
+        "name": "Correctly read the return data in portfolio_returns.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-50394f9d86e0",
+        "type": "group",
+        "name": "Risk Metrics Computation Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f07ce0094822",
+            "type": "leaf",
+            "name": "Correctly calculated the mean daily return, standard deviation, annualized return, annualized volatility, VaR95, VaR99, Sharpe ratio, and maximum drawdown",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-73c857f96639",
+            "type": "leaf",
+            "name": "Correctly determined the risk_rating level result",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ef8c718f7b16",
+        "type": "leaf",
+        "name": "Generated the risk_report.json file containing the specified fields and saved it to the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention",
+          "Intent Understanding"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-ed2c8b226e92",
+          "type": "leaf",
+          "name": "Accurately located the portfolio_returns.csv file in the portfolio_data folder on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9e0a620c62d3",
+          "type": "group",
+          "name": "Input Data Processing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cc1f8b7c2996",
+              "type": "leaf",
+              "name": "Correctly read the valid data records in the date and return columns",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-cf67142eb3f8",
+              "type": "leaf",
+              "name": "Identified missing values or non-numeric return data and took traceable handling actions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-b127665d58a5",
+          "type": "group",
+          "name": "Core Calculation and Rating Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ab943193117e",
+              "type": "leaf",
+              "name": "Correctly calculated the annualized return and annualized volatility using 252 trading days",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-f386f8d86bd7",
+              "type": "leaf",
+              "name": "Correctly sorted the data and extracted the 95% and 99% VaR quantiles using the historical simulation method",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ca9cd59f8098",
+              "type": "leaf",
+              "name": "Correctly calculated the Sharpe ratio using the risk-free rate 0.04",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-460f93772c04",
+              "type": "leaf",
+              "name": "Correctly calculated the maximum drawdown based on the cumulative return series",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5eac3196e616",
+              "type": "leaf",
+              "name": "Correctly mapped the risk_rating level according to the given ranges",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-084b97771ab4",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1fd65b037f86",
+              "type": "leaf",
+              "name": "The generated risk_report.json can be parsed normally as a JSON object",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7215f56d49ac",
+              "type": "leaf",
+              "name": "The generated risk_report.json contains the 8 numeric fields and 1 risk_rating field required by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-c1ee8bf44006",
+              "type": "leaf",
+              "name": "The field names in the generated risk_report.json exactly match the names specified by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-eba5a20aa1b7",
+          "type": "leaf",
+          "name": "Clearly explained to the user the save location of risk_report.json and the main calculation results",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-dc5d7f64b3ee",
+    "language": "en"
+  }
+}

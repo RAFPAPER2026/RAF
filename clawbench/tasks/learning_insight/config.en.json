@@ -1,0 +1,169 @@
+{
+  "id": "learning_insight",
+  "name": "Study Insights Handbook",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Merge and format the study insights I have saved in /root/Desktop over the past month, generate a condensed insights handbook and put it in /root/Desktop.",
+  "rubric": {
+    "query": "Merge and format the study insights I have saved in /root/Desktop over the past month, generate a condensed insights handbook and put it in /root/Desktop.",
+    "query_id": "learning_insight",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e5274c9455e2",
+        "type": "leaf",
+        "name": "Correctly read the study insight files from the past month in /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Temporal Reasoning"
+        ]
+      },
+      {
+        "id": "node-c3e73cee98a9",
+        "type": "leaf",
+        "name": "Completed the generation of the condensed insights handbook file placed in /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-89b4f882363b",
+        "type": "leaf",
+        "name": "Completed the merging and formatting of the past month's study insights into a single handbook",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-11df8eca121a",
+          "type": "leaf",
+          "name": "Accurately selected the study insight files in /root/Desktop whose modification time falls within the past month",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1cd3681c2012",
+          "type": "leaf",
+          "name": "Correctly extracted the body content of each study insight file without mixing in irrelevant file content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2ebe4a921d9f",
+          "type": "leaf",
+          "name": "Correctly merged duplicate topic content and retained the main information of the original viewpoints",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Information Filtering",
+            "Context Retention",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e634de57283f",
+          "type": "leaf",
+          "name": "The generated condensed insights handbook file opens normally and contains a title, section structure, and continuous body content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7e0911a209a8",
+          "type": "group",
+          "name": "Exception Handling and Result Feedback",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-473cf274c133",
+              "type": "leaf",
+              "name": "Recorded the range of skipped files when files could not be read or had abnormal formats",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-8f642bac1f1b",
+              "type": "leaf",
+              "name": "Stated the save location and processing results of the condensed insights handbook in the reply",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-060dddc9a33c",
+    "language": "en"
+  }
+}

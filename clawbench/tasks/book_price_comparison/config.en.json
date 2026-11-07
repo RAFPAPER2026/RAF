@@ -1,0 +1,160 @@
+{
+  "id": "book_price_comparison",
+  "name": "Book Price Comparison",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Information Retrieval",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a “书单.txt” on /root/Desktop, where each line is a book title. Help me scrape the current selling price of each book on JD.com, generate a price comparison table, and save it as a csv file in the same path.",
+  "rubric": {
+    "query": "There is a “书单.txt” on /root/Desktop, where each line is a book title. Help me scrape the current selling price of each book on JD.com, generate a price comparison table, and save it as a csv file in the same path.",
+    "query_id": "book_price_comparison",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d51115fda5df",
+        "type": "leaf",
+        "name": "Correctly read all the book titles in 书单.txt",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-44d7bd7fd47e",
+        "type": "leaf",
+        "name": "Correctly obtained the current selling price of each book on JD.com",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-cf9cebdfabbd",
+        "type": "leaf",
+        "name": "Generated a price comparison table csv file containing the book titles and prices and saved it to the same path",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-24be3f66ed1e",
+          "type": "leaf",
+          "name": "Correctly read every line of book titles in 书单.txt without omitting any entry other than blank lines",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-926df4e78b8f",
+          "type": "leaf",
+          "name": "Accurately constructed the search request for each book on JD.com and located the corresponding product price",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5f69fca2296c",
+          "type": "leaf",
+          "name": "Correctly handled the books for which no result was found or price scraping failed, and kept a judgeable marker for them in the result",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f7b47cc1a0cc",
+          "type": "leaf",
+          "name": "Accurately matched each scraped selling price to the corresponding book title without cross-book confusion",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Context Retention",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7ce4f83cc4fd",
+          "type": "leaf",
+          "name": "The generated csv file opens normally and contains a directly usable column structure and row-by-row price results",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f96b3a51bcd1",
+          "type": "leaf",
+          "name": "Clearly stated the save location of the csv file and the results for the books whose prices could not be obtained in the reply",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Exception Handling"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-2b0544b78b65",
+    "language": "en"
+  }
+}

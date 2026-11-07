@@ -1,0 +1,12 @@
+Title: Ethics in Artificial Intelligence (Version 15)
+Authors: Helen Clark; Ian Wright
+Year: 2021
+Keywords: ethics; AI; machine learning
+
+Abstract:
+As AI systems become more prevalent, ethical considerations
+are critical. This paper reviews key ethical challenges.
+
+References:
+N. Bostrom, Superintelligence, 2014.
+T. Winfield, Ethical AI, 2016.

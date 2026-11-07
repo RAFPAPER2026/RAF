@@ -1,0 +1,381 @@
+{
+  "id": "sprint_retrospective_action_items",
+  "name": "Sprint Retrospective Action Item PPTX",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Skill Usage",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is an md file named BMS_Sprint_V2.4_Retrospective in the Agile_Tracking folder on the desktop; it is the sprint retrospective meeting minutes for version V2.4 of the BMS embedded team. Help me pull out all unfinished action items and turn them into a PPTX slide deck for tracking.\n\nThe action items in the minutes are in checkbox form: completed ones are checked “- [x]”, unfinished ones are “- [ ]”. I only want those that are unfinished and have a specific owner assigned via “@”.\n\nThe output presentation should be grouped by owner, with each person occupying one slide, the slide title using the owner's name, and the body listing that person's to-do tasks one by one. For task descriptions that carry the “[Urgent]” tag, set the font to red. The first page should be a data overview summarizing the total number of to-do tasks for each owner, sorted in descending order by count.\n\nMinimalist style, solid-color background. Name the output file Action_Items_Tracking.pptx and save it in the Agile_Tracking directory.",
+  "rubric": {
+    "query": "There is an md file named BMS_Sprint_V2.4_Retrospective in the Agile_Tracking folder on the desktop; it is the sprint retrospective meeting minutes for version V2.4 of the BMS embedded team. Help me pull out all unfinished action items and turn them into a PPTX slide deck for tracking.\n\nThe action items in the minutes are in checkbox form: completed ones are checked “- [x]”, unfinished ones are “- [ ]”. I only want those that are unfinished and have a specific owner assigned via “@”.\n\nThe output presentation should be grouped by owner, with each person occupying one slide, the slide title using the owner's name, and the body listing that person's to-do tasks one by one. For task descriptions that carry the “[Urgent]” tag, set the font to red. The first page should be a data overview summarizing the total number of to-do tasks for each owner, sorted in descending order by count.\n\nMinimalist style, solid-color background. Name the output file Action_Items_Tracking.pptx and save it in the Agile_Tracking directory.",
+    "query_id": "sprint_retrospective_action_items",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-52af0ed0113e",
+        "type": "leaf",
+        "name": "Correctly read the content of the BMS_Sprint_V2.4_Retrospective.md file in the Agile_Tracking folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-d86c90a319bc",
+        "type": "group",
+        "name": "Action Item Filtering Objectives Achieved",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ee44bd4b2c9b",
+            "type": "leaf",
+            "name": "Correctly extracted all unfinished action items that include an @owner",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-e51a74c9bd21",
+            "type": "leaf",
+            "name": "Correctly excluded entries that were completed or had no owner assigned via @",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5f684b986ef5",
+        "type": "group",
+        "name": "PPTX Deliverable Generation Objectives Achieved",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2f13705db4e7",
+            "type": "leaf",
+            "name": "Generated the Action_Items_Tracking.pptx presentation grouped by owner",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-82509ccd5a4b",
+            "type": "group",
+            "name": "Presentation Content and Saving Requirements Met",
+            "combinator": "and",
+            "children": [
+              {
+                "id": "node-4ddf1313a165",
+                "type": "leaf",
+                "name": "The first page contains a summary of the total number of to-do tasks for each owner",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "Information Filtering",
+                  "Communication"
+                ]
+              },
+              {
+                "id": "node-83f0cbc793a1",
+                "type": "leaf",
+                "name": "The first page lists the owners in descending order of total to-do task count",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "Logical Reasoning",
+                  "Communication"
+                ]
+              },
+              {
+                "id": "node-42d8f0944cad",
+                "type": "leaf",
+                "name": "A separate slide with the owner's name as the title was generated for each owner",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "Intent Understanding",
+                  "Tool Usage",
+                  "Context Retention"
+                ]
+              },
+              {
+                "id": "node-89767c7e5d93",
+                "type": "leaf",
+                "name": "The body of each page lists the owner's to-do tasks one by one",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "Information Filtering",
+                  "Communication",
+                  "Context Retention"
+                ]
+              },
+              {
+                "id": "node-2249838bfa25",
+                "type": "leaf",
+                "name": "Entries whose task descriptions carry the [Urgent] tag were set to red font",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "Information Filtering",
+                  "Tool Usage"
+                ]
+              },
+              {
+                "id": "node-8d481b0926c2",
+                "type": "leaf",
+                "name": "Saved Action_Items_Tracking.pptx in the Agile_Tracking directory",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "Tool Usage"
+                ]
+              }
+            ],
+            "tags": []
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a6afe26e0400",
+          "type": "leaf",
+          "name": "Accurately located the target md file in the Agile_Tracking directory on the desktop and read its full content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-835ae5307924",
+          "type": "group",
+          "name": "Action Item Parsing and Filtering Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8ba761f4eceb",
+              "type": "leaf",
+              "name": "Accurately recognized that “- [ ]” in the checkbox syntax represents an unfinished state",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e0e3fdf9aa18",
+              "type": "leaf",
+              "name": "Accurately identified the owner information marked with @ in the entries",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6e085b037e4a",
+              "type": "leaf",
+              "name": "Accurately excluded “- [x]” entries and entries without an @owner",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c62ad7fa88d9",
+          "type": "group",
+          "name": "Grouping, Counting, and Sorting Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ab87ed0ac9ed",
+              "type": "leaf",
+              "name": "Correctly assigned each to-do task to the corresponding owner group",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-207c5fc2c4ac",
+              "type": "leaf",
+              "name": "Correctly counted the number of to-do tasks for each owner",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c45f5a6f61a6",
+              "type": "leaf",
+              "name": "Correctly sorted the owners in descending order by to-do task count",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-489634f93214",
+          "type": "group",
+          "name": "Presentation Structure and Format Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2e6418c96a41",
+              "type": "leaf",
+              "name": "Correctly generated a PPTX file that opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-b29438e399ff",
+              "type": "leaf",
+              "name": "The first page of the presentation contains the owner summary, and each owner occupies one subsequent page",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-79faf7aac10b",
+              "type": "leaf",
+              "name": "The title of each owner page matches the name of the owner to whom the tasks on that page belong",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f8f6eda13f02",
+              "type": "leaf",
+              "name": "Tasks with the [Urgent] tag were set to red font on the slides",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-948a84643faa",
+          "type": "group",
+          "name": "Deliverable Usability and File Requirement Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-969c8053baaa",
+              "type": "leaf",
+              "name": "The presentation uses a solid-color background and contains no decorative elements unrelated to task tracking",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-afb89319d018",
+              "type": "leaf",
+              "name": "The task text on each page has no garbled characters, obvious truncation, or content extending beyond the page that cannot be read",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-82b748187813",
+              "type": "leaf",
+              "name": "The output file is named Action_Items_Tracking.pptx and saved in the Agile_Tracking directory",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-00c0189c72e6",
+    "language": "en"
+  },
+  "note": "Extract unfinished action items from the sprint retrospective meeting minutes and generate PPT tracking slides."
+}

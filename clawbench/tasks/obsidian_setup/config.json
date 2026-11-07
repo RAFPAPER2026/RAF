@@ -1,0 +1,301 @@
+{
+  "id": "obsidian_setup",
+  "name": "Obsidian导入",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "任务规划",
+    "反思修复"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我装个叫obsidian的工具，把我/root/Desktop/上所有叫'笔记'的md文件都导入到新建的obsidian仓库里，自动打上标签，再生成一个知识图谱的预览",
+  "rubric": {
+    "query": "帮我装个叫obsidian的工具，把我/root/Desktop/上所有叫'笔记'的md文件都导入到新建的obsidian仓库里，自动打上标签，再生成一个知识图谱的预览",
+    "query_id": "obsidian_setup",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-43281ca7e582",
+        "type": "leaf",
+        "name": "成功安装了 Obsidian 工具",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      },
+      {
+        "id": "node-9e8c2e6ddf8a",
+        "type": "group",
+        "name": "笔记文件导入目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-58fa02e7a46e",
+            "type": "leaf",
+            "name": "正确定位了 /root/Desktop/ 下所有文件名为“笔记”的 md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-bad2a051aab9",
+            "type": "leaf",
+            "name": "成功新建了 Obsidian 仓库并导入了已定位的 md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ab885803b4a9",
+        "type": "group",
+        "name": "标签与知识图谱交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3fcf134eb901",
+            "type": "leaf",
+            "name": "成功为导入的 md 文件自动添加了标签",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "通用知识",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-78999a884556",
+            "type": "leaf",
+            "name": "成功生成了知识图谱预览交付物",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d7d199223519",
+          "type": "leaf",
+          "name": "正确选择了适合当前系统的 Obsidian 安装方式并执行了安装命令",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "异常处理",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-050211041ece",
+          "type": "group",
+          "name": "文件定位质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-81918d8a56ec",
+              "type": "leaf",
+              "name": "准确检索了 /root/Desktop/ 下扩展名为 .md 且文件名为“笔记”的所有文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-32f25a3ab61f",
+              "type": "leaf",
+              "name": "正确排除了文件名不为“笔记”或扩展名不为 .md 的文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-32965f887390",
+          "type": "group",
+          "name": "仓库创建与导入执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a317c434621a",
+              "type": "leaf",
+              "name": "正确创建了新的 Obsidian 仓库并将目标 md 文件放入仓库目录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-12b2befff3f0",
+              "type": "leaf",
+              "name": "正确保持了导入文件的内容不被截断或改写",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1133387c9326",
+          "type": "group",
+          "name": "自动标签处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-49f2241a1b90",
+              "type": "leaf",
+              "name": "正确根据每个 md 文件内容生成并写入可解析的标签标记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "通用知识",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-9b7460be455c",
+              "type": "leaf",
+              "name": "正确将标签写入到对应文件而未写入无关文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-39d82e2d52b2",
+          "type": "group",
+          "name": "知识图谱预览交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-66d9f245250c",
+              "type": "leaf",
+              "name": "生成的知识图谱预览可以正常打开并显示节点关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d62b6df95d6a",
+              "type": "leaf",
+              "name": "知识图谱预览交付物未出现乱码、空白画面或元素重叠",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6d426f9e0536",
+          "type": "group",
+          "name": "异常处理与结果说明质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-431b0214e08e",
+              "type": "leaf",
+              "name": "在安装、导入或预览失败时正确识别错误并执行了替代方案或重试",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-fc6c69ed8d22",
+              "type": "leaf",
+              "name": "回复中包含了安装结果、导入结果、标签处理结果和知识图谱预览结果的明确说明",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-41a6ac65451c",
+    "language": "zh"
+  }
+}

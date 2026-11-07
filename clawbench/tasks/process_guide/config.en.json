@@ -1,0 +1,236 @@
+{
+  "id": "process_guide",
+  "name": "Teacher Certification Registration Guide",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me look up the registration time and process for the teacher qualification certificate exam, generate a registration reminder, and create a registration guide file based on the information from the official registration website, placed in /root/Desktop/.",
+  "rubric": {
+    "query": "Help me look up the registration time and process for the teacher qualification certificate exam, generate a registration reminder, and create a registration guide file based on the information from the official registration website, placed in /root/Desktop/.",
+    "query_id": "process_guide",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-99c434b12f13",
+        "type": "leaf",
+        "name": "Correctly looked up the registration time for the teacher qualification certificate exam",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-a766594d4872",
+        "type": "leaf",
+        "name": "Correctly looked up the registration process for the teacher qualification certificate exam",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-1d8feda86295",
+        "type": "leaf",
+        "name": "Successfully generated a registration reminder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Temporal Reasoning",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-23c4a106c9c9",
+        "type": "group",
+        "name": "Registration Guide File Delivered",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-03a3725127b7",
+            "type": "leaf",
+            "name": "Generated the registration guide file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-1e5fcb5b04f3",
+            "type": "leaf",
+            "name": "Placed the registration guide file in /root/Desktop/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5d3575b9a367",
+          "type": "leaf",
+          "name": "Accurately searched the official registration website and used the official pages as the basis for the registration time",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f55179b30b89",
+          "type": "leaf",
+          "name": "Accurately extracted the key steps and their order in the registration process",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c721d63fd677",
+          "type": "leaf",
+          "name": "Correctly identified the registration time nodes on which the registration reminder is based",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-acc300bbaa76",
+          "type": "group",
+          "name": "Registration Reminder Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1c865124ef11",
+              "type": "leaf",
+              "name": "Accurately generated reminder content corresponding to the registration time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-6a707503b7cd",
+              "type": "leaf",
+              "name": "Correctly set the reminder trigger time or reminder condition",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bae192a33bdc",
+          "type": "group",
+          "name": "Registration Guide File Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-86aa4d83bfda",
+              "type": "leaf",
+              "name": "Correctly cited the time information and process information from the official registration website",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-9d717bba71af",
+              "type": "leaf",
+              "name": "The file content includes clear explanations of the registration entry, registration steps, and time information",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-69389e4e6625",
+              "type": "leaf",
+              "name": "The generated registration guide file opens normally and its content has no garbled text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-d0cebddaab0f",
+    "language": "en"
+  }
+}

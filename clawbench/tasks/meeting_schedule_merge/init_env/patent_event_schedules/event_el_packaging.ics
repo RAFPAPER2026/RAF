@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Estee Lauder//Patent Disclosure//EN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+DTSTART:20230810T140000
+DTEND:20230810T163000
+SUMMARY:雅诗兰黛泵头外观专利说明会
+LOCATION:上海国际会议中心B厅（上海浦东新区滨江大道2727号）
+DESCRIPTION:雅诗兰黛集团知识产权部门将就其最新获授权的化妆品泵头外观设计专利组（共计12项外观专利）进行公开技术说明。\n\n会议议程：\n1. 14:00-14:20 开幕致辞（雅诗兰黛亚太区知识产权总监 James Liu）\n2. 14:20-15:00 泵头外观专利组技术特征详解（专利代理人 周明）\n3. 15:00-15:40 外观专利保护范围界定与行业影响分析（资深专利律师 赵伟）\n4. 15:40-15:55 茶歇\n5. 15:55-16:20 同行业相似外观设计侵权风险提示（合规顾问 Emily Zhang）\n6. 16:20-16:30 Q&A互动环节\n\n参会须知：本次说明会面向行业内各化妆品企业研发及知识产权部门开放，需提前在线注册并携带有效工作证件入场。
+ORGANIZER;CN=Estee Lauder IP Dept:mailto:ip-events@esteelauder.com
+UID:evt-el-packaging-20230810@esteelauder.com
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR

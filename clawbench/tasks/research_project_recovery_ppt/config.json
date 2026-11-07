@@ -1,0 +1,488 @@
+{
+  "id": "research_project_recovery_ppt",
+  "name": "研究恢复与汇报PPT",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "上下文管理-状态跟踪与一致性维护",
+    "反思与修复-异常识别与理解",
+    "任务规划-通用规划与策略制定"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.state",
+    "reflection.detect",
+    "plan.strategy"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我之前做过一个关于 LLM Agent Evaluation 的研究项目，但已经半年没有继续了。\n相关资料散落在桌面 research_project/ 文件夹的 papers/、notes/、实验结果/、会议记录/、旧版proposal/ 和几个PPT中，部分文件可能已经过时，也有一些文件名字非常相似。\n请你：\n1. 先恢复这个项目当时的研究目标、核心假设、已经完成的实验以及目前没有解决的问题——特别注意区分「已经验证的结论」和「当时只是提出但没有验证的假设」；\n2. 检查实验记录，找出最关键的负面结果和失败实验，并分析这些失败是否真正否定了原始假设；\n3. 结合项目中已有的资料，重新设计一个最值得继续做的实验方案，包括 baseline、ablation、evaluation metrics 和预期结果；\n4. 最后生成一份10页以内的研究汇报PPT（保存到桌面 research_project/ 下），包含研究背景、已有工作、实验结果、问题诊断、新实验设计和下一步计划。\n注意：如果不同文件对实验结果存在冲突，请在PPT中明确指出冲突，而不是自行选择一个版本。",
+  "rubric": {
+    "query": "我之前做过一个关于 LLM Agent Evaluation 的研究项目，但已经半年没有继续了。\n相关资料散落在桌面 research_project/ 文件夹的 papers/、notes/、实验结果/、会议记录/、旧版proposal/ 和几个PPT中，部分文件可能已经过时，也有一些文件名字非常相似。\n请你：\n1. 先恢复这个项目当时的研究目标、核心假设、已经完成的实验以及目前没有解决的问题——特别注意区分「已经验证的结论」和「当时只是提出但没有验证的假设」；\n2. 检查实验记录，找出最关键的负面结果和失败实验，并分析这些失败是否真正否定了原始假设；\n3. 结合项目中已有的资料，重新设计一个最值得继续做的实验方案，包括 baseline、ablation、evaluation metrics 和预期结果；\n4. 最后生成一份10页以内的研究汇报PPT（保存到桌面 research_project/ 下），包含研究背景、已有工作、实验结果、问题诊断、新实验设计和下一步计划。\n注意：如果不同文件对实验结果存在冲突，请在PPT中明确指出冲突，而不是自行选择一个版本。",
+    "query_id": "research_project_recovery_ppt",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e8d4e7b872e9",
+        "type": "group",
+        "name": "恢复了项目现状与研究脉络",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ed176d30423c",
+            "type": "leaf",
+            "name": "正确识别了项目当时的研究目标",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-c230374ad135",
+            "type": "leaf",
+            "name": "正确识别了项目的核心假设",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-a1b577890510",
+            "type": "leaf",
+            "name": "正确区分了已经验证的结论与未验证的假设",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-b1d598f4de9f",
+            "type": "leaf",
+            "name": "正确识别了已经完成的实验与尚未解决的问题",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-bc6e69ffb476",
+        "type": "group",
+        "name": "完成了失败实验与负面结果分析",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-444b6bf0affc",
+            "type": "leaf",
+            "name": "正确找出了最关键的负面结果与失败实验",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "检索策略"
+            ]
+          },
+          {
+            "id": "node-d9ffcca0dee9",
+            "type": "leaf",
+            "name": "正确分析了失败结果是否否定原始假设",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "条件判断",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-10e1dd3c6417",
+        "type": "group",
+        "name": "完成了后续实验设计",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1703c01f0e26",
+            "type": "leaf",
+            "name": "基于已有资料提出了一个最值得继续做的实验方案",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3037904323c9",
+            "type": "leaf",
+            "name": "完整定义了新实验的baseline、ablation、evaluation metrics和预期结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-8d2ab84f7aae",
+        "type": "group",
+        "name": "产出了符合要求的研究汇报PPT交付物",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-fa1cc7caa16d",
+            "type": "leaf",
+            "name": "生成了10页以内的研究汇报PPT文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-15324f48d43c",
+            "type": "leaf",
+            "name": "将研究汇报PPT保存到了桌面 research_project/ 下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-34a318248e1d",
+            "type": "leaf",
+            "name": "在PPT中明确标注了不同文件之间存在冲突的实验结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "事实准确性",
+              "沟通表达",
+              "信息筛选"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ac7c7744b309",
+          "type": "group",
+          "name": "资料检索与版本梳理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b6d9a6900160",
+              "type": "leaf",
+              "name": "准确检索了 research_project/ 下 papers、notes、实验结果、会议记录、旧版proposal 和PPT中的相关文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-5bffd7f6c9df",
+              "type": "leaf",
+              "name": "正确区分了文件名相似但内容不同的资料版本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-62b2920f5f8d",
+              "type": "leaf",
+              "name": "正确识别了已过时资料与后续更新资料的时间先后关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6ee5e440afa6",
+          "type": "group",
+          "name": "研究现状恢复与证据归因质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0f54da7fad86",
+              "type": "leaf",
+              "name": "准确提取了研究目标、核心假设、实验设置和实验结论中的关键内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-83c562a8e5f0",
+              "type": "leaf",
+              "name": "准确判断了哪些结论有实验记录支持",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-821ae674082b",
+              "type": "leaf",
+              "name": "准确判断了哪些说法仅停留在proposal或会议记录中的设想阶段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3c4a58b02337",
+          "type": "group",
+          "name": "负面结果诊断与冲突识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1488be01ee4b",
+              "type": "leaf",
+              "name": "准确识别了负面结果对应的实验条件、模型设置或数据集设置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-07cf78b2008d",
+              "type": "leaf",
+              "name": "准确判断了失败实验是由实验设计缺陷、实现问题还是原始假设不成立导致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-988e12e46dd1",
+              "type": "leaf",
+              "name": "准确指出了不同文件对同一实验结果存在数值或结论冲突的地方",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-422335c1477d",
+          "type": "group",
+          "name": "新实验方案设计质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-aeedd5ed3a66",
+              "type": "leaf",
+              "name": "正确设计了与原始研究问题直接对应的baseline",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-66d81b3da178",
+              "type": "leaf",
+              "name": "正确设计了能够隔离关键因素影响的ablation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-01b138e48da4",
+              "type": "leaf",
+              "name": "正确选择了能够检验原始假设的evaluation metrics",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "条件判断"
+              ]
+            },
+            {
+              "id": "node-d9e9266b0042",
+              "type": "leaf",
+              "name": "给出的预期结果与已有实验记录和失败诊断保持一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-ee5b332cba32",
+          "type": "group",
+          "name": "PPT交付物可用性与内容组织质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fc36d7d1a6c2",
+              "type": "leaf",
+              "name": "生成的PPT文件可以正常打开且页数不超过10页",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-7dc8ab52b90f",
+              "type": "leaf",
+              "name": "PPT中包含研究背景、已有工作、实验结果、问题诊断、新实验设计和下一步计划六类内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-e15a8df919e3",
+              "type": "leaf",
+              "name": "PPT中对已验证结论、未验证假设和冲突结果做了分开呈现",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ca9ec3b2eed4",
+          "type": "group",
+          "name": "异常处理与防止编造质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-561dd8107a00",
+              "type": "leaf",
+              "name": "在无法读取文件、结果缺失或记录不完整时正确说明了缺口并调整了结论表述",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-2552d91c1da1",
+              "type": "leaf",
+              "name": "没有将缺失证据补写为已经发生的实验或结论",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-6b27251e8a93",
+    "language": "zh"
+  },
+  "note": "我之前做过一个关于 LLM Agent Evaluation 的研究项目，但已经半年没有继续了。相关资料散落在 papers/、notes/、实验结果/、会议记录/、旧版proposal/ 和几个 PPT 中，部分文件可能已经过时，也有一些文件名字非常相似。请你先恢复这个项目当时的研究目标、核心假设、已经完成的实验以及目前没有解决的问题，特别注意区分已经验证的结论和当时只是提出但没有验证的假设。然后检查实验记录，找出最关键的负面结果和失败实验，并分析这些失败是否真正否定了原始假设。结合项目中已有的资料，重新设计一个最值得继续做的实验方案，包括 baseline、ablation、evaluation metrics 和预期结果。最后生成一份10页以内的研究汇报PPT，要求包含研究背景、已有工作、实验结果、问题诊断、新实验设计和下一步计划；如果不同文件对实验结果存在冲突，请明确指出冲突，而不是自行选择一个版本。",
+  "env_description": "research_project/：旧版proposal/（v1与v2的H3方向相反，需识别演进）、notes/、实验结果/（exp1支持H1；exp2埋v1/v2结果冲突：+6.2% p=0.08 vs +3.1% p=0.15，需明示冲突而非选边；exp3推翻H3的证据；exp4失败实验埋「检测方法失败≠假设被否定」的辨析点）、会议记录/（组会确认exp2-v1未定论）、两份名字相似的PPT讲稿（内容一致均为过时版本，迷惑项）"
+}

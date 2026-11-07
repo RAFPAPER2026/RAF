@@ -1,0 +1,274 @@
+{
+  "id": "aime_bench_run",
+  "name": "AIME评测执行",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "aime26的评测集文件在https://huggingface.co/datasets/MathArena/aime_2026_I_outputs/，下载到/root/Desktop/，给你提供一个模型api(http://localhost:8000/v1/chat/completions),无需鉴权。编写评测代码，使用这个模型跑通。推理时间可能比较长，你需要尽可能快的跑出前5条结果，然后生成报告，放在/root/Desktop/res",
+  "rubric": {
+    "query": "aime26的评测集文件在https://huggingface.co/datasets/MathArena/aime_2026_I_outputs/，下载到/root/Desktop/，给你提供一个模型api(http://localhost:8000/v1/chat/completions),无需鉴权。编写评测代码，使用这个模型跑通。推理时间可能比较长，你需要尽可能快的跑出前5条结果，然后生成报告，放在/root/Desktop/res",
+    "query_id": "aime_bench_run",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-76a412bb2bfc",
+        "type": "leaf",
+        "name": "成功下载了 aime26 评测集文件到 /root/Desktop/",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-6c1a33d251ab",
+        "type": "group",
+        "name": "评测执行目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e0fed4e03a38",
+            "type": "leaf",
+            "name": "编写了可调用给定模型 API 的评测代码",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-5a3a4d7f985e",
+            "type": "leaf",
+            "name": "使用评测代码跑通了评测集前 5 条样本并得到模型输出结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "异常处理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-80b6dabd4eb6",
+        "type": "group",
+        "name": "报告交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b3f5d515ea79",
+            "type": "leaf",
+            "name": "生成了包含前 5 条评测结果的报告文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-6c7d7f600084",
+            "type": "leaf",
+            "name": "将报告文件产出到 /root/Desktop/res",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-082e3458dbca",
+          "type": "leaf",
+          "name": "正确构造了 Hugging Face 数据集下载路径并将文件写入 /root/Desktop/",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9d0f1bad056b",
+          "type": "group",
+          "name": "评测代码配置质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-77046f64ec89",
+              "type": "leaf",
+              "name": "正确识别了评测集中可用于前 5 条推理的输入字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "意图理解",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5492a8e63d9f",
+              "type": "leaf",
+              "name": "正确构造了给定模型 API 的请求参数以返回可解析的模型输出",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-c1fdbe1da21c",
+              "type": "leaf",
+              "name": "正确限制了评测执行范围为前 5 条样本以优先产出结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-aace4c38389a",
+          "type": "group",
+          "name": "评测运行过程质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-624c9b5f43c8",
+              "type": "leaf",
+              "name": "准确记录了每条样本的题目输入与模型原始输出",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-a9d0612cf9b6",
+              "type": "leaf",
+              "name": "在模型响应较慢或请求失败时执行了重试或超时控制",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-6f4f7071d169",
+              "type": "leaf",
+              "name": "未编造未实际返回的模型结果或评测统计",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-b24ee1b09bc0",
+          "type": "group",
+          "name": "报告交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cf70dfe92f1d",
+              "type": "leaf",
+              "name": "报告文件可正常打开并包含前 5 条样本的逐条结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5e29e1934e09",
+              "type": "leaf",
+              "name": "报告中包含评测代码运行方式或复现命令",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-9d40c32d29c5",
+              "type": "leaf",
+              "name": "报告中包含输出文件位置或结果文件位置说明",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-254d95a396b0",
+          "type": "leaf",
+          "name": "回复中说明了下载、评测运行和报告生成的实际完成状态",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-8aa33589d2cb",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,170 @@
+{
+  "id": "international_meetting_arrangements",
+  "name": "Cross-Timezone Meeting Coordination",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "context.long"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There are schedule files for three people on /root/Desktop. Please coordinate A in US Eastern Time (UTC-5), B in Beijing Time (UTC+8), and C in Berlin Time (UTC+1), and within the first complete work week of May, find a 90-minute slot when all three are free to arrange the strategy meeting, and record it for me in '安排.txt' on the desktop.",
+  "rubric": {
+    "query": "There are schedule files for three people on /root/Desktop. Please coordinate A in US Eastern Time (UTC-5), B in Beijing Time (UTC+8), and C in Berlin Time (UTC+1), and within the first complete work week of May, find a 90-minute slot when all three are free to arrange the strategy meeting, and record it for me in '安排.txt' on the desktop.",
+    "query_id": "international_meetting_arrangements",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-02589b30f23e",
+        "type": "leaf",
+        "name": "Correctly read the schedule files of the three people on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-4a1eea31521e",
+        "type": "group",
+        "name": "Strategy Meeting Arrangement Result Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0892b7a1ffe",
+            "type": "leaf",
+            "name": "Correctly found a 90-minute slot in the first complete work week of May when all three people are free",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-63adf7cfd9a4",
+            "type": "leaf",
+            "name": "Correctly wrote the strategy meeting arrangement result into the 安排.txt file on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4bd8c20186d5",
+          "type": "leaf",
+          "name": "Accurately located the schedule files on the desktop corresponding to A, B, and C",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3f4f5a636471",
+          "type": "leaf",
+          "name": "Accurately converted the time zones of A, B, and C and the corresponding time range of the first complete work week of May",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2ff183940d0f",
+          "type": "leaf",
+          "name": "Accurately identified the occupied time slots in the three people's schedules and determined the common free 90-minute window from them",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c9e08542f6a8",
+          "type": "group",
+          "name": "Result Recording Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-04e82e7751d7",
+              "type": "leaf",
+              "name": "Correctly selected a meeting slot that falls within the first complete work week of May",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Conditional Judgment"
+              ]
+            },
+            {
+              "id": "node-b4d4c3eaaced",
+              "type": "leaf",
+              "name": "Correctly recorded the meeting topic and the determined time slot in 安排.txt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-abf4bdb26f90",
+              "type": "leaf",
+              "name": "The record in 安排.txt contains the date, start time, end time, and time zone label in a directly usable form",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-94d5ccfe9115",
+    "language": "en"
+  }
+}

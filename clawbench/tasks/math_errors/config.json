@@ -1,0 +1,235 @@
+{
+  "id": "math_errors",
+  "name": "考研数学错题整理",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我整理 /root/Desktop里的考研数学资料，把错题按章节分类存桌面，删掉重复文档，再把高频错题总结成一页笔记，没标章节的错题帮我确认该归到哪章",
+  "rubric": {
+    "query": "帮我整理 /root/Desktop里的考研数学资料，把错题按章节分类存桌面，删掉重复文档，再把高频错题总结成一页笔记，没标章节的错题帮我确认该归到哪章",
+    "query_id": "math_errors",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-9468c44f53b0",
+        "type": "leaf",
+        "name": "正确识别了 /root/Desktop 中需要处理的考研数学资料",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-ef60b76a61d1",
+        "type": "group",
+        "name": "错题分类整理目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-157ba7b20a81",
+            "type": "leaf",
+            "name": "将有章节信息的错题按章节分类后存放到桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-a01b257ec055",
+            "type": "leaf",
+            "name": "将未标章节的错题确认归属章节后按章节分类存放到桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "通用知识",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e9973facf756",
+        "type": "leaf",
+        "name": "删除了重复的考研数学文档",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-7a67a69abd2f",
+        "type": "leaf",
+        "name": "生成了一页高频错题总结笔记并存放到桌面",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "信息筛选",
+          "逻辑推理",
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-c5c65bd880f8",
+          "type": "leaf",
+          "name": "准确筛选了 /root/Desktop 中与考研数学错题整理相关的文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ff9408220920",
+          "type": "leaf",
+          "name": "正确判断了未标章节错题所属的章节依据来自题目知识点或解法特征",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "逻辑推理",
+            "时间推理",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-44689cca51f9",
+          "type": "leaf",
+          "name": "准确识别了内容重复或实质重复的考研数学文档",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-696b5a17bea3",
+          "type": "group",
+          "name": "错题分类结果可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-388c86285054",
+              "type": "leaf",
+              "name": "生成的章节分类结果包含可直接使用的章节目录或分组文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-cd31f02d6545",
+              "type": "leaf",
+              "name": "各错题被放入与其内容一致的章节分组中",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e15bba06e1d4",
+          "type": "group",
+          "name": "高频错题笔记可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-caf838733193",
+              "type": "leaf",
+              "name": "一页笔记包含高频错题对应的题型或知识点归纳",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-c1bf0b46f43d",
+              "type": "leaf",
+              "name": "一页笔记的内容长度控制在单页可容纳范围内",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-3d3a35ea59a1",
+              "type": "leaf",
+              "name": "一页笔记文件可以正常打开且无乱码或排版错位",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-11e686872a34",
+    "language": "zh"
+  },
+  "note": "文件检索、数据分析与整理"
+}

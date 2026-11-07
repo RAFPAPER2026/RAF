@@ -1,0 +1,3 @@
+sk-demo-a8f3c2e19b7d40568c2a1e5f9b3d7a02
+# base_url: https://api.example-llm.com/v1
+# 此为演示用key，环境部署时替换为可用的模型服务地址

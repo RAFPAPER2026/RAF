@@ -1,0 +1,306 @@
+{
+  "id": "extract_external_expert_emails",
+  "name": "外部专家邮箱提取",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "邮件管理",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "从桌面上的 nmpa_review_meetings_2023.ics 这个日历文件里，提取所有参会者的邮箱地址。去掉重复的，排除后缀是 @example-internal.com 的内部邮箱。如果邮箱前面有 mailto: 这种前缀，要清理掉，只保留纯邮箱地址。\n\n把结果生成一个 Markdown 文件，保存到同一个文件夹下，文件名是 external_experts_contact_list.md。邮箱用无序列表列出，按字母顺序从 A 到 Z 排。",
+  "rubric": {
+    "query": "从桌面上的 nmpa_review_meetings_2023.ics 这个日历文件里，提取所有参会者的邮箱地址。去掉重复的，排除后缀是 @example-internal.com 的内部邮箱。如果邮箱前面有 mailto: 这种前缀，要清理掉，只保留纯邮箱地址。\n\n把结果生成一个 Markdown 文件，保存到同一个文件夹下，文件名是 external_experts_contact_list.md。邮箱用无序列表列出，按字母顺序从 A 到 Z 排。",
+    "query_id": "extract_external_expert_emails",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c57de9f8b131",
+        "type": "leaf",
+        "name": "正确读取了桌面上的 nmpa_review_meetings_2023.ics 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-3b87d4503ab8",
+        "type": "group",
+        "name": "外部参会者邮箱清洗目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0d0567d1e5a",
+            "type": "leaf",
+            "name": "正确提取了日历文件中的所有参会者邮箱地址",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-a784a11ee310",
+            "type": "leaf",
+            "name": "正确清理了邮箱中的 mailto: 前缀",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-4388e5426fcd",
+            "type": "leaf",
+            "name": "正确去除了重复邮箱地址",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-7428335ecc89",
+            "type": "leaf",
+            "name": "正确排除了后缀为 @example-internal.com 的邮箱地址",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-97c4b819837b",
+        "type": "group",
+        "name": "Markdown 交付物产出目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ab817541f8cf",
+            "type": "leaf",
+            "name": "生成了 external_experts_contact_list.md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-29232a806e6f",
+            "type": "leaf",
+            "name": "将 Markdown 文件保存到了与源日历文件相同的文件夹下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-05fa4bb5fd4c",
+          "type": "leaf",
+          "name": "正确定位了桌面上的 nmpa_review_meetings_2023.ics 文件路径",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ed7392bf63c1",
+          "type": "group",
+          "name": "ICS 邮箱提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1f8217e4fd68",
+              "type": "leaf",
+              "name": "准确识别了 ICS 中包含参会者邮箱的字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-0618388e62c7",
+              "type": "leaf",
+              "name": "准确提取了所有事件中的参会者邮箱而未遗漏可解析记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bb1eb519ab10",
+          "type": "group",
+          "name": "邮箱清洗与筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2501082f35d8",
+              "type": "leaf",
+              "name": "准确去除了邮箱值中的 mailto: 前缀",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ba1b2b46880f",
+              "type": "leaf",
+              "name": "准确排除了域名为 example-internal.com 的邮箱地址",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-34ab4cb8c64f",
+              "type": "leaf",
+              "name": "准确合并了大小写或重复出现的相同邮箱地址",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7d922b4b2ade",
+          "type": "group",
+          "name": "Markdown 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f1a7e6768832",
+              "type": "leaf",
+              "name": "正确按字母顺序从 A 到 Z 排列了输出邮箱地址",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-2e2cb77952fb",
+              "type": "leaf",
+              "name": "正确使用无序列表格式写入了每个邮箱地址",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-c0fbc138099a",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件内容可直接被用户查看和复制使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-26e84ec73d26",
+          "type": "group",
+          "name": "异常处理与结果可信度",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6ca20e4994ba",
+              "type": "leaf",
+              "name": "在遇到缺失或格式异常的参会者字段时记录并跳过了不可解析条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-1f44897c4cab",
+              "type": "leaf",
+              "name": "未编造日历文件中不存在的邮箱地址",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e3c6882e0554",
+    "language": "zh"
+  },
+  "note": "从 ICS 日历文件中提取外部专家邮箱，排除内部邮箱，按 Markdown 格式输出排序列表"
+}

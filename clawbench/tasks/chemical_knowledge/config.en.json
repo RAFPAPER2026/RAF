@@ -1,0 +1,198 @@
+{
+  "id": "chemical_knowledge",
+  "name": "Chemistry Mock Exam Paper",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "According to the knowledge point scope in knowledge_points.txt on /root/Desktop, generate a chemistry mock exam paper containing 20 questions, including multiple-choice questions and fill-in-the-blank questions.",
+  "rubric": {
+    "query": "According to the knowledge point scope in knowledge_points.txt on /root/Desktop, generate a chemistry mock exam paper containing 20 questions, including multiple-choice questions and fill-in-the-blank questions.",
+    "query_id": "chemical_knowledge",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-44d980e712b2",
+        "type": "leaf",
+        "name": "Correctly read the knowledge point scope in /root/Desktop/knowledge_points.txt",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-e5266e6317f7",
+        "type": "group",
+        "name": "Chemistry mock exam paper delivery objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3e1f26eb2080",
+            "type": "leaf",
+            "name": "Generated a mock exam paper containing 20 chemistry questions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-5b93deb94a21",
+            "type": "leaf",
+            "name": "The exam paper contains both multiple-choice questions and fill-in-the-blank questions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3e3486ab7b9f",
+            "type": "leaf",
+            "name": "The questions in the generated exam paper fall within the knowledge point scope specified by knowledge_points.txt",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-aa8f38274811",
+          "type": "leaf",
+          "name": "Accurately extracted the knowledge point information in knowledge_points.txt relevant to the question-setting scope",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-063517ba9766",
+          "type": "leaf",
+          "name": "Correctly planned the number of multiple-choice and fill-in-the-blank questions so that the total number of questions is 20",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cefa70b8f57e",
+          "type": "leaf",
+          "name": "Accurately wrote the questions based on the knowledge point scope in knowledge_points.txt without introducing content outside that scope",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5a43a7abe638",
+          "type": "group",
+          "name": "Exam paper content writing quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-be2dba807955",
+              "type": "leaf",
+              "name": "Correctly wrote the stems and options of the multiple-choice questions with a complete set of options",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a8c3c38f0a96",
+              "type": "leaf",
+              "name": "Correctly wrote the stems of the fill-in-the-blank questions with the blanks corresponding to the answer content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-58725458af47",
+          "type": "leaf",
+          "name": "The generated exam paper text is grouped by question type and contains consecutive question numbers, so users can use it directly",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-35e5d4300b19",
+          "type": "leaf",
+          "name": "The generated exam paper content is complete and usable; all 20 questions can be answered independently with no garbled characters or obvious missing questions or items",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-3238e909c893",
+    "language": "en"
+  }
+}

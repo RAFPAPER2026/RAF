@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Company//Cross-Platform Sync Tool//CN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:ios-memory-leak-v3-20260402@company.com
+DTSTART:20260402T193000Z
+DTEND:20260402T203000Z
+SUMMARY:iOS Memory Management模块内存泄漏修复同步会
+ORGANIZER;CN=Organizer:MAILTO:sarah.wang@company.com
+DESCRIPTION:Hi all,\n\nThis meeting is regarding the critical memory leak issue found on the iOS platform during V3.0 release candidate testing.\n\n我们在iOS平台的Memory Management模块中发现了一个严重的内存泄漏问题。具体来说，当用户在游戏内快速切换场景时，Metal texture资源没有被正确释放，导致内存占用在30分钟内从800MB飙升至1.6GB，最终触发iOS系统的jetsam机制强制杀掉进程。\n\nSarah作为iOS端的技术负责人，已经定位到了泄漏源头，主要集中在TexturePool和SceneTransitionManager两个类中。经过详细评估，预计修复工时为12小时，包括修复代码编写(6h)、单元测试补充(3h)以及在真机上的压力测试验证(3h)。\n\n请各位提前熟悉相关代码路径：/engine/platform/ios/memory/\n\nThanks,\nSarah
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

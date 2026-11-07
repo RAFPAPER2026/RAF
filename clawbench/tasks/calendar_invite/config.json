@@ -1,0 +1,271 @@
+{
+  "id": "calendar_invite",
+  "name": "会议邀请ICS生成",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 talent_review_schedule 文件夹里有一个 Word 文件，名字大概是“2024年度人才盘点会议排期”。把这个文件里所有会议类型标注为“正式圆桌会”的场次提取出来，为每一场生成一个 .ics 日历邀请文件。其他类型的会议（比如预备会、复盘会）不用管。\n\n每个 .ics 文件里，组织者统一设成 organizer@example.com，并且加上提前15分钟的提醒。参会人员只加那些有完整邮箱地址的人，文档里只写了名字没有邮箱的就不用加。\n\n输出文件名按“会议主题_会议日期YYYYMMDD.ics”的格式，例如“大客户部人才盘点_20241115.ics”。所有生成的文件放回 talent_review_schedule 文件夹里。",
+  "rubric": {
+    "query": "桌面上 talent_review_schedule 文件夹里有一个 Word 文件，名字大概是“2024年度人才盘点会议排期”。把这个文件里所有会议类型标注为“正式圆桌会”的场次提取出来，为每一场生成一个 .ics 日历邀请文件。其他类型的会议（比如预备会、复盘会）不用管。\n\n每个 .ics 文件里，组织者统一设成 organizer@example.com，并且加上提前15分钟的提醒。参会人员只加那些有完整邮箱地址的人，文档里只写了名字没有邮箱的就不用加。\n\n输出文件名按“会议主题_会议日期YYYYMMDD.ics”的格式，例如“大客户部人才盘点_20241115.ics”。所有生成的文件放回 talent_review_schedule 文件夹里。",
+    "query_id": "calendar_invite",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5321530d8ec3",
+        "type": "leaf",
+        "name": "正确定位了桌面上名称大概为“2024年度人才盘点会议排期”的Word文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-7dd403460fd8",
+        "type": "leaf",
+        "name": "正确提取了文档中所有会议类型标注为“正式圆桌会”的场次",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-8c23c855e1ea",
+        "type": "leaf",
+        "name": "为每一场“正式圆桌会”生成了一个.ics日历邀请文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持",
+          "条件判断"
+        ]
+      },
+      {
+        "id": "node-e3ba11108663",
+        "type": "group",
+        "name": "输出文件交付完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7e59c9a90151",
+            "type": "leaf",
+            "name": "所有生成的.ics文件已放回talent_review_schedule文件夹",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-b425411cc227",
+            "type": "leaf",
+            "name": "所有生成的.ics文件文件名符合“会议主题_会议日期YYYYMMDD.ics”格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-80ee075f7154",
+          "type": "leaf",
+          "name": "准确检索了talent_review_schedule文件夹中与“2024年度人才盘点会议排期”相匹配的Word文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-839a6b211b5d",
+          "type": "leaf",
+          "name": "准确识别了文档中会议类型字段为“正式圆桌会”的记录并排除了其他会议类型",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7656edba4676",
+          "type": "group",
+          "name": "日历邀请内容构建质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bcbd2a19ae32",
+              "type": "leaf",
+              "name": "正确提取了每场会议的会议主题和会议日期用于生成文件名",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-0f91c5e54a38",
+              "type": "leaf",
+              "name": "正确将会议日期转换为YYYYMMDD格式写入文件名",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-ad03bec28d3d",
+              "type": "leaf",
+              "name": "正确为每场会议写入组织者organizer@example.com",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-fbabb268e2a9",
+              "type": "leaf",
+              "name": "正确为每场会议写入提前15分钟的提醒",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-c0535a1a9c57",
+              "type": "leaf",
+              "name": "正确只加入文档中具有完整邮箱地址的参会人员",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0924fd87b0d0",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-97bb95756e98",
+              "type": "leaf",
+              "name": "生成的.ics文件可被常见日历程序正常打开和识别为有效日历邀请",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-7df8c250a5f2",
+              "type": "leaf",
+              "name": "生成的.ics文件中会议时间、组织者、参会人员和提醒字段与源文档及用户要求一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-8ad7021694ff",
+          "type": "group",
+          "name": "异常情况处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-163c10c0ad1a",
+              "type": "leaf",
+              "name": "遇到文档名称近似匹配或文档结构不规整时，正确定位了目标文件或目标字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "检索策略",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-77ee646f23ba",
+              "type": "leaf",
+              "name": "遇到仅有姓名没有邮箱的参会人员时，正确排除了该人员而未编造邮箱地址",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-72f42a1c3f14",
+    "language": "zh"
+  },
+  "note": "根据Word文档中的正式圆桌会信息生成iCalendar(.ics)日历邀请文件"
+}

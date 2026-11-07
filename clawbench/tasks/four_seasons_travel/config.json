@@ -1,0 +1,231 @@
+{
+  "id": "four_seasons_travel",
+  "name": "四季旅行分镜",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "创意生成",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "结合我/root/Desktop旅行随笔文档，查近期全网热门春日旅行玩法，定制四季旅行 vlog 完整分镜创意，排版后保存/root/Desktop",
+  "rubric": {
+    "query": "结合我/root/Desktop旅行随笔文档，查近期全网热门春日旅行玩法，定制四季旅行 vlog 完整分镜创意，排版后保存/root/Desktop",
+    "query_id": "four_seasons_travel",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a453def6602d",
+        "type": "leaf",
+        "name": "正确读取了/root/Desktop旅行随笔文档中的可用内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-1d2b577e8cec",
+        "type": "leaf",
+        "name": "正确检索并提取了近期全网热门春日旅行玩法信息",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-825564e9bb89",
+        "type": "group",
+        "name": "完成交付物产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-aba52aa40167",
+            "type": "leaf",
+            "name": "生成了四季旅行vlog完整分镜创意文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "上下文保持",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-734fb1dd8791",
+            "type": "leaf",
+            "name": "将排版后的四季旅行vlog完整分镜创意文档保存到/root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-03923ccfa2c5",
+          "type": "leaf",
+          "name": "准确提取了旅行随笔中的地点偏好、叙事风格或旅行主题线索",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "意图理解",
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d79faa0add68",
+          "type": "leaf",
+          "name": "准确检索了近期春日旅行玩法，并优先采用时效性明确的网页或平台内容作为依据",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-773ff72b3724",
+          "type": "leaf",
+          "name": "正确将春日热门玩法与四季旅行主题进行映射，且未混淆季节场景与活动适用时段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "逻辑推理",
+            "时间推理",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-38e913fbb972",
+          "type": "group",
+          "name": "分镜创意内容质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a0dd2bd83cdc",
+              "type": "leaf",
+              "name": "准确生成了按四季划分的分镜结构，且每个季节包含可独立拍摄的镜头段落",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-5962d11f530b",
+              "type": "leaf",
+              "name": "正确在分镜中包含镜头内容、拍摄场景、旁白或字幕要点、转场或节奏设计等关键栏目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-d9596bffc2a4",
+              "type": "leaf",
+              "name": "准确融合了旅行随笔中的个人化元素，且未编造文档中不存在的经历或偏好",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "上下文保持",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-aa9f0290bd71",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d31770c69eb1",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的文档文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-91275ddb7fac",
+              "type": "leaf",
+              "name": "准确完成了文档排版，且标题层级、段落结构或表格布局便于直接阅读和继续编辑",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-53b3bc45fd66",
+              "type": "leaf",
+              "name": "正确将文件保存到/root/Desktop且文件名能够标识四季旅行vlog分镜内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-55aeb7513a78",
+    "language": "zh"
+  },
+  "note": "回答出现网络抓取不太顺利然后又直接给出的最终回复，生成的文件内容没有进行联网搜索"
+}

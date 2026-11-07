@@ -1,0 +1,227 @@
+{
+  "id": "schedule_md_extract",
+  "name": "下周日程MD提取",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "工具调用-API 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面logistics_schedule文件夹下有个schedule_export.ics，里面混着好几周的数据。我只需要10月23日到10月29日这一周的日程，而且那些没有具体起止时间的全天占位事件（排班冻结期、年假这些）过滤掉，只保留有明确开始和结束时间的会议。\n\n输出成Markdown文件，放到桌面 logistics_schedule/tasks_1023_1029.md。每天日期用二级标题，每个会议用待办复选框格式，按'HH:mm-HH:mm - 会议标题 (会议地点)'的格式写。不要加多余的说明文字。",
+  "rubric": {
+    "query": "桌面logistics_schedule文件夹下有个schedule_export.ics，里面混着好几周的数据。我只需要10月23日到10月29日这一周的日程，而且那些没有具体起止时间的全天占位事件（排班冻结期、年假这些）过滤掉，只保留有明确开始和结束时间的会议。\n\n输出成Markdown文件，放到桌面 logistics_schedule/tasks_1023_1029.md。每天日期用二级标题，每个会议用待办复选框格式，按'HH:mm-HH:mm - 会议标题 (会议地点)'的格式写。不要加多余的说明文字。",
+    "query_id": "schedule_md_extract",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ac6b892e64c5",
+        "type": "leaf",
+        "name": "正确读取了桌面 logistics_schedule 文件夹下的 schedule_export.ics 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-4c16b9d34883",
+        "type": "group",
+        "name": "目标时间范围与事件类型筛选完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e7d4e64b6271",
+            "type": "leaf",
+            "name": "正确筛选了 10月23日到10月29日期间有明确开始和结束时间的会议事件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-6c47ca090f04",
+            "type": "leaf",
+            "name": "正确过滤了没有具体起止时间的全天占位事件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-df5756de9504",
+        "type": "group",
+        "name": "Markdown 交付物已产出并写入指定位置",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0e990d0af82c",
+            "type": "leaf",
+            "name": "生成了桌面 logistics_schedule/tasks_1023_1029.md Markdown 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-b80d3d862e48",
+            "type": "leaf",
+            "name": "输出内容按每天日期的二级标题和会议待办复选框格式写入文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d72758e05133",
+          "type": "leaf",
+          "name": "准确解析了 ICS 事件的开始时间、结束时间、标题和地点字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-45d812347ba1",
+          "type": "group",
+          "name": "时间范围与事件类型判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e1fa4e9eb51b",
+              "type": "leaf",
+              "name": "准确判断了事件是否落在 10月23日到10月29日这一周内",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-10031fcf5c94",
+              "type": "leaf",
+              "name": "准确识别了没有具体起止时间的全天事件并排除出结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ef728f4b9033",
+          "type": "group",
+          "name": "Markdown 内容组织与格式化质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e82da23410d4",
+              "type": "leaf",
+              "name": "正确按日期对会议分组并保持组内会议按开始时间排序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-c0e19d0eb737",
+              "type": "leaf",
+              "name": "正确将每个会议格式化为 HH:mm-HH:mm - 会议标题 (会议地点)",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a07c8fd1e00e",
+          "type": "group",
+          "name": "Markdown 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7a37b12be8d9",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件可正常打开且为 Markdown 文本格式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-d73f5d35397c",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件仅包含日期二级标题和会议待办项，没有额外说明文字",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-aebd54114172",
+    "language": "zh"
+  },
+  "note": "从ICS日历提取指定日期范围的会议生成Markdown文件"
+}

@@ -1,0 +1,272 @@
+{
+  "id": "translation_prep",
+  "name": "翻译准备文件生成",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "数据分析",
+  "ability_category": [
+    "工具调用-API 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "读取 /root/Desktop/messages.json 文件。这个文件里面是一个对象，每个键是消息ID，对应的值是一个对象，里面可能有 title、body、button_text、error_message 这些字段。把所有字段里的字符串值提取出来（也就是面向用户看到的那些文字），然后生成一个新的 JSON 文件 /root/Desktop/strings.json。这个新文件的格式是扁平的，每个键写成“消息ID.字段名”的样子，比如 welcome.title，值就是原来的英文字符串。最后，新文件里的键按字母顺序排一下。",
+  "rubric": {
+    "query": "读取 /root/Desktop/messages.json 文件。这个文件里面是一个对象，每个键是消息ID，对应的值是一个对象，里面可能有 title、body、button_text、error_message 这些字段。把所有字段里的字符串值提取出来（也就是面向用户看到的那些文字），然后生成一个新的 JSON 文件 /root/Desktop/strings.json。这个新文件的格式是扁平的，每个键写成“消息ID.字段名”的样子，比如 welcome.title，值就是原来的英文字符串。最后，新文件里的键按字母顺序排一下。",
+    "query_id": "translation_prep",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-153af3b499e4",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/messages.json 中的消息对象",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-d51845ad3cb9",
+        "type": "group",
+        "name": "完成了面向用户字符串的字段提取",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7020cd44f2bb",
+            "type": "leaf",
+            "name": "提取了每个消息下 title 字段中的字符串值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-13d35f1e60ad",
+            "type": "leaf",
+            "name": "提取了每个消息下 body 字段中的字符串值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-2b6a4bcbe7b8",
+            "type": "leaf",
+            "name": "提取了每个消息下 button_text 字段中的字符串值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-bfaf6956efc1",
+            "type": "leaf",
+            "name": "提取了每个消息下 error_message 字段中的字符串值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-a2f1b315cbf9",
+        "type": "group",
+        "name": "完成了 strings.json 交付物产出与格式化",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a7b57d21695c",
+            "type": "leaf",
+            "name": "生成了 /root/Desktop/strings.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-06eda9ed60c5",
+            "type": "leaf",
+            "name": "将输出 JSON 的键写成 消息ID.字段名 的扁平格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-4e45fa9fc502",
+            "type": "leaf",
+            "name": "将输出 JSON 中的键按字母顺序排列",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5341f044937b",
+          "type": "leaf",
+          "name": "准确识别了仅需处理 title、body、button_text、error_message 这四类字段中的字符串值",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-290d8f308378",
+          "type": "leaf",
+          "name": "正确读取了消息ID与字段名的对应关系且未混淆不同消息下的字符串来源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-87ec0f60fb61",
+          "type": "group",
+          "name": "输出结构转换质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-23cf76ea18fc",
+              "type": "leaf",
+              "name": "正确构造了 消息ID.字段名 形式的扁平键名",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-92ac91406297",
+              "type": "leaf",
+              "name": "准确保留了原始英文字符串值且未改写内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-4956ab3e29f9",
+              "type": "leaf",
+              "name": "正确按键名字母顺序输出了 JSON 条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-78cc1ad9915b",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fc466f07db4a",
+              "type": "leaf",
+              "name": "生成的 /root/Desktop/strings.json 文件可被正常解析为 JSON 对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-21ae6ed8c36f",
+              "type": "leaf",
+              "name": "生成的 JSON 文件中所有条目均为可供用户直接使用的字符串映射",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2374ed5d8eb3",
+          "type": "leaf",
+          "name": "在源文件缺少某些可选字段时正确跳过缺失字段且未伪造输出条目",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "异常处理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-43ef98bde8dc",
+          "type": "leaf",
+          "name": "向用户说明了已生成文件路径和处理结果条目范围",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-e4b2b38a73ca",
+    "language": "zh"
+  },
+  "note": "从消息定义文件中提取所有用户可见字符串，生成翻译准备文件"
+}

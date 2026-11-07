@@ -1,0 +1,249 @@
+{
+  "id": "accumulated_cat_information",
+  "name": "猫咪异常行为知识沉淀",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "上下文管理"
+  ],
+  "ability_category_canonical": [
+    "context.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我解析/root/Desktop上工作文件中的长篇宠物行为学分析资料，沉淀出猫咪常见异常行为的成因与纠正核心方法，存到同一目录。",
+  "rubric": {
+    "query": "帮我解析/root/Desktop上工作文件中的长篇宠物行为学分析资料，沉淀出猫咪常见异常行为的成因与纠正核心方法，存到同一目录。",
+    "query_id": "accumulated_cat_information",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a4e0097c834a",
+        "type": "group",
+        "name": "完成资料解析目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0a50e8cc5502",
+            "type": "leaf",
+            "name": "正确读取了/root/Desktop上工作文件中的长篇宠物行为学分析资料",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-2a0972e054e5",
+            "type": "leaf",
+            "name": "正确识别了资料中与猫咪常见异常行为相关的内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-075b28db6bd2",
+        "type": "group",
+        "name": "完成知识沉淀目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-94b53f8231f6",
+            "type": "leaf",
+            "name": "提炼出了猫咪常见异常行为的成因",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-274503e71491",
+            "type": "leaf",
+            "name": "提炼出了猫咪常见异常行为的纠正核心方法",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0e27864a6367",
+        "type": "leaf",
+        "name": "在/root/Desktop同一目录生成了可交付的结果文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-8ab98be60df8",
+          "type": "leaf",
+          "name": "准确定位了/root/Desktop上工作文件中需要解析的源资料",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3a7eb6568c34",
+          "type": "leaf",
+          "name": "准确筛选了资料中与猫咪常见异常行为直接相关的信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-98d3f9e10433",
+          "type": "group",
+          "name": "知识提炼质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e4c339869a5b",
+              "type": "leaf",
+              "name": "准确归纳了每类猫咪常见异常行为对应的成因",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-3322ca2253a2",
+              "type": "leaf",
+              "name": "准确归纳了每类猫咪常见异常行为对应的纠正核心方法",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-34a70ccca2ab",
+              "type": "leaf",
+              "name": "正确区分了资料中的事实性结论与推测性表述",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9762fabc0c23",
+          "type": "leaf",
+          "name": "生成的结果文件内容包含异常行为类别、对应成因和对应纠正方法三个要素",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9819e0e756c3",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6f1d57c075c0",
+              "type": "leaf",
+              "name": "生成的结果文件可以正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-aa2252770ff5",
+              "type": "leaf",
+              "name": "生成的结果文件按行为类别组织内容便于后续查阅",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-9bca910e9507",
+          "type": "leaf",
+          "name": "在结果说明中明确告知了输出文件所在目录和产出内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-eebccd87c3cc",
+    "language": "zh"
+  }
+}

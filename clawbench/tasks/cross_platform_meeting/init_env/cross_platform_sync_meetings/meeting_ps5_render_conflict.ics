@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Company//Cross-Platform Sync Tool//CN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:ps5-render-conflict-v3-20260402@company.com
+DTSTART:20260402T190000Z
+DTEND:20260402T200000Z
+SUMMARY:【紧急】PS5 Render Pipeline冲突拉齐会议 - V3.0发布阻断项
+ORGANIZER;CN=Organizer:MAILTO:mike.chen@company.com
+DESCRIPTION:各位好，\n\n本次会议主要讨论V3.0版本在PS5平台上遇到的渲染管线(Render Pipeline)严重冲突问题。\n\n背景说明：在最近一轮集成测试中，我们发现PS5平台的Render Pipeline模块与主干代码存在严重的合并冲突，具体表现为HDR tone mapping shader在PS5 GNM API下的兼容性问题，以及Geometry Buffer的内存布局与PC端Direct3D 12实现产生了分歧。\n\n目前该问题由Mike负责牵头排查和修复。根据初步评估，整体修复工作预计需要2天的集中开发时间，涵盖shader重写、buffer layout统一以及回归测试。\n\n请大家提前review相关的MR(合并请求)：MR-4521、MR-4523。\n\n会议议程：\n1. 冲突根因分析\n2. 修复方案评审\n3. 时间线确认\n\n谢谢！\nMike
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

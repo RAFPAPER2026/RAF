@@ -1,0 +1,198 @@
+{
+  "id": "reimbursement_statistics",
+  "name": "Reimbursement Invoice Summary",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Tool Use",
+    "Reflection & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Summarize all reimbursement invoice images in the /root/Desktop/ directory into one table, listing the date and amount. When done, tell me the total reimbursement amount.",
+  "rubric": {
+    "query": "Summarize all reimbursement invoice images in the /root/Desktop/ directory into one table, listing the date and amount. When done, tell me the total reimbursement amount.",
+    "query_id": "reimbursement_statistics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c157635c389d",
+        "type": "leaf",
+        "name": "Correctly read the reimbursement invoice images in the /root/Desktop/ directory",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-086963dc5899",
+        "type": "group",
+        "name": "Reimbursement Information Summary Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-052487fa9189",
+            "type": "leaf",
+            "name": "Generated a table deliverable containing the date and amount of each reimbursement invoice",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-63e7d5be42f8",
+            "type": "leaf",
+            "name": "Told the user the total amount after summing the amounts of all reimbursement invoices",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Communication",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f5ccb5f5ff98",
+          "type": "leaf",
+          "name": "Accurately filtered the reimbursement-related invoice image files in the /root/Desktop/ directory",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-52def93ee9d2",
+          "type": "group",
+          "name": "Invoice Key Information Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0c7909b06a6a",
+              "type": "leaf",
+              "name": "Accurately extracted the invoice date from each invoice",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-523d01e6c6be",
+              "type": "leaf",
+              "name": "Accurately extracted the reimbursement amount from each invoice",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f7f7cbf7d737",
+          "type": "group",
+          "name": "Amount Aggregation and Result Communication Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f9946544dfa9",
+              "type": "leaf",
+              "name": "Correctly summed all the amounts in the table",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-03a2f330dc42",
+              "type": "leaf",
+              "name": "The reply includes an explicit numeric statement of the total amount",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-54b6d7680ab1",
+          "type": "group",
+          "name": "Table Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b1c410ab2ee5",
+              "type": "leaf",
+              "name": "The generated table contains the two columns date and amount, with each invoice occupying one row",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-cd7164ff69ee",
+              "type": "leaf",
+              "name": "The generated table file can be opened normally and its content read",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-0054a553f7d6",
+    "language": "en"
+  }
+}

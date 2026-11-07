@@ -1,0 +1,7 @@
+=== EXP-01 失败案例聚类 v2 ===
+日期：2026-01-05
+【注意：本次起 embedding 模型换成了 text-embedding-v3，与v1不可直接比较】
+数据：同v1（500条）
+配置：embeddings=text-embedding-v3, cluster=kmeans(k=4)
+结果：轮廓系数 0.35
+结论：有改善，但人工抽查发现簇语义仍混杂。

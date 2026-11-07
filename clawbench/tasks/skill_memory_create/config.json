@@ -1,0 +1,185 @@
+{
+  "id": "skill_memory_create",
+  "name": "每日记忆Skill",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "信息检索",
+  "ability_category": [
+    "工具调用",
+    "反思和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "总结/root/Desktop/的file-organizer这个skill，仿照这个skill写一个每日生成记忆文件的skill,放在相同目录",
+  "rubric": {
+    "query": "总结/root/Desktop/的file-organizer这个skill，仿照这个skill写一个每日生成记忆文件的skill,放在相同目录",
+    "query_id": "skill_memory_create",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-9f2428cc289c",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/ 下的 file-organizer skill 内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-5d9e008edb55",
+        "type": "group",
+        "name": "每日生成记忆文件 skill 交付完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b47abc392e7b",
+            "type": "leaf",
+            "name": "仿照 file-organizer skill 生成了每日生成记忆文件的 skill 文件内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-aee15e7e4c58",
+            "type": "leaf",
+            "name": "将每日生成记忆文件的 skill 产出保存到了 /root/Desktop/ 相同目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-39c2bc63b31c",
+          "type": "leaf",
+          "name": "准确定位了 /root/Desktop/file-organizer skill 的实际目录与核心文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9eaf3bb9ca6f",
+          "type": "leaf",
+          "name": "正确提取了 file-organizer skill 的结构要素与字段约定",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-2e2a9708e74b",
+          "type": "leaf",
+          "name": "准确编写了每日生成记忆文件 skill 的触发方式、步骤说明和输出约束",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "逻辑推理",
+            "通用知识",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4cf42aaba7f3",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1ffc9227d5de",
+              "type": "leaf",
+              "name": "正确生成的 skill 文件可被正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-880730cf8f6f",
+              "type": "leaf",
+              "name": "正确生成的 skill 文件目录结构和命名方式与 file-organizer 风格一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-405832311853",
+              "type": "leaf",
+              "name": "正确生成的 skill 内容包含可执行的每日生成记忆文件流程与明确输出位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "通用知识",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-fbd8df5e6413",
+          "type": "leaf",
+          "name": "正确说明了新 skill 的生成结果和保存位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-ca787b9556bc",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,337 @@
+{
+  "id": "fact_extraction_and_update",
+  "name": "Fact Extraction and Update",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Look at updates.jsonl in the facts_data folder on the desktop; it contains a bunch of fact records, each with id, subject, attribute, value, and timestamp. Some records update previous information, i.e., a new value appears for the same subject and attribute.\n\nAfter processing all records, generate a JSON file and output it to the desktop, with the file name current_facts.json.\n\nOutput format example:\n{\n  \"facts\": [\n    {\n      \"subject\": \"<entity>\",\n      \"attribute\": \"<attribute>\",\n      \"current_value\": \"<latest value>\",\n      \"original_value\": \"<first value, if different from current>\",\n      \"was_updated\": true/false,\n      \"source_id\": <id of the statement that established the current value>\n    }\n  ],\n  \"total_statements\": <int>,\n  \"total_unique_facts\": <int>,\n  \"total_updates\": <int>\n}\n\nSpecific requirements:\n- Find the latest value of each subject + attribute combination\n- Mark which facts have been updated (was_updated)\n- Record the source id of the current value (source_id)\n- If the value has been updated, original_value records the original value\n- Sort by subject alphabetically, then by attribute alphabetically\n- Each fact in the facts array must contain the fields subject, attribute, current_value, was_updated, and source_id",
+  "rubric": {
+    "query": "Look at updates.jsonl in the facts_data folder on the desktop; it contains a bunch of fact records, each with id, subject, attribute, value, and timestamp. Some records update previous information, i.e., a new value appears for the same subject and attribute.\n\nAfter processing all records, generate a JSON file and output it to the desktop, with the file name current_facts.json.\n\nOutput format example:\n{\n  \"facts\": [\n    {\n      \"subject\": \"<entity>\",\n      \"attribute\": \"<attribute>\",\n      \"current_value\": \"<latest value>\",\n      \"original_value\": \"<first value, if different from current>\",\n      \"was_updated\": true/false,\n      \"source_id\": <id of the statement that established the current value>\n    }\n  ],\n  \"total_statements\": <int>,\n  \"total_unique_facts\": <int>,\n  \"total_updates\": <int>\n}\n\nSpecific requirements:\n- Find the latest value of each subject + attribute combination\n- Mark which facts have been updated (was_updated)\n- Record the source id of the current value (source_id)\n- If the value has been updated, original_value records the original value\n- Sort by subject alphabetically, then by attribute alphabetically\n- Each fact in the facts array must contain the fields subject, attribute, current_value, was_updated, and source_id",
+    "query_id": "fact_extraction_and_update",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-14e3e95924e5",
+        "type": "leaf",
+        "name": "Correctly read the updates.jsonl records in the desktop facts_data folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-6e67ba44362b",
+        "type": "group",
+        "name": "JSON deliverable production objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-8bbc76356f39",
+            "type": "leaf",
+            "name": "Correctly generated the current_facts.json file containing the latest fact for each subject and attribute combination",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-9464cc7e0db3",
+            "type": "leaf",
+            "name": "Correctly output current_facts.json to the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-bc28b31b2b58",
+        "type": "group",
+        "name": "Fact summary results meet the field and statistics requirements",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ee25f3044ee7",
+            "type": "leaf",
+            "name": "Correctly recorded the source_id corresponding to the current value for each fact",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-a6c6f6a58940",
+            "type": "leaf",
+            "name": "Correctly marked whether each fact has been updated",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-fbc0697135d6",
+            "type": "leaf",
+            "name": "Correctly recorded original_value when the value has been updated",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-56216c0f9676",
+            "type": "leaf",
+            "name": "Correctly output the facts array in alphabetical order by subject and then by attribute",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-5e4b48534a4c",
+            "type": "leaf",
+            "name": "Correctly output the statistics total_statements, total_unique_facts, and total_updates",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-bc32f80f4882",
+          "type": "leaf",
+          "name": "Accurately read all valid records in updates.jsonl without losing record order information",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-feae7e4ed39e",
+          "type": "group",
+          "name": "Fact merging and update determination quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2b65e712cedb",
+              "type": "leaf",
+              "name": "Accurately merged the records by subject and attribute",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-7a3b61c79dd6",
+              "type": "leaf",
+              "name": "Accurately identified the last occurring value and corresponding id of each combination",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3f9a703ff38a",
+              "type": "leaf",
+              "name": "Accurately identified the first occurring value of each combination to determine whether original_value needs to be output",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-799f59fc4033",
+          "type": "group",
+          "name": "Statistics calculation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dc99c1537f5a",
+              "type": "leaf",
+              "name": "Correctly calculated total_statements as the total number of input records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-fd2096d41bec",
+              "type": "leaf",
+              "name": "Correctly calculated total_unique_facts as the number of unique subject and attribute combinations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-3f594f8bb7e3",
+              "type": "leaf",
+              "name": "Correctly calculated total_updates as the number of facts whose value has changed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5994e4458daa",
+          "type": "group",
+          "name": "Deliverable structure and usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-173a9e9a9734",
+              "type": "leaf",
+              "name": "Correctly output the required fields subject, attribute, current_value, was_updated, and source_id for each facts item",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-56b2836fbd86",
+              "type": "leaf",
+              "name": "Did not incorrectly fill original_value when the value was not updated",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7207469ad915",
+              "type": "leaf",
+              "name": "Correctly sorted the facts array alphabetically by subject and then alphabetically by attribute",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-feb018b1cb32",
+              "type": "leaf",
+              "name": "The generated current_facts.json is a normally parsable JSON file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6a3c9b26dd4d",
+          "type": "group",
+          "name": "Exception and boundary case handling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b120487dde65",
+              "type": "leaf",
+              "name": "Did not misjudge consecutively repeated values as value updates",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-7392304752c9",
+              "type": "leaf",
+              "name": "Adopted traceable skip or error handling when records had missing fields or abnormal formats",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-909f3ae5e938",
+    "language": "en"
+  }
+}

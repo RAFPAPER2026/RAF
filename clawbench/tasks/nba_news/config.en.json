@@ -1,0 +1,256 @@
+{
+  "id": "nba_news",
+  "name": "Daily NBA Scores Scheduled Report",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Handling & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "I like watching the NBA. Please help me compile a daily summary of that day's NBA matchups and results, and send it to me in table form at 2 PM every afternoon, for one week. After completion, copy the json file recording your scheduled task configuration to /root/Desktop for me to check.",
+  "rubric": {
+    "query": "I like watching the NBA. Please help me compile a daily summary of that day's NBA matchups and results, and send it to me in table form at 2 PM every afternoon, for one week. After completion, copy the json file recording your scheduled task configuration to /root/Desktop for me to check.",
+    "query_id": "nba_news",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-0df62c07606a",
+        "type": "leaf",
+        "name": "Successfully created a scheduled task that runs at 2 PM every day for seven consecutive days to compile NBA game summaries",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Temporal Reasoning"
+        ]
+      },
+      {
+        "id": "node-73123479a532",
+        "type": "leaf",
+        "name": "Successfully configured the daily output to include NBA matchups and results and to be sent in table form",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Communication"
+        ]
+      },
+      {
+        "id": "node-d28dff629819",
+        "type": "leaf",
+        "name": "Successfully generated the json file recording the scheduled task configuration and copied it to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9a4109cb23ea",
+          "type": "leaf",
+          "name": "Accurately identified that the task needs to run at 2 PM every day for seven consecutive days",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Temporal Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cd955cdacda3",
+          "type": "group",
+          "name": "Scheduled Task Scheduling Configuration Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1626460ad620",
+              "type": "leaf",
+              "name": "Correctly selected a tool or scheduling method that can run on a daily schedule and send messages",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-21b3113ad7ff",
+              "type": "leaf",
+              "name": "Correctly set the execution time to 2 PM every day with seven consecutive triggers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-23a76dc8f7db",
+          "type": "group",
+          "name": "Game Information Acquisition Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c22de7966fb1",
+              "type": "leaf",
+              "name": "Accurately retrieved the matchup information of all NBA games of the day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-4fa21bfab69d",
+              "type": "leaf",
+              "name": "Accurately extracted the final result of each game without fabricating non-existent games or scores",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ee24654dad72",
+          "type": "group",
+          "name": "Result Table Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-243e437169de",
+              "type": "leaf",
+              "name": "The generated table contains the matchup teams and result fields for each game",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-cc1d9163c850",
+              "type": "leaf",
+              "name": "The generated table content is displayed game by game row by row without misaligned field correspondence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-c352c45236ab",
+          "type": "group",
+          "name": "Scheduled Task Configuration File Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-69e3646bfbb2",
+              "type": "leaf",
+              "name": "The generated json file contains the identifiable scheduling frequency, execution time, duration in days, and sent content configuration",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-d974b4e15ff2",
+              "type": "leaf",
+              "name": "The json file copied to /root/Desktop opens normally and its content is not damaged",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-55b172260840",
+          "type": "group",
+          "name": "Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-11e938f2e7fb",
+              "type": "leaf",
+              "name": "Correctly identified the missing-information state when that day's game results could not be obtained",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7f1c1b07fbba",
+              "type": "leaf",
+              "name": "Took corrective measures such as retrying, switching sources, or marking games as not yet finished when information was missing or tools failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Retrieval Strategy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-dd857aec2ba8",
+    "language": "en"
+  },
+  "note": "Requires an online search."
+}

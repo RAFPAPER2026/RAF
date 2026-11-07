@@ -1,0 +1,277 @@
+{
+  "id": "secure_media_destruction_schedule",
+  "name": "涉密介质销毁排期",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "读取桌面上 Secure_Media_Destruction/涉密介质销毁规程_V3.1.pptx 的第4页，那一页有一个流程图，由矩形和菱形节点通过带箭头的连接线串起来。根据箭头方向确定节点之间的先后顺序，提取每个矩形和菱形里的文字，按这个顺序生成一个 .ics 日历排期文件，保存到桌面 Secure_Media_Destruction/Destruction_Task_Chain.ics。其他页面不用管。\n\n排期规则：第一个任务从2024年11月1日早上8点开始。矩形节点代表常规操作，当天从8点到17点，共9小时；菱形节点代表审查确认，当天从8点到12点，共4小时。每个任务做完后，下一个任务从次日早上8点开始，按自然日往后排，不用跳过周末。所有日历事件的标题前面加上前缀“[保密任务-XD24] ”。",
+  "rubric": {
+    "query": "读取桌面上 Secure_Media_Destruction/涉密介质销毁规程_V3.1.pptx 的第4页，那一页有一个流程图，由矩形和菱形节点通过带箭头的连接线串起来。根据箭头方向确定节点之间的先后顺序，提取每个矩形和菱形里的文字，按这个顺序生成一个 .ics 日历排期文件，保存到桌面 Secure_Media_Destruction/Destruction_Task_Chain.ics。其他页面不用管。\n\n排期规则：第一个任务从2024年11月1日早上8点开始。矩形节点代表常规操作，当天从8点到17点，共9小时；菱形节点代表审查确认，当天从8点到12点，共4小时。每个任务做完后，下一个任务从次日早上8点开始，按自然日往后排，不用跳过周末。所有日历事件的标题前面加上前缀“[保密任务-XD24] ”。",
+    "query_id": "secure_media_destruction_schedule",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-473b1a3b08c3",
+        "type": "leaf",
+        "name": "正确读取了第4页流程图中的矩形和菱形节点文字",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-d04ab1e95b63",
+        "type": "leaf",
+        "name": "根据箭头方向确定了流程图节点的先后顺序",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "条件判断",
+          "逻辑推理",
+          "时间推理"
+        ]
+      },
+      {
+        "id": "node-437f61569684",
+        "type": "leaf",
+        "name": "按给定排期规则生成了 .ics 日历排期文件并保存到桌面 Secure_Media_Destruction/Destruction_Task_Chain.ics",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持",
+          "时间推理"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-6fb0c514db77",
+          "type": "leaf",
+          "name": "准确定位了桌面 Secure_Media_Destruction/涉密介质销毁规程_V3.1.pptx 的第4页流程图区域",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ad269d6839ca",
+          "type": "group",
+          "name": "流程图内容解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7c4cd09ab7a5",
+              "type": "leaf",
+              "name": "准确提取了每个矩形节点中的文字内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3c79048e06e2",
+              "type": "leaf",
+              "name": "准确提取了每个菱形节点中的文字内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d81775ff6df3",
+              "type": "leaf",
+              "name": "准确识别了连接线箭头指向对应的前后节点关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-12b80505ffae",
+          "type": "group",
+          "name": "排期规则执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-03545189ab48",
+              "type": "leaf",
+              "name": "正确将第一个任务安排在2024年11月1日08:00开始",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-288689741d9e",
+              "type": "leaf",
+              "name": "正确将矩形节点事件时长设置为当日08:00到17:00",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b17fd4417a7b",
+              "type": "leaf",
+              "name": "正确将菱形节点事件时长设置为当日08:00到12:00",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3831f302bba1",
+              "type": "leaf",
+              "name": "正确将每个后续任务安排在前一任务完成后的次日08:00开始且按自然日连续排期",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-167f54d999eb",
+              "type": "leaf",
+              "name": "正确为所有事件标题添加前缀“[保密任务-XD24] ”",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b13c706d3f6c",
+          "type": "group",
+          "name": "日历交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cfea21eaa8ed",
+              "type": "leaf",
+              "name": "生成的 .ics 文件包含与流程图节点数量一致的日历事件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-0147bba81ebe",
+              "type": "leaf",
+              "name": "生成的 .ics 文件可被日历应用正常打开并识别事件开始时间与结束时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-6db51f425736",
+              "type": "leaf",
+              "name": "生成的 .ics 文件中每个事件标题与对应节点文字一致且保留指定前缀",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-44a4b313bf01",
+          "type": "group",
+          "name": "范围控制与异常处理",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a1230032a887",
+              "type": "leaf",
+              "name": "未处理其他页面内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-6752a1e1a700",
+              "type": "leaf",
+              "name": "遇到无法读取节点文字或箭头关系时采取了重新解析或校验步骤",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-83d0f0f6113b",
+    "language": "zh"
+  },
+  "note": "根据涉密介质销毁规程PPT中的流程图生成ICS日历排期文件"
+}

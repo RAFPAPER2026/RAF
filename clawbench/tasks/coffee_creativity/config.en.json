@@ -1,0 +1,195 @@
+{
+  "id": "coffee_creativity",
+  "name": "Coffee Creativity Collection",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Creative Generation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Search for and download high-definition pictures of morning coffee, write accompanying short sentences based on the pictures, organize and save them as 咖啡创意 in a suitable format on /root/Desktop",
+  "rubric": {
+    "query": "Search for and download high-definition pictures of morning coffee, write accompanying short sentences based on the pictures, organize and save them as 咖啡创意 in a suitable format on /root/Desktop",
+    "query_id": "coffee_creativity",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d360c0d64351",
+        "type": "leaf",
+        "name": "Correctly searched and downloaded high-definition morning coffee pictures",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-7bc0108cc060",
+        "type": "leaf",
+        "name": "Generated accompanying short sentences based on the downloaded pictures",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Context Retention",
+          "General Knowledge",
+          "Communication"
+        ]
+      },
+      {
+        "id": "node-7ac506f1e91b",
+        "type": "leaf",
+        "name": "Generated a deliverable named 咖啡创意 and placed it on /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f25494477970",
+          "type": "leaf",
+          "name": "Accurately constructed retrieval conditions related to high-definition morning coffee pictures",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8a75b2e8dc22",
+          "type": "leaf",
+          "name": "Correctly selected pictures with relatively high resolution whose theme matches morning coffee",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d7b1fd6211b2",
+          "type": "leaf",
+          "name": "Correctly used download and file saving tools to write the pictures into the 咖啡创意 deliverable directory or file under /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-81d5f3001646",
+          "type": "group",
+          "name": "Quality of the short sentences accompanying the pictures",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e62b41093b46",
+              "type": "leaf",
+              "name": "Accurately extracted the coffee scene elements in the pictures for generating the short sentences",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-afe644d8feea",
+              "type": "leaf",
+              "name": "The generated short sentences are consistent with the corresponding picture content and do not fabricate elements absent from the pictures",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-94e63ab55828",
+          "type": "group",
+          "name": "咖啡创意 deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-78ac2a759b55",
+              "type": "leaf",
+              "name": "The pictures and short sentences in the deliverable correspond one-to-one and their order is identifiable",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-face1e107624",
+              "type": "leaf",
+              "name": "The deliverable opens normally in common applications and the pictures and text are not garbled or missing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-29b595273b9f",
+              "type": "leaf",
+              "name": "The deliverable file name or directory name uses 咖啡创意 and is placed on /root/Desktop",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-f843d8f4ea86",
+    "language": "en"
+  },
+  "note": "Reply that external image websites cannot be accessed directly for the time being (browser policy restriction)"
+}

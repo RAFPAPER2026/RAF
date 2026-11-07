@@ -1,0 +1,299 @@
+{
+  "id": "forex_arbitrage",
+  "name": "Triangular Arbitrage Analysis",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "In the forex_data folder on the desktop there is exchange_rates.csv, which contains the exchange rate matrix of 8 currencies.\n\nTask:\n1. Read the exchange rate matrix\n2. Find all triangular arbitrage opportunities: currency A -> currency B -> currency C -> currency A, and check whether rate(A,B)*rate(B,C)*rate(C,A) > 1.0\n3. Calculate the expected profit percentage for each opportunity\n4. Write the results to arbitrage_results.json and save it to the desktop\n\nOutput format:\n{\n  \"opportunities\": [\n    {\"path\": [\"USD\",\"EUR\",\"GBP\",\"USD\"], \"product\": 1.003, \"profit_pct\": 0.3},\n    ...\n  ],\n  \"total_opportunities\": 5,\n  \"best_opportunity\": {\"path\": [...], \"profit_pct\": 0.5}\n}\n\nNote: include only opportunities with positive profit (opportunity).",
+  "rubric": {
+    "query": "In the forex_data folder on the desktop there is exchange_rates.csv, which contains the exchange rate matrix of 8 currencies.\n\nTask:\n1. Read the exchange rate matrix\n2. Find all triangular arbitrage opportunities: currency A -> currency B -> currency C -> currency A, and check whether rate(A,B)*rate(B,C)*rate(C,A) > 1.0\n3. Calculate the expected profit percentage for each opportunity\n4. Write the results to arbitrage_results.json and save it to the desktop\n\nOutput format:\n{\n  \"opportunities\": [\n    {\"path\": [\"USD\",\"EUR\",\"GBP\",\"USD\"], \"product\": 1.003, \"profit_pct\": 0.3},\n    ...\n  ],\n  \"total_opportunities\": 5,\n  \"best_opportunity\": {\"path\": [...], \"profit_pct\": 0.5}\n}\n\nNote: include only opportunities with positive profit (opportunity).",
+    "query_id": "forex_arbitrage",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1671dec62308",
+        "type": "leaf",
+        "name": "Correctly read the exchange rate matrix in exchange_rates.csv in the forex_data folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-687c2201f0e9",
+        "type": "group",
+        "name": "Triangular Arbitrage Identification and Calculation Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-00cab3e58558",
+            "type": "leaf",
+            "name": "Correctly found all positive-profit paths that satisfy the triangular arbitrage condition",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-e0038806f547",
+            "type": "leaf",
+            "name": "Correctly calculated the expected profit percentage for each triangular arbitrage opportunity",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-a383c90659a7",
+        "type": "group",
+        "name": "Result File Production Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-18aecc508a78",
+            "type": "leaf",
+            "name": "Generated the arbitrage_results.json file containing the opportunities, total_opportunities, and best_opportunity fields",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-012dc85ae2b5",
+            "type": "leaf",
+            "name": "Saved arbitrage_results.json to the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-7a26d5efd816",
+          "type": "leaf",
+          "name": "Accurately read the currency codes and exchange rate values in exchange_rates.csv",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a196cc156de3",
+          "type": "group",
+          "name": "Arbitrage Opportunity Identification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2b99aed5a330",
+              "type": "leaf",
+              "name": "Accurately enumerated the A→B→C→A closed-loop paths formed by three different currencies",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-6dbc3e1da637",
+              "type": "leaf",
+              "name": "Accurately judged whether rate(A,B)*rate(B,C)*rate(C,A) is greater than 1.0",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-26ea9c64dcf5",
+              "type": "leaf",
+              "name": "Correctly excluded paths whose profit is not positive",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-66d639f15095",
+          "type": "group",
+          "name": "Arbitrage Result Calculation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-16d0104d6b2d",
+              "type": "leaf",
+              "name": "Accurately calculated the product value for each opportunity",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-044452a976e8",
+              "type": "leaf",
+              "name": "Accurately calculated the profit_pct value for each opportunity from its product",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-66b3b1dc15f1",
+              "type": "leaf",
+              "name": "Correctly identified the opportunity with the largest profit_pct as best_opportunity",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-efc17c6bd485",
+          "type": "group",
+          "name": "Result File Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b7bf4545e78f",
+              "type": "leaf",
+              "name": "The generated JSON file parses correctly as an object",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5cb2017a34db",
+              "type": "leaf",
+              "name": "Every item in the opportunities list in the generated JSON contains the path, product, and profit_pct fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-18f6344e6c5b",
+              "type": "leaf",
+              "name": "The total_opportunities value in the generated JSON matches the actual number of opportunities",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3191823d7b13",
+              "type": "leaf",
+              "name": "The path and profit_pct of best_opportunity in the generated JSON come from the highest-profit record in opportunities",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-3dbed7e2166f",
+          "type": "leaf",
+          "name": "Clearly stated in the reply that the result file was written to the desktop and how many arbitrage opportunities were identified",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-995dab1285cf",
+    "language": "en"
+  }
+}

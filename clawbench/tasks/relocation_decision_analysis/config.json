@@ -1,0 +1,418 @@
+{
+  "id": "relocation_decision_analysis",
+  "name": "搬家决策分析",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "出行建议",
+  "ability_category": [
+    "任务规划",
+    "上下文管理-长上下文理解",
+    "任务规划-通用规划与策略制定",
+    "数值分析与推理-多步骤数值计算"
+  ],
+  "ability_category_canonical": [
+    "plan.general",
+    "context.long",
+    "plan.strategy",
+    "plan.numeric"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我最近在考虑从深圳南山区搬到龙岗区住，请你根据我的实际生活数据帮我分析是否值得。\n数据在桌面 relocation_data/ 文件夹：commute_records.csv（近三个月通勤记录，含公司和住址坐标）、spending.csv（近三个月消费流水）、preferences.md（我写的生活偏好：重视通勤时间、周末爬山、喜欢安静）。\n请从通勤时间变化（含新址到公司的预估）、生活成本变化（房租差价按市场价估）、偏好匹配度三个维度分析，给出搬与不搬的建议，以及需要满足什么条件才值得搬。结论要量化（比如每月多花X小时通勤、省Y元房租），输出到 /root/Desktop/搬家决策分析.md。",
+  "rubric": {
+    "query": "我最近在考虑从深圳南山区搬到龙岗区住，请你根据我的实际生活数据帮我分析是否值得。\n数据在桌面 relocation_data/ 文件夹：commute_records.csv（近三个月通勤记录，含公司和住址坐标）、spending.csv（近三个月消费流水）、preferences.md（我写的生活偏好：重视通勤时间、周末爬山、喜欢安静）。\n请从通勤时间变化（含新址到公司的预估）、生活成本变化（房租差价按市场价估）、偏好匹配度三个维度分析，给出搬与不搬的建议，以及需要满足什么条件才值得搬。结论要量化（比如每月多花X小时通勤、省Y元房租），输出到 /root/Desktop/搬家决策分析.md。",
+    "query_id": "relocation_decision_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e0e2d306cadf",
+        "type": "leaf",
+        "name": "正确读取了 relocation_data 文件夹中的 commute_records.csv、spending.csv 和 preferences.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-b9027a7aef58",
+        "type": "group",
+        "name": "完成了三维度搬家可行性分析",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-df904af5cfc5",
+            "type": "leaf",
+            "name": "完成了深圳南山区与龙岗区居住方案的通勤时间变化量化分析",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-1a0f25e3d183",
+            "type": "leaf",
+            "name": "完成了深圳南山区与龙岗区居住方案的生活成本变化量化分析",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ecb0b564e300",
+            "type": "leaf",
+            "name": "完成了深圳南山区与龙岗区居住方案的偏好匹配度分析",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "信息筛选",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-934ae749e04e",
+        "type": "group",
+        "name": "完成了可执行结论输出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f315aacd928a",
+            "type": "leaf",
+            "name": "给出了搬到龙岗区是否值得的明确建议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-39eca85e676d",
+            "type": "leaf",
+            "name": "给出了满足什么条件才值得搬家的明确条件列表",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-b26c202c3fc1",
+            "type": "leaf",
+            "name": "在结论中量化说明了每月通勤时间变化和房租差价等关键指标",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "沟通表达",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-17f3aa67e5ce",
+        "type": "leaf",
+        "name": "生成了可正常使用的 /root/Desktop/搬家决策分析.md 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-fa202c008a69",
+          "type": "leaf",
+          "name": "准确读取了 commute_records.csv 中公司坐标、现住址坐标和近三个月通勤记录字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-ca73ae6d07bf",
+          "type": "leaf",
+          "name": "准确提取了 spending.csv 中与住房和通勤相关的支出项目用于生活成本分析",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-99889035dbaf",
+          "type": "leaf",
+          "name": "准确识别了 preferences.md 中对通勤时间、周末爬山和安静居住环境的偏好约束",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "信息筛选",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f7696fb92669",
+          "type": "group",
+          "name": "通勤时间测算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2270c1551d47",
+              "type": "leaf",
+              "name": "正确估算了龙岗区新址到公司的单程或往返通勤时间变化",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-94c3b4d0bfa2",
+              "type": "leaf",
+              "name": "正确将近三个月通勤记录换算为每月通勤时间增减量",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-96573518e843",
+          "type": "group",
+          "name": "生活成本测算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1449c1e2fdfb",
+              "type": "leaf",
+              "name": "正确使用了可核实的市场租金依据估算南山区与龙岗区房租差价",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "通用知识",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-6662fb2f6652",
+              "type": "leaf",
+              "name": "正确合并了房租差价与通勤相关成本变化得到每月净成本变化",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c7a6fa4611e0",
+          "type": "group",
+          "name": "偏好匹配推理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3649db70de0a",
+              "type": "leaf",
+              "name": "正确将周末爬山偏好映射为龙岗区与南山区周边山地出行便利性比较",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-ef6c13a73da6",
+              "type": "leaf",
+              "name": "正确将安静居住偏好映射为龙岗区与南山区居住环境特征比较",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-7a765ef95e38",
+              "type": "leaf",
+              "name": "正确将偏好权重与通勤和成本结果合并形成结论依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-aa2cfa2ea6a6",
+          "type": "group",
+          "name": "结论沟通质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2b86a18e4948",
+              "type": "leaf",
+              "name": "准确给出了搬与不搬的单一结论且未出现前后矛盾",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-ad997e51f359",
+              "type": "leaf",
+              "name": "准确列出了值得搬家的量化条件阈值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-d5b70cd3d411",
+              "type": "leaf",
+              "name": "回复中明确说明了关键数字的来源或计算方式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c2a9f629431f",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f7aea9f802f4",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-3c3b4d323fd8",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件包含通勤分析、成本分析、偏好分析、结论和条件列表等完整章节",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-ee44fda96f79",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件中的表格或列表能够支持用户直接阅读和比较南山区与龙岗区方案",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-32f540aabfba",
+    "language": "zh"
+  },
+  "note": "“我最近考虑搬家，你根据我的生活习惯帮我分析是否值得。”\n需要：\n结合：\n•\tcommute \n•\tspending \n•\tpreferences",
+  "env_description": "relocation_data/：commute_records.csv（55条通勤记录，单程约85分钟）+ spending.csv（含房租4500/月）+ preferences.md（通勤上限2小时、租金涨幅预算1000内、龙岗市场价3200）"
+}

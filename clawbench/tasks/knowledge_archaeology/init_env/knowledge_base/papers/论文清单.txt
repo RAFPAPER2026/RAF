@@ -1,0 +1,14 @@
+papers/ 目录下的PDF：
+- AgentBench_2023.pdf
+- AgentBoard_2024.pdf
+- tau-bench_2024.pdf
+- ToolLearningSurvey_2024.pdf
+- ReAct_2023.pdf
+- Reflexion_2023.pdf
+- LostInTheMiddle_2023.pdf
+- LongBench_2023.pdf
+- AttentionIsAllYouNeed_2017.pdf
+- InstructGPT_2022.pdf
+- DDPM_2020.pdf
+- SWE-bench_2023.pdf
+（注：标注「已精读」与否请参考notes/highlights中的加工痕迹）

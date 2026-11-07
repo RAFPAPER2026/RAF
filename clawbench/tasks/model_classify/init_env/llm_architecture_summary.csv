@@ -1,0 +1,34 @@
+模型,机构,发布时间,架构类型,总参数量(B),激活参数量(B),层数,隐藏维度,注意力头数,注意力机制,上下文长度(tokens),训练数据量(T),开源状态,关键创新
+GPT-3,OpenAI,2020-06,Dense,175,-,96,12288,96,MHA,4096,0.3,Closed,稀疏注意力模式
+GPT-4,OpenAI,2023-03,MoE,~1760(推测),~220(推测),~120(推测),~12800(推测),~128(推测),GQA(推测),128K,~13(推测),Closed,MoE架构;多模态
+GPT-4o,OpenAI,2024-05,MoE,~200+(推测),~80+(推测),-(推测),-(推测),-(推测),GQA(推测),128K,-,Closed,原生多模态;端到端训练
+o1,OpenAI,2024-09,Dense(推测),-(推测),-(推测),-(推测),-(推测),-(推测),-(推测),128K,-,Closed,推理时思维链;强化学习训练
+o3,OpenAI,2024-12,Dense(推测),-(推测),-(推测),-(推测),-(推测),-(推测),-(推测),200K,-,Closed,自适应思考时间;推理强化
+Claude 3 Opus,Anthropic,2024-03,Dense,~100+(推测),-,~80+(推测),~12000+(推测),~96+(推测),GQA(推测),200K,-,Closed,宪法AI;安全对齐
+Claude 3.5 Sonnet,Anthropic,2024-06,Dense,~70+(推测),-,~60+(推测),~10000+(推测),~80+(推测),GQA(推测),200K,-,Closed,改进推理能力
+Claude 3.5 Haiku,Anthropic,2024-10,Dense,~20+(推测),-,~40+(推测),~6000+(推测),~48+(推测),GQA(推测),200K,-,Closed,高效推理;低延迟
+Claude 4 Opus,Anthropic,2025-05,Dense(推测),-(推测),-(推测),-(推测),-(推测),-(推测),GQA(推测),200K,-,Closed,长时推理;工具使用增强
+Llama 2 70B,Meta,2023-07,Dense,70,-,80,8192,64,GQA,4096,1.7,Open,GQA注意力
+Llama 3 70B,Meta,2024-04,Dense,70,-,80,8192,64,GQA,8192,15,Open,GQA;分组查询注意力优化
+Llama 3.1 405B,Meta,2024-07,Dense,405,-,126,16384,128,GQA,128K,15,Open,最大开源Dense模型;训练稳定性
+Llama 4 Scout,Meta,2025-04,MoE,109,17,48,5120,32,GQA,10M,~30,Open,超长上下文(10M);MoE架构
+Llama 4 Maverick,Meta,2025-04,MoE,400,17,48,5120,32,GQA,1M,~30,Open,128专家MoE;高效推理
+Qwen2 72B,Alibaba,2024-06,Dense,72,-,80,8192,64,GQA,128K,7,Open,GQA;长上下文扩展
+Qwen2.5 72B,Alibaba,2024-09,Dense,72,-,80,8192,64,GQA,128K,18,Open,数据质量提升;数学编程增强
+Qwen2.5-Max,Alibaba,2025-01,MoE(推测),~200+(推测),~40+(推测),-(推测),-(推测),-(推测),GQA(推测),128K,-,Partial,MoE架构;高质量数据
+Qwen3-235B-A22B,Alibaba,2025-04,MoE,235,22,94,4096,64,GQA,128K,36,Open,思考模式切换;MoE+Dense双模式
+Gemini 1.5 Pro,Google,2024-02,MoE(推测),~200+(推测),~50+(推测),-(推测),-(推测),-(推测),-(推测),1M,-,Closed,百万级上下文;原生多模态
+Gemini 2.0 Flash,Google,2024-12,Dense/MoE(推测),-(推测),-(推测),-(推测),-(推测),-(推测),-(推测),1M,-,Closed,高效推理;多模态Agent
+Gemini 2.5 Pro,Google,2025-03,MoE(推测),-(推测),-(推测),-(推测),-(推测),-(推测),-(推测),1M,-,Closed,思考模型;长上下文推理
+Mistral 7B,Mistral AI,2023-09,Dense,7,-,32,4096,32,GQA,32K,4.7,Open,滑动窗口注意力;GQA
+Mixtral 8x7B,Mistral AI,2023-12,MoE,47,13,32,4096,32,GQA,32K,-,Open,8专家MoE;稀疏混合
+Mixtral 8x22B,Mistral AI,2024-04,MoE,141,39,56,6144,48,GQA,64K,-,Open,8专家MoE;更大规模
+Mistral Large 2,Mistral AI,2024-07,Dense,123,-,88,12288,96,GQA,128K,-,Partial,函数调用;代码能力增强
+GLM-4,Zhipu AI,2024-01,Dense/MoE,~130(推测),-(推测),-(推测),-(推测),-(推测),-(推测),128K,-,Partial,中英双语;多模态
+Yi-34B,01.AI,2023-11,Dense,34,-,60,7168,56,GQA,200K,3,Open,长上下文;高质量中文
+Phi-3 Medium,Microsoft,2024-04,Dense,14,-,40,5120,40,GQA,128K,4.8T,Open,高质量训练数据;小模型高性能
+Command-R+,Cohere,2024-04,Dense,104,-,80,12288,64,GQA,128K,-,Partial,RAG优化;工具使用
+DBRX,Databricks,2024-03,MoE,132,36,24,6144,48,GQA,32K,12,Open,细粒度MoE(16专家选4)
+Grok-1,xAI,2024-03,MoE,314,~70,64,16384,64,-(推测),8192,-,Open,大规模MoE;幽默对齐
+Grok-2,xAI,2024-08,MoE(推测),~314+(推测),~70+(推测),-(推测),-(推测),-(推测),-(推测),128K,-,Closed,推理增强;图像生成
+Jamba 1.5,AI21 Labs,2024-08,Hybrid(Mamba+Transformer),398(MoE),52,64,4096,64,MLA,256K,-,Partial,Mamba+Transformer混合;SSM+注意力

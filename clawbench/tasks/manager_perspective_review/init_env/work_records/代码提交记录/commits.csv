@@ -1,0 +1,12 @@
+date,repo,files_changed,insertions,deletions,note
+2026-07-06,xingchen-msg-core,12,340,45,
+2026-07-13,xingchen-msg-core,8,220,60,fix: auth retry
+2026-07-20,xingchen-msg-core,15,510,120,
+2026-07-27,xingchen-msg-core,3,45,80,fix: typo
+2026-08-03,xingchen-msg-core,20,680,200,
+2026-08-10,xingchen-msg-core,6,130,50,fix: pagination mismatch
+2026-08-17,xingchen-msg-core,9,260,90,
+2026-08-24,xingchen-msg-core,2,20,10,fix: typo
+2026-09-07,xingchen-msg-core,18,720,150,
+2026-09-14,xingchen-msg-core,5,90,40,fix: logging
+2026-09-21,xingchen-gateway,11,430,110,

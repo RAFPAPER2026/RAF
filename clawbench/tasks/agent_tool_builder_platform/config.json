@@ -1,0 +1,384 @@
+{
+  "id": "agent_tool_builder_platform",
+  "name": "Agent工具构建",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "工具使用-CLI调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "现在 agent tool（工具调用）这个概念很火。请帮我开发一个轻量级的 HTML 单页应用，让完全不懂代码的人也能为 agent 配置新工具：\n1. 用户在页面输入框里用自然语言描述需求（如「帮我查天气」）；\n2. 点击生成后，页面调用 LLM API（key 放在 /root/Desktop/api_key.txt）将其转换为 agent 可用的 tool 定义（JSON Schema 格式的 name/description/parameters）；\n3. 生成的 tool 定义支持一键复制和下载为 .json 文件；\n4. 页面需包含使用说明和两个示例（查天气、发邮件）。\n所有文件放到 /root/Desktop/agent_tool_builder/ 目录，保证双击 html 即可打开使用。",
+  "rubric": {
+    "query": "现在 agent tool（工具调用）这个概念很火。请帮我开发一个轻量级的 HTML 单页应用，让完全不懂代码的人也能为 agent 配置新工具：\n1. 用户在页面输入框里用自然语言描述需求（如「帮我查天气」）；\n2. 点击生成后，页面调用 LLM API（key 放在 /root/Desktop/api_key.txt）将其转换为 agent 可用的 tool 定义（JSON Schema 格式的 name/description/parameters）；\n3. 生成的 tool 定义支持一键复制和下载为 .json 文件；\n4. 页面需包含使用说明和两个示例（查天气、发邮件）。\n所有文件放到 /root/Desktop/agent_tool_builder/ 目录，保证双击 html 即可打开使用。",
+    "query_id": "agent_tool_builder_platform",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-00c68020e499",
+        "type": "leaf",
+        "name": "生成了可直接双击打开使用的 HTML 单页应用文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-e955ce256a01",
+        "type": "group",
+        "name": "完成了核心交互与结果导出功能",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e7729de3cae1",
+            "type": "leaf",
+            "name": "在页面中实现了自然语言需求输入功能",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-c379bf844976",
+            "type": "leaf",
+            "name": "在点击生成后调用了 LLM API 并输出了符合 JSON Schema 结构的 tool 定义",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-bb874e20f208",
+            "type": "leaf",
+            "name": "在页面中提供了生成结果的一键复制功能",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-74fd7bb1c5a3",
+            "type": "leaf",
+            "name": "在页面中提供了将生成结果下载为 .json 文件的功能",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e362c38ce867",
+        "type": "group",
+        "name": "补充了页面说明与示例内容",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bfec7e52ae91",
+            "type": "leaf",
+            "name": "在页面中提供了该应用的使用说明内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-c7167d9b1aad",
+            "type": "leaf",
+            "name": "在页面中提供了查天气示例",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-c76d40406a55",
+            "type": "leaf",
+            "name": "在页面中提供了发邮件示例",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-6c8a4e5a09cc",
+        "type": "group",
+        "name": "按指定路径与密钥约束完成了交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9a2fe5718db8",
+            "type": "leaf",
+            "name": "将应用文件写入了 /root/Desktop/agent_tool_builder/ 目录",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-6b893e5d46e4",
+            "type": "leaf",
+            "name": "在实现中使用了 /root/Desktop/api_key.txt 中的 API key",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-dc0b943511d6",
+          "type": "group",
+          "name": "需求约束识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d1a60007cd96",
+              "type": "leaf",
+              "name": "正确识别了单页应用需离线打开且不依赖构建步骤的约束",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-f0c91055697b",
+              "type": "leaf",
+              "name": "正确识别了交付目录、API key 路径、示例数量和导出格式要求",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a2e516c0abd9",
+          "type": "group",
+          "name": "环境约束与可行性判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2fc7ee0ef585",
+              "type": "leaf",
+              "name": "正确处理了浏览器直接打开 HTML 时无法直接读取本地 /root/Desktop/api_key.txt 的执行限制",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "异常处理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-4af922a98183",
+              "type": "leaf",
+              "name": "给出了不依赖不存在能力的实现路径或替代方案",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6a604c4604fb",
+          "type": "group",
+          "name": "LLM 调用与结果解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f56d34622b6e",
+              "type": "leaf",
+              "name": "正确构造了发送给 LLM 的提示内容以约束输出为 name、description、parameters 三个字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-2e3873dad0e3",
+              "type": "leaf",
+              "name": "正确设置了调用 LLM API 所需的请求方法、请求头和请求体字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3812a9ac9388",
+              "type": "leaf",
+              "name": "正确处理了 API 返回内容并提取出可解析的 JSON 结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5689f3a62c88",
+          "type": "group",
+          "name": "交付物可用性与结果一致性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ed4ba87d2c06",
+              "type": "leaf",
+              "name": "正确生成的 HTML 文件可在浏览器中直接打开且界面元素可正常交互",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-bfe4fb989342",
+              "type": "leaf",
+              "name": "正确生成的页面包含输入区、生成按钮、结果展示区、复制按钮、下载按钮、使用说明和两个示例区块",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-67e94071feff",
+              "type": "leaf",
+              "name": "正确生成的结果文件可下载为 .json 且文件内容与页面展示结果一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e0fb35e735f9",
+          "type": "group",
+          "name": "异常处理与状态控制质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6697f620e20c",
+              "type": "leaf",
+              "name": "正确在页面中展示了 API 调用失败或 JSON 解析失败时的错误信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-19d8cd716cb9",
+              "type": "leaf",
+              "name": "正确在空输入或无结果时阻止复制与下载操作",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2001fa63ea0e",
+          "type": "leaf",
+          "name": "正确向用户说明了本地 HTML 直接读取本机文件和直接携带服务端密钥的限制条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-e06bc8cb947a",
+    "language": "zh"
+  },
+  "note": "现在agent tool这个概念很火，帮我生成一个能让不懂代码的人使用的为agent配置新功能tool的轻量级html平台，输入是自然语言需求，输出是agent能使用的tool",
+  "env_description": "api_key.txt（演示key）+ tool_spec_reference.json（tool定义格式参考）"
+}

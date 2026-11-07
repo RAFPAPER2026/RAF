@@ -1,0 +1,364 @@
+{
+  "id": "video_schedule_compliance_audit",
+  "name": "发稿排期合规审查",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "任务规划-任务分解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "读取 /root/Desktop/video_schedule_audit/四月发稿排期.ics 和 /root/Desktop/video_schedule_audit/发稿制度规定.docx，核对以下三条规则：\n1. 工作日晚上18:00到20:00之间必须有排稿，哪天这个时段没有排稿就算违规；\n2. 周六和周日每天排稿量不能少于3条，不够的算违规；\n3. 同一天里相邻两条视频的发布时间间隔不能低于2小时，低于的算违规。\n\n把违规项整理成Word文档，保存到 /root/Desktop/video_schedule_audit/排期违规自查报告.docx。文档最上方第一段用大标题“四月排期违规审查报告”，字体黑体、字号三号（16磅）。标题下面用一个三列表格列出所有违规项，表头分别是“日期”、“违规事件名”、“违规原因”。“违规原因”那一列的文字用红色加粗。",
+  "rubric": {
+    "query": "读取 /root/Desktop/video_schedule_audit/四月发稿排期.ics 和 /root/Desktop/video_schedule_audit/发稿制度规定.docx，核对以下三条规则：\n1. 工作日晚上18:00到20:00之间必须有排稿，哪天这个时段没有排稿就算违规；\n2. 周六和周日每天排稿量不能少于3条，不够的算违规；\n3. 同一天里相邻两条视频的发布时间间隔不能低于2小时，低于的算违规。\n\n把违规项整理成Word文档，保存到 /root/Desktop/video_schedule_audit/排期违规自查报告.docx。文档最上方第一段用大标题“四月排期违规审查报告”，字体黑体、字号三号（16磅）。标题下面用一个三列表格列出所有违规项，表头分别是“日期”、“违规事件名”、“违规原因”。“违规原因”那一列的文字用红色加粗。",
+    "query_id": "video_schedule_compliance_audit",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-963297b24c03",
+        "type": "group",
+        "name": "已获取核对排期所需的源数据",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-549031fbf100",
+            "type": "leaf",
+            "name": "正确读取了 /root/Desktop/video_schedule_audit/四月发稿排期.ics 中的排稿信息",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-5d9eb3515713",
+            "type": "leaf",
+            "name": "正确读取了 /root/Desktop/video_schedule_audit/发稿制度规定.docx 中的规则信息",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5ce73c732c36",
+        "type": "group",
+        "name": "已完成三条规则的违规核对",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d8350ce94f2e",
+            "type": "leaf",
+            "name": "正确识别了工作日18:00到20:00时段缺少排稿的违规日期",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-c719ad34c4ac",
+            "type": "leaf",
+            "name": "正确识别了周六和周日排稿量少于3条的违规日期",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-92ebc4b3f4b1",
+            "type": "leaf",
+            "name": "正确识别了同一天内相邻两条视频发布时间间隔低于2小时的违规事件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-b26ee34449cd",
+        "type": "group",
+        "name": "已产出指定格式的Word报告",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-51087e6fbafa",
+            "type": "leaf",
+            "name": "生成了 /root/Desktop/video_schedule_audit/排期违规自查报告.docx 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-21ae69308058",
+            "type": "leaf",
+            "name": "文档首段标题设置为“四月排期违规审查报告”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-91be72965104",
+            "type": "leaf",
+            "name": "文档中创建了表头为“日期”“违规事件名”“违规原因”的三列表格",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f348330511cd",
+          "type": "group",
+          "name": "源数据提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a3903c5be638",
+              "type": "leaf",
+              "name": "准确提取了 .ics 文件中每条排稿的日期与发布时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ce3ef40a3014",
+              "type": "leaf",
+              "name": "准确提取了 .docx 文件中与三条核对规则对应的约束内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fa71f28ae657",
+          "type": "group",
+          "name": "规则判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-efdc58dd4320",
+              "type": "leaf",
+              "name": "准确判断了每个工作日18:00到20:00时段是否存在排稿",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a0db4df7b1a4",
+              "type": "leaf",
+              "name": "准确统计了每个周六和周日的排稿条数是否达到3条",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-8320fe28fdfc",
+              "type": "leaf",
+              "name": "准确计算了同一天内相邻两条视频发布时间间隔是否低于2小时",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-352969dcf9ef",
+          "type": "group",
+          "name": "执行稳健性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5847e45da803",
+              "type": "leaf",
+              "name": "正确处理了按日期分组与按时间排序所需的上下文信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-4d656ba5c873",
+              "type": "leaf",
+              "name": "出现文件读取或格式解析异常时执行了可观察的修正操作或错误反馈",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-6e6c7274fb30",
+              "type": "leaf",
+              "name": "未将不存在的排稿记录或违规原因写入结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-29c93d0d6065",
+          "type": "group",
+          "name": "交付物结果质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f22bab41c5e2",
+              "type": "leaf",
+              "name": "生成的 Word 文档可正常打开且文件格式为 .docx",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-4ce35dc9b532",
+              "type": "leaf",
+              "name": "文档首段标题文字为“四月排期违规审查报告”且字体为黑体字号为16磅",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-d4a35d10dd96",
+              "type": "leaf",
+              "name": "表格包含“日期”“违规事件名”“违规原因”三列表头且每条违规各占一行",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-1b1203fe328e",
+              "type": "leaf",
+              "name": "“违规原因”列中的正文文字设置为红色加粗",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2a0d6fe010b7",
+          "type": "leaf",
+          "name": "回复中包含了已保存文件路径和违规核对结果的明确说明",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f99d52cdaa4b",
+    "language": "zh"
+  },
+  "note": "短视频排期合规核对，生成违规自查报告Word文档"
+}

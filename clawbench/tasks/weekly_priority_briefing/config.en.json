@@ -1,0 +1,415 @@
+{
+  "id": "weekly_priority_briefing",
+  "name": "Weekly Priority Briefing with Cron Setup",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Planning",
+    "Context Management",
+    "General Planning & Strategy",
+    "State Tracking & Consistency",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.general",
+    "context.general",
+    "plan.strategy",
+    "context.state",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Please act as my Personal Chief of Staff. On the desktop are my schedule for the past three months (calendar.ics), my to-do list (todo.md), and my goals document (goals.md, which states my annual goals and current priorities).\nPlease set up a weekly briefing mechanism: every Monday at 8 a.m., sort out “the three most important things this week” — judged by combining my long-term goals, the fixed arrangements on my calendar, and overdue unfinished items — and explain why each item matters and when it should be scheduled.\nThe first time, generate this week's briefing immediately and save it to /root/Desktop/weekly_briefing/; then also configure the scheduled task that automatically generates it every Monday, with the configuration file saved to /root/Desktop/weekly_briefing/schedule.json.",
+  "rubric": {
+    "query": "Please act as my Personal Chief of Staff. On the desktop are my schedule for the past three months (calendar.ics), my to-do list (todo.md), and my goals document (goals.md, which states my annual goals and current priorities).\nPlease set up a weekly briefing mechanism: every Monday at 8 a.m., sort out “the three most important things this week” — judged by combining my long-term goals, the fixed arrangements on my calendar, and overdue unfinished items — and explain why each item matters and when it should be scheduled.\nThe first time, generate this week's briefing immediately and save it to /root/Desktop/weekly_briefing/; then also configure the scheduled task that automatically generates it every Monday, with the configuration file saved to /root/Desktop/weekly_briefing/schedule.json.",
+    "query_id": "weekly_priority_briefing",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-dd48b0503fcb",
+        "type": "leaf",
+        "name": "Correctly read calendar.ics, todo.md, and goals.md on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-d381372f0b16",
+        "type": "group",
+        "name": "First Weekly Briefing Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4f10bcd5a028",
+            "type": "leaf",
+            "name": "Generated this week's briefing file and saved it to /root/Desktop/weekly_briefing/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-2189d25bd015",
+            "type": "leaf",
+            "name": "This week's briefing contains the three most important things this week",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4cc3cf1a0a23",
+        "type": "group",
+        "name": "This Week's Briefing Content Meets the User-Specified Structure",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-96bf95f0ec9a",
+            "type": "leaf",
+            "name": "This week's briefing explains why each of the three most important items matters",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-a24a4c7e79fd",
+            "type": "leaf",
+            "name": "This week's briefing gives a suggested scheduling time for each of the three most important items",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-6454e5487efc",
+        "type": "group",
+        "name": "Scheduled Task for Automatic Briefing Generation Configured",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b810df9cbc01",
+            "type": "leaf",
+            "name": "Generated a scheduled task configuration file that automatically generates the briefing every Monday at 8 a.m.",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Temporal Reasoning"
+            ]
+          },
+          {
+            "id": "node-da5c6c17b4e8",
+            "type": "leaf",
+            "name": "Saved the scheduled task configuration file to /root/Desktop/weekly_briefing/schedule.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-15b435d2a8b6",
+          "type": "group",
+          "name": "Source Information Reading and Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-73732a661b9a",
+              "type": "leaf",
+              "name": "Accurately extracted the annual goals and current priorities from goals.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-19773666129f",
+              "type": "leaf",
+              "name": "Accurately extracted the overdue unfinished items from todo.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-277cc87859c1",
+              "type": "leaf",
+              "name": "Accurately extracted the time information of existing arrangements for this week from calendar.ics",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-39cde43a9a6e",
+          "type": "group",
+          "name": "Priority Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c80520dabb1b",
+              "type": "leaf",
+              "name": "Accurately judged the degree of relevance of the items to the long-term goals and current priorities",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Intent Understanding",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-41d9c205bf97",
+              "type": "leaf",
+              "name": "Accurately judged whether the overdue items should be among the three most important things this week",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5db68d5cde4e",
+              "type": "leaf",
+              "name": "Accurately filtered out the three most important things this week without including a fourth item or irrelevant items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1766790f2926",
+          "type": "group",
+          "name": "Time Scheduling Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1c55ecb06331",
+              "type": "leaf",
+              "name": "Accurately identified the available time slots among this week's existing arrangements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-874291428f56",
+              "type": "leaf",
+              "name": "Correctly avoided overlapping the suggested times with existing calendar items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-711843ea559d",
+              "type": "leaf",
+              "name": "Correctly handled the temporal relationship between overdue items and this week's fixed arrangements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Conditional Judgment",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7c6a7dffa5ac",
+          "type": "group",
+          "name": "Briefing Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cd82cd8e844d",
+              "type": "leaf",
+              "name": "The generated weekly briefing file opens normally and has no garbled text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b3a817ae323d",
+              "type": "leaf",
+              "name": "The briefing file lists the item content, importance reason, and suggested time for each of the three items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-8b8bc0125b18",
+              "type": "leaf",
+              "name": "The item descriptions in the briefing file are consistent with the source file content and do not fabricate nonexistent arrangements or tasks",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-acd726e0995c",
+          "type": "group",
+          "name": "Scheduled Task Configuration Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b83157348f47",
+              "type": "leaf",
+              "name": "Correctly set the schedule time field to trigger every Monday at 08:00",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-bfd708848dc1",
+              "type": "leaf",
+              "name": "schedule.json contains the input file locations and output directory information needed to generate the briefing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-88e78e664a7f",
+              "type": "leaf",
+              "name": "The schedule.json file can be parsed normally as valid JSON",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-21ad0c1ffe3c",
+          "type": "group",
+          "name": "Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-42f378fc0e4f",
+              "type": "leaf",
+              "name": "Clearly recorded the error objects when source files were missing or parsing failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-fbb09bea83f7",
+              "type": "leaf",
+              "name": "Provided executable remediation information or alternative steps when automatic configuration could not be completed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a2e4727853f1",
+    "language": "en"
+  },
+  "note": "Personal Chief of Staff\n“Assume you are my personal assistant; tell me every Monday morning the three most important things this week.”\nNeeds: continuous understanding of the user's goals.",
+  "env_description": "calendar.ics (next week's schedule + last week's leftovers) + todo.md (including overdue items) + goals.md (annual goal priorities); the three most important things this week need to be determined comprehensively and a scheduled task configured."
+}

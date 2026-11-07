@@ -1,0 +1,319 @@
+{
+  "id": "implicit_commitment_recall",
+  "name": "承诺事项回顾",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "上下文管理-长文档关键信息提取"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "context.longdoc"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我平时和别人沟通的记录分散在三个地方：桌面的 chat_history/（聊天导出的 txt，按联系人分文件）、meeting_transcripts/（会议转录）和 calendar.ics（我的日历）。\n帮我回顾一下过去一个月我答应过别人哪些事情？列出：答应了谁、什么内容、约定的时间、目前状态（已完成/待办/可能已过期）。特别标出那些约定时间已经过了、但我可能已经忘记的事情。\n输出到 /root/Desktop/承诺清单.md，按时间排序。",
+  "rubric": {
+    "query": "我平时和别人沟通的记录分散在三个地方：桌面的 chat_history/（聊天导出的 txt，按联系人分文件）、meeting_transcripts/（会议转录）和 calendar.ics（我的日历）。\n帮我回顾一下过去一个月我答应过别人哪些事情？列出：答应了谁、什么内容、约定的时间、目前状态（已完成/待办/可能已过期）。特别标出那些约定时间已经过了、但我可能已经忘记的事情。\n输出到 /root/Desktop/承诺清单.md，按时间排序。",
+    "query_id": "implicit_commitment_recall",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4c9157728974",
+        "type": "leaf",
+        "name": "正确读取了 chat_history、meeting_transcripts 和 calendar.ics 中过去一个月与承诺相关的信息",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "时间推理"
+        ]
+      },
+      {
+        "id": "node-693ed0ffd947",
+        "type": "group",
+        "name": "承诺回顾结果已生成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-5b275fddaf1b",
+            "type": "leaf",
+            "name": "正确整理了过去一个月答应过别人的事项清单",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-f4499d79a631",
+            "type": "leaf",
+            "name": "正确标注了每条事项的答应对象、承诺内容、约定时间和目前状态",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "事实准确性",
+              "上下文保持",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-2a25985d1304",
+            "type": "leaf",
+            "name": "正确特别标出了约定时间已经过去且可能被遗忘的事项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4f738be96880",
+        "type": "leaf",
+        "name": "成功生成了按时间排序的 /root/Desktop/承诺清单.md 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ac682f8e105d",
+          "type": "leaf",
+          "name": "准确限定了过去一个月的时间范围并据此检索三处数据源中的相关记录",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "检索策略",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4d18b0a745d4",
+          "type": "group",
+          "name": "承诺信息提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e8676931ee5e",
+              "type": "leaf",
+              "name": "准确识别了表述承诺的语句或事件记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "意图理解",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-f35f6564bea6",
+              "type": "leaf",
+              "name": "准确排除了闲聊、未承诺表述和与他人请求无关的记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-83ae67dff5b8",
+          "type": "group",
+          "name": "承诺归纳与状态判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-63131c7e1bd9",
+              "type": "leaf",
+              "name": "准确推断了每条承诺对应的答应对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-25c139a04097",
+              "type": "leaf",
+              "name": "准确提取了承诺内容中的可执行事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-db2141e73ebe",
+              "type": "leaf",
+              "name": "准确识别了约定时间或截止时间的具体日期时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-298fa4561d90",
+              "type": "leaf",
+              "name": "准确依据日历和记录判断了已完成、待办或可能已过期状态",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-dc4a82f18a7c",
+          "type": "group",
+          "name": "结果组织质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-25cdcd8cc80d",
+              "type": "leaf",
+              "name": "正确将约定时间已过且状态未显示完成的事项单独标出",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-421933961580",
+              "type": "leaf",
+              "name": "正确按约定时间先后排序输出事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8c7ab66eb0df",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1cb1e4bcbd93",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件包含每条事项所需字段且可正常阅读",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-21e4fe91698a",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件结构支持按时间查看和识别特别标注事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-bead021e4f29",
+          "type": "group",
+          "name": "不确定信息处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-77bfc9dbc075",
+              "type": "leaf",
+              "name": "在记录缺失、时间不明确或状态无法确认时明确保留不确定性标记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d913863d90bb",
+              "type": "leaf",
+              "name": "未编造不存在的承诺对象、时间或完成状态",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a9cbf7703b36",
+    "language": "zh"
+  },
+  "note": "“过去一个月我答应过别人什么事情？哪些可能已经被我忘记了？”\n\n需要：\n\nchat（以文档形式存储） + meeting transcript + calendar\n\n难点：\n\nimplicit commitment extraction",
+  "env_description": "chat_history/（5个联系人的聊天txt）+ meeting_transcripts/（2份会议转录）+ calendar.ics；隐式承诺分散埋设（含已过期未兑现的：还书、还投影仪、体检类）"
+}

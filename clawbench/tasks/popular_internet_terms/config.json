@@ -1,0 +1,217 @@
+{
+  "id": "popular_internet_terms",
+  "name": "网络热门词分镜脚本",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "创意生成",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "查找近期网络热门流行词，制作 30 秒短视频分镜脚本，并附上信息来源链接，保存成.md文件放到/root/Desktop",
+  "rubric": {
+    "query": "查找近期网络热门流行词，制作 30 秒短视频分镜脚本，并附上信息来源链接，保存成.md文件放到/root/Desktop",
+    "query_id": "popular_internet_terms",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d783fb8ad9ae",
+        "type": "leaf",
+        "name": "正确查找了近期网络热门流行词",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-197fef9658a5",
+        "type": "group",
+        "name": "完成了脚本内容交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2cd10b02e36b",
+            "type": "leaf",
+            "name": "制作了30秒短视频分镜脚本",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "时间推理",
+              "上下文保持",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-d275f522a031",
+            "type": "leaf",
+            "name": "附上了信息来源链接",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "事实准确性",
+              "信息筛选",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7534ea7c961f",
+        "type": "leaf",
+        "name": "生成了保存到/root/Desktop的.md文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2f12d8e3b272",
+          "type": "leaf",
+          "name": "准确构造了用于查找近期网络热门流行词的检索请求",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8ed77c3dea84",
+          "type": "leaf",
+          "name": "准确筛选了可支撑近期判断的热门流行词信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-33b79ade1124",
+          "type": "leaf",
+          "name": "正确在分镜脚本中控制总时长接近30秒",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-997dd140244d",
+          "type": "group",
+          "name": "脚本内容组织质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a4d14a5e169a",
+              "type": "leaf",
+              "name": "正确将热门流行词融入分镜脚本的画面与台词设计",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-80c6f449f76d",
+              "type": "leaf",
+              "name": "回复中包含了每个关键信息来源对应的可访问链接",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f9b672569981",
+          "type": "group",
+          "name": "Markdown交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d6aed9e453f5",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的Markdown文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-cc3e1b2d5903",
+              "type": "leaf",
+              "name": "正确组织了Markdown文件结构以支持用户直接查看分镜脚本和来源链接",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-0513098c3028",
+          "type": "leaf",
+          "name": "正确处理了检索或写入失败时的重试或报错说明",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-24d6173057e9",
+    "language": "zh"
+  }
+}

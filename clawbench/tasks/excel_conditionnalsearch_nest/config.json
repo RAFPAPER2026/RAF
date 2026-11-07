@@ -1,0 +1,134 @@
+{
+  "id": "excel_conditionnalsearch_nest",
+  "name": "空Excel文件查找",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我查找/root/Desktop上的文件及文件夹里内容为空的excel，返回名称,存在/root/Desktop的sample.txt里。",
+  "rubric": {
+    "query": "帮我查找/root/Desktop上的文件及文件夹里内容为空的excel，返回名称,存在/root/Desktop的sample.txt里。",
+    "query_id": "excel_conditionnalsearch_nest",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b7cb412dba70",
+        "type": "group",
+        "name": "空Excel查找目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c172e3011329",
+            "type": "leaf",
+            "name": "正确查找了/root/Desktop上的文件及文件夹中的Excel文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-63958c72da01",
+            "type": "leaf",
+            "name": "正确识别了内容为空的Excel文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-18c1c0395fa8",
+        "type": "leaf",
+        "name": "正确将空Excel文件名称写入/root/Desktop的sample.txt",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4623d670e2fb",
+          "type": "leaf",
+          "name": "正确遍历了/root/Desktop及其子文件夹中的Excel文件路径",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5136ba18cbf5",
+          "type": "leaf",
+          "name": "准确判断了Excel文件内容是否为空",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-662093fa519f",
+          "type": "leaf",
+          "name": "正确处理了受保护文件、损坏文件或无权限文件的读取异常",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-40aa87ffabeb",
+          "type": "leaf",
+          "name": "正确将结果文件写入/root/Desktop/sample.txt且写入内容仅包含空Excel文件名称",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持",
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-b183fcc450d3",
+    "language": "zh"
+  }
+}

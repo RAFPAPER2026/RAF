@@ -1,0 +1,301 @@
+{
+  "id": "obsidian_setup",
+  "name": "Obsidian Notes Import Setup",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning",
+    "Reflection & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me install a tool called obsidian, import all md files on /root/Desktop/ whose name is '笔记' into a newly created obsidian vault, automatically add tags, and then generate a preview of the knowledge graph.",
+  "rubric": {
+    "query": "Help me install a tool called obsidian, import all md files on /root/Desktop/ whose name is '笔记' into a newly created obsidian vault, automatically add tags, and then generate a preview of the knowledge graph.",
+    "query_id": "obsidian_setup",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-43281ca7e582",
+        "type": "leaf",
+        "name": "Successfully installed the Obsidian tool",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      },
+      {
+        "id": "node-9e8c2e6ddf8a",
+        "type": "group",
+        "name": "Note File Import Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-58fa02e7a46e",
+            "type": "leaf",
+            "name": "Correctly located all md files named “笔记” under /root/Desktop/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-bad2a051aab9",
+            "type": "leaf",
+            "name": "Successfully created a new Obsidian vault and imported the located md files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ab885803b4a9",
+        "type": "group",
+        "name": "Tag and Knowledge Graph Delivery Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3fcf134eb901",
+            "type": "leaf",
+            "name": "Successfully added tags automatically to the imported md files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "General Knowledge",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-78999a884556",
+            "type": "leaf",
+            "name": "Successfully generated the knowledge graph preview deliverable",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d7d199223519",
+          "type": "leaf",
+          "name": "Correctly selected an Obsidian installation method suitable for the current system and executed the installation command",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Exception Handling",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-050211041ece",
+          "type": "group",
+          "name": "File Location Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-81918d8a56ec",
+              "type": "leaf",
+              "name": "Accurately retrieved all files under /root/Desktop/ with the .md extension and the file name “笔记”",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-32f25a3ab61f",
+              "type": "leaf",
+              "name": "Correctly excluded files whose name is not “笔记” or whose extension is not .md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-32965f887390",
+          "type": "group",
+          "name": "Vault Creation and Import Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a317c434621a",
+              "type": "leaf",
+              "name": "Correctly created a new Obsidian vault and placed the target md files in the vault directory",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-12b2befff3f0",
+              "type": "leaf",
+              "name": "Correctly kept the imported file content from being truncated or rewritten",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1133387c9326",
+          "type": "group",
+          "name": "Automatic Tag Processing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-49f2241a1b90",
+              "type": "leaf",
+              "name": "Correctly generated and wrote parseable tag markers based on the content of each md file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "General Knowledge",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-9b7460be455c",
+              "type": "leaf",
+              "name": "Correctly wrote the tags into the corresponding files without writing them into irrelevant files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-39d82e2d52b2",
+          "type": "group",
+          "name": "Knowledge Graph Preview Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-66d9f245250c",
+              "type": "leaf",
+              "name": "The generated knowledge graph preview opens normally and displays node relationships",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d62b6df95d6a",
+              "type": "leaf",
+              "name": "The knowledge graph preview deliverable has no garbled characters, blank screens, or overlapping elements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6d426f9e0536",
+          "type": "group",
+          "name": "Exception Handling and Result Explanation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-431b0214e08e",
+              "type": "leaf",
+              "name": "Correctly identified errors and executed alternative solutions or retries when installation, import, or preview failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-fc6c69ed8d22",
+              "type": "leaf",
+              "name": "The reply included clear explanations of the installation result, import result, tag processing result, and knowledge graph preview result",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-41a6ac65451c",
+    "language": "en"
+  }
+}

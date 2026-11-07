@@ -1,0 +1,177 @@
+{
+  "id": "historical_photos",
+  "name": "Historical Mind Map Summary",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a 历史思维导图 folder on /root/Desktop containing three jpg images. Summarize their contents into a document and save it in the same folder.",
+  "rubric": {
+    "query": "There is a 历史思维导图 folder on /root/Desktop containing three jpg images. Summarize their contents into a document and save it in the same folder.",
+    "query_id": "historical_photos",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-516795035141",
+        "type": "leaf",
+        "name": "Correctly read the content of the three jpg images in the 历史思维导图 folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-76b07185a50b",
+        "type": "leaf",
+        "name": "Generated a summary document and saved it in the 历史思维导图 folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-5a2a6824f4f7",
+          "type": "leaf",
+          "name": "Correctly located the 历史思维导图 folder under /root/Desktop and identified the three jpg images to be processed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5ac2619575f9",
+          "type": "group",
+          "name": "Image Content Extraction and Integration Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a936c10cf290",
+              "type": "leaf",
+              "name": "Accurately extracted the key information from each jpg image",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-07d9df1dc8e4",
+              "type": "leaf",
+              "name": "Correctly distinguished duplicate information from complementary information among the three jpg images",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-84327b73e898",
+          "type": "group",
+          "name": "Summary Document Content Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5ae486037c45",
+              "type": "leaf",
+              "name": "Correctly organized the chapter or paragraph structure of the summary document to cover the main content of the three jpg images",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-4aa3c5b1ed48",
+              "type": "leaf",
+              "name": "Accurately wrote in the key information from the images without adding facts that do not exist in the images",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e1601efbf3bf",
+          "type": "group",
+          "name": "Deliverable Usability and Saved Result",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ee6e15ca915b",
+              "type": "leaf",
+              "name": "Correctly generated a document file that opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-a3ef0313593c",
+              "type": "leaf",
+              "name": "Correctly saved the document in the 历史思维导图 folder with a file format that end users can use directly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a736184cbad3",
+    "language": "en"
+  }
+}

@@ -1,0 +1,185 @@
+{
+  "id": "skill_memory_create",
+  "name": "Create Daily Memory Skill",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Information Retrieval",
+  "ability_category": [
+    "Tool Use",
+    "Reflection & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Summarize the file-organizer skill in /root/Desktop/, and, modeling on this skill, write a skill that generates a memory file every day, placed in the same directory.",
+  "rubric": {
+    "query": "Summarize the file-organizer skill in /root/Desktop/, and, modeling on this skill, write a skill that generates a memory file every day, placed in the same directory.",
+    "query_id": "skill_memory_create",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-9f2428cc289c",
+        "type": "leaf",
+        "name": "Correctly read the content of the file-organizer skill under /root/Desktop/",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-5d9e008edb55",
+        "type": "group",
+        "name": "Daily Memory File Generation Skill Delivered",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b47abc392e7b",
+            "type": "leaf",
+            "name": "Modeled on the file-organizer skill, generated the content of a skill file that generates a memory file every day",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-aee15e7e4c58",
+            "type": "leaf",
+            "name": "Saved the daily memory file generation skill output in the same directory under /root/Desktop/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-39c2bc63b31c",
+          "type": "leaf",
+          "name": "Accurately located the actual directory and core files of the /root/Desktop/file-organizer skill",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9eaf3bb9ca6f",
+          "type": "leaf",
+          "name": "Correctly extracted the structural elements and field conventions of the file-organizer skill",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-2e2a9708e74b",
+          "type": "leaf",
+          "name": "Accurately wrote the trigger method, step instructions, and output constraints of the daily memory file generation skill",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Logical Reasoning",
+            "General Knowledge",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4cf42aaba7f3",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1ffc9227d5de",
+              "type": "leaf",
+              "name": "The correctly generated skill file opens normally with no garbled text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-880730cf8f6f",
+              "type": "leaf",
+              "name": "The directory structure and naming of the correctly generated skill files are consistent with the file-organizer style",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-405832311853",
+              "type": "leaf",
+              "name": "The correctly generated skill content includes an executable daily memory file generation flow and a clear output location",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "General Knowledge",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-fbd8df5e6413",
+          "type": "leaf",
+          "name": "Correctly explained the generation result of the new skill and its save location",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-ca787b9556bc",
+    "language": "en"
+  }
+}

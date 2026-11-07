@@ -1,0 +1,341 @@
+{
+  "id": "trend_extraction",
+  "name": "销售趋势提取预测",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-API 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 sales_data 文件夹里的 monthly_sales.csv 有36个月的销售数据，有 month 和 sales 两列。\n\n任务：\n1. 读取 monthly_sales.csv 文件\n2. 计算3个月和6个月的移动平均销售额\n3. 通过计算全年每月季节指数来检测季节性\n4. 预测数据最后一个月之后的3个月销售额\n5. 根据移动平均确定整体趋势（\"increasing\"、\"decreasing\"或\"stable\"）\n6. 将结果写入 trend_analysis.json，文件保存到桌面 \n\n输出格式示例：\n{\n  \"moving_averages\": {\n    \"3_month\": [float, ...],\n    \"6_month\": [float, ...]\n  },\n  \"seasonal_indices\": {\n    \"01\": float,\n    \"02\": float,\n    ...\n    \"12\": float\n  },\n  \"forecast\": [\n    {\"month\": \"YYYY-MM\", \"forecasted_sales\": float},\n    ... (3条)\n  ],\n  \"overall_trend\": \"increasing\" | \"decreasing\" | \"stable\"\n}\n\n说明：\n- 季节指数是当月实际销售额与移动平均的比值的平均值\n- 如果6个月移动平均显示明显上升趋势则整体趋势为\"increasing\"，下降则为\"decreasing\"，否则为\"stable\"",
+  "rubric": {
+    "query": "桌面上 sales_data 文件夹里的 monthly_sales.csv 有36个月的销售数据，有 month 和 sales 两列。\n\n任务：\n1. 读取 monthly_sales.csv 文件\n2. 计算3个月和6个月的移动平均销售额\n3. 通过计算全年每月季节指数来检测季节性\n4. 预测数据最后一个月之后的3个月销售额\n5. 根据移动平均确定整体趋势（\"increasing\"、\"decreasing\"或\"stable\"）\n6. 将结果写入 trend_analysis.json，文件保存到桌面 \n\n输出格式示例：\n{\n  \"moving_averages\": {\n    \"3_month\": [float, ...],\n    \"6_month\": [float, ...]\n  },\n  \"seasonal_indices\": {\n    \"01\": float,\n    \"02\": float,\n    ...\n    \"12\": float\n  },\n  \"forecast\": [\n    {\"month\": \"YYYY-MM\", \"forecasted_sales\": float},\n    ... (3条)\n  ],\n  \"overall_trend\": \"increasing\" | \"decreasing\" | \"stable\"\n}\n\n说明：\n- 季节指数是当月实际销售额与移动平均的比值的平均值\n- 如果6个月移动平均显示明显上升趋势则整体趋势为\"increasing\"，下降则为\"decreasing\"，否则为\"stable\"",
+    "query_id": "trend_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-338ccb7b8151",
+        "type": "leaf",
+        "name": "正确读取了 monthly_sales.csv 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-08ba9eeb024f",
+        "type": "group",
+        "name": "完成了销售分析结果计算",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c3ee47e5c71c",
+            "type": "leaf",
+            "name": "正确计算了 3个月移动平均销售额",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-4d83a6062252",
+            "type": "leaf",
+            "name": "正确计算了 6个月移动平均销售额",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-08ba83fde8f5",
+            "type": "leaf",
+            "name": "正确计算了全年每月季节指数",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-d3ebfbdd9973",
+            "type": "leaf",
+            "name": "正确预测了最后一个月之后的 3个月销售额",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-b9683deccef1",
+            "type": "leaf",
+            "name": "正确判定了整体趋势为 increasing、decreasing 或 stable 之一",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ad83e320339c",
+        "type": "leaf",
+        "name": "生成了 trend_analysis.json 文件并保存到桌面",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a91c8cba82d4",
+          "type": "leaf",
+          "name": "正确使用桌面上的 monthly_sales.csv 作为唯一输入数据源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7f2e96e13ebd",
+          "type": "group",
+          "name": "移动平均计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3dfda8393228",
+              "type": "leaf",
+              "name": "准确按 month 的时间顺序计算了 3个月移动平均",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-8a9a4981671f",
+              "type": "leaf",
+              "name": "准确按 month 的时间顺序计算了 6个月移动平均",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-4138954fda74",
+              "type": "leaf",
+              "name": "正确处理了移动平均前置窗口不足月份的结果表示",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cdc9b9b0e97c",
+          "type": "group",
+          "name": "季节性检测质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6553b14e9f16",
+              "type": "leaf",
+              "name": "准确使用当月实际销售额与对应移动平均的比值计算季节指数样本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-581ab95fe312",
+              "type": "leaf",
+              "name": "正确按月份归集 36个月数据中的同月样本并输出 12个季节指数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0a4d29f50fb3",
+          "type": "group",
+          "name": "预测与趋势判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0fc2cfb6174f",
+              "type": "leaf",
+              "name": "准确推导了最后一个月之后连续 3个月的月份标识",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-44b2a030ffa3",
+              "type": "leaf",
+              "name": "正确基于趋势与对应月份季节指数生成了 3条预测值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "时间推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-b561d2bff893",
+              "type": "leaf",
+              "name": "准确根据 6个月移动平均的方向判定 overall_trend",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2c6cb70154fd",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f8b96ba83ab6",
+              "type": "leaf",
+              "name": "正确生成了包含 moving_averages、seasonal_indices、forecast、overall_trend 四个顶层字段的 JSON 文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-f19385a601e0",
+              "type": "leaf",
+              "name": "正确将 seasonal_indices 输出为 01 到 12 的月份键",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-9e5b5d78337c",
+              "type": "leaf",
+              "name": "正确将 forecast 输出为 3条包含 month 和 forecasted_sales 的对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-4efb07762a4d",
+              "type": "leaf",
+              "name": "生成的 trend_analysis.json 文件可正常打开并被 JSON 解析器成功解析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a48fd0e11eb0",
+          "type": "leaf",
+          "name": "回复中明确说明了输出文件已保存到桌面并说明了整体趋势结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-23ea65a97e84",
+    "language": "zh"
+  }
+}

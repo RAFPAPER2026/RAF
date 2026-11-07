@@ -1,0 +1,277 @@
+{
+  "id": "secure_media_destruction_schedule",
+  "name": "Secure Media Destruction Schedule",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Read page 4 of Secure_Media_Destruction/涉密介质销毁规程_V3.1.pptx on the desktop. That page has a flowchart in which rectangular and diamond nodes are connected in series by arrowed connector lines. Determine the sequence of the nodes based on the arrow directions, extract the text in each rectangle and diamond, and generate an .ics calendar schedule file in that order, saved to Secure_Media_Destruction/Destruction_Task_Chain.ics on the desktop. Ignore the other pages.\n\nScheduling rules: the first task starts at 8 a.m. on November 1, 2024. Rectangular nodes represent regular operations, from 8:00 to 17:00 that day, 9 hours in total; diamond nodes represent review and confirmation, from 8:00 to 12:00 that day, 4 hours in total. After each task is completed, the next task starts at 8 a.m. the next day, scheduled on consecutive calendar days without skipping weekends. Prefix the title of every calendar event with “[保密任务-XD24] ”.",
+  "rubric": {
+    "query": "Read page 4 of Secure_Media_Destruction/涉密介质销毁规程_V3.1.pptx on the desktop. That page has a flowchart in which rectangular and diamond nodes are connected in series by arrowed connector lines. Determine the sequence of the nodes based on the arrow directions, extract the text in each rectangle and diamond, and generate an .ics calendar schedule file in that order, saved to Secure_Media_Destruction/Destruction_Task_Chain.ics on the desktop. Ignore the other pages.\n\nScheduling rules: the first task starts at 8 a.m. on November 1, 2024. Rectangular nodes represent regular operations, from 8:00 to 17:00 that day, 9 hours in total; diamond nodes represent review and confirmation, from 8:00 to 12:00 that day, 4 hours in total. After each task is completed, the next task starts at 8 a.m. the next day, scheduled on consecutive calendar days without skipping weekends. Prefix the title of every calendar event with “[保密任务-XD24] ”.",
+    "query_id": "secure_media_destruction_schedule",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-473b1a3b08c3",
+        "type": "leaf",
+        "name": "Correctly read the text in the rectangular and diamond nodes of the flowchart on page 4",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-d04ab1e95b63",
+        "type": "leaf",
+        "name": "Determined the sequence of the flowchart nodes based on the arrow directions",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Conditional Judgment",
+          "Logical Reasoning",
+          "Temporal Reasoning"
+        ]
+      },
+      {
+        "id": "node-437f61569684",
+        "type": "leaf",
+        "name": "Generated an .ics calendar schedule file according to the given scheduling rules and saved it to Secure_Media_Destruction/Destruction_Task_Chain.ics on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention",
+          "Temporal Reasoning"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-6fb0c514db77",
+          "type": "leaf",
+          "name": "Accurately located the flowchart area on page 4 of Secure_Media_Destruction/涉密介质销毁规程_V3.1.pptx on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ad269d6839ca",
+          "type": "group",
+          "name": "Flowchart Content Parsing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7c4cd09ab7a5",
+              "type": "leaf",
+              "name": "Accurately extracted the text content of each rectangular node",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3c79048e06e2",
+              "type": "leaf",
+              "name": "Accurately extracted the text content of each diamond node",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d81775ff6df3",
+              "type": "leaf",
+              "name": "Accurately identified the predecessor-successor node relationships indicated by the connector arrows",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-12b80505ffae",
+          "type": "group",
+          "name": "Scheduling Rule Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-03545189ab48",
+              "type": "leaf",
+              "name": "Correctly scheduled the first task to start at 08:00 on November 1, 2024",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-288689741d9e",
+              "type": "leaf",
+              "name": "Correctly set the duration of rectangular-node events to 08:00-17:00 on that day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b17fd4417a7b",
+              "type": "leaf",
+              "name": "Correctly set the duration of diamond-node events to 08:00-12:00 on that day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3831f302bba1",
+              "type": "leaf",
+              "name": "Correctly scheduled each subsequent task to start at 08:00 on the day after the previous task was completed, using consecutive calendar days",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-167f54d999eb",
+              "type": "leaf",
+              "name": "Correctly added the prefix “[保密任务-XD24] ” to all event titles",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b13c706d3f6c",
+          "type": "group",
+          "name": "Calendar Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cfea21eaa8ed",
+              "type": "leaf",
+              "name": "The generated .ics file contains the same number of calendar events as the flowchart nodes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-0147bba81ebe",
+              "type": "leaf",
+              "name": "The generated .ics file can be opened normally by calendar applications, which recognize the event start and end times",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-6db51f425736",
+              "type": "leaf",
+              "name": "Each event title in the generated .ics file matches the corresponding node text and retains the specified prefix",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-44a4b313bf01",
+          "type": "group",
+          "name": "Scope Control and Exception Handling",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a1230032a887",
+              "type": "leaf",
+              "name": "Did not process content from other pages",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-6752a1e1a700",
+              "type": "leaf",
+              "name": "Took re-parsing or verification steps when node text or arrow relationships could not be read",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-83d0f0f6113b",
+    "language": "en"
+  },
+  "note": "Generate an ICS calendar schedule file based on the flowchart in the secure media destruction procedure PPT."
+}

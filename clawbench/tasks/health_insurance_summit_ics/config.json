@@ -1,0 +1,224 @@
+{
+  "id": "health_insurance_summit_ics",
+  "name": "健康险峰会日历",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上有个 Markdown 文件：root/Desktop/health_insurance_summit_schedule/summit_agenda_2024.md，里面是峰会的日程安排，分了不同会场。你需要把这个文件里所有会场的议程都解析出来，合并生成一个 .ics 日历文件，保存到 root/Desktop/health_insurance_summit_schedule/summit_calendar_merged.ics。\n\n注意：多个分论坛如果有同一时间段的议程，要全部保留，不能因为时间重叠就漏掉或覆盖掉任何一场。\n\n每个日历事件的标题格式统一写成：[会场简称]-议程主题，比如 [TPA网络]-外部医疗资源对接研讨。另外在事件的地点或备注字段里写明它属于哪个分论坛。\n\n所有事件都要设置提前15分钟的提醒。",
+  "rubric": {
+    "query": "桌面上有个 Markdown 文件：root/Desktop/health_insurance_summit_schedule/summit_agenda_2024.md，里面是峰会的日程安排，分了不同会场。你需要把这个文件里所有会场的议程都解析出来，合并生成一个 .ics 日历文件，保存到 root/Desktop/health_insurance_summit_schedule/summit_calendar_merged.ics。\n\n注意：多个分论坛如果有同一时间段的议程，要全部保留，不能因为时间重叠就漏掉或覆盖掉任何一场。\n\n每个日历事件的标题格式统一写成：[会场简称]-议程主题，比如 [TPA网络]-外部医疗资源对接研讨。另外在事件的地点或备注字段里写明它属于哪个分论坛。\n\n所有事件都要设置提前15分钟的提醒。",
+    "query_id": "health_insurance_summit_ics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-58ceb51b560a",
+        "type": "leaf",
+        "name": "正确读取了 summit_agenda_2024.md 中所有会场的议程信息",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-67354e1f2b46",
+        "type": "group",
+        "name": "日历文件已产出并保存到指定位置",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b2202a730ac9",
+            "type": "leaf",
+            "name": "成功生成了包含所有解析议程事件的 summit_calendar_merged.ics 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-10f4178ea12e",
+            "type": "leaf",
+            "name": "将 summit_calendar_merged.ics 文件保存到了 root/Desktop/health_insurance_summit_schedule/summit_calendar_merged.ics",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9cb0563610ca",
+        "type": "group",
+        "name": "日历事件内容满足用户指定规则",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0d56e23fb9ff",
+            "type": "leaf",
+            "name": "为每个事件使用了“[会场简称]-议程主题”的标题格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3e30232c0ab0",
+            "type": "leaf",
+            "name": "在每个事件的地点或备注字段中写明了所属分论坛",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-c2d868f297fc",
+            "type": "leaf",
+            "name": "为所有事件设置了提前15分钟的提醒",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-0099f32e8859",
+            "type": "leaf",
+            "name": "保留了同一时间段内不同分论坛的全部议程事件且未因重叠遗漏或覆盖",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-1e0c082eca93",
+          "type": "leaf",
+          "name": "准确提取了 Markdown 中所有会场、议程主题、日期与起止时间信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7400f35671f7",
+          "type": "leaf",
+          "name": "准确判断了不同会场在相同时间段的议程需要分别生成为独立事件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "逻辑推理",
+            "时间推理"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ec181ff3be95",
+          "type": "leaf",
+          "name": "正确构造了每个事件的标题、分论坛归属字段和提前15分钟提醒参数",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4b75e7568410",
+          "type": "leaf",
+          "name": "正确生成的 .ics 文件可被日历应用正常导入且所有事件条目完整可用",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-fa8062cd1dfa",
+          "type": "leaf",
+          "name": "在解析缺失字段、时间格式异常或写入失败时执行了可观察的修正或重试操作",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7df0ec319156",
+          "type": "leaf",
+          "name": "回复中明确说明了输出文件路径以及已保留重叠时间段的多场议程",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-9a66481c92a0",
+    "language": "zh"
+  },
+  "note": "解析MD格式峰会日程，生成包含并行事件的ICS日历文件"
+}

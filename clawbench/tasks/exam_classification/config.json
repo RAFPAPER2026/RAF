@@ -1,0 +1,151 @@
+{
+  "id": "exam_classification",
+  "name": "试卷分类与重组",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "CLI调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop上有一个“高考试卷”文件夹，里面零散存放着历年语文、数学、英语试卷。请在该文件夹下按语数外三科进行分类，然后将所有英语试卷的内容拆分成一套新试卷，并保存到/root/Desktop。",
+  "rubric": {
+    "query": "/root/Desktop上有一个“高考试卷”文件夹，里面零散存放着历年语文、数学、英语试卷。请在该文件夹下按语数外三科进行分类，然后将所有英语试卷的内容拆分成一套新试卷，并保存到/root/Desktop。",
+    "query_id": "exam_classification",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-7be97123bc03",
+        "type": "leaf",
+        "name": "按语文、数学、英语三科完成了“高考试卷”文件夹内试卷分类",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-c37f9c8977b7",
+        "type": "leaf",
+        "name": "生成了由所有英语试卷内容拆分汇总得到的新试卷文件并保存到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-af51a3246fcc",
+          "type": "leaf",
+          "name": "准确识别了“高考试卷”文件夹内各试卷所属学科",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0480b6e38be6",
+          "type": "leaf",
+          "name": "正确执行了文件分类操作且未遗漏或误放试卷",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-489ff6d8d9a3",
+          "type": "leaf",
+          "name": "准确提取了所有英语试卷中的题目内容用于新试卷重组",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1b1425f13b85",
+          "type": "group",
+          "name": "英语新试卷交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8031c4bd8f4a",
+              "type": "leaf",
+              "name": "正确组织了新试卷的结构使题目内容可连续阅读和使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-16d2baad5161",
+              "type": "leaf",
+              "name": "生成的新试卷文件可正常打开且无乱码或内容缺失",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-81f205d5dc6e",
+          "type": "leaf",
+          "name": "在无法识别文件类型或内容异常时正确记录并处理了异常文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "条件判断"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-fe85487a6505",
+    "language": "zh"
+  }
+}

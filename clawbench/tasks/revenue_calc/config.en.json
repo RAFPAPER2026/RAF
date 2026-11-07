@@ -1,0 +1,210 @@
+{
+  "id": "revenue_calc",
+  "name": "Restaurant Revenue and Loss Check",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "API Calling",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.api",
+    "context.long"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Calculate the revenue of 天天开心餐馆 for today. Assuming the restaurant's fixed monthly expenses are 30,000, will it lose money? Today's accounts are in /root/Desktop.",
+  "rubric": {
+    "query": "Calculate the revenue of 天天开心餐馆 for today. Assuming the restaurant's fixed monthly expenses are 30,000, will it lose money? Today's accounts are in /root/Desktop.",
+    "query_id": "revenue_calc",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1c8c35f79807",
+        "type": "leaf",
+        "name": "Correctly read today's account data in /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-1a833ca7e4c6",
+        "type": "leaf",
+        "name": "Correctly calculated the revenue of 天天开心餐馆 for today",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Logical Reasoning",
+          "Factual Accuracy",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-900049d0d0e1",
+        "type": "group",
+        "name": "Business Conclusion Delivery Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2a789bafeeba",
+            "type": "leaf",
+            "name": "Correctly judged whether the restaurant will lose money based on the fixed monthly expenses of 30,000 yuan",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-a1a5cd3a3342",
+            "type": "leaf",
+            "name": "Clearly told the user today's revenue and the conclusion on whether money was lost",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "Context Retention",
+              "Intent Understanding"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e5127afac667",
+          "type": "leaf",
+          "name": "Correctly located the file or record related to today's accounts in /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1b32da4056bb",
+          "type": "leaf",
+          "name": "Accurately extracted the income data from today's accounts and excluded non-today records",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e16cb6fae87b",
+          "type": "leaf",
+          "name": "Correctly calculated today's revenue value, with the calculation process consistent with the account records",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d914777ec769",
+          "type": "group",
+          "name": "Loss Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-af69d791e1f6",
+              "type": "leaf",
+              "name": "Correctly converted the fixed monthly expenses of 30,000 yuan into a comparison benchmark usable for judging whether today lost money",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Conditional Judgment"
+              ]
+            },
+            {
+              "id": "node-2036c770fdae",
+              "type": "leaf",
+              "name": "Accurately derived the conclusion on whether today lost money based on the comparison result",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4a0f4fbdc6bb",
+          "type": "group",
+          "name": "Result Explanation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8642ca9c44b0",
+              "type": "leaf",
+              "name": "The reply includes the explicit value of today's revenue",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-932e156ecafb",
+              "type": "leaf",
+              "name": "The reply includes a clear basis for the judgment on whether money was lost",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a8cc47f98b60",
+    "language": "en"
+  },
+  "note": "Answer as required and answer correctly."
+}

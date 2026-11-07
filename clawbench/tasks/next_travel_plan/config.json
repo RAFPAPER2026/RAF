@@ -1,0 +1,294 @@
+{
+  "id": "next_travel_plan",
+  "name": "下次出行方案优化",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "出行建议",
+  "ability_category": [
+    "工具调用-API调用"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "找到电脑里所有行程备忘录，结合实时高铁或飞机票价和余票信息，优化我的下一次出行方案，帮我算出交通总花费并设置出发提醒，方案保存到/root/Desktop",
+  "rubric": {
+    "query": "找到电脑里所有行程备忘录，结合实时高铁或飞机票价和余票信息，优化我的下一次出行方案，帮我算出交通总花费并设置出发提醒，方案保存到/root/Desktop",
+    "query_id": "next_travel_plan",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b400e31fa65d",
+        "type": "leaf",
+        "name": "正确找到并读取了电脑中的行程备忘录",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-9fe62d76eb59",
+        "type": "group",
+        "name": "完成了出行方案交付与提醒设置",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3eb1857f4a1e",
+            "type": "leaf",
+            "name": "正确生成了包含优化出行方案和交通总花费的文件并保存到/root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-015d26709e96",
+            "type": "leaf",
+            "name": "正确设置了下一次出行的出发提醒",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "时间推理",
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-9836174823a5",
+          "type": "leaf",
+          "name": "准确检索了电脑中与出行相关的行程备忘录文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-96a506d3183c",
+          "type": "group",
+          "name": "行程信息解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f90d4515f492",
+              "type": "leaf",
+              "name": "正确提取了下一次出行的出发地、目的地和出行时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持",
+                "事实准确性",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-fab4189c496b",
+              "type": "leaf",
+              "name": "准确识别了用于优化方案的约束信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-406cdbd72ac5",
+          "type": "group",
+          "name": "实时票务信息获取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9288e735230a",
+              "type": "leaf",
+              "name": "正确查询了与下一次出行时间匹配的高铁票价和余票信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-1f3814f3fde9",
+              "type": "leaf",
+              "name": "正确查询了与下一次出行时间匹配的飞机票价和余票信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-95ac801de006",
+              "type": "leaf",
+              "name": "识别查询失败或结果缺失时进行了重试或改用其他信息源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "检索策略",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e16994d54f0c",
+          "type": "group",
+          "name": "出行方案优化与费用计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-85cb78c70fd3",
+              "type": "leaf",
+              "name": "准确比较了高铁与飞机方案的票价和余票差异",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-beab5027dbb9",
+              "type": "leaf",
+              "name": "正确计算了所选方案的交通总花费",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-7a5aaa1fd992",
+              "type": "leaf",
+              "name": "正确选择了满足行程时间条件且可执行的下一次出行方案",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-830ee5968b31",
+          "type": "group",
+          "name": "交付文件可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-428968c244dd",
+              "type": "leaf",
+              "name": "生成的方案文件包含出发地、目的地、出行时间、候选交通方式、票价、余票和总花费",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6e7acbc49136",
+              "type": "leaf",
+              "name": "生成的方案文件可正常打开且文件内容无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-0f65263b4611",
+              "type": "leaf",
+              "name": "生成的方案文件明确标注了推荐方案和出发提醒时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4084e0d12452",
+          "type": "leaf",
+          "name": "准确向用户说明了方案保存位置和提醒设置结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-63a5537892a7",
+    "language": "zh"
+  }
+}

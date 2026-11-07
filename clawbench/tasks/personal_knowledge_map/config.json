@@ -1,0 +1,446 @@
+{
+  "id": "personal_knowledge_map",
+  "name": "个人知识地图",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "上下文管理-上下文压缩与摘要",
+    "上下文管理-状态跟踪与一致性维护",
+    "反思与修复-异常识别与理解"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.compress",
+    "context.state",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我的个人知识库保存在桌面 knowledge_vault/ 文件夹，是过去三年积累的约几十份PDF、Word笔记、课程资料和网页收藏，主题主要涉及机器学习、LLM和Agent。\n请帮我建立一个可以持续维护的个人知识地图：\n1. 识别不同文件讨论的核心概念，并把同义概念合并（比如「工具调用」和「tool use」）；\n2. 根据文件时间和内容判断哪些知识是早期观点、哪些是后来被我自己的学习或实验推翻的；\n3. 重点找出我的笔记中相互矛盾的结论，并回到对应的原始论文或课程材料判断矛盾来自：概念理解错误、不同实验条件，还是文献本身结论不同；\n4. 生成一份知识地图，把我的知识状态分为五类：基本掌握、接触过但不扎实、存在冲突、可能已经过时、明显缺失；\n5. 针对最重要的三个知识缺口，自动设计一个4周学习计划，并生成第一周的学习材料和测试题。\n注意：不要把「我保存过某篇论文」直接当成「我掌握了这个知识」。输出保存到 /root/Desktop/knowledge_vault/ 下。",
+  "rubric": {
+    "query": "我的个人知识库保存在桌面 knowledge_vault/ 文件夹，是过去三年积累的约几十份PDF、Word笔记、课程资料和网页收藏，主题主要涉及机器学习、LLM和Agent。\n请帮我建立一个可以持续维护的个人知识地图：\n1. 识别不同文件讨论的核心概念，并把同义概念合并（比如「工具调用」和「tool use」）；\n2. 根据文件时间和内容判断哪些知识是早期观点、哪些是后来被我自己的学习或实验推翻的；\n3. 重点找出我的笔记中相互矛盾的结论，并回到对应的原始论文或课程材料判断矛盾来自：概念理解错误、不同实验条件，还是文献本身结论不同；\n4. 生成一份知识地图，把我的知识状态分为五类：基本掌握、接触过但不扎实、存在冲突、可能已经过时、明显缺失；\n5. 针对最重要的三个知识缺口，自动设计一个4周学习计划，并生成第一周的学习材料和测试题。\n注意：不要把「我保存过某篇论文」直接当成「我掌握了这个知识」。输出保存到 /root/Desktop/knowledge_vault/ 下。",
+    "query_id": "personal_knowledge_map",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-46d9f2295f86",
+        "type": "group",
+        "name": "知识源解析与概念归并目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-db44424331f9",
+            "type": "leaf",
+            "name": "正确读取了 knowledge_vault 文件夹中的相关资料内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "检索策略",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-1c36b4e8d8b8",
+            "type": "leaf",
+            "name": "正确合并了跨文件的同义核心概念",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f46f1b497a8d",
+        "type": "group",
+        "name": "观点演化与冲突溯源目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-32f4c73ba331",
+            "type": "leaf",
+            "name": "正确区分了早期观点与后来被学习或实验推翻的观点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-faa188400537",
+            "type": "leaf",
+            "name": "正确识别了笔记中相互矛盾的结论",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-db1aceadf8a4",
+            "type": "leaf",
+            "name": "正确回溯到对应原始论文或课程材料并判定矛盾来源类型",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "检索策略",
+              "信息筛选",
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d5e2ffae92a2",
+        "type": "group",
+        "name": "交付物生成目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bd0a4840530c",
+            "type": "leaf",
+            "name": "生成了将知识状态划分为五类的知识地图文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-e35a52f1a510",
+            "type": "leaf",
+            "name": "生成了针对三个最重要知识缺口的四周学习计划文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "沟通表达",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-a606bea519fc",
+            "type": "leaf",
+            "name": "生成了第一周学习材料和测试题文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "通用知识",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5c841dc381b0",
+          "type": "leaf",
+          "name": "准确提取了各文件的时间信息并用于观点先后顺序判断",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1e4110b107e5",
+          "type": "leaf",
+          "name": "正确将不同语言或不同表述的同义概念归并到统一概念节点",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f045fff69c6d",
+          "type": "group",
+          "name": "矛盾来源判定质量",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-f23a894534ab",
+              "type": "leaf",
+              "name": "准确定位了支持矛盾结论的原始论文或课程材料",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b52d391ce797",
+              "type": "leaf",
+              "name": "正确判定矛盾来自概念理解错误",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-34f55b593a2a",
+              "type": "leaf",
+              "name": "正确判定矛盾来自实验条件差异",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e0466256b19f",
+              "type": "leaf",
+              "name": "正确判定矛盾来自文献结论不同",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-2e20fec23e68",
+          "type": "group",
+          "name": "知识状态分类质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3f224b7dd61a",
+              "type": "leaf",
+              "name": "正确将知识点分配到基本掌握类别并给出来自笔记或实验记录的证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-bd7c8be21d71",
+              "type": "leaf",
+              "name": "正确将知识点分配到接触过但不扎实类别并给出来自笔记或实验记录的证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-baa401388542",
+              "type": "leaf",
+              "name": "正确将知识点分配到存在冲突类别并给出对应冲突证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-1e2316a526f1",
+              "type": "leaf",
+              "name": "正确将知识点分配到可能已经过时类别并给出时间或来源证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-17520fcfa013",
+              "type": "leaf",
+              "name": "正确将知识点分配到明显缺失类别并给出与现有知识结构的断层证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-31d2f95e8768",
+              "type": "leaf",
+              "name": "没有将保存过某篇论文直接当作已经掌握该知识的证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-bb000a410a43",
+          "type": "group",
+          "name": "学习计划与首周内容设计质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-931cd701f9e8",
+              "type": "leaf",
+              "name": "正确依据知识地图中的证据选择了三个最重要的知识缺口",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-dcaa8eee9bdf",
+              "type": "leaf",
+              "name": "正确将四周学习计划按先修关系和主题递进组织",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-e6b9085eb9d1",
+              "type": "leaf",
+              "name": "正确使第一周学习材料覆盖该周目标概念和必读来源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-433c658c3f5f",
+              "type": "leaf",
+              "name": "正确使第一周测试题覆盖概念理解和应用判断",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-74d9d837cc7e",
+          "type": "group",
+          "name": "交付物文件可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ed10102d934f",
+              "type": "leaf",
+              "name": "生成的知识地图文件可正常打开且结构中包含概念节点、关系或分类结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-6c347bbe6505",
+              "type": "leaf",
+              "name": "生成的学习计划与第一周材料文件可正常打开且内容分节完整",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-1dd34a23b30e",
+              "type": "leaf",
+              "name": "输出文件保存在 /root/Desktop/knowledge_vault/ 下且文件命名可区分不同交付物",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-0f0c834e370d",
+    "language": "zh"
+  },
+  "note": "我的个人知识库中有过去三年积累的约500份PDF、Word笔记、课程资料和网页收藏，主题主要涉及机器学习、LLM和Agent。请帮我建立一个可以持续维护的个人知识地图。首先识别不同文件讨论的核心概念，并把同义概念合并；然后根据文件时间和内容判断哪些知识是早期观点、哪些是后来被我自己的学习或实验推翻的。重点找出我的笔记中相互矛盾的结论，并回到对应的原始论文或课程材料判断矛盾来自概念理解错误、不同实验条件，还是文献本身结论不同。最终生成一份知识地图，并把我的知识状态分为“基本掌握、接触过但不扎实、存在冲突、可能已经过时、明显缺失”五类。针对最重要的三个知识缺口，自动设计一个4周学习计划，并生成第一周的学习材料和测试题。不要把“我保存过某篇论文”直接当成“我掌握了这个知识”。",
+  "env_description": "knowledge_vault/：notes/（6份笔记，埋3类矛盾结构：注意力机制2024早期观点被2025自己推翻；RAG两次实验结论冲突且原因未查明；agent记忆观点被自己实验部分修正）、course_materials/（只收藏未学的CS336/统计学习方法）、bookmarks/（埋概率论/实验设计两个收藏未看的知识断层）、papers/PDF清单（标注精读/读过/没读）"
+}

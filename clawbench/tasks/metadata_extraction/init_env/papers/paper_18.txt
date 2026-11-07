@@ -1,0 +1,14 @@
+Title: Advances in Computer Vision (Version 18)
+Authors: David Black; Eva Green; Frank Brown
+Year: 2021
+Keywords: computer vision; image recognition; convolutional networks
+
+Abstract:
+Recent advances in computer vision have been driven by
+convolutional neural networks. This survey summarizes key
+developments.
+
+References:
+Y. LeCun, Deep Learning, 2015.
+I. Goodfellow, GANs, 2014.
+K. He, ResNet, 2016.

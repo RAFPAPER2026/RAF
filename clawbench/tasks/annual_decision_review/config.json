@@ -1,0 +1,385 @@
+{
+  "id": "annual_decision_review",
+  "name": "年度决策复盘",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "任务规划",
+    "上下文管理-状态跟踪与一致性维护",
+    "任务规划-通用规划与策略制定"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.general",
+    "context.state",
+    "plan.strategy"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面 life_review/ 文件夹里是我过去一年的生活数据：calendar.ics（日程）、notes.md（随想笔记）、spending.csv（消费流水）、travel_records.csv（出行记录）、journal/（个人日记，按月）和 todo_list.md。\n帮我复盘一下过去一年我做过的重要决定——比如换健身房、买设备、报课程、旅行、订阅服务、工作安排的调整等。\n对每个决定：\n1. 从数据里找出决定发生的时间和当时的背景/目标（我的日记和笔记里写过当时的想法）；\n2. 找出之后真实发生的结果（实际去了多少次、用了多少、花了多少时间）；\n3. 比较 expected outcome vs actual outcome，判断这个决定是否达到预期；\n4. 如果重新来一次，基于我记录的偏好给出建议。\n注意：数据里不会直接写「这是一个决定」，需要你自己识别；也不要简单按花钱多少判断成败，要结合当时的目标。\n最后总结我反复出现的决策模式（比如总是高估自己的使用频率），输出到 /root/Desktop/life_review/年度决策复盘.md。",
+  "rubric": {
+    "query": "桌面 life_review/ 文件夹里是我过去一年的生活数据：calendar.ics（日程）、notes.md（随想笔记）、spending.csv（消费流水）、travel_records.csv（出行记录）、journal/（个人日记，按月）和 todo_list.md。\n帮我复盘一下过去一年我做过的重要决定——比如换健身房、买设备、报课程、旅行、订阅服务、工作安排的调整等。\n对每个决定：\n1. 从数据里找出决定发生的时间和当时的背景/目标（我的日记和笔记里写过当时的想法）；\n2. 找出之后真实发生的结果（实际去了多少次、用了多少、花了多少时间）；\n3. 比较 expected outcome vs actual outcome，判断这个决定是否达到预期；\n4. 如果重新来一次，基于我记录的偏好给出建议。\n注意：数据里不会直接写「这是一个决定」，需要你自己识别；也不要简单按花钱多少判断成败，要结合当时的目标。\n最后总结我反复出现的决策模式（比如总是高估自己的使用频率），输出到 /root/Desktop/life_review/年度决策复盘.md。",
+    "query_id": "annual_decision_review",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-926ab91d5a0e",
+        "type": "group",
+        "name": "完成了年度决策信息识别",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9069a861897c",
+            "type": "leaf",
+            "name": "正确读取了 life_review 文件夹中的核心数据文件与子目录",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-180344b7acd2",
+            "type": "leaf",
+            "name": "正确提取了过去一年中与重要决定相关的候选记录",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "检索策略"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-af8deb42ab2d",
+        "type": "group",
+        "name": "完成了每个重要决定的复盘内容",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c0b30610f777",
+            "type": "leaf",
+            "name": "为每个识别出的重要决定给出了发生时间",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-01b4318adcda",
+            "type": "leaf",
+            "name": "为每个识别出的重要决定给出了当时背景或目标",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-5d0519294d05",
+            "type": "leaf",
+            "name": "为每个识别出的重要决定给出了之后真实发生的结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-358f28add922",
+            "type": "leaf",
+            "name": "为每个识别出的重要决定给出了预期与实际的对比结论",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "条件判断",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-55c4aacc2681",
+            "type": "leaf",
+            "name": "为每个识别出的重要决定给出了基于记录偏好的重做建议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "通用知识",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-60e53652b2dc",
+        "type": "group",
+        "name": "完成了总结与文件交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b176d671aeb2",
+            "type": "leaf",
+            "name": "识别了过去一年反复出现的决策模式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-7ec0253d8f18",
+            "type": "leaf",
+            "name": "生成了 年度决策复盘.md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-388a8541c303",
+            "type": "leaf",
+            "name": "将 年度决策复盘.md 写入了 /root/Desktop/life_review/ 目录",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5611561a7f68",
+          "type": "leaf",
+          "name": "准确定位并读取了 calendar.ics、notes.md、spending.csv、travel_records.csv、journal/ 和 todo_list.md 中与决策复盘相关的内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-44bb88c63cfa",
+          "type": "group",
+          "name": "重要决定识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-70916d1fee1d",
+              "type": "leaf",
+              "name": "准确识别了记录中隐含的重要决定而非仅提取消费项目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-0a35c36676ae",
+              "type": "leaf",
+              "name": "正确排除了缺少证据支持的重要性不足项目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-517257a97378",
+          "type": "group",
+          "name": "证据关联与事实约束质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-decd0b3dc605",
+              "type": "leaf",
+              "name": "准确对应了每个决定的发生时间与相关背景记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7373039c98fb",
+              "type": "leaf",
+              "name": "正确关联了决定后的实际使用次数、时间投入或支出记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-db8d18b35a0b",
+              "type": "leaf",
+              "name": "未将无法从数据中支持的结果或动机写入复盘",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4caea613b227",
+          "type": "group",
+          "name": "评估与建议质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9fe3ca790141",
+              "type": "leaf",
+              "name": "正确区分了预期目标与实际结果的比较维度",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-c749d16755f0",
+              "type": "leaf",
+              "name": "判断是否达到预期时引用了记录中的目标而非仅依据花费金额",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "条件判断"
+              ]
+            },
+            {
+              "id": "node-44cd15fea9fd",
+              "type": "leaf",
+              "name": "重做建议引用了记录中可观察到的个人偏好或行为模式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-aabaa2f31504",
+          "type": "group",
+          "name": "交付物可用性与内容组织质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e6f71bd7cf79",
+              "type": "leaf",
+              "name": "年度决策复盘.md 中按决定逐项呈现时间、背景目标、实际结果、对比结论和重做建议",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-2316a719bea0",
+              "type": "leaf",
+              "name": "年度决策复盘.md 中包含跨案例归纳出的反复决策模式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-ca57c5ecab8f",
+              "type": "leaf",
+              "name": "年度决策复盘.md 文件可正常打开且 Markdown 结构完整",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-ccb9b7f01761",
+          "type": "leaf",
+          "name": "在遇到缺失记录、时间范围不一致或证据冲突时，正确标注不确定项并采用可追溯的处理方式",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性",
+            "时间推理"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-1e606e70a6a0",
+    "language": "zh"
+  },
+  "note": "个人年度“决策复盘” 给agent：过去一年用户的 calendar + notes + spending records + travel records + personal journal + task list。用户：“帮我复盘一下过去一年做过的重要决定，哪些决定实际上没有达到预期？如果重新来一次，你会建议我怎么做？” Agent需要：先从碎片信息中识别“重要决定”，例如换健身房、买设备、参加课程、旅行、搬家、订阅服务、工作安排等；然后寻找决定发生时的背景、当时的目标，以及之后真实发生的结果；最后比较 expected outcome vs actual outcome，找出反复出现的决策模式。 难点： 数据里不会直接写“这是一个decision”，需要agent自己发现；同时不能简单根据花费判断失败，而需要恢复当时的目标。测试 longitudinal reasoning + causal/counterfactual reasoning + personal memory",
+  "env_description": "life_review/：journal/（4个月日记，记录各决定的当时目标）、notes.md（随想）、spending.csv（可量化实际使用：健身12次/英语15次/无人机镜头未拆封）、travel_records.csv、calendar.ics（与流水交叉验证出勤）、todo_list.md（年初flag与实际对比）；决定需自行识别，expected vs actual需跨文件推理"
+}

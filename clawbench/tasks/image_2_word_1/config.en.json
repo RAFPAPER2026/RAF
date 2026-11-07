@@ -1,0 +1,210 @@
+{
+  "id": "image_2_word_1",
+  "name": "Convert Images to Word Document",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Skill Usage"
+  ],
+  "ability_category_canonical": [
+    "tool.skill"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 500,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "rapid-ocr-reader"
+  ],
+  "language": "en",
+  "prompt": "Read the content of all the images in the awsome_benchmark folder on the desktop and save it into a Word document. Note that the document content must be kept completely consistent, the format and style must stay the same, and no content may be omitted; the order in which the content connects must be determined by you before proceeding. Save the Word document in the result directory on the desktop.",
+  "rubric": {
+    "query": "Read the content of all the images in the awsome_benchmark folder on the desktop and save it into a Word document. Note that the document content must be kept completely consistent, the format and style must stay the same, and no content may be omitted; the order in which the content connects must be determined by you before proceeding. Save the Word document in the result directory on the desktop.",
+    "query_id": "image_2_word_1",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d92313ce58fa",
+        "type": "leaf",
+        "name": "Correctly read the content of all images in the awsome_benchmark folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-8a9b501d8d86",
+        "type": "leaf",
+        "name": "Generated a Word document containing the transcription results of the image content",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-b024ea46c552",
+        "type": "leaf",
+        "name": "Saved the Word document in the result directory on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-ed135ba4aec0",
+        "type": "leaf",
+        "name": "Organized the document content in the correct connection order after judgment",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Conditional Judgment",
+          "Logical Reasoning",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-24590d6f1a11",
+          "type": "leaf",
+          "name": "Accurately located all image files to be processed in the awsome_benchmark folder on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b5c529eedeeb",
+          "type": "leaf",
+          "name": "Accurately recognized the text, paragraphs, and layout elements in each image",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1222c0a5fd49",
+          "type": "leaf",
+          "name": "Correctly determined the connection relationships between content across images and the document ordering",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Temporal Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1ade109d7b7b",
+          "type": "group",
+          "name": "Content Transcription Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-189a0893ce0f",
+              "type": "leaf",
+              "name": "Accurately retained the original text content without adding information that does not exist in the images",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-bb0f8ee67038",
+              "type": "leaf",
+              "name": "Completely retained the paragraph, heading, list, table, or line-break structure of the original text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bdb350cb9296",
+          "type": "group",
+          "name": "Word Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3bfc05f4f387",
+              "type": "leaf",
+              "name": "The generated Word document opens normally and its file format is Word",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-43560371d2c6",
+              "type": "leaf",
+              "name": "The font styles, paragraph layout, and page structure in the generated Word document match the image content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Intent Understanding",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-60fd20964318",
+          "type": "leaf",
+          "name": "Took observable corrective measures when images could not be recognized, files were corrupted, or saving failed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-be47d9c8f069",
+    "language": "en"
+  },
+  "note": "Tests the ability to use OCR tools and to understand text content."
+}

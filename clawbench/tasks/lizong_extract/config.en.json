@@ -1,0 +1,303 @@
+{
+  "id": "lizong_extract",
+  "name": "Extract Comprehensive Science Section",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "From exam_review_workspace/高三上期中全科深度复盘与错题集.docx on the desktop, extract all content starting from the level-1 heading “三、理综失分点剖析与变式训练” up to but not including the level-1 heading “四、英语作文高频句型”, save it as a new document named 《期中理综错题特训.docx》, and put it in the same folder.\n\nIn the extracted content, the parts highlighted in red in the original text must keep their colors. For the comprehensive science part, the chemistry equations, force analysis tables, images, and formulas must all be fully retained without misalignment or omission. The first paragraph of the new document (that is, the comprehensive science main heading) must keep the original “标题 1” style.",
+  "rubric": {
+    "query": "From exam_review_workspace/高三上期中全科深度复盘与错题集.docx on the desktop, extract all content starting from the level-1 heading “三、理综失分点剖析与变式训练” up to but not including the level-1 heading “四、英语作文高频句型”, save it as a new document named 《期中理综错题特训.docx》, and put it in the same folder.\n\nIn the extracted content, the parts highlighted in red in the original text must keep their colors. For the comprehensive science part, the chemistry equations, force analysis tables, images, and formulas must all be fully retained without misalignment or omission. The first paragraph of the new document (that is, the comprehensive science main heading) must keep the original “标题 1” style.",
+    "query_id": "lizong_extract",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4363e4dc26dd",
+        "type": "leaf",
+        "name": "Correctly located the source document exam_review_workspace/高三上期中全科深度复盘与错题集.docx on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-78e906138a1e",
+        "type": "group",
+        "name": "Target Content Extraction Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-29a7c0eecaf4",
+            "type": "leaf",
+            "name": "Correctly extracted the content starting from the level-1 heading “三、理综失分点剖析与变式训练”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-a8e316aae375",
+            "type": "leaf",
+            "name": "Correctly excluded the level-1 heading “四、英语作文高频句型” and all content after it",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ba5a27981e7e",
+        "type": "leaf",
+        "name": "Correctly generated the new document 《期中理综错题特训.docx》 and saved it in the same folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      },
+      {
+        "id": "node-1aa76ab89423",
+        "type": "group",
+        "name": "New Document Content and Key Formatting Retained",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e0e1fc3bc0f6",
+            "type": "leaf",
+            "name": "Correctly retained the colors of the red highlight annotations in the original text",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ae47509d7d44",
+            "type": "leaf",
+            "name": "Correctly retained the chemistry equation content without omission",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-d2af4f9644e7",
+            "type": "leaf",
+            "name": "Correctly retained the force analysis tables without omission",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-a6e4282b9c5d",
+            "type": "leaf",
+            "name": "Correctly retained the images without omission",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-a2ba41ec3d07",
+            "type": "leaf",
+            "name": "Correctly retained the formulas without omission",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-54e63749dc25",
+            "type": "leaf",
+            "name": "Correctly retained the first paragraph of the new document as the original “标题 1” style",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Context Retention",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-becfbb61bc3f",
+          "type": "leaf",
+          "name": "Accurately identified the boundary positions of the two level-1 headings “三、理综失分点剖析与变式训练” and “四、英语作文高频句型”",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Conditional Judgment",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-42e9e26c6b65",
+          "type": "leaf",
+          "name": "Correctly used document processing tools to read and export the specified interval content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-55aadc3a0807",
+          "type": "group",
+          "name": "Exported Document Usability and Layout Fidelity Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dafcc6c00eeb",
+              "type": "leaf",
+              "name": "Accurately retained the color attributes of the red highlight annotations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-4ab106243f7e",
+              "type": "leaf",
+              "name": "Accurately retained the character structure of the chemistry equations and formulas",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d42a108c5c88",
+              "type": "leaf",
+              "name": "Accurately retained the row/column structure of the tables and the positions of cell contents",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-a8b148e24b18",
+              "type": "leaf",
+              "name": "Accurately retained the images so that they display normally at the corresponding content positions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-56d0c3c911eb",
+              "type": "leaf",
+              "name": "Accurately retained the “标题 1” style attribute of the first paragraph",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8208ddcf25aa",
+          "type": "leaf",
+          "name": "Accurately verified that the new document contains only the content range from the starting heading up to before the ending heading",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Context Retention",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f84f253728a6",
+          "type": "leaf",
+          "name": "Correctly handled and corrected possible style loss or missing objects during export",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-88dbb0f2b7cf",
+          "type": "leaf",
+          "name": "The reply included clear statements about the new document generation result and the save location",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-abf3df021197",
+    "language": "en"
+  },
+  "note": "Precisely extract the comprehensive science part from a Word document while preserving formatting and highlights."
+}

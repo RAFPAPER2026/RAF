@@ -1,0 +1,383 @@
+{
+  "id": "agent_tool_builder_platform",
+  "name": "Agent Tool Builder Platform",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The concept of agent tool (tool calling) is very popular now. Please help me develop a lightweight HTML single-page application so that people who know nothing about coding can also configure new tools for an agent:\n1. The user describes the requirement in natural language in the input box on the page (e.g. “帮我查天气”);\n2. After the user clicks Generate, the page calls an LLM API (the key is placed in /root/Desktop/api_key.txt) to convert the requirement into a tool definition usable by the agent (name/description/parameters in JSON Schema format);\n3. The generated tool definition supports one-click copying and downloading as a .json file;\n4. The page must include usage instructions and two examples (weather lookup and sending email).\nPut all files in the /root/Desktop/agent_tool_builder/ directory, and ensure that the HTML can be opened and used by double-clicking.",
+  "rubric": {
+    "query": "The concept of agent tool (tool calling) is very popular now. Please help me develop a lightweight HTML single-page application so that people who know nothing about coding can also configure new tools for an agent:\n1. The user describes the requirement in natural language in the input box on the page (e.g. “帮我查天气”);\n2. After the user clicks Generate, the page calls an LLM API (the key is placed in /root/Desktop/api_key.txt) to convert the requirement into a tool definition usable by the agent (name/description/parameters in JSON Schema format);\n3. The generated tool definition supports one-click copying and downloading as a .json file;\n4. The page must include usage instructions and two examples (weather lookup and sending email).\nPut all files in the /root/Desktop/agent_tool_builder/ directory, and ensure that the HTML can be opened and used by double-clicking.",
+    "query_id": "agent_tool_builder_platform",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-00c68020e499",
+        "type": "leaf",
+        "name": "Generated an HTML single-page application file that can be opened and used by double-clicking",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-e955ce256a01",
+        "type": "group",
+        "name": "Completed the core interaction and result export features",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e7729de3cae1",
+            "type": "leaf",
+            "name": "Implemented a natural language requirement input feature in the page",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-c379bf844976",
+            "type": "leaf",
+            "name": "Called the LLM API after clicking Generate and output a tool definition conforming to the JSON Schema structure",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-bb874e20f208",
+            "type": "leaf",
+            "name": "Provided a one-click copy feature for the generated result in the page",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-74fd7bb1c5a3",
+            "type": "leaf",
+            "name": "Provided a feature in the page to download the generated result as a .json file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e362c38ce867",
+        "type": "group",
+        "name": "Supplemented the page instructions and example content",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bfec7e52ae91",
+            "type": "leaf",
+            "name": "Provided usage instructions for the application in the page",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-c7167d9b1aad",
+            "type": "leaf",
+            "name": "Provided a weather lookup example in the page",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-c76d40406a55",
+            "type": "leaf",
+            "name": "Provided a send-email example in the page",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-6c8a4e5a09cc",
+        "type": "group",
+        "name": "Completed the delivery under the specified path and key constraints",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9a2fe5718db8",
+            "type": "leaf",
+            "name": "Wrote the application files into the /root/Desktop/agent_tool_builder/ directory",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-6b893e5d46e4",
+            "type": "leaf",
+            "name": "Used the API key in /root/Desktop/api_key.txt in the implementation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-dc0b943511d6",
+          "type": "group",
+          "name": "Requirement constraint identification quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d1a60007cd96",
+              "type": "leaf",
+              "name": "Correctly identified the constraint that the single-page application must open offline and must not depend on a build step",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-f0c91055697b",
+              "type": "leaf",
+              "name": "Correctly identified the delivery directory, API key path, number of examples, and export format requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a2e516c0abd9",
+          "type": "group",
+          "name": "Environment constraint and feasibility judgment quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2fc7ee0ef585",
+              "type": "leaf",
+              "name": "Correctly handled the execution limitation that a browser opening the HTML directly cannot directly read the local /root/Desktop/api_key.txt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Exception Handling",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-4af922a98183",
+              "type": "leaf",
+              "name": "Gave an implementation path or alternative solution that does not rely on nonexistent capabilities",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6a604c4604fb",
+          "type": "group",
+          "name": "LLM calling and result parsing quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f56d34622b6e",
+              "type": "leaf",
+              "name": "Correctly constructed the prompt sent to the LLM to constrain the output to the three fields name, description, and parameters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-2e3873dad0e3",
+              "type": "leaf",
+              "name": "Correctly set the request method, request headers, and request body fields required to call the LLM API",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3812a9ac9388",
+              "type": "leaf",
+              "name": "Correctly handled the API response content and extracted a parsable JSON result",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5689f3a62c88",
+          "type": "group",
+          "name": "Deliverable usability and result consistency",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ed4ba87d2c06",
+              "type": "leaf",
+              "name": "The correctly generated HTML file can be opened directly in a browser and its interface elements can be interacted with normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-bfe4fb989342",
+              "type": "leaf",
+              "name": "The correctly generated page contains an input area, a generate button, a result display area, a copy button, a download button, usage instructions, and two example blocks",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-67e94071feff",
+              "type": "leaf",
+              "name": "The correctly generated result file can be downloaded as .json, and the file content is consistent with the result displayed on the page",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e0fb35e735f9",
+          "type": "group",
+          "name": "Exception handling and state control quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6697f620e20c",
+              "type": "leaf",
+              "name": "Correctly displayed error information in the page when the API call failed or JSON parsing failed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-19d8cd716cb9",
+              "type": "leaf",
+              "name": "Correctly prevented copy and download operations when the input was empty or there was no result",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2001fa63ea0e",
+          "type": "leaf",
+          "name": "Correctly explained to the user the limitations of a local HTML file directly reading local files and of directly carrying server-side keys",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-e06bc8cb947a",
+    "language": "en"
+  },
+  "note": "The agent tool concept is very popular now; help me generate a lightweight HTML platform that lets people who don't understand code configure new function tools for an agent, where the input is a natural language requirement and the output is a tool the agent can use",
+  "env_description": "api_key.txt (demo key) + tool_spec_reference.json (tool definition format reference)"
+}

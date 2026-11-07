@@ -1,0 +1,209 @@
+{
+  "id": "manager_perspective_review",
+  "name": "Manager Perspective Quarterly Review",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "Context Compression & Summarization",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "context.compress",
+    "context.long",
+    "context.compress"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Assume you are my direct manager. The work_records/ folder on the desktop contains my work output for this quarter: project documents, weekly reports, code commit records, and meeting minutes.\nPlease read these materials carefully and answer from a manager's perspective: what do you think is my biggest risk this quarter (for example, in dimensions such as delivery quality, communication and collaboration, and priority management)? What have I done well but been underestimated for? Where do I think I have done well but actually have hidden risks?\nRequire specific evidence citations (which material it comes from); do not speak in generalities. Output a /root/Desktop/季度review.md.",
+  "rubric": {
+    "query": "Assume you are my direct manager. The work_records/ folder on the desktop contains my work output for this quarter: project documents, weekly reports, code commit records, and meeting minutes.\nPlease read these materials carefully and answer from a manager's perspective: what do you think is my biggest risk this quarter (for example, in dimensions such as delivery quality, communication and collaboration, and priority management)? What have I done well but been underestimated for? Where do I think I have done well but actually have hidden risks?\nRequire specific evidence citations (which material it comes from); do not speak in generalities. Output a /root/Desktop/季度review.md.",
+    "query_id": "manager_perspective_review",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a0efb0c2b327",
+        "type": "leaf",
+        "name": "Correctly read the quarterly materials in the work_records/ folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-5399cfcab492",
+        "type": "group",
+        "name": "Quarterly Review Deliverable Objective Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-308fb409117c",
+            "type": "leaf",
+            "name": "Generated a quarterly review document containing the judgment of the biggest risk this quarter",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-e8f4739f403b",
+            "type": "leaf",
+            "name": "Generated a quarterly review document containing the things done well but underestimated",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ce0392bfa327",
+            "type": "leaf",
+            "name": "Generated a quarterly review document containing the things that seemed done well but actually have hidden risks",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-d27488d2cf4a",
+            "type": "leaf",
+            "name": "Cited the material source evidence in the quarterly review document",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Factual Accuracy",
+              "Information Filtering",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-ba3af04dd1a7",
+            "type": "leaf",
+            "name": "Produced the quarterly review document as the /root/Desktop/季度review.md file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f1c0a01d182e",
+          "type": "leaf",
+          "name": "Correctly traversed the work_records/ folder and covered all four material types: project documents, weekly reports, code commit records, and meeting minutes",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1fcec202bca1",
+          "type": "leaf",
+          "name": "Accurately extracted specific evidence fragments and their source materials that support the risk judgment and performance evaluation",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-31e4b31a2610",
+          "type": "leaf",
+          "name": "Accurately distinguished the three types of judgments: the biggest risk, underestimated strengths, and strengths with hidden risks",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Intent Understanding",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0bf1ed8792fe",
+          "type": "group",
+          "name": "Evaluation Conclusion Expression Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6ac3d42712ee",
+              "type": "leaf",
+              "name": "Correctly cited the corresponding material name or file source to locate each core judgment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-09e7cd257054",
+              "type": "leaf",
+              "name": "The output content includes specific explanations of the risk categories and their impact on delivery or collaboration",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d6baa3945cdf",
+          "type": "leaf",
+          "name": "The generated /root/Desktop/季度review.md file is organized in Markdown structure and its content can be read and used directly by the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-46a3e1929cf9",
+    "language": "en"
+  },
+  "note": "Review my work from the boss's perspective\n\n“If you were my manager, based on my work records for the last quarter, what do you think is my biggest risk?”\n\nNeeded:\n\nRead the outputs\nAnalyze work patterns\nFind shortcomings",
+  "env_description": "work_records/ contains project documents (with a hidden rollback-plan TODO risk), weekly reports (with hidden underestimated contributions), a code commit record csv, and meeting minutes (with a hidden risk of being called out in a review)"
+}

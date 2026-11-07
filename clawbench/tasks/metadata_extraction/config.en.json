@@ -1,0 +1,442 @@
+{
+  "id": "metadata_extraction",
+  "name": "Paper Metadata Extraction",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following",
+    "Task Decomposition"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow",
+    "plan.decompose"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a `papers/` folder on the desktop containing the text files of several academic papers. Each paper looks roughly like this: it has a title, authors, year, keywords, abstract, and references.\n\nPlease do the following for me:\n\n1. Read all text files in the `papers/` folder on the desktop.\n2. Extract the following information from each paper:\n   - title: string\n   - authors: array of strings, each author as a separate element\n   - year: integer\n   - keywords: array of strings, each keyword as a separate element\n   - abstract: string\n   - references: array of strings\n3. Generate two files on the desktop:\n   - `bibliography.csv`: a CSV file whose columns include `title`, `authors`, `year`, `keywords`. If there are multiple authors or keywords, separate them with a semicolon `;`.\n   - `metadata.json`: a JSON file containing a list, where each element is the metadata of one paper, in the following format:\n     - `title`: string\n     - `authors`: array of strings, for example `[\"Alice Smith\", \"Bob Johnson\"]`\n     - `year`: integer\n     - `keywords`: array of strings, for example `[\"deep learning\", \"NLP\"]`\n     - `abstract`: string\n     - `references`: array of strings\n\nThe content format of the paper files is roughly like this:\n```\nTitle: <paper title>\nAuthors: <author 1>; <author 2>; ...\nYear: <year>\nKeywords: <keyword 1>; <keyword 2>; ...\n\nAbstract:\n<abstract content, may span several lines>\n\nReferences:\n<reference 1>\n<reference 2>\n...\n```\n\nA few more points to note:\n- All papers in `papers/` must be parsed.\n- Sort by the alphabetical order of the file names and keep that order.\n- Leading and trailing extra whitespace in the extracted fields must be removed.\n- The abstract and references may span multiple lines; handle them correctly.\n- The encoding of the two output files must be UTF-8.\n- The `authors` and `keywords` in `metadata.json` must be array types, not strings.",
+  "rubric": {
+    "query": "There is a `papers/` folder on the desktop containing the text files of several academic papers. Each paper looks roughly like this: it has a title, authors, year, keywords, abstract, and references.\n\nPlease do the following for me:\n\n1. Read all text files in the `papers/` folder on the desktop.\n2. Extract the following information from each paper:\n   - title: string\n   - authors: array of strings, each author as a separate element\n   - year: integer\n   - keywords: array of strings, each keyword as a separate element\n   - abstract: string\n   - references: array of strings\n3. Generate two files on the desktop:\n   - `bibliography.csv`: a CSV file whose columns include `title`, `authors`, `year`, `keywords`. If there are multiple authors or keywords, separate them with a semicolon `;`.\n   - `metadata.json`: a JSON file containing a list, where each element is the metadata of one paper, in the following format:\n     - `title`: string\n     - `authors`: array of strings, for example `[\"Alice Smith\", \"Bob Johnson\"]`\n     - `year`: integer\n     - `keywords`: array of strings, for example `[\"deep learning\", \"NLP\"]`\n     - `abstract`: string\n     - `references`: array of strings\n\nThe content format of the paper files is roughly like this:\n```\nTitle: <paper title>\nAuthors: <author 1>; <author 2>; ...\nYear: <year>\nKeywords: <keyword 1>; <keyword 2>; ...\n\nAbstract:\n<abstract content, may span several lines>\n\nReferences:\n<reference 1>\n<reference 2>\n...\n```\n\nA few more points to note:\n- All papers in `papers/` must be parsed.\n- Sort by the alphabetical order of the file names and keep that order.\n- Leading and trailing extra whitespace in the extracted fields must be removed.\n- The abstract and references may span multiple lines; handle them correctly.\n- The encoding of the two output files must be UTF-8.\n- The `authors` and `keywords` in `metadata.json` must be array types, not strings.",
+    "query_id": "metadata_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5045821600b1",
+        "type": "leaf",
+        "name": "Correctly read all text files in the papers folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-89ddeface120",
+        "type": "group",
+        "name": "Paper Metadata Extraction Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-91e37a8b7952",
+            "type": "leaf",
+            "name": "Correctly extracted the title field of each paper with leading and trailing whitespace removed",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-14627ce861af",
+            "type": "leaf",
+            "name": "Correctly extracted the author list field of each paper and saved it as an array of strings",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-e70f36d6c477",
+            "type": "leaf",
+            "name": "Correctly extracted the year field of each paper and saved it as an integer",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-c09b90701bb1",
+            "type": "leaf",
+            "name": "Correctly extracted the keyword list field of each paper and saved it as an array of strings",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-411db0543e5f",
+            "type": "leaf",
+            "name": "Correctly extracted the abstract field of each paper with leading and trailing whitespace removed",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-32d639bad6a5",
+            "type": "leaf",
+            "name": "Correctly extracted the reference list field of each paper and saved it as an array of strings",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f44e2539fd93",
+        "type": "group",
+        "name": "File Deliverables Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-eb47e20a7a53",
+            "type": "leaf",
+            "name": "Generated the bibliography.csv file on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-1995c1c8e9bf",
+            "type": "leaf",
+            "name": "Generated the metadata.json file on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-893b86e70569",
+        "type": "group",
+        "name": "Output Format and Ordering Requirements Satisfied",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2af81aaa31db",
+            "type": "leaf",
+            "name": "Correctly arranged all paper records in the alphabetical order of the file names",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-717307eb39c1",
+            "type": "leaf",
+            "name": "Correctly wrote bibliography.csv in UTF-8 encoding with authors and keywords separated by semicolons",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-9e4e494109e0",
+            "type": "leaf",
+            "name": "Correctly wrote metadata.json in UTF-8 encoding with authors and keywords kept as array types",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-54bfc4f98fd5",
+          "type": "leaf",
+          "name": "Accurately located the text files in the papers folder on the desktop without omitting any parseable file",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c38ac07ee9d1",
+          "type": "group",
+          "name": "Structured Field Parsing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-00798bf9779e",
+              "type": "leaf",
+              "name": "Accurately identified the line labels corresponding to the title, authors, year, and keywords fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7bc98a0e0269",
+              "type": "leaf",
+              "name": "Correctly split the authors field by semicolons and removed leading and trailing whitespace from each author element",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3fde960faa84",
+              "type": "leaf",
+              "name": "Correctly split the keywords field by semicolons and removed leading and trailing whitespace from each keyword element",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-4ab8df60f3d2",
+              "type": "leaf",
+              "name": "Correctly parsed the year field into an integer value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b621d8f432dc",
+          "type": "group",
+          "name": "Cross-Line Field Boundary Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9bb86fd8d397",
+              "type": "leaf",
+              "name": "Correctly identified the start and end positions of the Abstract paragraph",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5677d57b6aaf",
+              "type": "leaf",
+              "name": "Correctly retained the cross-line content in the abstract without mixing in text from the References paragraph",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ecdf44d95a12",
+              "type": "leaf",
+              "name": "Correctly identified the start position of the References paragraph and extracted the subsequent reference entries",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-e84b2f587f34",
+          "type": "group",
+          "name": "Multi-File Ordering and Context Retention Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-faac2d6a39fa",
+              "type": "leaf",
+              "name": "Correctly output the paper records in the CSV and JSON in the alphabetical order of the file names",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-f66cd95370a1",
+              "type": "leaf",
+              "name": "Correctly kept each paper's fields in the right place and unmixed across multiple papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1fb1b47ae7f1",
+          "type": "group",
+          "name": "Deliverable Usability and Format Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a19cf04a51c8",
+              "type": "leaf",
+              "name": "Correctly generated the bibliography.csv content containing the title, authors, year, and keywords columns",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-39f258eead88",
+              "type": "leaf",
+              "name": "Correctly generated the metadata.json content containing the title, authors, year, keywords, abstract, and references keys",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e4425911a194",
+              "type": "leaf",
+              "name": "Correctly wrote bibliography.csv and metadata.json in UTF-8 encoding and the files open and read normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-48d35e246765",
+              "type": "leaf",
+              "name": "Correctly ensured that authors, keywords, and references in metadata.json are array types and that authors and keywords in bibliography.csv are semicolon-joined strings",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6c43480ba76d",
+          "type": "group",
+          "name": "Exception Handling and Result Communication Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6aeac8284612",
+              "type": "leaf",
+              "name": "Correctly identified paper files that failed to parse or had missing fields and avoided fabricating non-existent field values",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f61639d65c54",
+              "type": "leaf",
+              "name": "Correctly reported the number of processed files and the locations of the generated files in the result explanation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1f863170b3a4",
+    "language": "en"
+  },
+  "note": "Extract metadata from academic paper text files and generate CSV and JSON outputs"
+}

@@ -1,0 +1,333 @@
+{
+  "id": "statistical_analysis",
+  "name": "实验数据假设检验",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "## 任务描述\n\n你的桌面上有一个CSV文件 `/root/Desktop/experiment_data.csv`，包含按分类变量 `group` 分组的实验测量数据。每行有两列：\n\n- `group`: 组别标签（字符串）\n- `measurement`: 数值测量值（浮点数）\n\n你的任务是执行统计假设检验，确定各组之间是否存在显著差异。\n\n## 具体要求\n\n1. **选择检验方法**：\n   - 如果恰好有两组，执行独立双样本t检验\n   - 如果有三组或更多组，执行单因素方差分析（ANOVA）\n\n2. **计算效应量**：\n   - 对于两组：使用Cohen's d\n   - 对于三组或更多组：使用eta squared\n\n3. **输出文件**：\n\n   在桌面上创建两个输出文件：\n\n   **文件1：`/root/Desktop/stats_results.csv`**，包含以下列：\n   - `test`: 执行的检验名称（`t-test` 或 `ANOVA`）\n   - `statistic`: 检验统计量的值（浮点数）\n   - `p_value`: 检验的p值（浮点数）\n   - `effect_size`: 效应量（浮点数）\n   - `significant`: 布尔值，表示在显著性水平α=0.05下是否显著\n\n   **文件2：`/root/Desktop/stats_summary.json`**，包含一个JSON对象，键为：\n   - `test`: 检验名称\n   - `statistic`: 检验统计量\n   - `p_value`: p值\n   - `effect_size`: 效应量\n   - `significant`: 布尔值\n\n## 技术要求\n\n- 从 `/root/Desktop/experiment_data.csv` 读取输入数据\n- 根据组数执行适当的统计检验\n- 使用显著性水平 α=0.05\n- 将结果写入指定的输出文件\n- 可以使用 `scipy` 和 `numpy` 等Python库\n- 输出文件中的数值保持合理的精度（如保留4位小数）\n- `significant` 字段：如果 p_value < 0.05，则为 `true`，否则为 `false`",
+  "rubric": {
+    "query": "## 任务描述\n\n你的桌面上有一个CSV文件 `/root/Desktop/experiment_data.csv`，包含按分类变量 `group` 分组的实验测量数据。每行有两列：\n\n- `group`: 组别标签（字符串）\n- `measurement`: 数值测量值（浮点数）\n\n你的任务是执行统计假设检验，确定各组之间是否存在显著差异。\n\n## 具体要求\n\n1. **选择检验方法**：\n   - 如果恰好有两组，执行独立双样本t检验\n   - 如果有三组或更多组，执行单因素方差分析（ANOVA）\n\n2. **计算效应量**：\n   - 对于两组：使用Cohen's d\n   - 对于三组或更多组：使用eta squared\n\n3. **输出文件**：\n\n   在桌面上创建两个输出文件：\n\n   **文件1：`/root/Desktop/stats_results.csv`**，包含以下列：\n   - `test`: 执行的检验名称（`t-test` 或 `ANOVA`）\n   - `statistic`: 检验统计量的值（浮点数）\n   - `p_value`: 检验的p值（浮点数）\n   - `effect_size`: 效应量（浮点数）\n   - `significant`: 布尔值，表示在显著性水平α=0.05下是否显著\n\n   **文件2：`/root/Desktop/stats_summary.json`**，包含一个JSON对象，键为：\n   - `test`: 检验名称\n   - `statistic`: 检验统计量\n   - `p_value`: p值\n   - `effect_size`: 效应量\n   - `significant`: 布尔值\n\n## 技术要求\n\n- 从 `/root/Desktop/experiment_data.csv` 读取输入数据\n- 根据组数执行适当的统计检验\n- 使用显著性水平 α=0.05\n- 将结果写入指定的输出文件\n- 可以使用 `scipy` 和 `numpy` 等Python库\n- 输出文件中的数值保持合理的精度（如保留4位小数）\n- `significant` 字段：如果 p_value < 0.05，则为 `true`，否则为 `false`",
+    "query_id": "statistical_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e1de64cc58c0",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/experiment_data.csv 中的 group 和 measurement 数据",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-cd4104928ab4",
+        "type": "group",
+        "name": "按组数分支完成了统计检验结果交付",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-44c504c8922d",
+            "type": "leaf",
+            "name": "恰好两组时生成了包含 t-test 结果的 /root/Desktop/stats_results.csv 和 /root/Desktop/stats_summary.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-13b107345e39",
+            "type": "leaf",
+            "name": "三组或更多组时生成了包含 ANOVA 结果的 /root/Desktop/stats_results.csv 和 /root/Desktop/stats_summary.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-33fb894633ec",
+        "type": "group",
+        "name": "统计结果内容已完整产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b6caf5d72997",
+            "type": "leaf",
+            "name": "正确计算了检验统计量并写入两个输出文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-9bc424f4f2f7",
+            "type": "leaf",
+            "name": "正确计算了 p 值并写入两个输出文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-7337f254e87e",
+            "type": "leaf",
+            "name": "正确计算了对应效应量并写入两个输出文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-772a64c61d54",
+            "type": "leaf",
+            "name": "正确根据 p_value < 0.05 判定 significant 并写入两个输出文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-273f93325356",
+          "type": "leaf",
+          "name": "准确识别了数据中的唯一 group 数量并据此选择检验方法",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "条件判断",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-17fc82e6c466",
+          "type": "group",
+          "name": "统计检验执行质量",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-487026ba353f",
+              "type": "leaf",
+              "name": "正确对恰好两组数据执行了独立双样本 t 检验",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "工具使用",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-506a03f52d1c",
+              "type": "leaf",
+              "name": "正确对三组或更多组数据执行了单因素方差分析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "工具使用",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-075ea22eaf17",
+          "type": "group",
+          "name": "效应量计算质量",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-3a58f6baee54",
+              "type": "leaf",
+              "name": "准确计算了两组情形的 Cohen's d",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-040ea61f135b",
+              "type": "leaf",
+              "name": "准确计算了三组或更多组情形的 eta squared",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9c651ed6967a",
+          "type": "group",
+          "name": "结果写出一致性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f9e46dd2809e",
+              "type": "leaf",
+              "name": "正确将 statistic、p_value、effect_size 数值保留到可读的固定精度并在两个文件中保持一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-01e8ec5c3175",
+              "type": "leaf",
+              "name": "正确将 significant 字段写为布尔值并在两个文件中保持一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "上下文保持",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-cbd6ad5274a8",
+              "type": "leaf",
+              "name": "正确将 test 字段写为 t-test 或 ANOVA 并在两个文件中保持一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "上下文保持",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e07aac74e726",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dbbcd3234aeb",
+              "type": "leaf",
+              "name": "stats_results.csv 包含 test、statistic、p_value、effect_size、significant 五列",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-6b50cca4c847",
+              "type": "leaf",
+              "name": "stats_summary.json 可被解析为包含 test、statistic、p_value、effect_size、significant 五个键的 JSON 对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-8015232c379f",
+              "type": "leaf",
+              "name": "两个输出文件可正常打开且字段值可被后续程序读取",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-00ef8c94eb50",
+          "type": "leaf",
+          "name": "读取输入文件失败或组数不足以执行检验时给出了错误说明并避免写入伪造统计结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-53350bed84d9",
+    "language": "zh"
+  },
+  "note": "统计假设检验任务，需要根据数据组数选择合适的检验方法"
+}

@@ -1,0 +1,5 @@
+{
+  "market_share": 0.12,
+  "serviceable_regions": ["Segment_1", "Segment_3", "Segment_5", "Segment_7", "Segment_9", "Segment_11", "Segment_13", "Segment_15"],
+  "target_segments": ["Segment_3", "Segment_5", "Segment_7"]
+}

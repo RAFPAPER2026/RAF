@@ -1,0 +1,238 @@
+{
+  "id": "market_sizing",
+  "name": "Market Sizing Calculation",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The market_data folder on the desktop contains two files, market_data.csv and company_data.json. Calculate the market size based on these two files:\n- TAM: total potential market of all segments = the sum of population * avg_spend\n- SAM: serviceable market = the sum of population * adoption_rate * avg_spend over the segments in serviceable_regions\n- SOM: obtainable market = SAM * market_share\n\nKeep the results to two decimal places and output them to the market_sizing.json file on the desktop.",
+  "rubric": {
+    "query": "The market_data folder on the desktop contains two files, market_data.csv and company_data.json. Calculate the market size based on these two files:\n- TAM: total potential market of all segments = the sum of population * avg_spend\n- SAM: serviceable market = the sum of population * adoption_rate * avg_spend over the segments in serviceable_regions\n- SOM: obtainable market = SAM * market_share\n\nKeep the results to two decimal places and output them to the market_sizing.json file on the desktop.",
+    "query_id": "market_sizing",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-3acde1df683c",
+        "type": "leaf",
+        "name": "Correctly read market_data.csv and company_data.json in the market_data folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Retrieval Strategy"
+        ]
+      },
+      {
+        "id": "node-852e3263b43a",
+        "type": "group",
+        "name": "Market Sizing Result Calculation Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e21086bd7fed",
+            "type": "leaf",
+            "name": "Correctly calculated TAM as the sum of population multiplied by avg_spend over all segments",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-0da16ecc75a9",
+            "type": "leaf",
+            "name": "Correctly calculated SAM as the sum of population multiplied by adoption_rate multiplied by avg_spend over the segments in serviceable_regions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-9b93fbbc0a7a",
+            "type": "leaf",
+            "name": "Correctly calculated SOM as SAM multiplied by market_share",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ec723004fc5a",
+            "type": "leaf",
+            "name": "Correctly kept TAM, SAM, and SOM to two decimal places",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f510dd4498a4",
+        "type": "leaf",
+        "name": "Correctly generated the market_sizing.json file on the desktop and wrote the calculation results into it",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2ac7d93ccbd8",
+          "type": "leaf",
+          "name": "Accurately located the two input files in the market_data folder on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-60b88814a464",
+          "type": "leaf",
+          "name": "Correctly parsed the population, avg_spend, and region fields used for calculation in market_data.csv and the serviceable_regions, adoption_rate, and market_share fields in company_data.json",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-30cd95c3dd1c",
+          "type": "group",
+          "name": "Market Sizing Calculation Process Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-51c957125ca1",
+              "type": "leaf",
+              "name": "Accurately filtered the segments whose region belongs to serviceable_regions for the SAM calculation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-35af831aa1e4",
+              "type": "leaf",
+              "name": "Accurately applied the TAM, SAM, and SOM formulas without confusing the calculation order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-f63cd4001c28",
+              "type": "leaf",
+              "name": "Correctly output the values to two decimal places without changing their meaning",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-3a60464cbeab",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-870184263d2c",
+              "type": "leaf",
+              "name": "Correctly saved the output file in JSON format containing the three result fields TAM, SAM, and SOM",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-67fc2f120337",
+              "type": "leaf",
+              "name": "The generated market_sizing.json file opens and parses normally, and its numeric fields can be used directly by subsequent programs",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-78829cff2ce5",
+          "type": "leaf",
+          "name": "Identified errors and stopped outputting untrustworthy results when input files were missing, fields were missing, or values were not computable",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-e84204970993",
+    "language": "en"
+  }
+}

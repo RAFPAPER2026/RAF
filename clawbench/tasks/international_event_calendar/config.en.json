@@ -1,0 +1,192 @@
+{
+  "id": "international_event_calendar",
+  "name": "International Event Compliance Calendar",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "In the international_event_schedule folder on the desktop there is a slide deck named Global_Event_Preparation_Schedule.pptx, which is the preparation schedule for an international event; each page contains the meeting arrangements of a different working group, across various time zones.\n\nOnly select the meetings related to '合规', '法务', '安保', and '版权'; do not include the opening ceremony rehearsals, ticketing and marketing, etc. After filtering, convert all meeting times uniformly into Beijing time according to the time zone marked in the original text. Add the '[合规部]' tag in front of every meeting title.\n\nOutput a standard ics calendar file, saved in the same folder, named Compliance_Schedule_BeijingTime.ics.",
+  "rubric": {
+    "query": "In the international_event_schedule folder on the desktop there is a slide deck named Global_Event_Preparation_Schedule.pptx, which is the preparation schedule for an international event; each page contains the meeting arrangements of a different working group, across various time zones.\n\nOnly select the meetings related to '合规', '法务', '安保', and '版权'; do not include the opening ceremony rehearsals, ticketing and marketing, etc. After filtering, convert all meeting times uniformly into Beijing time according to the time zone marked in the original text. Add the '[合规部]' tag in front of every meeting title.\n\nOutput a standard ics calendar file, saved in the same folder, named Compliance_Schedule_BeijingTime.ics.",
+    "query_id": "international_event_calendar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8666dcfc5934",
+        "type": "leaf",
+        "name": "Correctly read the content of Global_Event_Preparation_Schedule.pptx in the international_event_schedule folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Retrieval Strategy"
+        ]
+      },
+      {
+        "id": "node-7e30b880289c",
+        "type": "leaf",
+        "name": "Correctly filtered out the meetings related to compliance, legal, security, and copyright",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-6daee57eed99",
+        "type": "leaf",
+        "name": "Correctly converted the times of the filtered meetings into Beijing time according to the time zones marked in the original text",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Temporal Reasoning",
+          "Logical Reasoning",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-d5dfbf0db173",
+        "type": "leaf",
+        "name": "Correctly generated the calendar file named Compliance_Schedule_BeijingTime.ics in the same folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ab8ddf9339e7",
+          "type": "leaf",
+          "name": "Accurately extracted the title, date, start time, end time, and original time zone label of the meetings on each slide",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ac3ecdde8867",
+          "type": "leaf",
+          "name": "Accurately judged whether the meeting content falls within the scope of compliance, legal, security, and copyright and excluded irrelevant meetings such as opening ceremony rehearsals and ticketing/marketing",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5cfecbbce420",
+          "type": "leaf",
+          "name": "Correctly converted the start and end times of each meeting into Beijing time based on the time zone marked in the original text",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-7a99ce19646b",
+          "type": "leaf",
+          "name": "Correctly added the [合规部] prefix to each output meeting title without rewriting the key information of the original meeting topic",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Context Retention",
+            "Communication",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c32e15f52e11",
+          "type": "leaf",
+          "name": "The generated ics file can be imported normally by standard calendar applications and each event contains parseable start time, end time, and title fields",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-98793563e62e",
+          "type": "group",
+          "name": "Abnormal Record Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9789aac2c9ab",
+              "type": "leaf",
+              "name": "Identified meeting records with missing time zones, abnormal time formats, or incomplete cross-day information in the slides",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-20e12a8abd3b",
+              "type": "leaf",
+              "name": "Took corrective measures for abnormal meeting records such as skipping them, keeping the original label, or using parseable substitute values in the output",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e0faf774fbca",
+    "language": "en"
+  },
+  "note": "Filter compliance/legal/security/copyright-related meetings from the PPT, convert the time zones to Beijing time, and generate an ICS calendar."
+}

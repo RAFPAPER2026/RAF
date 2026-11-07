@@ -1,0 +1,235 @@
+{
+  "id": "math_errors",
+  "name": "Postgraduate Math Error Sorting",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Long-Context Understanding",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me organize the postgraduate entrance exam math materials in /root/Desktop. Sort the wrong questions by chapter and save them on the desktop, delete duplicate documents, then summarize the high-frequency wrong questions into a one-page note; for wrong questions without a marked chapter, help me confirm which chapter they should belong to.",
+  "rubric": {
+    "query": "Help me organize the postgraduate entrance exam math materials in /root/Desktop. Sort the wrong questions by chapter and save them on the desktop, delete duplicate documents, then summarize the high-frequency wrong questions into a one-page note; for wrong questions without a marked chapter, help me confirm which chapter they should belong to.",
+    "query_id": "math_errors",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-9468c44f53b0",
+        "type": "leaf",
+        "name": "Correctly identified the postgraduate entrance exam math materials to be processed in /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-ef60b76a61d1",
+        "type": "group",
+        "name": "Wrong Question Classification Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-157ba7b20a81",
+            "type": "leaf",
+            "name": "Classified the wrong questions with chapter information by chapter and saved them on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-a01b257ec055",
+            "type": "leaf",
+            "name": "Confirmed the chapters of the wrong questions without marked chapters and then classified and saved them by chapter on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "General Knowledge",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e9973facf756",
+        "type": "leaf",
+        "name": "Deleted the duplicate postgraduate entrance exam math documents",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-7a67a69abd2f",
+        "type": "leaf",
+        "name": "Generated a one-page high-frequency wrong question summary note and saved it on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Information Filtering",
+          "Logical Reasoning",
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-c5c65bd880f8",
+          "type": "leaf",
+          "name": "Accurately filtered the files in /root/Desktop related to the postgraduate entrance exam math wrong question organization",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ff9408220920",
+          "type": "leaf",
+          "name": "Correctly determined that the chapter of a wrong question without a marked chapter was based on the question's knowledge points or solution features",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Temporal Reasoning",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-44689cca51f9",
+          "type": "leaf",
+          "name": "Accurately identified content-duplicate or substantively duplicate postgraduate entrance exam math documents",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-696b5a17bea3",
+          "type": "group",
+          "name": "Wrong Question Classification Result Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-388c86285054",
+              "type": "leaf",
+              "name": "The generated chapter classification result contains directly usable chapter directories or grouped files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-cd31f02d6545",
+              "type": "leaf",
+              "name": "Each wrong question was placed in the chapter group consistent with its content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e15bba06e1d4",
+          "type": "group",
+          "name": "High-Frequency Wrong Question Note Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-caf838733193",
+              "type": "leaf",
+              "name": "The one-page note contains a summary of the question types or knowledge points corresponding to the high-frequency wrong questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-c1bf0b46f43d",
+              "type": "leaf",
+              "name": "The content length of the one-page note is kept within what a single page can hold",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-3d3a35ea59a1",
+              "type": "leaf",
+              "name": "The one-page note file opens normally with no garbled characters or layout misalignment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-11e686872a34",
+    "language": "en"
+  },
+  "note": "File retrieval, data analysis, and organization"
+}

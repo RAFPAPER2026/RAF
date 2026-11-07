@@ -1,0 +1,249 @@
+{
+  "id": "accumulated_cat_information",
+  "name": "Cat Behavior Knowledge Capture",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Context Management"
+  ],
+  "ability_category_canonical": [
+    "context.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me parse the long pet behavior analysis material in the work files on /root/Desktop, distill the causes and the core correction methods for common abnormal cat behaviors, and save the result in the same directory.",
+  "rubric": {
+    "query": "Help me parse the long pet behavior analysis material in the work files on /root/Desktop, distill the causes and the core correction methods for common abnormal cat behaviors, and save the result in the same directory.",
+    "query_id": "accumulated_cat_information",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a4e0097c834a",
+        "type": "group",
+        "name": "Achieved the material parsing objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0a50e8cc5502",
+            "type": "leaf",
+            "name": "Correctly read the long pet behavior analysis material in the work files on /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-2a0972e054e5",
+            "type": "leaf",
+            "name": "Correctly identified the content in the material related to common abnormal cat behaviors",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-075b28db6bd2",
+        "type": "group",
+        "name": "Achieved the knowledge capture objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-94b53f8231f6",
+            "type": "leaf",
+            "name": "Distilled the causes of common abnormal cat behaviors",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-274503e71491",
+            "type": "leaf",
+            "name": "Distilled the core correction methods for common abnormal cat behaviors",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0e27864a6367",
+        "type": "leaf",
+        "name": "Generated a deliverable result file in the same directory on /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-8ab98be60df8",
+          "type": "leaf",
+          "name": "Accurately located the source material in the work files on /root/Desktop that needed to be parsed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3a7eb6568c34",
+          "type": "leaf",
+          "name": "Accurately filtered the information in the material that is directly related to common abnormal cat behaviors",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-98d3f9e10433",
+          "type": "group",
+          "name": "Knowledge distillation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e4c339869a5b",
+              "type": "leaf",
+              "name": "Accurately summarized the causes corresponding to each type of common abnormal cat behavior",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-3322ca2253a2",
+              "type": "leaf",
+              "name": "Accurately summarized the core correction methods corresponding to each type of common abnormal cat behavior",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-34a70ccca2ab",
+              "type": "leaf",
+              "name": "Correctly distinguished factual conclusions from speculative statements in the material",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9762fabc0c23",
+          "type": "leaf",
+          "name": "The generated result file contains the three elements of abnormal behavior categories, corresponding causes, and corresponding correction methods",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention",
+            "Communication"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9819e0e756c3",
+          "type": "group",
+          "name": "Deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6f1d57c075c0",
+              "type": "leaf",
+              "name": "The generated result file opens normally and contains no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-aa2252770ff5",
+              "type": "leaf",
+              "name": "The generated result file organizes content by behavior category for convenient later reference",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-9bca910e9507",
+          "type": "leaf",
+          "name": "Clearly stated the directory where the output file is located and the produced content in the result explanation",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-eebccd87c3cc",
+    "language": "en"
+  }
+}

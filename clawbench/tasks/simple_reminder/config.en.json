@@ -1,0 +1,112 @@
+{
+  "id": "simple_reminder",
+  "name": "Simple To-Do Reminder",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [],
+  "language": "en",
+  "prompt": "At 10 a.m. next Saturday, I am going to the hospital to visit my friend Zhang San. Please record it in '待办.txt' on the desktop.",
+  "rubric": {
+    "query": "At 10 a.m. next Saturday, I am going to the hospital to visit my friend Zhang San. Please record it in '待办.txt' on the desktop.",
+    "query_id": "simple_reminder",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-eac93a35d423",
+        "type": "leaf",
+        "name": "Correctly identified the to-do information of going to the hospital at 10 a.m. next Saturday to visit the friend Zhang San",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Temporal Reasoning",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-0a71990642f0",
+        "type": "leaf",
+        "name": "Successfully wrote the to-do record into 待办.txt on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6dee92b170c1",
+          "type": "leaf",
+          "name": "Accurately parsed the date and time corresponding to 10 a.m. next Saturday and used it in the write operation",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-01fa953fb7cb",
+          "type": "leaf",
+          "name": "Correctly located 待办.txt on the desktop and performed the write operation on the target file",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b3d5d96d10ae",
+          "type": "leaf",
+          "name": "Accurately wrote the to-do content including the hospital, the friend Zhang San, and the visit",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-90e70af8b3ad",
+          "type": "leaf",
+          "name": "The written 待办.txt content opens normally and the newly added record can be identified as one independent to-do item",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-efe3ee04163f",
+    "language": "en"
+  }
+}

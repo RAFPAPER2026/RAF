@@ -1,0 +1,302 @@
+{
+  "id": "math_enhancement",
+  "name": "Math Enhancement Materials Collection",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Handling & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "My daughter is in 5th grade this year and is not good at math. Help me search, organize, and download 10 5th-grade math study notes, including detailed explanations of real test questions, knowledge point reinforcement, and error-prone question training, plus 5 sets of test papers (pdf format), and save them in the “数学强化” folder in /root/Desktop.",
+  "rubric": {
+    "query": "My daughter is in 5th grade this year and is not good at math. Help me search, organize, and download 10 5th-grade math study notes, including detailed explanations of real test questions, knowledge point reinforcement, and error-prone question training, plus 5 sets of test papers (pdf format), and save them in the “数学强化” folder in /root/Desktop.",
+    "query_id": "math_enhancement",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d767fbba99c1",
+        "type": "leaf",
+        "name": "Created the “数学强化” folder in /root/Desktop and produced the study material files",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-933bca9aa8af",
+        "type": "group",
+        "name": "Study Notes Organization Objective Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-85b8c860b74f",
+            "type": "leaf",
+            "name": "Organized 10 study notes suitable for 5th-grade math",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-356993d652b9",
+            "type": "leaf",
+            "name": "The study notes cover detailed explanations of real test questions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-226e59a9b415",
+            "type": "leaf",
+            "name": "The study notes cover knowledge point reinforcement",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-603a041f5d46",
+            "type": "leaf",
+            "name": "The study notes cover error-prone question training",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7f63a883e54d",
+        "type": "leaf",
+        "name": "Downloaded 5 sets of 5th-grade math test papers and saved them in PDF format",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Retrieval Strategy"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ae4e2f62a1fb",
+          "type": "leaf",
+          "name": "Accurately understood that the target is 5th-grade math study materials and did not mix in content from other grades",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-26cbccac292d",
+          "type": "group",
+          "name": "Study Notes Retrieval and Filtering Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-355d96ef0da2",
+              "type": "leaf",
+              "name": "Correctly retrieved downloadable sources of 5th-grade math study notes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-806e28a62698",
+              "type": "leaf",
+              "name": "Correctly filtered the study note content related to detailed explanations of real test questions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-378b3b4ff039",
+              "type": "leaf",
+              "name": "Correctly filtered the study note content related to knowledge point reinforcement",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ed0fd2307733",
+              "type": "leaf",
+              "name": "Correctly filtered the study note content related to error-prone question training",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-c8d7c6c00808",
+          "type": "group",
+          "name": "File Acquisition and Saving Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3b261917f51d",
+              "type": "leaf",
+              "name": "Correctly downloaded 10 study note files, and their content matches the organization results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ece88aa6637d",
+              "type": "leaf",
+              "name": "Correctly downloaded 5 sets of test paper PDFs, and their content is related to 5th-grade math tests",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-56e1d415b597",
+              "type": "leaf",
+              "name": "Correctly saved all files under the /root/Desktop/数学强化 path",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8bf1a0cc7473",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b03d0b22d701",
+              "type": "leaf",
+              "name": "The produced study note files open normally with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-821041c0a314",
+              "type": "leaf",
+              "name": "The produced study note content contains titles or source identifiers that make the 10 materials easy to distinguish",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-41af6c897875",
+              "type": "leaf",
+              "name": "The produced 5 sets of test paper PDFs open normally with complete page content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f65b171bc724",
+          "type": "group",
+          "name": "Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-35f261634379",
+              "type": "leaf",
+              "name": "Correctly identified abnormal situations such as download failures or invalid links",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-4262aa4525e7",
+              "type": "leaf",
+              "name": "Correctly switched sources or retried to fill up the 10 study notes and 5 test papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-b9b3e720710f",
+    "language": "en"
+  },
+  "note": "Requires an online search."
+}

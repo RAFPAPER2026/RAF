@@ -1,0 +1,169 @@
+{
+  "id": "learning_insight",
+  "name": "学习心得手册",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "把我近1个月以来存在/root/Desktop的学习心得，合并排版，生成精简心得手册放/root/Desktop",
+  "rubric": {
+    "query": "把我近1个月以来存在/root/Desktop的学习心得，合并排版，生成精简心得手册放/root/Desktop",
+    "query_id": "learning_insight",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e5274c9455e2",
+        "type": "leaf",
+        "name": "正确读取了/root/Desktop中近1个月以来的学习心得文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "时间推理"
+        ]
+      },
+      {
+        "id": "node-c3e73cee98a9",
+        "type": "leaf",
+        "name": "完成生成了放置在/root/Desktop的精简心得手册文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-89b4f882363b",
+        "type": "leaf",
+        "name": "完成合并并排版了近1个月学习心得内容为单一手册",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-11df8eca121a",
+          "type": "leaf",
+          "name": "准确筛选了/root/Desktop中修改时间位于近1个月内的学习心得文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1cd3681c2012",
+          "type": "leaf",
+          "name": "正确提取了各学习心得文件中的正文内容且未混入无关文件内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2ebe4a921d9f",
+          "type": "leaf",
+          "name": "正确合并了重复主题内容并保留了原始观点的主要信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "信息筛选",
+            "上下文保持",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e634de57283f",
+          "type": "leaf",
+          "name": "生成的精简心得手册文件可正常打开且包含标题、分节结构和连续正文内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7e0911a209a8",
+          "type": "group",
+          "name": "异常处理与结果反馈",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-473cf274c133",
+              "type": "leaf",
+              "name": "遇到无法读取或格式异常的文件时记录了被跳过的文件范围",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-8f642bac1f1b",
+              "type": "leaf",
+              "name": "回复中说明了精简心得手册的保存位置和处理结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-060dddc9a33c",
+    "language": "zh"
+  }
+}

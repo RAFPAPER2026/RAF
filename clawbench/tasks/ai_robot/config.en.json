@@ -1,0 +1,169 @@
+{
+  "id": "ai_robot",
+  "name": "AI Robot Video Tweet",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Creative Generation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The mp4 on /root/Desktop is a video about AI robots. Help me extract three core viewpoints and write a tweet, and remember to include the #AI tag.",
+  "rubric": {
+    "query": "The mp4 on /root/Desktop is a video about AI robots. Help me extract three core viewpoints and write a tweet, and remember to include the #AI tag.",
+    "query_id": "ai_robot",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c0423397900d",
+        "type": "leaf",
+        "name": "Correctly read the target mp4 video file on /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-78a9125c38b5",
+        "type": "group",
+        "name": "Content production objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-66183461593b",
+            "type": "leaf",
+            "name": "Correctly extracted three core viewpoints from the video",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-9b9cc2414c87",
+            "type": "leaf",
+            "name": "Wrote a tweet containing the #AI tag",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-34dd1df9f899",
+          "type": "leaf",
+          "name": "Correctly located and read the mp4 video file in /root/Desktop that matches the user's description",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-95f8294c4ab4",
+          "type": "leaf",
+          "name": "Accurately extracted the key information from the video and did not fabricate viewpoints that do not appear in the video",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e3d8fc8a420c",
+          "type": "leaf",
+          "name": "Correctly summarized the video content into three mutually distinct core viewpoints",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Information Filtering",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-4f10c512e2f5",
+          "type": "group",
+          "name": "Tweet generation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e65c4b4ad83e",
+              "type": "leaf",
+              "name": "Accurately reflected the video's main theme and at least one core viewpoint in the tweet",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-dfcd3f5bafb1",
+              "type": "leaf",
+              "name": "Correctly included the #AI tag in the tweet",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-0048c1371de8",
+          "type": "leaf",
+          "name": "Correctly explained the limitation and took action to relocate the file or request clarification when the video content could not be read directly or parsing failed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-7e15b115110c",
+    "language": "en"
+  }
+}

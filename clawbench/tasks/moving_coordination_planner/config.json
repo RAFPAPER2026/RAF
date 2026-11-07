@@ -1,0 +1,327 @@
+{
+  "id": "moving_coordination_planner",
+  "name": "搬家综合协调方案",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划-任务分解",
+    "上下文管理-长上下文理解",
+    "遵从能力-指令遵从",
+    "任务规划-约束满足与调度",
+    "上下文管理-状态跟踪与一致性维护",
+    "反思与修复-异常识别与理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long",
+    "instruction.follow",
+    "plan.scheduling",
+    "context.state",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我计划下个月（2026年11月）搬家，同时需要处理工作、旅行、家庭事务和预算。\n相关信息在桌面 moving_plan/ 文件夹：日历.ics、旅行计划.docx、家庭安排.xlsx、财务记录.xlsx、搬家清单.docx 和我的历史笔记（notes.md）。\n请帮我制定下个月的完整安排：\n1. 综合考虑工作会议、旅行日期、搬家时间、家庭成员的可用时间和预算，安排搬家任务、采购、清洁、地址变更以及必要的行政事务；\n2. 不要只按照我的清单执行——请检查不同文件之间是否存在冲突，例如某个搬家任务安排在我出差期间、预算不足、家庭成员不可用或者两个重要事项时间重叠；\n3. 对于能够自行解决的冲突请调整计划（并在结果中说明你调整了什么、为什么）；\n4. 对于无法判断的冲突，列出来让我选择，不要替我决定；\n5. 最后生成一个新的月度日历（moving_calendar.ics）、搬家任务清单和预算表，并给出一份「如果按照当前计划执行，最可能失败的5件事情」。\n所有输出保存到 /root/Desktop/moving_plan/output/ 目录。",
+  "rubric": {
+    "query": "我计划下个月（2026年11月）搬家，同时需要处理工作、旅行、家庭事务和预算。\n相关信息在桌面 moving_plan/ 文件夹：日历.ics、旅行计划.docx、家庭安排.xlsx、财务记录.xlsx、搬家清单.docx 和我的历史笔记（notes.md）。\n请帮我制定下个月的完整安排：\n1. 综合考虑工作会议、旅行日期、搬家时间、家庭成员的可用时间和预算，安排搬家任务、采购、清洁、地址变更以及必要的行政事务；\n2. 不要只按照我的清单执行——请检查不同文件之间是否存在冲突，例如某个搬家任务安排在我出差期间、预算不足、家庭成员不可用或者两个重要事项时间重叠；\n3. 对于能够自行解决的冲突请调整计划（并在结果中说明你调整了什么、为什么）；\n4. 对于无法判断的冲突，列出来让我选择，不要替我决定；\n5. 最后生成一个新的月度日历（moving_calendar.ics）、搬家任务清单和预算表，并给出一份「如果按照当前计划执行，最可能失败的5件事情」。\n所有输出保存到 /root/Desktop/moving_plan/output/ 目录。",
+    "query_id": "moving_coordination_planner",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-33762d1c3bc6",
+        "type": "leaf",
+        "name": "生成了新的月度日历文件 moving_calendar.ics 并保存到 /root/Desktop/moving_plan/output/",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "时间推理"
+        ]
+      },
+      {
+        "id": "node-a031cfba21d7",
+        "type": "group",
+        "name": "生成了其余文件型交付物",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3dc5b741eb1f",
+            "type": "leaf",
+            "name": "生成了搬家任务清单文件并保存到 /root/Desktop/moving_plan/output/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-7ecb29d65b27",
+            "type": "leaf",
+            "name": "生成了预算表文件并保存到 /root/Desktop/moving_plan/output/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c8c82e9be2f2",
+        "type": "group",
+        "name": "完成了下个月搬家综合安排目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a3b5f6b1daee",
+            "type": "leaf",
+            "name": "制定了覆盖工作会议、旅行日期、搬家时间、家庭成员可用时间和预算约束的 2026年11月完整安排",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-2a26861fbc59",
+            "type": "leaf",
+            "name": "安排了搬家任务、采购、清洁、地址变更和必要的行政事务",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ea44fbd0e6ec",
+        "type": "group",
+        "name": "完成了冲突升级与风险总结目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-82a0e9c53ff8",
+            "type": "leaf",
+            "name": "列出了无法判断的冲突供用户选择",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-2ec5d8fcfe92",
+            "type": "leaf",
+            "name": "给出了如果按照当前计划执行最可能失败的5件事情",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-529dfe287531",
+          "type": "leaf",
+          "name": "准确读取了日历.ics、旅行计划.docx、家庭安排.xlsx、财务记录.xlsx、搬家清单.docx 和 notes.md 中与 2026年11月安排相关的信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-275cd37d43da",
+          "type": "group",
+          "name": "冲突识别与事实判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1eba643ab84c",
+              "type": "leaf",
+              "name": "准确识别了工作会议、旅行日期、搬家时间与家庭成员可用时间之间的时间重叠或不可执行安排",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "条件判断"
+              ]
+            },
+            {
+              "id": "node-670855f4a6f5",
+              "type": "leaf",
+              "name": "准确识别了预算表中已知支出与新增搬家安排之间的资金不足风险",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-785dac6febdc",
+              "type": "leaf",
+              "name": "未把缺失信息伪装成已确认事实",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4aac57907fa3",
+          "type": "group",
+          "name": "冲突处理分支执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-558d782aff04",
+              "type": "leaf",
+              "name": "正确调整了能够自行解决的冲突安排并保持相关任务前后顺序可执行",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-78814f5f9c2a",
+              "type": "leaf",
+              "name": "对每一项已调整的安排都说明了调整内容和触发调整的依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b771e51a7e73",
+              "type": "leaf",
+              "name": "将无法判断的冲突保留为待用户选择项且未擅自代替用户决定",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-2b8ee54dde2e",
+          "type": "group",
+          "name": "文件型交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bddf4e85d29c",
+              "type": "leaf",
+              "name": "生成的 moving_calendar.ics 包含 2026年11月安排中的关键事件且日历文件可被标准日历应用打开",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-3d56ee12b257",
+              "type": "leaf",
+              "name": "生成的搬家任务清单按时间或阶段组织并能直接用于执行与勾选",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-d078d9be91c3",
+              "type": "leaf",
+              "name": "生成的预算表列出了主要搬家相关项目、金额和剩余预算或缺口",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-759c44afc8e3",
+          "type": "group",
+          "name": "结果沟通与上下文保持质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5b407fe34a7d",
+              "type": "leaf",
+              "name": "结果说明中包含已解决冲突、待用户决定冲突和5项失败风险的分别列示",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-86eb7780db2c",
+              "type": "leaf",
+              "name": "多步生成过程中对同一日期、预算数字和家庭成员安排保持前后一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-630549491ccb",
+    "language": "zh"
+  },
+  "note": "我计划下个月搬家，同时需要处理工作、旅行、家庭事务和预算。相关信息分别在 日历.ics、旅行计划.docx、家庭安排.xlsx、财务记录.xlsx、搬家清单.docx 和我的历史笔记中。请帮我制定下个月的完整安排。需要综合考虑工作会议、旅行日期、搬家时间、家庭成员的可用时间和预算，安排搬家任务、采购、清洁、地址变更以及必要的行政事务。不要只按照我的清单执行：请检查不同文件之间是否存在冲突，例如某个搬家任务安排在我出差期间、预算不足、家庭成员不可用或者两个重要事项时间重叠。对于能够自行解决的冲突请调整计划，对于无法判断的冲突列出来让我选择。最后生成一个新的月度日历、搬家任务清单和预算表，并给出一份“如果按照当前计划执行，最可能失败的5件事情”。",
+  "env_description": "moving_plan/：日历.ics（11/9-12出差、11/20-21婚礼、11/28牙医等硬约束）、旅行计划.docx（11/14-16不可取消）、家庭安排.xlsx（11/7-8孩子考试、11/15爷爷生日、11/21-22岳父母来访、11/30考级）、财务记录.xlsx（总预算26000 vs 支出37000，缺口11000）、搬家清单.docx（用户的初步安排埋多处冲突：11/10签约vs出差11/9-12、11/15地址变更vs爷爷生日、11/16退租vs出差后赶回+潮州旅行）、notes.md（新居最晚11/13签约、岳父母想看新房需收拾好）"
+}

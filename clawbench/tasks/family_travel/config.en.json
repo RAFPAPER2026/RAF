@@ -1,0 +1,234 @@
+{
+  "id": "family_travel",
+  "name": "Family Travel Planning",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Travel Planning",
+  "ability_category": [
+    "API Calling"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Next month the family of 3 will travel from Shenzhen to Qingdao for a 3-day parent-child trip. Help me plan the optimal round-trip transportation for the family, calculate the total travel budget, and generate a simple travel handbook placed on /root/Desktop.",
+  "rubric": {
+    "query": "Next month the family of 3 will travel from Shenzhen to Qingdao for a 3-day parent-child trip. Help me plan the optimal round-trip transportation for the family, calculate the total travel budget, and generate a simple travel handbook placed on /root/Desktop.",
+    "query_id": "family_travel",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4d9b5a3e6930",
+        "type": "leaf",
+        "name": "Determined the optimal round-trip transportation for the family of 3 from Shenzhen to Qingdao next month",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Conditional Judgment",
+          "Logical Reasoning",
+          "Temporal Reasoning"
+        ]
+      },
+      {
+        "id": "node-6c58a8a19f3c",
+        "type": "leaf",
+        "name": "Calculated the total budget for the 3-day parent-child trip",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Logical Reasoning",
+          "Factual Accuracy",
+          "General Knowledge"
+        ]
+      },
+      {
+        "id": "node-ee50d911e8a0",
+        "type": "leaf",
+        "name": "Generated an openable simple travel handbook file and placed it on /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f1b5dfdaaaa3",
+          "type": "leaf",
+          "name": "Accurately identified the travel time range, departure place, destination, number of people, and parent-child travel constraints for next month",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b9585dd7d64d",
+          "type": "group",
+          "name": "Transportation plan analysis quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8be2dfa671b0",
+              "type": "leaf",
+              "name": "Correctly retrieved the departure schedules, durations, and price information of the available round-trip transportation options from Shenzhen to Qingdao",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ec4de7d843a2",
+              "type": "leaf",
+              "name": "Accurately compared the differences among the available transportation options in total time, total cost, and convenience for parent-child travel",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eb55a35a868a",
+          "type": "group",
+          "name": "Budget estimation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1c595af47a30",
+              "type": "leaf",
+              "name": "Correctly listed the expense items included in the total budget and their corresponding amounts",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-d881409d01f6",
+              "type": "leaf",
+              "name": "Accurately calculated the total budget summary for the 3-day itinerary of the family of 3",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fd8cb842831a",
+          "type": "group",
+          "name": "Travel handbook deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-aefa1a576839",
+              "type": "leaf",
+              "name": "The generated travel handbook file opens normally and its file format and content encoding are normal",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-b35563a5997e",
+              "type": "leaf",
+              "name": "The generated travel handbook contains the transportation plan, budget details, daily itinerary highlights, and travel precautions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-b92739e4335d",
+              "type": "leaf",
+              "name": "The information organization in the generated travel handbook supports direct viewing and pre-trip preparation by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a31084c9157f",
+          "type": "group",
+          "name": "Uncertain information handling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4eb7adb90640",
+              "type": "leaf",
+              "name": "Clearly marked the assumptions when the specific departure date, children's ages, or preference information was missing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Communication",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-114e8ffe903e",
+              "type": "leaf",
+              "name": "Did not present unconfirmable schedules, prices, or attraction opening information as verified facts",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-4a1365e1535b",
+    "language": "en"
+  }
+}

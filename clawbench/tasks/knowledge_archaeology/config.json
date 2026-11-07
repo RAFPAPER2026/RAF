@@ -1,0 +1,392 @@
+{
+  "id": "knowledge_archaeology",
+  "name": "知识考古盘点",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "上下文管理-上下文压缩与摘要",
+    "上下文管理-状态跟踪与一致性维护"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.compress",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面 knowledge_base/ 文件夹里是我过去两年攒下的学习材料：PDF论文、Word笔记（notes/）、浏览器书签导出（bookmarks.html）、划线摘录（highlights/）、手写笔记的OCR结果（handwritten_ocr/）和课程资料。\n我感觉自己看了很多东西，但现在让我讲又讲不出来。请帮我做一次「知识考古」：\n1. 从材料中梳理我实际接触过哪些知识主题；\n2. 区分「只是读过」和「真正掌握」——判断依据是我的笔记里有没有自己的总结、加工和输出，而不只是划线和收藏；\n3. 找出不同时间、不同来源下反复出现的概念（说明这些是我真正在跟进的主线）；\n4. 建立一张知识地图（保存为 /root/Desktop/knowledge_base/knowledge_map.md，用层级列表或mermaid图）；\n5. 找出知识断层：比如某个主题我已经大量阅读，但缺少它依赖的基础（统计学、实验方法论等）；\n6. 最后生成一套验证性问题（每个我认为已掌握的主题出2-3道），保存到 /root/Desktop/knowledge_base/verification_questions.md，我回答之后可以进一步更新知识地图。",
+  "rubric": {
+    "query": "桌面 knowledge_base/ 文件夹里是我过去两年攒下的学习材料：PDF论文、Word笔记（notes/）、浏览器书签导出（bookmarks.html）、划线摘录（highlights/）、手写笔记的OCR结果（handwritten_ocr/）和课程资料。\n我感觉自己看了很多东西，但现在让我讲又讲不出来。请帮我做一次「知识考古」：\n1. 从材料中梳理我实际接触过哪些知识主题；\n2. 区分「只是读过」和「真正掌握」——判断依据是我的笔记里有没有自己的总结、加工和输出，而不只是划线和收藏；\n3. 找出不同时间、不同来源下反复出现的概念（说明这些是我真正在跟进的主线）；\n4. 建立一张知识地图（保存为 /root/Desktop/knowledge_base/knowledge_map.md，用层级列表或mermaid图）；\n5. 找出知识断层：比如某个主题我已经大量阅读，但缺少它依赖的基础（统计学、实验方法论等）；\n6. 最后生成一套验证性问题（每个我认为已掌握的主题出2-3道），保存到 /root/Desktop/knowledge_base/verification_questions.md，我回答之后可以进一步更新知识地图。",
+    "query_id": "knowledge_archaeology",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ff7c1ae21b4b",
+        "type": "group",
+        "name": "知识考古分析目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bffc1621fe9b",
+            "type": "leaf",
+            "name": "正确梳理了材料中实际接触过的知识主题",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-056557088b80",
+            "type": "leaf",
+            "name": "正确区分了只是读过的主题和真正掌握的主题",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-477fb734bda1",
+            "type": "leaf",
+            "name": "正确找出了不同时间和不同来源下反复出现的概念",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-47900c05101c",
+            "type": "leaf",
+            "name": "正确识别了已大量阅读但缺少依赖基础的知识断层",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-64b77e1dd6f9",
+        "type": "leaf",
+        "name": "生成了可打开且内容可用的知识地图文件 /root/Desktop/knowledge_base/knowledge_map.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "沟通表达"
+        ]
+      },
+      {
+        "id": "node-20c8a04924b3",
+        "type": "leaf",
+        "name": "生成了可打开且内容可用的验证性问题文件 /root/Desktop/knowledge_base/verification_questions.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-21ffb39868ad",
+          "type": "group",
+          "name": "材料获取与归类质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-19bdcf94d935",
+              "type": "leaf",
+              "name": "准确读取了 knowledge_base 中与任务相关的材料类型和目录内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-3c3d3a36f68a",
+              "type": "leaf",
+              "name": "正确关联了 notes、highlights、handwritten_ocr、bookmarks.html、课程资料与对应主题线索",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e8c30821504f",
+          "type": "group",
+          "name": "掌握度判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6e7cc28b2691",
+              "type": "leaf",
+              "name": "准确识别了笔记中包含自我总结或概念重述的证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-2ffbd178607a",
+              "type": "leaf",
+              "name": "准确识别了仅有划线、摘录或收藏而缺少加工输出的证据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-f98f7ba3e89d",
+              "type": "leaf",
+              "name": "正确依据证据将主题归入只是读过或真正掌握",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4be6191ff2a5",
+          "type": "group",
+          "name": "主线概念识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b9c96874457d",
+              "type": "leaf",
+              "name": "准确提取了跨时间重复出现的主题或概念标记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-a1b5de7b581f",
+              "type": "leaf",
+              "name": "准确提取了跨来源重复出现的主题或概念标记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-d92607a51c27",
+              "type": "leaf",
+              "name": "正确区分了偶发出现的概念与持续跟进的主线概念",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c4dae8413a0b",
+          "type": "group",
+          "name": "知识断层诊断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-abe47e02d7b2",
+              "type": "leaf",
+              "name": "正确推断了主题所依赖的基础知识前提",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-c6fc3634e6e7",
+              "type": "leaf",
+              "name": "准确判断了阅读积累与基础缺口之间的对应关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3621cc0b691d",
+              "type": "leaf",
+              "name": "识别材料缺失或证据不足时明确标注为无法判定或待补充",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-ccedb67f9d11",
+          "type": "group",
+          "name": "知识地图交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-57f7f496ab14",
+              "type": "leaf",
+              "name": "知识地图内容包含主题层级以及主题之间的依赖或并列关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-8db834d76c3b",
+              "type": "leaf",
+              "name": "知识地图文件使用 Markdown 层级列表或 Mermaid 图且语法可解析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-863c5bb54bb0",
+              "type": "leaf",
+              "name": "知识地图文件中的主题归类与分析结论保持一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6b36e15a4124",
+          "type": "group",
+          "name": "验证性问题交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2a435059debb",
+              "type": "leaf",
+              "name": "为每个判定为已掌握的主题生成了2到3道验证性问题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-c3c03040beef",
+              "type": "leaf",
+              "name": "验证性问题能够检验概念解释、关系比较或应用推理中的至少一种能力",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-f73ca0efa563",
+              "type": "leaf",
+              "name": "验证性问题文件中的主题与知识地图中的已掌握主题对应一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-5f50e446ea65",
+          "type": "leaf",
+          "name": "回复中明确说明了产出文件路径和后续可基于回答结果继续更新知识地图的方式",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-119f3e780916",
+    "language": "zh"
+  },
+  "note": "“我到底学过什么？”知识考古 给agent：用户过去两年的 PDF + Word notes + browser bookmarks + highlights + handwritten notes OCR + course materials。用户：“我感觉自己看了很多东西，但现在让我讲又讲不出来。帮我找出我真正掌握了什么、只是看过什么，以及哪些知识之间其实已经可以串起来。” Agent需要：① 从材料中识别用户实际接触过的知识；② 根据notes/highlights/产出判断“阅读过 ≠ 掌握”；③ 找出不同时间、不同主题下的重复概念；④ 自动建立knowledge map；⑤ 找出知识断层，例如“已经大量阅读Agent evaluation，但缺少statistics/evaluation methodology基础”；⑥ 根据结果生成一套验证性问题，让用户回答后进一步更新knowledge map。 难点： 测试的不只是RAG，而是 knowledge state estimation + evidence aggregation + interactive verification",
+  "env_description": "knowledge_base/：notes/（3份有自己加工的深度笔记=掌握线索）、highlights/（3份仅划线=只是读过）、bookmarks.html（含收藏三年未读的统计学/IRT=知识断层线索）、handwritten_ocr/（手写笔记OCR，埋认知诊断新方向）、course_materials/、papers/；「读过vs掌握」判断依据是加工痕迹而非数量"
+}

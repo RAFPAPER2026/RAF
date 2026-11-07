@@ -1,0 +1,148 @@
+{
+  "id": "conference_translation",
+  "name": "会议记录英译",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "将/root/Desktop/里的会议记录.txt翻译成英文并保存在同一个目录，文件名字后面加个 _en。",
+  "rubric": {
+    "query": "将/root/Desktop/里的会议记录.txt翻译成英文并保存在同一个目录，文件名字后面加个 _en。",
+    "query_id": "conference_translation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b5135e0e8b12",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/会议记录.txt 的原始内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-e0aa09b00464",
+        "type": "leaf",
+        "name": "生成了保存在 /root/Desktop/ 且文件名为 会议记录_en.txt 的英文译文文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3106b146507c",
+          "type": "leaf",
+          "name": "正确定位了 /root/Desktop/会议记录.txt 并读取了完整文本内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5feb4fb11392",
+          "type": "leaf",
+          "name": "准确将原文内容翻译为英文且未编造原文中不存在的信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d3bc5dc57a76",
+          "type": "leaf",
+          "name": "正确将译文写入 /root/Desktop/会议记录_en.txt 且未覆盖原始文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-84d5fc99267f",
+          "type": "group",
+          "name": "译文文件可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1a6fc7a75426",
+              "type": "leaf",
+              "name": "文件内容可正常打开读取且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-a98a14eb0238",
+              "type": "leaf",
+              "name": "译文保留了原文的段落或列表结构以支持后续使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-fbe788b0c4bb",
+          "type": "leaf",
+          "name": "向用户明确说明了译文文件的生成结果和保存位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-6bdf0d359050",
+    "language": "zh"
+  }
+}

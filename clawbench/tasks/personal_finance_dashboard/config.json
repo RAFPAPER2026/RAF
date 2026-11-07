@@ -1,0 +1,438 @@
+{
+  "id": "personal_finance_dashboard",
+  "name": "个人财务分析网页",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "数值分析与推理-多步骤数值计算",
+    "上下文管理-状态跟踪与一致性维护",
+    "工具使用-CLI调用"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "plan.decompose",
+    "plan.numeric",
+    "context.state",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我过去两年的消费记录保存在 2025消费.xlsx、2026消费.xlsx 和 信用卡账单.pdf 中，另外 订阅服务.docx 记录了目前所有会员和订阅。\n请帮我分析我的消费变化，并制作一个可以交互浏览的个人财务分析网页（保存到 /root/Desktop/finance_dashboard/ 目录，双击可打开）。\n具体要求：\n1. 自动识别和统一不同文件中的消费类别（各文件的分类口径不一致），处理重复交易、退款和不同日期格式；\n2. 分别计算月度消费、各类别占比、同比变化、固定支出和可变支出；\n3. 找出过去一年增长最快的5类支出，并进一步判断哪些增长可能是一次性事件、哪些已经形成长期趋势；\n4. 结合订阅文件，找出我可能已经不再使用但仍在持续付费的服务；\n5. 根据过去两年的消费模式给出未来3个月的预算建议；\n6. 在网页中提供「如果每月减少10%/20%可变支出会怎样」的模拟结果。\n所有关键结论需要能够追溯到原始文件和具体数据（网页中点击结论可以看到来源明细）。",
+  "rubric": {
+    "query": "我过去两年的消费记录保存在 2025消费.xlsx、2026消费.xlsx 和 信用卡账单.pdf 中，另外 订阅服务.docx 记录了目前所有会员和订阅。\n请帮我分析我的消费变化，并制作一个可以交互浏览的个人财务分析网页（保存到 /root/Desktop/finance_dashboard/ 目录，双击可打开）。\n具体要求：\n1. 自动识别和统一不同文件中的消费类别（各文件的分类口径不一致），处理重复交易、退款和不同日期格式；\n2. 分别计算月度消费、各类别占比、同比变化、固定支出和可变支出；\n3. 找出过去一年增长最快的5类支出，并进一步判断哪些增长可能是一次性事件、哪些已经形成长期趋势；\n4. 结合订阅文件，找出我可能已经不再使用但仍在持续付费的服务；\n5. 根据过去两年的消费模式给出未来3个月的预算建议；\n6. 在网页中提供「如果每月减少10%/20%可变支出会怎样」的模拟结果。\n所有关键结论需要能够追溯到原始文件和具体数据（网页中点击结论可以看到来源明细）。",
+    "query_id": "personal_finance_dashboard",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4b64aacffd33",
+        "type": "group",
+        "name": "消费数据已完成整合预处理",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c2a4077fbeb8",
+            "type": "leaf",
+            "name": "正确读取了 2025消费.xlsx、2026消费.xlsx、信用卡账单.pdf 和 订阅服务.docx 中与消费分析相关的数据",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-fb37b7d318a9",
+            "type": "leaf",
+            "name": "统一了不同文件中的消费类别并处理了重复交易、退款和不同日期格式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0da77f387923",
+        "type": "group",
+        "name": "财务分析结论已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2ad975291d1b",
+            "type": "leaf",
+            "name": "计算了月度消费、各类别占比、同比变化、固定支出和可变支出",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-940eddabac00",
+            "type": "leaf",
+            "name": "识别了过去一年增长最快的5类支出并判断了哪些增长属于一次性事件或长期趋势",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "条件判断",
+              "时间推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-4d7676e511eb",
+            "type": "leaf",
+            "name": "结合订阅服务.docx 找出了可能已经不再使用但仍在持续付费的服务",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-3b981afd3746",
+            "type": "leaf",
+            "name": "基于过去两年的消费模式给出了未来3个月的预算建议并提供了每月减少10%或20%可变支出的模拟结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "通用知识",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1a2c8c01a30a",
+        "type": "group",
+        "name": "网页交付物已生成且可追溯",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c6c9b5b0726f",
+            "type": "leaf",
+            "name": "生成了可交互浏览的个人财务分析网页",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-5eb90b35b4ba",
+            "type": "leaf",
+            "name": "将网页保存到 /root/Desktop/finance_dashboard/ 目录并可通过双击打开",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-b5447a21dd8c",
+            "type": "leaf",
+            "name": "网页中的关键结论支持点击查看来源文件和具体数据明细",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-46496705ee31",
+          "type": "group",
+          "name": "源数据提取与溯源质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5babd705fcf5",
+              "type": "leaf",
+              "name": "正确选择了可读取 xlsx、pdf、docx 的工具并成功提取出交易时间、金额、商户、分类和订阅信息字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "检索策略",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-f2d0fd5fc4a2",
+              "type": "leaf",
+              "name": "准确保留了每条交易与原始文件名、页码或表格位置的对应关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-16930cee2672",
+          "type": "group",
+          "name": "数据标准化与清洗质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ba94fb9a8c9c",
+              "type": "leaf",
+              "name": "准确统一了不同文件中的消费类别映射并对同类支出使用一致口径",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-db3fa328709a",
+              "type": "leaf",
+              "name": "准确识别了重复交易并依据金额方向或关联记录处理了退款交易",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ca631798aba7",
+              "type": "leaf",
+              "name": "正确解析了不同日期格式并将交易归入对应月份和同比周期",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5d1d42e411ee",
+              "type": "leaf",
+              "name": "在发现缺失字段、格式异常或无法解析记录时给出了修正处理或明确标注未纳入统计的数据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-32c69f51ef76",
+          "type": "group",
+          "name": "分析推理与结果计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9f5dbc788538",
+              "type": "leaf",
+              "name": "准确计算了月度消费总额、类别占比、同比变化、固定支出和可变支出指标",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-cef8e1f4e873",
+              "type": "leaf",
+              "name": "准确识别了过去一年支出增长最快的5个类别并按增幅或增额使用一致规则排序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e8c49bc8f783",
+              "type": "leaf",
+              "name": "正确依据出现频率、持续月数或单月异常峰值判断增长属于一次性事件或长期趋势",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "时间推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-459631ba28b1",
+              "type": "leaf",
+              "name": "准确结合订阅服务记录与近期消费记录识别了持续扣费但近期开支使用迹象不足的服务",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d1d902546403",
+              "type": "leaf",
+              "name": "基于两年历史模式给出的未来3个月预算建议包含可对应到历史数据的计算依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-80ad2d06ceb6",
+              "type": "leaf",
+              "name": "准确计算了每月减少10%和20%可变支出后的月度结余或总支出变化结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6a350451b003",
+          "type": "group",
+          "name": "交付网页的可用性与可追溯性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d195272c2ad7",
+              "type": "leaf",
+              "name": "生成的网页文件可在本地正常打开并包含交互浏览所需的 HTML、脚本和样式资源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-b256693f92f4",
+              "type": "leaf",
+              "name": "网页中图表或筛选控件支持查看月度消费、类别占比、同比变化、固定可变支出、预算建议和支出模拟结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-97e5c2d24fde",
+              "type": "leaf",
+              "name": "网页中的关键结论可点击展开并显示对应原始文件、记录明细和用于结论的计算依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-dbfc8bf088b2",
+              "type": "leaf",
+              "name": "网页排版中不存在遮挡、错位、乱码或因本地打开导致脚本无法运行的情况",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-1cb3bc790a3b",
+          "type": "leaf",
+          "name": "向用户说明了生成结果的保存位置、打开方式和未纳入分析的异常数据范围",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "异常处理"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-50c773a99f39",
+    "language": "zh"
+  },
+  "note": "我过去两年的消费记录保存在 2025消费.xlsx、2026消费.xlsx 和 信用卡账单.pdf 中，另外 订阅服务.docx 记录了目前所有会员和订阅。请帮我分析我的消费变化，并制作一个可以交互浏览的个人财务分析网页。需要自动识别和统一不同文件中的消费类别，处理重复交易、退款和不同日期格式；分别计算月度消费、各类别占比、同比变化、固定支出和可变支出；找出过去一年增长最快的5类支出，并进一步判断哪些增长可能是一次性事件、哪些已经形成长期趋势。结合订阅文件，找出我可能已经不再使用但仍在持续付费的服务。最后根据过去两年的消费模式给出未来3个月的预算建议，并在网页中提供“如果每月减少10%/20%可变支出会怎样”的模拟结果。所有关键结论需要能够追溯到原始文件和具体数据。",
+  "env_description": "finance_data/：2025消费.xlsx（口径A：大类）、2026消费.xlsx（口径B：细分+英文列名+含重复交易和退款对冲）、信用卡账单.txt（与Excel部分重叠+2笔Excel未记录交易）、订阅服务.docx（7项订阅，埋3项僵尸订阅：云存储/健身APP/知识付费）；房租3500→3800涨价、摄影课/演出为增长项，固定vs可变支出可分离"
+}

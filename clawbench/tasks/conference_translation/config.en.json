@@ -1,0 +1,148 @@
+{
+  "id": "conference_translation",
+  "name": "Conference Notes Translation",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Translate the 会议记录.txt in /root/Desktop/ into English and save it in the same directory, adding _en after the file name.",
+  "rubric": {
+    "query": "Translate the 会议记录.txt in /root/Desktop/ into English and save it in the same directory, adding _en after the file name.",
+    "query_id": "conference_translation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b5135e0e8b12",
+        "type": "leaf",
+        "name": "Correctly read the original content of /root/Desktop/会议记录.txt",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-e0aa09b00464",
+        "type": "leaf",
+        "name": "Generated an English translation file saved in /root/Desktop/ with the file name 会议记录_en.txt",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3106b146507c",
+          "type": "leaf",
+          "name": "Correctly located /root/Desktop/会议记录.txt and read the complete text content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5feb4fb11392",
+          "type": "leaf",
+          "name": "Accurately translated the source content into English without fabricating information absent from the source",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d3bc5dc57a76",
+          "type": "leaf",
+          "name": "Correctly wrote the translation to /root/Desktop/会议记录_en.txt without overwriting the original file",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-84d5fc99267f",
+          "type": "group",
+          "name": "Translation file usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1a6fc7a75426",
+              "type": "leaf",
+              "name": "The file content can be opened and read normally with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-a98a14eb0238",
+              "type": "leaf",
+              "name": "The translation retains the paragraph or list structure of the source to support later use",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-fbe788b0c4bb",
+          "type": "leaf",
+          "name": "Clearly explained the generation result and save location of the translation file to the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-6bdf0d359050",
+    "language": "en"
+  }
+}

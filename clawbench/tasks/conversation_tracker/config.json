@@ -1,0 +1,266 @@
+{
+  "id": "conversation_tracker",
+  "name": "对话引用追踪",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "看一下桌面上 conversation_data 文件夹里的 conversation.jsonl，里面有一堆对话记录，每条有 id、speaker、text 和 timestamp。有些消息会引用之前说过的内容。\n\n分析这些对话，找出哪些消息引用了之前的内容。生成一个 context_map.json 输出到桌面。\n\n输出格式示例：\n{\n  \"total_messages\": <int>,\n  \"speakers\": [\"<speaker1>\", \"<speaker2>\", ...],\n  \"references\": [\n    {\n      \"source_id\": <int message id being referenced>,\n      \"referencing_id\": <int message id that references the source>,\n      \"referencing_speaker\": \"<speaker name>\",\n      \"context_type\": \"<one of: quote, recall, response, correction>\"\n    }\n  ]\n}\n\n具体要求：\n- 统计总消息数和发言者列表\n- 引用关系用 source_id（被引用的消息）、referencing_id（引用方）、referencing_speaker（谁引用的）、context_type 表示\n- context_type 可以是 quote（引用原话）、recall（提起之前的事）、response（回复）、correction（纠正）\n- 至少要找出7条引用关系\n- 至少使用3种不同的 context_type",
+  "rubric": {
+    "query": "看一下桌面上 conversation_data 文件夹里的 conversation.jsonl，里面有一堆对话记录，每条有 id、speaker、text 和 timestamp。有些消息会引用之前说过的内容。\n\n分析这些对话，找出哪些消息引用了之前的内容。生成一个 context_map.json 输出到桌面。\n\n输出格式示例：\n{\n  \"total_messages\": <int>,\n  \"speakers\": [\"<speaker1>\", \"<speaker2>\", ...],\n  \"references\": [\n    {\n      \"source_id\": <int message id being referenced>,\n      \"referencing_id\": <int message id that references the source>,\n      \"referencing_speaker\": \"<speaker name>\",\n      \"context_type\": \"<one of: quote, recall, response, correction>\"\n    }\n  ]\n}\n\n具体要求：\n- 统计总消息数和发言者列表\n- 引用关系用 source_id（被引用的消息）、referencing_id（引用方）、referencing_speaker（谁引用的）、context_type 表示\n- context_type 可以是 quote（引用原话）、recall（提起之前的事）、response（回复）、correction（纠正）\n- 至少要找出7条引用关系\n- 至少使用3种不同的 context_type",
+    "query_id": "conversation_tracker",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5b6240aa8b6e",
+        "type": "leaf",
+        "name": "正确读取了桌面上 conversation_data 文件夹中的 conversation.jsonl",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-eb10aeeb35da",
+        "type": "group",
+        "name": "对话基础统计结果已生成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0d29b402668",
+            "type": "leaf",
+            "name": "正确统计了对话中的总消息数",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-47eca7b91369",
+            "type": "leaf",
+            "name": "正确提取了对话中的发言者列表",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-598a44a5a076",
+        "type": "group",
+        "name": "引用关系分析结果已生成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7f84824f35a2",
+            "type": "leaf",
+            "name": "正确识别了至少7条消息对之前内容的引用关系",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-6196f50fe04a",
+            "type": "leaf",
+            "name": "正确覆盖了至少3种不同的 context_type",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1bc1dec32418",
+        "type": "group",
+        "name": "目标交付文件已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-54bafc1a1c28",
+            "type": "leaf",
+            "name": "生成了包含 total_messages、speakers 和 references 字段的 context_map.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-9b79b9fb8ee2",
+            "type": "leaf",
+            "name": "将 context_map.json 输出到了桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-643e39b6cc56",
+          "type": "leaf",
+          "name": "正确使用了可访问桌面文件系统的工具和文件路径读取 conversation.jsonl",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-b31687b4e655",
+          "type": "leaf",
+          "name": "准确解析了每条消息的 id、speaker、text 和 timestamp 字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c8e4f8d07a23",
+          "type": "group",
+          "name": "引用关系判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-33560089809f",
+              "type": "leaf",
+              "name": "准确判断了引用消息所对应的 source_id",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b08bbf887e6d",
+              "type": "leaf",
+              "name": "正确区分了 quote、recall、response 和 correction 中的引用类型",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-737fe9a86cfc",
+          "type": "group",
+          "name": "多轮上下文处理与异常控制",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-de772ec5ac4d",
+              "type": "leaf",
+              "name": "在跨多条消息分析时正确保持了说话人和时间顺序不混淆",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-b484da0ce662",
+              "type": "leaf",
+              "name": "遇到缺失字段或无法判定引用目标的消息时记录并排除了不确定引用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-805316a4ebf2",
+          "type": "leaf",
+          "name": "生成的 context_map.json 可正常解析为 JSON 且 references 中每项都包含 source_id、referencing_id、referencing_speaker 和 context_type 字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "事实准确性",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-726f97674a08",
+          "type": "leaf",
+          "name": "生成的 context_map.json 中 total_messages、speakers 和 references 的取值与源对话内容一致",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "事实准确性",
+            "信息筛选"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f22c494e0c4b",
+    "language": "zh"
+  }
+}

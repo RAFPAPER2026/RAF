@@ -1,0 +1,302 @@
+{
+  "id": "contradiction_resolution",
+  "name": "规格矛盾消解",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "看一下桌面上 spec_data 文件夹里的 spec.txt，里面是一个数据处理管道的技术规格说明。不过这个规格说明书里有一些矛盾的地方。\n\n你需要做两件事：\n1. 读完整份规格说明书，找出所有的矛盾点，写到 resolution.txt 里。每个矛盾要说明：哪部分说了什么、冲突的部分说了什么、怎么解决的。格式大概是这样：\n   CONTRADICTION 1:\n   - Section A says: <引用原文>\n   - Section B says: <引用冲突的部分>\n   - Resolution: <哪个优先，为什么>\n\n2. 根据解决后的规格，生成 pipeline_config.json 配置文件，生成的两个文件都输出到桌面上。\n\n解决矛盾的优先级规则：Processing Rules 优先于 Output Format，Output Format 优先于 General Notes。\n\n输出格式示例：\n{\n  \"delimiter\": \"<string - 分隔符>\",\n  \"max_rows\": <int - 最大行数>,\n  \"include_header\": <boolean - 是否包含表头>,\n  \"date_format\": \"<string - 日期格式>\",\n  \"null_handling\": \"<skip 或 replace>\",\n  \"null_replacement\": \"<string - 如果 null_handling 是 replace 则需要>\n}",
+  "rubric": {
+    "query": "看一下桌面上 spec_data 文件夹里的 spec.txt，里面是一个数据处理管道的技术规格说明。不过这个规格说明书里有一些矛盾的地方。\n\n你需要做两件事：\n1. 读完整份规格说明书，找出所有的矛盾点，写到 resolution.txt 里。每个矛盾要说明：哪部分说了什么、冲突的部分说了什么、怎么解决的。格式大概是这样：\n   CONTRADICTION 1:\n   - Section A says: <引用原文>\n   - Section B says: <引用冲突的部分>\n   - Resolution: <哪个优先，为什么>\n\n2. 根据解决后的规格，生成 pipeline_config.json 配置文件，生成的两个文件都输出到桌面上。\n\n解决矛盾的优先级规则：Processing Rules 优先于 Output Format，Output Format 优先于 General Notes。\n\n输出格式示例：\n{\n  \"delimiter\": \"<string - 分隔符>\",\n  \"max_rows\": <int - 最大行数>,\n  \"include_header\": <boolean - 是否包含表头>,\n  \"date_format\": \"<string - 日期格式>\",\n  \"null_handling\": \"<skip 或 replace>\",\n  \"null_replacement\": \"<string - 如果 null_handling 是 replace 则需要>\n}",
+    "query_id": "contradiction_resolution",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-cd723e5c3c9e",
+        "type": "leaf",
+        "name": "正确读取了桌面上 spec_data 文件夹中的 spec.txt 完整内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-1e1596df7d0b",
+        "type": "group",
+        "name": "交付物生成目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d8ce91eed353",
+            "type": "leaf",
+            "name": "正确产出了包含所有矛盾点及其解决方案的 resolution.txt 文件到桌面上",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "条件判断",
+              "逻辑推理",
+              "事实准确性",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-31761881ec9d",
+            "type": "leaf",
+            "name": "正确产出了基于解决后规格的 pipeline_config.json 文件到桌面上",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-90180f10f2d4",
+        "type": "group",
+        "name": "矛盾解决遵循优先级规则",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7052c16e3dc8",
+            "type": "leaf",
+            "name": "正确按 Processing Rules 优先于 Output Format 的规则解决了相关矛盾",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-1d1abd86efd3",
+            "type": "leaf",
+            "name": "正确按 Output Format 优先于 General Notes 的规则解决了相关矛盾",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9872abb35923",
+          "type": "leaf",
+          "name": "准确读取了 spec.txt 中与配置字段和约束相关的全部规格信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-68f7960f94aa",
+          "type": "leaf",
+          "name": "准确识别了 spec.txt 中彼此冲突的字段要求和规则表述",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "逻辑推理",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d7e5a8442e9c",
+          "type": "group",
+          "name": "矛盾裁决与配置映射质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9024d7a31a38",
+              "type": "leaf",
+              "name": "正确依据章节来源对每个矛盾应用了指定的优先级顺序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-58bc0e0de7aa",
+              "type": "leaf",
+              "name": "正确将每个已解决结论映射为 pipeline_config.json 中对应的配置值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-99d064612ef3",
+          "type": "group",
+          "name": "resolution.txt 内容可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-76eee77aa6ab",
+              "type": "leaf",
+              "name": "resolution.txt 中逐条列出了冲突位置的原文引用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-cf095de8062c",
+              "type": "leaf",
+              "name": "resolution.txt 中逐条写明了采用哪一部分为准及对应原因",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8a81082a0ba7",
+          "type": "group",
+          "name": "pipeline_config.json 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e3e3f1e047d3",
+              "type": "leaf",
+              "name": "pipeline_config.json 包含了 delimiter、max_rows、include_header、date_format、null_handling 和 null_replacement 所需字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-701d969f7933",
+              "type": "leaf",
+              "name": "pipeline_config.json 中各字段的数据类型和取值格式符合用户给出的 JSON 示例约束",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "通用知识",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-1987e3a16f12",
+              "type": "leaf",
+              "name": "pipeline_config.json 文件内容可被正常解析为合法 JSON",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a01350768515",
+          "type": "group",
+          "name": "异常处理与事实约束质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fd0199b0320e",
+              "type": "leaf",
+              "name": "在读取或写入失败时正确识别了异常并执行了重试或替代路径",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-58851a3ab5db",
+              "type": "leaf",
+              "name": "未编造 spec.txt 中不存在的章节内容、字段要求或冲突项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1ac303a1b624",
+    "language": "zh"
+  }
+}

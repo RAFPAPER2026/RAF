@@ -1,0 +1,304 @@
+{
+  "id": "5g_test_meetings_extraction",
+  "name": "5G测试会议提取",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "从桌面 calendar_extraction_task/work_calendar_2023.ics 这个日历文件里，把今年所有跟5G核心网测试相关的会议筛出来。判断标准：会议标题或描述里同时有“5G”和“测试”这两个词，缺一个都不算。状态是 CANCELLED 的会议直接去掉。筛出来的结果生成一个 Markdown 文档，保存到同一个文件夹下，文件名是 5G_Test_Meetings_Summary.md。文档按月份分组，二级标题用“YYYY年MM月”的格式，比如 ## 2023年03月。每个月下面用无序列表列出该月的每个会议，每条要包含会议的具体时间段、会议主题和地点。",
+  "rubric": {
+    "query": "从桌面 calendar_extraction_task/work_calendar_2023.ics 这个日历文件里，把今年所有跟5G核心网测试相关的会议筛出来。判断标准：会议标题或描述里同时有“5G”和“测试”这两个词，缺一个都不算。状态是 CANCELLED 的会议直接去掉。筛出来的结果生成一个 Markdown 文档，保存到同一个文件夹下，文件名是 5G_Test_Meetings_Summary.md。文档按月份分组，二级标题用“YYYY年MM月”的格式，比如 ## 2023年03月。每个月下面用无序列表列出该月的每个会议，每条要包含会议的具体时间段、会议主题和地点。",
+    "query_id": "5g_test_meetings_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c8bcddc65366",
+        "type": "leaf",
+        "name": "正确读取了桌面 calendar_extraction_task/work_calendar_2023.ics 日历文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-5b9544a8a8b8",
+        "type": "group",
+        "name": "正确完成了会议筛选",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-60454941ac54",
+            "type": "leaf",
+            "name": "正确筛出了标题或描述中同时包含“5G”和“测试”的今年会议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ed716641d69a",
+            "type": "leaf",
+            "name": "正确排除了状态为 CANCELLED 的会议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0e29e86f1061",
+        "type": "group",
+        "name": "正确产出了指定 Markdown 交付物",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a1630c01d827",
+            "type": "leaf",
+            "name": "生成了 5G_Test_Meetings_Summary.md Markdown 文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-4fd5247d1efa",
+            "type": "leaf",
+            "name": "将 5G_Test_Meetings_Summary.md 保存到了与源日历文件相同的文件夹下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-725383aa408c",
+          "type": "leaf",
+          "name": "正确定位并读取了桌面 calendar_extraction_task/work_calendar_2023.ics 文件内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-abf6a0235392",
+          "type": "group",
+          "name": "会议筛选判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-61848d4fdd13",
+              "type": "leaf",
+              "name": "准确识别了会议标题和描述字段中的关键词匹配条件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "条件判断",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-a37cb94ddf9e",
+              "type": "leaf",
+              "name": "准确识别了会议状态字段并排除了值为 CANCELLED 的会议",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-9ddc9b3d532f",
+              "type": "leaf",
+              "name": "准确限定了今年范围内的会议记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-92133448cced",
+          "type": "group",
+          "name": "会议信息抽取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-92ae11e44681",
+              "type": "leaf",
+              "name": "正确提取了每个会议的开始时间和结束时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-668875bca002",
+              "type": "leaf",
+              "name": "正确提取了每个会议的主题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-9df0be1dbfde",
+              "type": "leaf",
+              "name": "正确提取了每个会议的地点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-77441d9dcfb5",
+          "type": "group",
+          "name": "Markdown 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0740fcf402ba",
+              "type": "leaf",
+              "name": "正确按月份将会议分组为“YYYY年MM月”格式的二级标题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d923a6db9e1c",
+              "type": "leaf",
+              "name": "正确将每个会议写成包含具体时间段、会议主题和地点的无序列表项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3b7ca650acde",
+              "type": "leaf",
+              "name": "生成的 Markdown 文档可正常打开且标题层级与列表语法可被 Markdown 渲染器正确解析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-62d7cf5f0993",
+          "type": "group",
+          "name": "执行异常处理与结果说明质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f774de4c25af",
+              "type": "leaf",
+              "name": "在读取失败、字段缺失或格式异常时，正确识别了错误并采取了修正或告知措施",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6ce5bf8907d9",
+              "type": "leaf",
+              "name": "回复中明确说明了输出文件名和保存位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-d8ee193a6b54",
+    "language": "zh"
+  },
+  "note": "从ICS日历文件中提取5G测试相关会议并生成Markdown总结"
+}

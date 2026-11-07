@@ -1,0 +1,206 @@
+{
+  "id": "model_classify",
+  "name": "DeepSeek Architecture Classification",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Which of the large-model architecture types in /root/Desktop/llm_architecture_summary.csv does DeepSeek belong to? If the type is not in the table, add it; and analyze what other models share this architecture.",
+  "rubric": {
+    "query": "Which of the large-model architecture types in /root/Desktop/llm_architecture_summary.csv does DeepSeek belong to? If the type is not in the table, add it; and analyze what other models share this architecture.",
+    "query_id": "model_classify",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-92344edce8e7",
+        "type": "leaf",
+        "name": "Correctly read the large-model architecture type information in /root/Desktop/llm_architecture_summary.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-55e329717d9f",
+        "type": "group",
+        "name": "DeepSeek Architecture Type Update Objective",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-abf9a8d53ca7",
+            "type": "leaf",
+            "name": "Correctly determined whether DeepSeek already exists in the architecture type mapping in the table",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-82a66a5be7de",
+            "type": "leaf",
+            "name": "Wrote DeepSeek and its architecture type into the CSV when the table had no corresponding type",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Tool Usage",
+              "Exception Handling"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-42d59a38560a",
+        "type": "leaf",
+        "name": "Gave the architecture type DeepSeek belongs to and the analysis results of other models with that architecture",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Logical Reasoning",
+          "General Knowledge",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ea343d1a95c8",
+          "type": "leaf",
+          "name": "Accurately located the columns in the CSV used to represent the large-model name and architecture type",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7e6c202f4558",
+          "type": "leaf",
+          "name": "Accurately determined the architecture type DeepSeek should belong to without fabricating mapping relationships that do not exist in the table",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5f994ead9b19",
+          "type": "group",
+          "name": "CSV Update Execution Quality",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-a4c087246cac",
+              "type": "leaf",
+              "name": "Did not write duplicate conflicting records when the corresponding information already existed in the table",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Context Retention",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-56efef566205",
+              "type": "leaf",
+              "name": "The field format of the DeepSeek record written when the corresponding information did not exist in the table is consistent with the existing CSV structure",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-469a36a4c3f1",
+          "type": "group",
+          "name": "Same-Architecture Model Analysis Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-afb756fc288d",
+              "type": "leaf",
+              "name": "The analysis listed at least two models with the same architecture as DeepSeek, or explicitly stated that this cannot be confirmed from the table and known information",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-32bc9902776d",
+              "type": "leaf",
+              "name": "The analysis explained the basis for these models sharing the same architecture as DeepSeek",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-1c2a9a7de0a3",
+          "type": "leaf",
+          "name": "Clearly stated in the reply whether the CSV was modified and the conclusion about DeepSeek's corresponding architecture type",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-af32c30cfa9e",
+    "language": "en"
+  },
+  "note": "Supplement it into the table as required."
+}

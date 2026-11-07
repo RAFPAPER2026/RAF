@@ -1,0 +1,293 @@
+{
+  "id": "ip_hearing_calendar",
+  "name": "出庭排期日历",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "遵从能力-指令遵从",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "instruction.follow",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面ip_hearing_schedule文件夹里有份'11月第一周出庭排期表'的Excel，是个二维交叉表，横向是星期一到星期五，纵向是时间段，单元格里填律师名字。\n\n帮我把包含'张伟'的排期转成ics日历文件，其他律师的忽略。星期一对应2023年11月6号，后面按顺序推。时间段按表格第一列里写的来。\n\n日历事件标题统一用'[商标复审出庭]'，地点写'国知局第一审理庭'。每个日程设提前30分钟的提醒。输出ics文件命名为'张伟_出庭日历.ics'，放到桌面ip_hearing_schedule目录下。",
+  "rubric": {
+    "query": "桌面ip_hearing_schedule文件夹里有份'11月第一周出庭排期表'的Excel，是个二维交叉表，横向是星期一到星期五，纵向是时间段，单元格里填律师名字。\n\n帮我把包含'张伟'的排期转成ics日历文件，其他律师的忽略。星期一对应2023年11月6号，后面按顺序推。时间段按表格第一列里写的来。\n\n日历事件标题统一用'[商标复审出庭]'，地点写'国知局第一审理庭'。每个日程设提前30分钟的提醒。输出ics文件命名为'张伟_出庭日历.ics'，放到桌面ip_hearing_schedule目录下。",
+    "query_id": "ip_hearing_calendar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-268e8c7999cb",
+        "type": "leaf",
+        "name": "正确读取了“11月第一周出庭排期表”的星期列、时间段列和包含“张伟”的单元格",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-25143015adac",
+        "type": "group",
+        "name": "张伟排期提取结果符合用户筛选条件",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a3597f428f73",
+            "type": "leaf",
+            "name": "正确将包含“张伟”的排期转换为2023年11月6日至11月10日对应日期和表格时间段的日历事件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3cf7a31ab495",
+            "type": "leaf",
+            "name": "正确忽略了不包含“张伟”的其他律师排期",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4c483fbddf39",
+        "type": "group",
+        "name": "ICS交付物已按指定名称和位置产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4026238fd0a3",
+            "type": "leaf",
+            "name": "正确生成了名为“张伟_出庭日历.ics”的ICS日历文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-8bf2b3d10db0",
+            "type": "leaf",
+            "name": "正确将ICS日历文件保存到桌面ip_hearing_schedule目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-87e3229ba836",
+          "type": "leaf",
+          "name": "准确识别了二维交叉表中星期列、时间段行与律师姓名单元格的对应关系",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "逻辑推理",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-32b719230e59",
+          "type": "group",
+          "name": "时间映射与时间段解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e19c2fb6b0ad",
+              "type": "leaf",
+              "name": "准确将星期一到星期五映射为2023年11月6日至2023年11月10日",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-fb5d93c0f51f",
+              "type": "leaf",
+              "name": "准确解析了表格第一列时间段并用于生成事件开始时间和结束时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ad2421cc17dd",
+          "type": "group",
+          "name": "事件生成参数执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a2b38063f8e2",
+              "type": "leaf",
+              "name": "正确仅为包含“张伟”的单元格创建事件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f9656d29c295",
+              "type": "leaf",
+              "name": "正确为每个事件写入标题“[商标复审出庭]”",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-71e747d76b05",
+              "type": "leaf",
+              "name": "正确为每个事件写入地点“国知局第一审理庭”",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ca0505e00bf1",
+              "type": "leaf",
+              "name": "正确为每个事件设置提前30分钟提醒",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0c0328444425",
+          "type": "group",
+          "name": "ICS交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-203dc5142dee",
+              "type": "leaf",
+              "name": "生成的ICS文件可被日历软件正常导入或打开",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-fbf000290b9c",
+              "type": "leaf",
+              "name": "ICS文件中的每个事件均包含开始时间、结束时间、标题、地点和提醒字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2097b3580cb8",
+          "type": "group",
+          "name": "执行异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ac1e0ca7021f",
+              "type": "leaf",
+              "name": "在读取Excel或写入ICS失败时，正确识别了错误原因",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-b18f78ea411c",
+              "type": "leaf",
+              "name": "在发生读取或写入错误后采取了重新读取、修正格式或重试保存的措施",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-eed92c8ce5eb",
+    "language": "zh"
+  },
+  "note": "从Excel二维交叉表提取特定律师出庭排期生成ICS日历文件"
+}

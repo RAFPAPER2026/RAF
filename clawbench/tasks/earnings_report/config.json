@@ -1,0 +1,385 @@
+{
+  "id": "earnings_report",
+  "name": "财报对比分析",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 earnings_data 文件夹里有 earnings_q1.txt 和 earnings_q2.txt，包含季度财报数据。\n\n任务：\n1. 解析两个财报文件，提取KPI：revenue, cost_of_revenue, gross_profit, operating_income, net_income, eps, gross_margin, operating_margin, net_margin\n2. 计算环比变化（绝对值和百分比）\n3. 将对比结果写入 earnings_comparison.csv文件，列：metric, q1_value, q2_value, change, change_pct。保存在桌面\n4. 将摘要写入 earnings_summary.json，保存到桌面\n\n输出格式：\n{\n  \"q1\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"q2\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"trend\": \"improving\" or \"declining\" or \"mixed\"\n}\n\n趋势判断规则：\n- revenue和net_income都增长 => \"improving\"\n- 都下降 => \"declining\"\n- 其他情况 => \"mixed\"",
+  "rubric": {
+    "query": "桌面上 earnings_data 文件夹里有 earnings_q1.txt 和 earnings_q2.txt，包含季度财报数据。\n\n任务：\n1. 解析两个财报文件，提取KPI：revenue, cost_of_revenue, gross_profit, operating_income, net_income, eps, gross_margin, operating_margin, net_margin\n2. 计算环比变化（绝对值和百分比）\n3. 将对比结果写入 earnings_comparison.csv文件，列：metric, q1_value, q2_value, change, change_pct。保存在桌面\n4. 将摘要写入 earnings_summary.json，保存到桌面\n\n输出格式：\n{\n  \"q1\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"q2\": {\"revenue\": ..., \"net_income\": ..., \"eps\": ...},\n  \"trend\": \"improving\" or \"declining\" or \"mixed\"\n}\n\n趋势判断规则：\n- revenue和net_income都增长 => \"improving\"\n- 都下降 => \"declining\"\n- 其他情况 => \"mixed\"",
+    "query_id": "earnings_report",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e15c2d0e746c",
+        "type": "leaf",
+        "name": "正确读取了桌面 earnings_data 文件夹中的 earnings_q1.txt 和 earnings_q2.txt",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "检索策略"
+        ]
+      },
+      {
+        "id": "node-e9475cc41c71",
+        "type": "group",
+        "name": "财报对比数据已生成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-074fd05d1473",
+            "type": "leaf",
+            "name": "正确提取了 q1 的 revenue、cost_of_revenue、gross_profit、operating_income、net_income、eps、gross_margin、operating_margin、net_margin",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3b240c492aac",
+            "type": "leaf",
+            "name": "正确提取了 q2 的 revenue、cost_of_revenue、gross_profit、operating_income、net_income、eps、gross_margin、operating_margin、net_margin",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-25af51771485",
+            "type": "leaf",
+            "name": "正确计算了各 KPI 的环比变化绝对值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-eb1c9757a27b",
+            "type": "leaf",
+            "name": "正确计算了各 KPI 的环比变化百分比",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-eecf67f11a03",
+        "type": "group",
+        "name": "指定交付物已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-beef6e282ebe",
+            "type": "leaf",
+            "name": "生成了桌面上的 earnings_comparison.csv 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-ea9343c322b1",
+            "type": "leaf",
+            "name": "生成了桌面上的 earnings_summary.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-384452514065",
+            "type": "leaf",
+            "name": "earnings_summary.json 包含了 q1、q2 和 trend 三个顶层字段",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-f9614e9429eb",
+            "type": "leaf",
+            "name": "正确判断了 trend 为 improving、declining 或 mixed 中的一项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-08b3e77bedaa",
+          "type": "leaf",
+          "name": "正确定位了桌面 earnings_data 文件夹并读取了两个目标财报文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-762ce840e466",
+          "type": "group",
+          "name": "财报数据解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ad84c23b77ef",
+              "type": "leaf",
+              "name": "准确识别了财报文本中各 KPI 对应的数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b8400a83bcfb",
+              "type": "leaf",
+              "name": "正确区分了 q1 数据与 q2 数据的来源文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3892ec14f8f8",
+              "type": "leaf",
+              "name": "正确处理了数值中的货币符号、千位分隔符、百分号或负号",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5c70e1e03cdc",
+          "type": "group",
+          "name": "环比计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d05b561fe8e8",
+              "type": "leaf",
+              "name": "准确计算了每个 metric 的 change 为 q2_value 减 q1_value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-38a3b5363c5c",
+              "type": "leaf",
+              "name": "准确计算了每个 metric 的 change_pct 并使用 q1_value 作为分母",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d1029e94c69c",
+              "type": "leaf",
+              "name": "q1_value 为 0 时对 change_pct 采用了可判定的异常处理结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e29c181348f7",
+          "type": "group",
+          "name": "趋势判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-df2f843da1d4",
+              "type": "leaf",
+              "name": "准确判断了 trend 时同时检查了 revenue 与 net_income 的增减方向",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-e937b3e15302",
+              "type": "leaf",
+              "name": "输出的 trend 取值严格属于 improving、declining、mixed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-72a41689c801",
+          "type": "group",
+          "name": "交付物结果可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9255b8b104fe",
+              "type": "leaf",
+              "name": "earnings_comparison.csv 包含了 metric、q1_value、q2_value、change、change_pct 五列",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-26d6ac682b20",
+              "type": "leaf",
+              "name": "earnings_comparison.csv 为每个要求的 KPI 提供了一行可读取的数据记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-cf7b98050ef8",
+              "type": "leaf",
+              "name": "earnings_summary.json 可被正常解析为 JSON 且字段结构符合要求",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-647a93014123",
+              "type": "leaf",
+              "name": "earnings_summary.json 中 q1 和 q2 对象包含 revenue、net_income、eps 三个字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f4d3f47c1a19",
+          "type": "group",
+          "name": "异常处理与结果反馈质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-27b127ae52d6",
+              "type": "leaf",
+              "name": "读取文件失败或字段缺失时给出了可追踪的错误结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-bfd5f6eb09be",
+              "type": "leaf",
+              "name": "最终回复中包含了 q1、q2 和 trend 的结果对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-46f206689f30",
+    "language": "zh"
+  }
+}

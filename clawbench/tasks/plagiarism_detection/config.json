@@ -1,0 +1,348 @@
+{
+  "id": "plagiarism_detection",
+  "name": "文档相似度检测",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "## 任务目标\n\n桌面目录 `/root/Desktop/documents/` 中包含多个文本文件。请分析这些文档，通过计算文档之间的成对相似度来检测潜在的抄袭行为。\n\n## 要求\n\n1. **读取所有文本文件** 从目录 `/root/Desktop/documents/` 中读取所有 .txt 文件。\n\n2. **计算成对相似度** 使用两种方法计算每对文档之间的相似度：\n   - **3-gram Jaccard 相似度：**\n     - 从每个文档中提取所有字符 3-gram。\n     - 计算每对文档的 3-gram 集合之间的 Jaccard 相似度。\n   - **TF-IDF 向量的余弦相似度：**\n     - 为每个文档计算 TF-IDF 向量。\n     - 计算每对 TF-IDF 向量之间的余弦相似度。\n\n3. **输出两个文件** 到桌面目录 `/root/Desktop/`：\n   - `similarity_matrix.csv`：CSV 文件，包含以下列：\n     - `doc1`：第一个文档的文件名\n     - `doc2`：第二个文档的文件名\n     - `jaccard_3gram`：Jaccard 相似度分数（0 到 1 之间的浮点数）\n     - `cosine_tfidf`：余弦相似度分数（0 到 1 之间的浮点数）\n     \n     包含所有唯一的文档对（按字典序 doc1 < doc2），不包含重复项或自比较。\n\n   - `plagiarism_report.json`：JSON 文件，列出所有相似度大于 0.3 的文档对。格式为对象列表：\n     ```json\n     [\n       {\n         \"doc1\": \"fileA.txt\",\n         \"doc2\": \"fileB.txt\",\n         \"jaccard_3gram\": 0.45,\n         \"cosine_tfidf\": 0.52\n       },\n       ...\n     ]\n     ```\n\n## 注意事项\n\n- 使用字符 3-gram（长度为 3 的滑动窗口）计算 Jaccard 相似度。\n- 使用标准 TF-IDF 向量化，采用默认参数。\n- 相似度分数应为浮点数，至少保留 4 位小数。\n- 只考虑 doc1 文件名按字典序小于 doc2 的情况，以避免重复。\n- 桌面目录结构和文件由初始化脚本生成。\n\n## 交付物\n\n请在桌面目录 `/root/Desktop/` 输出以下两个文件：\n- `similarity_matrix.csv`\n- `plagiarism_report.json`\n\n这些文件将被验证正确性。",
+  "rubric": {
+    "query": "## 任务目标\n\n桌面目录 `/root/Desktop/documents/` 中包含多个文本文件。请分析这些文档，通过计算文档之间的成对相似度来检测潜在的抄袭行为。\n\n## 要求\n\n1. **读取所有文本文件** 从目录 `/root/Desktop/documents/` 中读取所有 .txt 文件。\n\n2. **计算成对相似度** 使用两种方法计算每对文档之间的相似度：\n   - **3-gram Jaccard 相似度：**\n     - 从每个文档中提取所有字符 3-gram。\n     - 计算每对文档的 3-gram 集合之间的 Jaccard 相似度。\n   - **TF-IDF 向量的余弦相似度：**\n     - 为每个文档计算 TF-IDF 向量。\n     - 计算每对 TF-IDF 向量之间的余弦相似度。\n\n3. **输出两个文件** 到桌面目录 `/root/Desktop/`：\n   - `similarity_matrix.csv`：CSV 文件，包含以下列：\n     - `doc1`：第一个文档的文件名\n     - `doc2`：第二个文档的文件名\n     - `jaccard_3gram`：Jaccard 相似度分数（0 到 1 之间的浮点数）\n     - `cosine_tfidf`：余弦相似度分数（0 到 1 之间的浮点数）\n     \n     包含所有唯一的文档对（按字典序 doc1 < doc2），不包含重复项或自比较。\n\n   - `plagiarism_report.json`：JSON 文件，列出所有相似度大于 0.3 的文档对。格式为对象列表：\n     ```json\n     [\n       {\n         \"doc1\": \"fileA.txt\",\n         \"doc2\": \"fileB.txt\",\n         \"jaccard_3gram\": 0.45,\n         \"cosine_tfidf\": 0.52\n       },\n       ...\n     ]\n     ```\n\n## 注意事项\n\n- 使用字符 3-gram（长度为 3 的滑动窗口）计算 Jaccard 相似度。\n- 使用标准 TF-IDF 向量化，采用默认参数。\n- 相似度分数应为浮点数，至少保留 4 位小数。\n- 只考虑 doc1 文件名按字典序小于 doc2 的情况，以避免重复。\n- 桌面目录结构和文件由初始化脚本生成。\n\n## 交付物\n\n请在桌面目录 `/root/Desktop/` 输出以下两个文件：\n- `similarity_matrix.csv`\n- `plagiarism_report.json`\n\n这些文件将被验证正确性。",
+    "query_id": "plagiarism_detection",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-067871c9ed47",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/documents/ 目录中的所有 .txt 文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-3703cee0cfa4",
+        "type": "group",
+        "name": "按要求产出了两个交付文件",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f6d9db50e33a",
+            "type": "leaf",
+            "name": "生成了包含所有唯一文档对相似度结果的 /root/Desktop/similarity_matrix.csv 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-a8fe41461f53",
+            "type": "leaf",
+            "name": "生成了包含所有相似度大于 0.3 文档对的 /root/Desktop/plagiarism_report.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "条件判断"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-3330e029b258",
+        "type": "group",
+        "name": "按指定配对和字段要求完成了相似度结果",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bd9eb9c3a27b",
+            "type": "leaf",
+            "name": "仅输出了满足 doc1 文件名字典序小于 doc2 的唯一文档对",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-c777a379c43e",
+            "type": "leaf",
+            "name": "在结果中写入了每对文档的 jaccard_3gram 和 cosine_tfidf 浮点分数",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "工具使用",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e6b5a40d64cc",
+          "type": "group",
+          "name": "输入文件收集质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a42c8e5cc8e4",
+              "type": "leaf",
+              "name": "正确筛选了 /root/Desktop/documents/ 目录下扩展名为 .txt 的文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-382de0d9cf47",
+              "type": "leaf",
+              "name": "正确提取了用于配对计算的文件名列表",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9c17a19b1440",
+          "type": "group",
+          "name": "相似度计算方法质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-346b76381cf0",
+              "type": "leaf",
+              "name": "准确构造了每个文档的字符 3-gram 集合",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-4ac57e613a7d",
+              "type": "leaf",
+              "name": "准确计算了每对 3-gram 集合的 Jaccard 相似度",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-cf00e7c1a469",
+              "type": "leaf",
+              "name": "正确使用默认参数计算了文档的 TF-IDF 向量",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c2669166df6e",
+              "type": "leaf",
+              "name": "准确计算了每对 TF-IDF 向量的余弦相似度",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4d42eec2c161",
+          "type": "group",
+          "name": "配对筛选与结果判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-14606edd28dc",
+              "type": "leaf",
+              "name": "正确生成了满足 doc1 文件名字典序小于 doc2 的唯一文档对",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-32ad3159d90e",
+              "type": "leaf",
+              "name": "准确识别了相似度大于 0.3 的文档对并写入报告",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c4467ca05087",
+              "type": "leaf",
+              "name": "在多步处理中保持了 doc1、doc2 与两类相似度分数的一致对应关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-75365c47d602",
+          "type": "group",
+          "name": "交付文件可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-188bdd6182f0",
+              "type": "leaf",
+              "name": "similarity_matrix.csv 中包含列 doc1、doc2、jaccard_3gram、cosine_tfidf",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-133c0544554c",
+              "type": "leaf",
+              "name": "similarity_matrix.csv 中每条记录的两个相似度分数保留了至少 4 位小数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-50cc5c9418af",
+              "type": "leaf",
+              "name": "plagiarism_report.json 可被正常解析为对象列表",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a362e5fe40c9",
+              "type": "leaf",
+              "name": "plagiarism_report.json 中每个对象包含 doc1、doc2、jaccard_3gram、cosine_tfidf 四个字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ff7da749bf9e",
+          "type": "group",
+          "name": "异常处理与结果真实性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d363b99bf686",
+              "type": "leaf",
+              "name": "遇到空文档或字符数少于 3 的文档时未中断整体处理流程",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-18a3daf9977d",
+              "type": "leaf",
+              "name": "未编造不存在的文档对或相似度结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-37b7c19cb68f",
+    "language": "zh"
+  },
+  "note": "文档相似度计算与抄袭检测任务"
+}

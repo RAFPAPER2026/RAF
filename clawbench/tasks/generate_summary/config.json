@@ -1,0 +1,147 @@
+{
+  "id": "generate_summary",
+  "name": "资本论章节概要",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "帮我下载《资本论》的最新版本保存到/root/Desktop，并对书中每个章节写段内容概要，和书放在一块",
+  "rubric": {
+    "query": "帮我下载《资本论》的最新版本保存到/root/Desktop，并对书中每个章节写段内容概要，和书放在一块",
+    "query_id": "generate_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-82f50f10725c",
+        "type": "leaf",
+        "name": "成功下载了《资本论》的最新版本文件并保存到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-da699830b8b3",
+        "type": "leaf",
+        "name": "生成了按《资本论》各章节分别撰写的内容概要文件并与书籍文件保存在同一位置",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "上下文保持",
+          "工具使用"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ccb2713854df",
+          "type": "leaf",
+          "name": "准确检索并识别了可获取的《资本论》最新版本来源与版本信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-e6f42faf452c",
+          "type": "leaf",
+          "name": "正确使用下载与文件写入工具将书籍文件保存到/root/Desktop且文件名与格式可识别",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-bcdcb75d0ecf",
+          "type": "leaf",
+          "name": "准确提取了《资本论》的章节结构用于逐章生成概要",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9fc766b0c0f8",
+          "type": "leaf",
+          "name": "正确撰写了每个章节对应的内容概要且未遗漏已识别章节",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6d41e90f9bbf",
+          "type": "leaf",
+          "name": "生成的概要文件可正常打开且按章节组织内容便于对应原书结构使用",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3395aa610947",
+          "type": "leaf",
+          "name": "在下载失败、版本不可得或章节解析异常时记录了错误原因并采取了替代获取或重试措施",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-617c0bdb9a94",
+    "language": "zh"
+  }
+}

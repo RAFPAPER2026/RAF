@@ -1,0 +1,142 @@
+{
+  "id": "file_cleanup_01",
+  "name": "Clean Up Duplicate Files",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me clean up the duplicate files in /root/Desktop/download and list the specific paths of the cleaned files. Do not modify the computer's system files.",
+  "rubric": {
+    "query": "Help me clean up the duplicate files in /root/Desktop/download and list the specific paths of the cleaned files. Do not modify the computer's system files.",
+    "query_id": "file_cleanup_01",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-04f420410017",
+        "type": "leaf",
+        "name": "Cleaned up the duplicate files in /root/Desktop/download",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-56b1f9d22fd5",
+        "type": "leaf",
+        "name": "Listed the specific paths of the cleaned files",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Communication",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-863cd4e86ea6",
+        "type": "leaf",
+        "name": "Did not modify the computer's system files",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Conditional Judgment",
+          "Exception Handling"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d2a029152c90",
+          "type": "leaf",
+          "name": "Accurately identified duplicate files within /root/Desktop/download",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-811db7e41da7",
+          "type": "leaf",
+          "name": "Correctly excluded system files and files outside the /root/Desktop/download path",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Tool Usage",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-771206f526ad",
+          "type": "leaf",
+          "name": "Correctly performed the duplicate-file cleanup and did not delete non-duplicate files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-a1ae8a898511",
+          "type": "leaf",
+          "name": "Completely listed the specific paths of the cleaned files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-beb9f0ab1daa",
+          "type": "leaf",
+          "name": "Explained the paths and reasons for files not cleaned when cleanup failed or permissions were restricted",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-0a33547ddde7",
+    "language": "en"
+  }
+}

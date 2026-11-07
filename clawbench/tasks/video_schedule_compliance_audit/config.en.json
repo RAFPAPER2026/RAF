@@ -1,0 +1,364 @@
+{
+  "id": "video_schedule_compliance_audit",
+  "name": "Video Schedule Compliance Audit",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Task Decomposition"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Read /root/Desktop/video_schedule_audit/四月发稿排期.ics and /root/Desktop/video_schedule_audit/发稿制度规定.docx, and check the following three rules:\n1. There must be a scheduled post between 18:00 and 20:00 on weekdays; any day without a scheduled post in this time slot counts as a violation;\n2. The number of scheduled posts on each Saturday and Sunday must not be less than 3; any shortfall counts as a violation;\n3. On the same day, the publishing interval between two adjacent videos must not be less than 2 hours; anything less counts as a violation.\n\nOrganize the violations into a Word document and save it to /root/Desktop/video_schedule_audit/排期违规自查报告.docx. The first paragraph at the top of the document uses the large heading “四月排期违规审查报告”, with the 黑体 font and the font size 三号 (16pt). Below the heading, use a three-column table to list all violations, with the headers “日期”, “违规事件名”, and “违规原因”. The text in the “违规原因” column should be red and bold.",
+  "rubric": {
+    "query": "Read /root/Desktop/video_schedule_audit/四月发稿排期.ics and /root/Desktop/video_schedule_audit/发稿制度规定.docx, and check the following three rules:\n1. There must be a scheduled post between 18:00 and 20:00 on weekdays; any day without a scheduled post in this time slot counts as a violation;\n2. The number of scheduled posts on each Saturday and Sunday must not be less than 3; any shortfall counts as a violation;\n3. On the same day, the publishing interval between two adjacent videos must not be less than 2 hours; anything less counts as a violation.\n\nOrganize the violations into a Word document and save it to /root/Desktop/video_schedule_audit/排期违规自查报告.docx. The first paragraph at the top of the document uses the large heading “四月排期违规审查报告”, with the 黑体 font and the font size 三号 (16pt). Below the heading, use a three-column table to list all violations, with the headers “日期”, “违规事件名”, and “违规原因”. The text in the “违规原因” column should be red and bold.",
+    "query_id": "video_schedule_compliance_audit",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-963297b24c03",
+        "type": "group",
+        "name": "Source Data Needed for the Schedule Check Obtained",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-549031fbf100",
+            "type": "leaf",
+            "name": "Correctly read the scheduling information in /root/Desktop/video_schedule_audit/四月发稿排期.ics",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-5d9eb3515713",
+            "type": "leaf",
+            "name": "Correctly read the rule information in /root/Desktop/video_schedule_audit/发稿制度规定.docx",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5ce73c732c36",
+        "type": "group",
+        "name": "Violation Checks for the Three Rules Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d8350ce94f2e",
+            "type": "leaf",
+            "name": "Correctly identified the violation dates on which weekday 18:00-20:00 slots lacked scheduled posts",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-c719ad34c4ac",
+            "type": "leaf",
+            "name": "Correctly identified the violation dates on which Saturday or Sunday had fewer than 3 scheduled posts",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-92ebc4b3f4b1",
+            "type": "leaf",
+            "name": "Correctly identified the violation events where the publishing interval between two adjacent videos on the same day was less than 2 hours",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-b26ee34449cd",
+        "type": "group",
+        "name": "Word Report in the Specified Format Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-51087e6fbafa",
+            "type": "leaf",
+            "name": "Generated the /root/Desktop/video_schedule_audit/排期违规自查报告.docx file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-21ae69308058",
+            "type": "leaf",
+            "name": "Set the first-paragraph heading of the document to “四月排期违规审查报告”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-91be72965104",
+            "type": "leaf",
+            "name": "Created a three-column table in the document with the headers “日期”, “违规事件名”, and “违规原因”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f348330511cd",
+          "type": "group",
+          "name": "Source Data Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a3903c5be638",
+              "type": "leaf",
+              "name": "Accurately extracted the date and publishing time of each scheduled post in the .ics file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ce3ef40a3014",
+              "type": "leaf",
+              "name": "Accurately extracted the constraint content corresponding to the three check rules from the .docx file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fa71f28ae657",
+          "type": "group",
+          "name": "Rule Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-efdc58dd4320",
+              "type": "leaf",
+              "name": "Accurately determined whether there was a scheduled post in the 18:00-20:00 slot on every weekday",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a0db4df7b1a4",
+              "type": "leaf",
+              "name": "Accurately counted whether the number of scheduled posts on each Saturday and Sunday reached 3",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-8320fe28fdfc",
+              "type": "leaf",
+              "name": "Accurately calculated whether the publishing interval between two adjacent videos on the same day was less than 2 hours",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-352969dcf9ef",
+          "type": "group",
+          "name": "Execution Robustness",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5847e45da803",
+              "type": "leaf",
+              "name": "Correctly handled the context information needed for grouping by date and sorting by time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-4d656ba5c873",
+              "type": "leaf",
+              "name": "Performed observable corrective actions or gave error feedback when file reading or format parsing exceptions occurred",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-6e6c7274fb30",
+              "type": "leaf",
+              "name": "Did not write non-existent scheduled posts or violation reasons into the results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-29c93d0d6065",
+          "type": "group",
+          "name": "Deliverable Result Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f22bab41c5e2",
+              "type": "leaf",
+              "name": "The generated Word document opens normally and its file format is .docx",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-4ce35dc9b532",
+              "type": "leaf",
+              "name": "The first-paragraph heading text of the document is “四月排期违规审查报告”, with the 黑体 font and a size of 16pt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-d4a35d10dd96",
+              "type": "leaf",
+              "name": "The table contains the three column headers “日期”, “违规事件名”, and “违规原因”, with each violation occupying one row",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-1b1203fe328e",
+              "type": "leaf",
+              "name": "The body text in the “违规原因” column is set to red and bold",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2a0d6fe010b7",
+          "type": "leaf",
+          "name": "The reply includes a clear explanation of the saved file path and the violation check results",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f99d52cdaa4b",
+    "language": "en"
+  },
+  "note": "Short-video schedule compliance check; generate a violation self-inspection report Word document."
+}

@@ -1,0 +1,331 @@
+{
+  "id": "install_notion",
+  "name": "Notion安装导入",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "创意生成",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我下载安装 Notion，把/root/Desktop里面所有文件名含「计划」的文档内容导入新建页面，按日期自动分类并生成周日程视图，截图放在/root/Desktop",
+  "rubric": {
+    "query": "帮我下载安装 Notion，把/root/Desktop里面所有文件名含「计划」的文档内容导入新建页面，按日期自动分类并生成周日程视图，截图放在/root/Desktop",
+    "query_id": "install_notion",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-68030d8e9a52",
+        "type": "group",
+        "name": "Notion 安装目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-89008ecc6fe4",
+            "type": "leaf",
+            "name": "成功下载了 Notion 安装包",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "检索策略"
+            ]
+          },
+          {
+            "id": "node-bab542d39bc1",
+            "type": "leaf",
+            "name": "成功完成了 Notion 安装",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "异常处理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-885db3a8f01f",
+        "type": "group",
+        "name": "文档导入目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9b0bdc30ec9a",
+            "type": "leaf",
+            "name": "正确识别了 /root/Desktop 中所有文件名含「计划」的文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-54d129f735ff",
+            "type": "leaf",
+            "name": "成功将这些文档内容导入到新建的 Notion 页面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c5d63267dbfd",
+        "type": "group",
+        "name": "日程整理与交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-02f9ec337e37",
+            "type": "leaf",
+            "name": "成功按日期对导入内容进行了分类",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-61abbb20e950",
+            "type": "leaf",
+            "name": "成功生成了可用的周日程视图",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-95832ab00771",
+            "type": "leaf",
+            "name": "成功将周日程视图截图保存到 /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-b2006d7b7164",
+          "type": "group",
+          "name": "Notion 获取与安装质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7797f985ff1d",
+              "type": "leaf",
+              "name": "正确选择了与当前系统兼容的 Notion 安装包",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-d9bb9cb50948",
+              "type": "leaf",
+              "name": "准确处理了下载或安装过程中的权限与依赖错误",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e1ab4da73066",
+          "type": "group",
+          "name": "文档检索与内容提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f8b5c4564884",
+              "type": "leaf",
+              "name": "准确检索了 /root/Desktop 下文件名含「计划」的所有目标文档",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-f86f428e1869",
+              "type": "leaf",
+              "name": "正确读取了各目标文档的正文内容而未混入非目标文件内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-23737b0f4b6c",
+              "type": "leaf",
+              "name": "正确保持了每段导入内容与原始文档来源的对应关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-cf2f4e082620",
+          "type": "group",
+          "name": "日期分类与周视图构建质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e1ad92e805f8",
+              "type": "leaf",
+              "name": "准确识别了文档中的日期信息并映射到对应周次",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-453895a97d0f",
+              "type": "leaf",
+              "name": "正确处理了缺失日期或多日期内容的分类分支",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "异常处理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-c84cb2969cbd",
+              "type": "leaf",
+              "name": "正确在 Notion 中创建了支持按日期筛选的数据库字段或等效结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a53331316ef1",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c77fdf7df21e",
+              "type": "leaf",
+              "name": "生成的周日程视图可正常打开并显示按周组织的条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-c613809e589f",
+              "type": "leaf",
+              "name": "生成的周日程视图中条目标题与日期字段无缺失",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-fa8fda82fd11",
+              "type": "leaf",
+              "name": "页面结构包含导入内容区和周日程视图区两个可直接使用的部分",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-ed81a7ef962b",
+              "type": "leaf",
+              "name": "保存到 /root/Desktop 的截图文件可正常打开且能看清周日程视图中的日期与条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2bf831ba85b2",
+          "type": "leaf",
+          "name": "回复中明确说明了已安装结果、已导入文档范围、分类结果和截图保存位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-caf154efeab5",
+    "language": "zh"
+  }
+}

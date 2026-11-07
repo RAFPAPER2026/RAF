@@ -1,0 +1,7 @@
+papers/：
+- attention_is_all_you_need_2017.pdf（精读过，有笔记）
+- memgpt_2023.pdf（精读过，有笔记）
+- rag_survey_2024.pdf（读过前半）
+- dpo_2023.pdf（保存过，没读）
+- karma_2024.pdf（保存过，没读）
+- scaling_laws_2020.pdf（读过，但当时没完全看懂）

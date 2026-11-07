@@ -1,0 +1,332 @@
+{
+  "id": "pitch_ppt_summary",
+  "name": "比稿PPT提炼摘要",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面pitch_strategy_summary文件夹下有个'品牌年度焕新比稿策略推导.pptx'，这份PPT有十几页，全是密密麻麻的字。帮我快速榨干核心内容，输出一份极简的Markdown提纲文件，保存在桌面pitch_strategy_summary文件夹下，文件名称为‘比稿核心视觉提纲.md’。\n\n我只要三块东西，用H2标题分清楚：第一块是**核心品牌定位**，只留最终结论性的定位描述；第二块是**本品与竞品的优劣势对比**，用无序列表列清楚；第三块是**提炼出3到5句最有视觉张力的短句**，就是那种能直接拿来做大字报排版、撕纸风封面Slogan的狠句子，情绪要烈、字数要少、冲击力要强。\n\n三大板块下面如果有细分内容就用H3，所有具体要点用无序列表呈现，不要成段文字。核心关键词、品牌名、竞品名、关键定位词用加粗标出。",
+  "rubric": {
+    "query": "桌面pitch_strategy_summary文件夹下有个'品牌年度焕新比稿策略推导.pptx'，这份PPT有十几页，全是密密麻麻的字。帮我快速榨干核心内容，输出一份极简的Markdown提纲文件，保存在桌面pitch_strategy_summary文件夹下，文件名称为‘比稿核心视觉提纲.md’。\n\n我只要三块东西，用H2标题分清楚：第一块是**核心品牌定位**，只留最终结论性的定位描述；第二块是**本品与竞品的优劣势对比**，用无序列表列清楚；第三块是**提炼出3到5句最有视觉张力的短句**，就是那种能直接拿来做大字报排版、撕纸风封面Slogan的狠句子，情绪要烈、字数要少、冲击力要强。\n\n三大板块下面如果有细分内容就用H3，所有具体要点用无序列表呈现，不要成段文字。核心关键词、品牌名、竞品名、关键定位词用加粗标出。",
+    "query_id": "pitch_ppt_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1ecdd0688356",
+        "type": "leaf",
+        "name": "正确读取了桌面pitch_strategy_summary文件夹中的‘品牌年度焕新比稿策略推导.pptx’内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-15a05fb44932",
+        "type": "group",
+        "name": "完成Markdown交付物产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0c45e23a3c69",
+            "type": "leaf",
+            "name": "生成了名为‘比稿核心视觉提纲.md’的Markdown文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-2b90cf6c9598",
+            "type": "leaf",
+            "name": "将‘比稿核心视觉提纲.md’保存到桌面pitch_strategy_summary文件夹下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7e377e61de63",
+        "type": "group",
+        "name": "交付内容满足指定结构与格式要求",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9846cebcfe0f",
+            "type": "leaf",
+            "name": "输出内容包含H2标题‘核心品牌定位’且仅保留结论性定位描述",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-783ce9adfc53",
+            "type": "leaf",
+            "name": "输出内容包含H2标题‘本品与竞品的优劣势对比’并以无序列表呈现比较要点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-4388d829b09a",
+            "type": "leaf",
+            "name": "输出内容包含H2标题‘提炼出3到5句最有视觉张力的短句’且列出3到5句短句",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-047d64d7a9ea",
+            "type": "leaf",
+            "name": "三大板块下的具体要点均使用无序列表呈现",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-7e74e154e904",
+            "type": "leaf",
+            "name": "核心关键词、品牌名、竞品名、关键定位词已用加粗标注",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-cddd1a9deffd",
+          "type": "leaf",
+          "name": "正确选择了可读取PPT文本内容的工具或方法",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ab958d615567",
+          "type": "leaf",
+          "name": "准确提取了PPT中与品牌定位、竞品比较和视觉短句相关的信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0f9afa7be078",
+          "type": "leaf",
+          "name": "准确判断了哪些表述属于最终结论性品牌定位而非过程分析信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "信息筛选",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-bd59d831a23b",
+          "type": "group",
+          "name": "竞品对比提炼质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ad80a2841788",
+              "type": "leaf",
+              "name": "正确区分了本品与竞品各自的优势信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-cfa5045b0b93",
+              "type": "leaf",
+              "name": "正确区分了本品与竞品各自的劣势信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-36ede4cf322f",
+          "type": "group",
+          "name": "Markdown交付物可用性与格式符合性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f5dd4170e12f",
+              "type": "leaf",
+              "name": "Markdown文件包含指定的3个H2标题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-cc03d52bbb1b",
+              "type": "leaf",
+              "name": "Markdown文件中的细分内容使用H3标题组织",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-4247047c9649",
+              "type": "leaf",
+              "name": "Markdown文件中的具体要点均使用无序列表呈现",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-d83c679d80dc",
+              "type": "leaf",
+              "name": "Markdown文件中的核心关键词、品牌名、竞品名、关键定位词使用Markdown加粗语法标注",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-a214941ed359",
+              "type": "leaf",
+              "name": "Markdown文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-abdd1f5871e6",
+          "type": "group",
+          "name": "视觉短句提炼质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8c3a42a7c822",
+              "type": "leaf",
+              "name": "提炼出的短句来源于PPT已有信息而非编造新主张",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-19d514319f29",
+              "type": "leaf",
+              "name": "提炼出的每句短句字数控制在可直接用于大字报排版的长度范围内",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-dd797917c713",
+              "type": "leaf",
+              "name": "提炼出的短句保留品牌竞争主张中的高辨识度关键词",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-223cd3825692",
+    "language": "zh"
+  },
+  "note": "从比稿策略PPT提炼核心视觉提纲"
+}

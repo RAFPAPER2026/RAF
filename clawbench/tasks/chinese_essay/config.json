@@ -1,0 +1,277 @@
+{
+  "id": "chinese_essay",
+  "name": "语文范文收集整理",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "plan.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我各找5篇高中语文作文的优秀范文，按记叙文、议论文、实用类应用文，每类附带两句亮点分析生成个docx文档放/root/Desktop",
+  "rubric": {
+    "query": "帮我各找5篇高中语文作文的优秀范文，按记叙文、议论文、实用类应用文，每类附带两句亮点分析生成个docx文档放/root/Desktop",
+    "query_id": "chinese_essay",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8a51e464ea0f",
+        "type": "group",
+        "name": "完成了三类范文收集任务",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e0a4d4fd6f0e",
+            "type": "leaf",
+            "name": "找到了5篇高中语文记叙文优秀范文",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-76202a795230",
+            "type": "leaf",
+            "name": "找到了5篇高中语文议论文优秀范文",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-4339bdcf752c",
+            "type": "leaf",
+            "name": "找到了5篇高中语文实用类应用文优秀范文",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7c59090007d4",
+        "type": "group",
+        "name": "完成了结果整理与文件交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-69d818ba924a",
+            "type": "leaf",
+            "name": "为每篇范文附带了两句亮点分析",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "通用知识",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-c30485425289",
+            "type": "leaf",
+            "name": "生成了包含全部范文与分析内容的docx文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-6138a65c332d",
+            "type": "leaf",
+            "name": "将docx文档放置到/root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-970626d404d3",
+          "type": "leaf",
+          "name": "准确构造了面向高中语文范文检索的分类关键词",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-69e266b79130",
+          "type": "group",
+          "name": "范文分类筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1d912154b849",
+              "type": "leaf",
+              "name": "准确筛选了与记叙文类别相符的5篇高中语文范文",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-5e6e5a5c20e0",
+              "type": "leaf",
+              "name": "准确筛选了与议论文类别相符的5篇高中语文范文",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-0743b0c445cd",
+              "type": "leaf",
+              "name": "准确筛选了与实用类应用文类别相符的5篇高中语文范文",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-3bc9b44f234d",
+          "type": "group",
+          "name": "范文分析编排质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-545960817817",
+              "type": "leaf",
+              "name": "正确保持了每篇范文与对应亮点分析的一一对应关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-34fe812fcb7b",
+              "type": "leaf",
+              "name": "准确提炼了每篇范文中可从正文定位的两句亮点分析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-28d4f21ca67d",
+          "type": "group",
+          "name": "docx交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fffb5a188dd7",
+              "type": "leaf",
+              "name": "正确使用文档工具生成了docx格式文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-6e71f7acf52e",
+              "type": "leaf",
+              "name": "生成的docx文档可正常打开且内容无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-227386cfdb2e",
+              "type": "leaf",
+              "name": "生成的docx文档中三类范文分组明确且每篇均包含正文与两句分析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-605d4f1326ea",
+          "type": "leaf",
+          "name": "在检索结果不足或来源异常时正确补充检索或更换来源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "检索策略",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f16b34bad3d3",
+    "language": "zh"
+  }
+}

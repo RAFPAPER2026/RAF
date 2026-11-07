@@ -1,0 +1,392 @@
+{
+  "id": "knowledge_archaeology",
+  "name": "Knowledge Archaeology Review",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "Context Compression & Summarization",
+    "State Tracking & Consistency"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.compress",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The knowledge_base/ folder on the desktop contains the learning materials I have accumulated over the past two years: PDF papers, Word notes (notes/), browser bookmark exports (bookmarks.html), highlighted excerpts (highlights/), OCR results of handwritten notes (handwritten_ocr/), and course materials.\nI feel like I have read a lot, but when asked to explain it now I cannot. Please do a 'knowledge archaeology' for me:\n1. Sort out which knowledge topics I have actually been exposed to from the materials;\n2. Distinguish 'only read' from 'truly mastered' — the basis for judgment is whether my notes contain my own summaries, processing, and outputs, not just highlights and bookmarks;\n3. Find concepts that appear repeatedly across different times and different sources (which show that these are the main lines I am truly following);\n4. Build a knowledge map (save it as /root/Desktop/knowledge_base/knowledge_map.md, using a hierarchical list or a mermaid diagram);\n5. Find knowledge gaps: for example, I have already read a lot about a topic but lack the foundations it depends on (statistics, experimental methodology, etc.);\n6. Finally generate a set of verification questions (2-3 questions for each topic I consider mastered), saved to /root/Desktop/knowledge_base/verification_questions.md; after I answer them, the knowledge map can be further updated.",
+  "rubric": {
+    "query": "The knowledge_base/ folder on the desktop contains the learning materials I have accumulated over the past two years: PDF papers, Word notes (notes/), browser bookmark exports (bookmarks.html), highlighted excerpts (highlights/), OCR results of handwritten notes (handwritten_ocr/), and course materials.\nI feel like I have read a lot, but when asked to explain it now I cannot. Please do a 'knowledge archaeology' for me:\n1. Sort out which knowledge topics I have actually been exposed to from the materials;\n2. Distinguish 'only read' from 'truly mastered' — the basis for judgment is whether my notes contain my own summaries, processing, and outputs, not just highlights and bookmarks;\n3. Find concepts that appear repeatedly across different times and different sources (which show that these are the main lines I am truly following);\n4. Build a knowledge map (save it as /root/Desktop/knowledge_base/knowledge_map.md, using a hierarchical list or a mermaid diagram);\n5. Find knowledge gaps: for example, I have already read a lot about a topic but lack the foundations it depends on (statistics, experimental methodology, etc.);\n6. Finally generate a set of verification questions (2-3 questions for each topic I consider mastered), saved to /root/Desktop/knowledge_base/verification_questions.md; after I answer them, the knowledge map can be further updated.",
+    "query_id": "knowledge_archaeology",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ff7c1ae21b4b",
+        "type": "group",
+        "name": "Knowledge Archaeology Analysis Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bffc1621fe9b",
+            "type": "leaf",
+            "name": "Correctly sorted out the knowledge topics actually covered in the materials",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-056557088b80",
+            "type": "leaf",
+            "name": "Correctly distinguished between topics that were only read and topics that were truly mastered",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-477fb734bda1",
+            "type": "leaf",
+            "name": "Correctly found the concepts that appear repeatedly across different times and different sources",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-47900c05101c",
+            "type": "leaf",
+            "name": "Correctly identified knowledge gaps where a topic has been read extensively but its prerequisite foundations are missing",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-64b77e1dd6f9",
+        "type": "leaf",
+        "name": "Generated the openable, usable knowledge map file /root/Desktop/knowledge_base/knowledge_map.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Communication"
+        ]
+      },
+      {
+        "id": "node-20c8a04924b3",
+        "type": "leaf",
+        "name": "Generated the openable, usable verification questions file /root/Desktop/knowledge_base/verification_questions.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-21ffb39868ad",
+          "type": "group",
+          "name": "Material Acquisition and Classification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-19bdcf94d935",
+              "type": "leaf",
+              "name": "Accurately read the material types and directory contents relevant to the task in knowledge_base",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-3c3d3a36f68a",
+              "type": "leaf",
+              "name": "Correctly associated notes, highlights, handwritten_ocr, bookmarks.html, and course materials with the corresponding topic clues",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e8c30821504f",
+          "type": "group",
+          "name": "Mastery Determination Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6e7cc28b2691",
+              "type": "leaf",
+              "name": "Accurately identified the evidence of self-summary or concept restatement in the notes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-2ffbd178607a",
+              "type": "leaf",
+              "name": "Accurately identified the evidence of only highlights, excerpts, or bookmarks without processed outputs",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-f98f7ba3e89d",
+              "type": "leaf",
+              "name": "Correctly classified topics as only read or truly mastered based on the evidence",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4be6191ff2a5",
+          "type": "group",
+          "name": "Main-Line Concept Identification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b9c96874457d",
+              "type": "leaf",
+              "name": "Accurately extracted topic or concept markers repeated across different times",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-a1b5de7b581f",
+              "type": "leaf",
+              "name": "Accurately extracted topic or concept markers repeated across different sources",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-d92607a51c27",
+              "type": "leaf",
+              "name": "Correctly distinguished concepts that appear only occasionally from main-line concepts that are continuously followed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c4dae8413a0b",
+          "type": "group",
+          "name": "Knowledge Gap Diagnosis Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-abe47e02d7b2",
+              "type": "leaf",
+              "name": "Correctly inferred the foundational knowledge prerequisites that a topic depends on",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-c6fc3634e6e7",
+              "type": "leaf",
+              "name": "Accurately determined the correspondence between reading accumulation and foundational gaps",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3621cc0b691d",
+              "type": "leaf",
+              "name": "Explicitly marked cases as undeterminable or pending supplementation when materials were missing or evidence was insufficient",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-ccedb67f9d11",
+          "type": "group",
+          "name": "Knowledge Map Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-57f7f496ab14",
+              "type": "leaf",
+              "name": "The knowledge map content contains the topic hierarchy and the dependency or parallel relations between topics",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-8db834d76c3b",
+              "type": "leaf",
+              "name": "The knowledge map file uses a Markdown hierarchical list or a Mermaid diagram, and its syntax is parseable",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-863c5bb54bb0",
+              "type": "leaf",
+              "name": "The topic classification in the knowledge map file is consistent with the analysis conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6b36e15a4124",
+          "type": "group",
+          "name": "Verification Questions Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2a435059debb",
+              "type": "leaf",
+              "name": "Generated 2 to 3 verification questions for each topic judged as mastered",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-c3c03040beef",
+              "type": "leaf",
+              "name": "The verification questions can test at least one of concept explanation, relationship comparison, or applied reasoning",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-f73ca0efa563",
+              "type": "leaf",
+              "name": "The topics in the verification questions file correspond consistently with the mastered topics in the knowledge map",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-5f50e446ea65",
+          "type": "leaf",
+          "name": "Clearly stated in the reply the paths of the produced files and how the knowledge map can be further updated based on the answers",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-119f3e780916",
+    "language": "en"
+  },
+  "note": "“What have I actually learned?” Knowledge archaeology. Given to the agent: the user's PDFs + Word notes + browser bookmarks + highlights + handwritten notes OCR + course materials from the past two years. The user: “I feel like I have seen a lot, but when asked to explain it now I cannot. Help me find out what I have truly mastered, what I have only read, and which pieces of knowledge can actually already be connected.” The agent needs to: ① identify from the materials the knowledge the user has actually been exposed to; ② judge “read ≠ mastered” based on notes/highlights/outputs; ③ find recurring concepts across different times and different topics; ④ automatically build a knowledge map; ⑤ find knowledge gaps, for example “has already read a lot about Agent evaluation, but lacks a foundation in statistics/evaluation methodology”; ⑥ based on the results, generate a set of verification questions so that the user's answers can further update the knowledge map. Difficulty: what is tested is not just RAG, but knowledge state estimation + evidence aggregation + interactive verification.",
+  "env_description": "knowledge_base/: notes/ (3 in-depth notes with the user's own processing = clues of mastery), highlights/ (3 with highlights only = only read), bookmarks.html (contains statistics/IRT bookmarked three years ago but never read = clues of knowledge gaps), handwritten_ocr/ (OCR of handwritten notes, planting a new direction for cognitive diagnosis), course_materials/, papers/; the basis for judging “read vs. mastered” is traces of processing rather than quantity"
+}

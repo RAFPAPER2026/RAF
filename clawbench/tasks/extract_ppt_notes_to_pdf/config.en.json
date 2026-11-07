@@ -1,0 +1,237 @@
+{
+  "id": "extract_ppt_notes_to_pdf",
+  "name": "PPT Notes to PDF",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Extract the speaker notes of each page from desktop history_review/二模冲刺_历史必修一串讲.pptx. Skip the cover page, the table-of-contents page, and other pages without notes; only extract those with content. Prefix each note paragraph with the page number in the format “第X页：”.\n\nGenerate a PDF file from the extracted content, with the body text in SimSun, size 小四 (12pt), and 1.5x line spacing. Save the file in the same history_review folder, named “历史必修一_考点补充.pdf”.",
+  "rubric": {
+    "query": "Extract the speaker notes of each page from desktop history_review/二模冲刺_历史必修一串讲.pptx. Skip the cover page, the table-of-contents page, and other pages without notes; only extract those with content. Prefix each note paragraph with the page number in the format “第X页：”.\n\nGenerate a PDF file from the extracted content, with the body text in SimSun, size 小四 (12pt), and 1.5x line spacing. Save the file in the same history_review folder, named “历史必修一_考点补充.pdf”.",
+    "query_id": "extract_ppt_notes_to_pdf",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8fe2f2212af4",
+        "type": "leaf",
+        "name": "Correctly extracted all speaker notes with content from the PPT",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-91c4372f9fbb",
+        "type": "leaf",
+        "name": "Correctly skipped the cover page, table-of-contents page, and other pages without note content",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Conditional Judgment",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-8c8a2be0cdc5",
+        "type": "leaf",
+        "name": "Correctly added a page number marker in the “第X页：” format to each note paragraph",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-fc04c270eb23",
+        "type": "leaf",
+        "name": "Correctly generated and saved the PDF file named “历史必修一_考点补充.pdf” in the history_review folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d0af3f8f4646",
+          "type": "leaf",
+          "name": "Accurately located the target PPT file in the desktop history_review folder",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-897ab9f0e479",
+          "type": "group",
+          "name": "Note extraction judgment quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-78f8a7197a28",
+              "type": "leaf",
+              "name": "Accurately read the speaker note content of every page",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-8516cb596903",
+              "type": "leaf",
+              "name": "Accurately determined whether the notes were blank or had no content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2422b249c1b1",
+          "type": "group",
+          "name": "Content organization quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-14dca3f0c39a",
+              "type": "leaf",
+              "name": "Correctly retained the original information of the note content without fabricating non-existent text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-94de7da96b2d",
+              "type": "leaf",
+              "name": "Correctly added the “第X页：” prefix to each note paragraph according to its corresponding page number",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-643650e17d61",
+          "type": "group",
+          "name": "PDF deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1db82cd8bdd2",
+              "type": "leaf",
+              "name": "Correctly generated a PDF file that opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-850a8a7bdcbe",
+              "type": "leaf",
+              "name": "The PDF body text uses SimSun and the font size is 12pt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-3923da504435",
+              "type": "leaf",
+              "name": "The PDF body text is set to 1.5x line spacing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-0e4bac4c1ff5",
+              "type": "leaf",
+              "name": "The note text in the PDF is organized in page-number order and can be read and used directly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-3630f1ff1f1b",
+          "type": "leaf",
+          "name": "Correctly identified errors and took corrective measures when reading notes or generating the PDF failed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Logical Reasoning",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-aaa1f0017e84",
+    "language": "en"
+  },
+  "note": "Extract speaker notes from PPTX and generate a formatted PDF"
+}

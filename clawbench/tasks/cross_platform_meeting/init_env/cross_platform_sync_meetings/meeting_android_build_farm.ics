@@ -1,0 +1,16 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Company//Cross-Platform Sync Tool//CN
+CALSCALE:GREGORIAN
+METHOD:REQUEST
+BEGIN:VEVENT
+UID:android-build-farm-v3-20260402@company.com
+DTSTART:20260402T203000Z
+DTEND:20260402T213000Z
+SUMMARY:Android CI/CD构建脚本同步修复 - 紧急
+ORGANIZER;CN=Organizer:MAILTO:liwei@company.com
+DESCRIPTION:大家好，\n\nAndroid平台的CI/CD Script模块出现构建同步问题，需要紧急修复。\n\n问题描述：在V3.0的Android构建流水线中，Gradle构建脚本与新版NDK r26c存在兼容性问题，导致ARM64编译target的构建任务间歇性失败，成功率仅约60%。此外，构建产物的签名脚本也需要同步更新以适配新的keystore格式。\n\nLi Wei负责此项修复工作。由于问题范围比较明确，预计修复工时为0.5天，主要包括Gradle脚本适配和签名流程更新。\n\n请DevOps团队配合提供构建农场的临时访问权限。\n\n李伟
+STATUS:CONFIRMED
+SEQUENCE:0
+END:VEVENT
+END:VCALENDAR

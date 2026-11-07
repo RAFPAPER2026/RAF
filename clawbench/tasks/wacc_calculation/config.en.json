@@ -1,0 +1,276 @@
+{
+  "id": "wacc_calculation",
+  "name": "Calculate WACC from Financial Statements",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "API Calling"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The financial_data folder on the desktop contains two tables: balance_sheet.csv and income_statement.csv.\n\nTask:\n1. Read these two financial files\n2. Calculate the following:\n   - Market value of equity (from the balance sheet)\n   - Market value of debt (from the balance sheet)\n   - Cost of equity (CAPM model: risk-free rate=3%, market return=8%, beta=1.2)\n   - Cost of debt (interest expense / total debt)\n   - Tax rate (income tax / pre-tax income)\n3. Calculate the weights of equity and debt in the capital structure\n4. Calculate WACC with the formula:\n   WACC = (E/V)*Re + (D/V)*Rd*(1-Tc)\n   E=market value of equity, D=market value of debt, V=E+D\n   Re=cost of equity, Rd=cost of debt, Tc=tax rate\n5. Write the results into wacc_report.json and save it on the desktop\n\nOutput format:\n{\n    \"equity_weight\": 0.6,\n    \"debt_weight\": 0.4,\n    \"cost_of_equity\": 0.09,\n    \"cost_of_debt\": 0.05,\n    \"tax_rate\": 0.2174,\n    \"final_wacc\": calculated value\n}\n\nNotes: all numeric values retain 4 decimal places.",
+  "rubric": {
+    "query": "The financial_data folder on the desktop contains two tables: balance_sheet.csv and income_statement.csv.\n\nTask:\n1. Read these two financial files\n2. Calculate the following:\n   - Market value of equity (from the balance sheet)\n   - Market value of debt (from the balance sheet)\n   - Cost of equity (CAPM model: risk-free rate=3%, market return=8%, beta=1.2)\n   - Cost of debt (interest expense / total debt)\n   - Tax rate (income tax / pre-tax income)\n3. Calculate the weights of equity and debt in the capital structure\n4. Calculate WACC with the formula:\n   WACC = (E/V)*Re + (D/V)*Rd*(1-Tc)\n   E=market value of equity, D=market value of debt, V=E+D\n   Re=cost of equity, Rd=cost of debt, Tc=tax rate\n5. Write the results into wacc_report.json and save it on the desktop\n\nOutput format:\n{\n    \"equity_weight\": 0.6,\n    \"debt_weight\": 0.4,\n    \"cost_of_equity\": 0.09,\n    \"cost_of_debt\": 0.05,\n    \"tax_rate\": 0.2174,\n    \"final_wacc\": calculated value\n}\n\nNotes: all numeric values retain 4 decimal places.",
+    "query_id": "wacc_calculation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-087c053de47c",
+        "type": "leaf",
+        "name": "Correctly read the data fields required for the WACC calculation from balance_sheet.csv and income_statement.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-610d9d32f064",
+        "type": "group",
+        "name": "WACC Metric and Result Calculations Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-5a1cf58fe576",
+            "type": "leaf",
+            "name": "Correctly calculated the market value of equity, market value of debt, cost of equity, cost of debt, and tax rate",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-be156826173a",
+            "type": "leaf",
+            "name": "Correctly calculated the weights of equity and debt in the capital structure and the final_wacc",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0de6d6716c3b",
+        "type": "leaf",
+        "name": "Generated wacc_report.json with the specified field structure and saved it on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d4d3c79eb987",
+          "type": "leaf",
+          "name": "Accurately located and read the two source files in the financial_data folder without confusing the field sources of the balance sheet and the income statement",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b3f02398ab71",
+          "type": "group",
+          "name": "Source Data Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d979201d90d9",
+              "type": "leaf",
+              "name": "Accurately extracted the fields in the balance sheet used to calculate the market value of equity and the market value of debt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-36ca9bc3815a",
+              "type": "leaf",
+              "name": "Accurately extracted the fields in the income statement used to calculate interest expense, pre-tax income, and income tax",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6820be4dd2aa",
+          "type": "group",
+          "name": "Financial Formula Application Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0fe572b6887b",
+              "type": "leaf",
+              "name": "Correctly applied the CAPM formula to calculate the cost of equity, using a risk-free rate of 3%, a market return of 8%, and a beta of 1.2",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-9d25b5e0c12e",
+              "type": "leaf",
+              "name": "Correctly applied interest expense divided by total debt to calculate the cost of debt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-80aa35e82a6d",
+              "type": "leaf",
+              "name": "Correctly applied income tax divided by pre-tax income to calculate the tax rate",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f7d2ef1f29ac",
+              "type": "leaf",
+              "name": "Correctly applied the E/V, D/V, and WACC formulas to complete the capital structure weight and final WACC calculations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7272e5bf126d",
+          "type": "group",
+          "name": "Exception Handling and Factual Constraints",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-68a9607eff2b",
+              "type": "leaf",
+              "name": "Correctly identified and took traceable alternative or corrective handling when fields were missing, naming was inconsistent, or values could not be used directly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-cebdbb6e2160",
+              "type": "leaf",
+              "name": "Did not fabricate financial values or fields that do not exist in the source files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-276b4e95f76b",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1b315be8476b",
+              "type": "leaf",
+              "name": "The generated wacc_report.json can be opened normally and parsed as valid JSON",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-74481bb7fa74",
+              "type": "leaf",
+              "name": "The generated wacc_report.json contains the six specified fields equity_weight, debt_weight, cost_of_equity, cost_of_debt, tax_rate, and final_wacc",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-0c85f0c27b04",
+              "type": "leaf",
+              "name": "All numeric values in the generated wacc_report.json retain 4 decimal places",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-2b571f464174",
+    "language": "en"
+  }
+}

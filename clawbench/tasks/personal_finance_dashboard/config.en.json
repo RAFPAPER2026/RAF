@@ -1,0 +1,437 @@
+{
+  "id": "personal_finance_dashboard",
+  "name": "Personal Finance Analysis Dashboard",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "Numerical Analysis & Reasoning",
+    "State Tracking & Consistency"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "plan.decompose",
+    "plan.numeric",
+    "context.state",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "My consumption records for the past two years are stored in 2025消费.xlsx, 2026消费.xlsx, and 信用卡账单.pdf, and 订阅服务.docx records all current memberships and subscriptions.\nPlease help me analyze how my spending has changed, and create an interactive personal finance analysis webpage (save it to the /root/Desktop/finance_dashboard/ directory so that it can be opened by double-clicking).\nSpecific requirements:\n1. Automatically identify and unify the spending categories across the different files (the classification schemes in each file are inconsistent), and handle duplicate transactions, refunds, and different date formats;\n2. Calculate monthly spending, the share of each category, year-over-year changes, fixed expenses, and variable expenses separately;\n3. Identify the 5 spending categories that grew fastest over the past year, and further judge which increases may be one-off events and which have already become long-term trends;\n4. Using the subscription file, identify services I may no longer use but am still paying for;\n5. Provide budget recommendations for the next 3 months based on the spending patterns of the past two years;\n6. Provide simulation results in the webpage for “what would happen if variable spending were reduced by 10%/20% each month”.\nAll key conclusions must be traceable to the original files and specific data (clicking a conclusion in the webpage shows the source details).",
+  "rubric": {
+    "query": "My consumption records for the past two years are stored in 2025消费.xlsx, 2026消费.xlsx, and 信用卡账单.pdf, and 订阅服务.docx records all current memberships and subscriptions.\nPlease help me analyze how my spending has changed, and create an interactive personal finance analysis webpage (save it to the /root/Desktop/finance_dashboard/ directory so that it can be opened by double-clicking).\nSpecific requirements:\n1. Automatically identify and unify the spending categories across the different files (the classification schemes in each file are inconsistent), and handle duplicate transactions, refunds, and different date formats;\n2. Calculate monthly spending, the share of each category, year-over-year changes, fixed expenses, and variable expenses separately;\n3. Identify the 5 spending categories that grew fastest over the past year, and further judge which increases may be one-off events and which have already become long-term trends;\n4. Using the subscription file, identify services I may no longer use but am still paying for;\n5. Provide budget recommendations for the next 3 months based on the spending patterns of the past two years;\n6. Provide simulation results in the webpage for “what would happen if variable spending were reduced by 10%/20% each month”.\nAll key conclusions must be traceable to the original files and specific data (clicking a conclusion in the webpage shows the source details).",
+    "query_id": "personal_finance_dashboard",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4b64aacffd33",
+        "type": "group",
+        "name": "Consumption Data Integration and Preprocessing Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c2a4077fbeb8",
+            "type": "leaf",
+            "name": "Correctly read the consumption-analysis-related data from 2025消费.xlsx, 2026消费.xlsx, 信用卡账单.pdf, and 订阅服务.docx",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-fb37b7d318a9",
+            "type": "leaf",
+            "name": "Unified the spending categories across the different files and handled duplicate transactions, refunds, and different date formats",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0da77f387923",
+        "type": "group",
+        "name": "Financial Analysis Conclusions Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2ad975291d1b",
+            "type": "leaf",
+            "name": "Calculated monthly spending, the share of each category, year-over-year changes, fixed expenses, and variable expenses",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-940eddabac00",
+            "type": "leaf",
+            "name": "Identified the 5 fastest-growing spending categories of the past year and judged which increases were one-off events or long-term trends",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-4d7676e511eb",
+            "type": "leaf",
+            "name": "Using 订阅服务.docx, identified services that may no longer be in use but are still being paid for",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-3b981afd3746",
+            "type": "leaf",
+            "name": "Gave budget recommendations for the next 3 months based on the spending patterns of the past two years and provided simulation results for a 10% or 20% monthly reduction in variable spending",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "General Knowledge",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1a2c8c01a30a",
+        "type": "group",
+        "name": "Webpage Deliverable Generated and Traceable",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c6c9b5b0726f",
+            "type": "leaf",
+            "name": "Generated an interactive personal finance analysis webpage",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-5eb90b35b4ba",
+            "type": "leaf",
+            "name": "Saved the webpage to the /root/Desktop/finance_dashboard/ directory so that it can be opened by double-clicking",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-b5447a21dd8c",
+            "type": "leaf",
+            "name": "Key conclusions in the webpage support click-to-view of the source files and specific data details",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-46496705ee31",
+          "type": "group",
+          "name": "Source Data Extraction and Traceability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5babd705fcf5",
+              "type": "leaf",
+              "name": "Correctly selected tools capable of reading xlsx, pdf, and docx and successfully extracted the transaction time, amount, merchant, category, and subscription information fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Retrieval Strategy",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-f2d0fd5fc4a2",
+              "type": "leaf",
+              "name": "Accurately preserved the correspondence between each transaction and its original file name, page number, or table position",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-16930cee2672",
+          "type": "group",
+          "name": "Data Standardization and Cleaning Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ba94fb9a8c9c",
+              "type": "leaf",
+              "name": "Accurately unified the spending category mappings across the different files and applied a consistent standard to the same type of spending",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-db3fa328709a",
+              "type": "leaf",
+              "name": "Accurately identified duplicate transactions and handled refund transactions based on the amount direction or related records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ca631798aba7",
+              "type": "leaf",
+              "name": "Correctly parsed the different date formats and assigned transactions to the corresponding months and year-over-year periods",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-5d1d42e411ee",
+              "type": "leaf",
+              "name": "Provided corrective handling or explicitly marked data excluded from the statistics when missing fields, format anomalies, or unparsable records were found",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-32c69f51ef76",
+          "type": "group",
+          "name": "Analytical Reasoning and Result Calculation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9f5dbc788538",
+              "type": "leaf",
+              "name": "Accurately calculated the metrics of total monthly spending, category shares, year-over-year changes, fixed expenses, and variable expenses",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-cef8e1f4e873",
+              "type": "leaf",
+              "name": "Accurately identified the 5 categories with the fastest spending growth over the past year and ranked them by growth rate or growth amount using a consistent rule",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e8c49bc8f783",
+              "type": "leaf",
+              "name": "Correctly judged whether growth was a one-off event or a long-term trend based on frequency of occurrence, number of consecutive months, or a single-month abnormal peak",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-459631ba28b1",
+              "type": "leaf",
+              "name": "Accurately combined the subscription records with recent consumption records to identify services that are continuously charged but show insufficient signs of recent usage",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d1d902546403",
+              "type": "leaf",
+              "name": "The budget recommendations for the next 3 months based on the two years of historical patterns include calculation bases that can be mapped back to historical data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-80ad2d06ceb6",
+              "type": "leaf",
+              "name": "Accurately calculated the changes in monthly balance or total spending after reducing variable spending by 10% and 20% each month",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6a350451b003",
+          "type": "group",
+          "name": "Usability and Traceability of the Delivered Webpage",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d195272c2ad7",
+              "type": "leaf",
+              "name": "The generated webpage file opens normally locally and contains the HTML, script, and style resources needed for interactive browsing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-b256693f92f4",
+              "type": "leaf",
+              "name": "The charts or filter controls in the webpage support viewing monthly spending, category shares, year-over-year changes, fixed and variable expenses, budget recommendations, and spending simulation results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-97e5c2d24fde",
+              "type": "leaf",
+              "name": "Key conclusions in the webpage can be clicked to expand and show the corresponding original files, record details, and the calculation basis used for the conclusion",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-dbfc8bf088b2",
+              "type": "leaf",
+              "name": "The webpage layout has no obscuring, misalignment, or garbled text, and no scripts fail to run because of being opened locally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-1cb3bc790a3b",
+          "type": "leaf",
+          "name": "Explained to the user the save location of the generated results, how to open them, and the scope of abnormal data excluded from the analysis",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Exception Handling"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-50c773a99f39",
+    "language": "en"
+  },
+  "note": "My consumption records for the past two years are stored in 2025消费.xlsx, 2026消费.xlsx, and 信用卡账单.pdf, and 订阅服务.docx records all current memberships and subscriptions. Please help me analyze how my spending has changed and create an interactive personal finance analysis webpage. It needs to automatically identify and unify the spending categories across the different files, handle duplicate transactions, refunds, and different date formats; separately calculate monthly spending, the share of each category, year-over-year changes, fixed expenses, and variable expenses; identify the 5 spending categories that grew fastest over the past year and further judge which increases may be one-off events and which have already become long-term trends. Using the subscription file, identify services I may no longer use but am still paying for. Finally, provide budget recommendations for the next 3 months based on the spending patterns of the past two years, and provide simulation results in the webpage for “what would happen if variable spending were reduced by 10%/20% each month”. All key conclusions must be traceable to the original files and specific data.",
+  "env_description": "finance_data/: 2025消费.xlsx (scheme A: broad categories), 2026消费.xlsx (scheme B: subcategories + English column names + duplicate transactions and refund offsets included), 信用卡账单.txt (partially overlapping with the Excel files + 2 transactions not recorded in Excel), 订阅服务.docx (7 subscriptions, with 3 zombie subscriptions planted: cloud storage / fitness app / paid knowledge content); rent rises from 3500 to 3800, the photography course and performances are growth items, and fixed vs variable expenses can be separated."
+}

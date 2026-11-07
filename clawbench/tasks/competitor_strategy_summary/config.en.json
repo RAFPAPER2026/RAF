@@ -1,0 +1,431 @@
+{
+  "id": "competitor_strategy_summary",
+  "name": "Strategy PPT Executive Summary",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a 2024_StarMCN_H2_Strategy.pptx in the desktop competitor_analysis folder. This PPT has 50 pages and the content is very messy. Help me distill the core data and generate an executive summary, output to desktop competitor_analysis/StarMCN_Execution_Summary.docx.\n\nFocus on two parts: first, the base salary standards, revenue share ratios, and breach penalty clauses for newly signed streamers; second, the estimated operating costs of virtual streamers, including upfront procurement and monthly computing power and operating expenses. Other content such as empowerment, matrix playbook, industry macro, and team building is not needed.\n\nThe document must be controlled to within one page with a compact layout.",
+  "rubric": {
+    "query": "There is a 2024_StarMCN_H2_Strategy.pptx in the desktop competitor_analysis folder. This PPT has 50 pages and the content is very messy. Help me distill the core data and generate an executive summary, output to desktop competitor_analysis/StarMCN_Execution_Summary.docx.\n\nFocus on two parts: first, the base salary standards, revenue share ratios, and breach penalty clauses for newly signed streamers; second, the estimated operating costs of virtual streamers, including upfront procurement and monthly computing power and operating expenses. Other content such as empowerment, matrix playbook, industry macro, and team building is not needed.\n\nThe document must be controlled to within one page with a compact layout.",
+    "query_id": "competitor_strategy_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5922efbd9333",
+        "type": "leaf",
+        "name": "Correctly read the content of the 2024_StarMCN_H2_Strategy.pptx in the desktop competitor_analysis folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-a25de8d5e6e9",
+        "type": "group",
+        "name": "Completed core data distillation for the two categories of priority information specified by the user",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0001a13818ca",
+            "type": "leaf",
+            "name": "Distilled the base salary standards for newly signed streamers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-675a07beb720",
+            "type": "leaf",
+            "name": "Distilled the revenue share ratios for newly signed streamers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-b76e25ad0943",
+            "type": "leaf",
+            "name": "Distilled the breach penalty clauses for newly signed streamers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-829f4aeadc42",
+            "type": "leaf",
+            "name": "Distilled the upfront procurement costs of virtual streamers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-2bb8802be78c",
+            "type": "leaf",
+            "name": "Distilled the monthly computing power expenses of virtual streamers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-ee8ba5e76198",
+            "type": "leaf",
+            "name": "Distilled the monthly operating expenses of virtual streamers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9a5b4a71d706",
+        "type": "group",
+        "name": "Produced the executive summary document at the specified path",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7a107ce954cc",
+            "type": "leaf",
+            "name": "Generated the desktop competitor_analysis/StarMCN_Execution_Summary.docx file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-74b913e67e55",
+            "type": "leaf",
+            "name": "Kept the document content within one page",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-7749349ab6c9",
+          "type": "leaf",
+          "name": "Correctly located the target PPT file in the desktop competitor_analysis folder",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c8a60ea452c6",
+          "type": "group",
+          "name": "Key information extraction quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-014a8e8912d1",
+              "type": "leaf",
+              "name": "Accurately extracted the numerical values or tier information related to the base salary standards for newly signed streamers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-56ad5da591f5",
+              "type": "leaf",
+              "name": "Accurately extracted the numerical values or ratio information related to the revenue share ratios for newly signed streamers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-81f0c3ca6736",
+              "type": "leaf",
+              "name": "Accurately extracted the amounts or trigger conditions related to the breach penalty clauses for newly signed streamers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-fbd12832edd7",
+              "type": "leaf",
+              "name": "Accurately extracted the items and amounts related to the upfront procurement costs of virtual streamers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-9b9fb0640769",
+              "type": "leaf",
+              "name": "Accurately extracted the period and amount information related to the monthly computing power expenses of virtual streamers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-eadf69b3ba26",
+              "type": "leaf",
+              "name": "Accurately extracted the items and amounts related to the monthly operating expenses of virtual streamers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-09f11df088d8",
+          "type": "group",
+          "name": "Scope filtering and trade-off quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ee2a746e852c",
+              "type": "leaf",
+              "name": "Correctly excluded the empowerment-related content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-9f8418f9b978",
+              "type": "leaf",
+              "name": "Correctly excluded the matrix playbook-related content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-aa2f2f8f849e",
+              "type": "leaf",
+              "name": "Correctly excluded the industry macro-related content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-0b02c92c8320",
+              "type": "leaf",
+              "name": "Correctly excluded the team building-related content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-e4191c1a8873",
+          "type": "group",
+          "name": "Summary organization and compression quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-591a8d103f71",
+              "type": "leaf",
+              "name": "Correctly organized the summary content into the two parts of streamer signing terms and virtual streamer costs",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-1a26e7ba0ce5",
+              "type": "leaf",
+              "name": "Correctly retained the core data points needed to support management decisions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-febf7cb98dbe",
+              "type": "leaf",
+              "name": "Correctly compressed non-core explanatory text to meet the one-page limit",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a316ca17b220",
+          "type": "group",
+          "name": "Delivered document usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-08922ea61be6",
+              "type": "leaf",
+              "name": "The generated DOCX file can be opened normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-acab3c37fc61",
+              "type": "leaf",
+              "name": "In the generated DOCX file, the headings, sections, and data lists have no garbled characters or obvious layout misalignment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-1bb5f83b9d6f",
+              "type": "leaf",
+              "name": "The content of the generated DOCX file fits on a single page and can be read and forwarded by the user directly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-09db779e2338",
+          "type": "group",
+          "name": "Exception handling and factual constraint quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e8b7e0f623bb",
+              "type": "leaf",
+              "name": "Correctly tried alternative reading methods when PPT extraction failed or page content was abnormal",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-6bd72bf7b288",
+              "type": "leaf",
+              "name": "Did not fabricate amounts, ratios, or clause information that does not exist in the PPT",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-50756292d846",
+    "language": "en"
+  },
+  "note": "Distill core data from a PPT to generate a Word executive summary"
+}

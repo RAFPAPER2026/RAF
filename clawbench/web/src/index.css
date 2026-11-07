@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* dataviz skill 调色板：浅色/深色两套面与墨色，分类色 8 槽固定顺序    */
+/* ------------------------------------------------------------------ */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7; /* 页面底色 */
+  --surface: #fcfcfb; /* 卡片/图表表面 */
+  --surface-2: #f2f1ec; /* 次级表面 */
+  --ink: #0b0b0b; /* 主墨色 */
+  --ink-2: #52514e; /* 次级墨色 */
+  --ink-3: #898781; /* 弱化墨色 */
+  --line: rgba(11, 11, 11, 0.1); /* 发丝描边 */
+  --grid: #e1e0d9; /* 网格线 */
+  --baseline: #c3c2b7; /* 轴线 */
+  --success-text: #006300; /* 成功文本 */
+
+  --series-1: #2a78d6; /* blue    */
+  --series-2: #eb6834; /* orange  */
+  --series-3: #1baf7a; /* aqua    */
+  --series-4: #eda100; /* yellow  */
+  --series-5: #e87ba4; /* magenta */
+  --series-6: #008300; /* green   */
+  --series-7: #4a3aa7; /* violet  */
+  --series-8: #e34948; /* red     */
+}
+
+.dark {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --surface-2: #242422;
+  --ink: #ffffff;
+  --ink-2: #c3c2b7;
+  --ink-3: #898781;
+  --line: rgba(255, 255, 255, 0.1);
+  --grid: #2c2c2a;
+  --baseline: #383835;
+  --success-text: #0ca30c;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-3: #199e70;
+  --series-4: #c98500;
+  --series-5: #d55181;
+  --series-6: #008300;
+  --series-7: #9085e9;
+  --series-8: #e66767;
+}
+
+@theme inline {
+  --font-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", sans-serif;
+
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-line: var(--line);
+  --color-grid: var(--grid);
+  --color-baseline: var(--baseline);
+  --color-success-text: var(--success-text);
+
+  /* 状态色（固定，不随主题变化） */
+  --color-good: #0ca30c;
+  --color-warn: #fab219;
+  --color-serious: #ec835a;
+  --color-critical: #d03b3b;
+
+  /* 分类色槽位 */
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-3: var(--series-3);
+  --color-series-4: var(--series-4);
+  --color-series-5: var(--series-5);
+  --color-series-6: var(--series-6);
+  --color-series-7: var(--series-7);
+  --color-series-8: var(--series-8);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: var(--page);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 细滚动条 */
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-thumb {
+  background: var(--ink-3);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* 表格数字对齐 */
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* 代码块 */
+.code-block {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-all;
+}

@@ -1,0 +1,258 @@
+{
+  "id": "orphan_task_discovery",
+  "name": "无主任务发现",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "遵从能力-指令遵从",
+    "上下文管理-状态跟踪与一致性维护",
+    "反思与修复-结果验证与自检",
+    "指令遵循-内容约束与条件筛选"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "instruction.follow",
+    "context.state",
+    "reflection.verify",
+    "instruction.constraints"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面 team_workspace/ 文件夹里是我们团队过去3个月的工作材料：会议转录（meeting_transcripts/）、聊天记录（slack_export/）、任务系统导出（jira_export.csv）和项目文档（project_docs/）。\n帮我找一下：团队现在有哪些事情正在推进，但实际上没有明确负责人？\n请扫描所有来源的action item，比如：会议里说了「下周把这个方案确认一下」但没有建task；或者task虽然有owner，但owner在聊天里说自己以为是另一个人负责。\n最后把结果分成三类整理：\n1. unowned tasks（有明确工作内容但无owner）；\n2. ambiguous ownership（不同来源对谁负责说法矛盾）；\n3. stale tasks（task存在但长时间无进展、相关讨论已停）。\n输出到 /root/Desktop/team_workspace/unowned_analysis.md。\n进一步要求：对高置信度的事项（信息一致、证据充分），直接在 jira_export.csv 中补充owner字段并保存为新文件 jira_export_updated.csv；对低置信度的事项不要擅自改动，整理成「待确认清单」附在报告末尾，说明需要找谁确认什么。",
+  "rubric": {
+    "query": "桌面 team_workspace/ 文件夹里是我们团队过去3个月的工作材料：会议转录（meeting_transcripts/）、聊天记录（slack_export/）、任务系统导出（jira_export.csv）和项目文档（project_docs/）。\n帮我找一下：团队现在有哪些事情正在推进，但实际上没有明确负责人？\n请扫描所有来源的action item，比如：会议里说了「下周把这个方案确认一下」但没有建task；或者task虽然有owner，但owner在聊天里说自己以为是另一个人负责。\n最后把结果分成三类整理：\n1. unowned tasks（有明确工作内容但无owner）；\n2. ambiguous ownership（不同来源对谁负责说法矛盾）；\n3. stale tasks（task存在但长时间无进展、相关讨论已停）。\n输出到 /root/Desktop/team_workspace/unowned_analysis.md。\n进一步要求：对高置信度的事项（信息一致、证据充分），直接在 jira_export.csv 中补充owner字段并保存为新文件 jira_export_updated.csv；对低置信度的事项不要擅自改动，整理成「待确认清单」附在报告末尾，说明需要找谁确认什么。",
+    "query_id": "orphan_task_discovery",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-19de0805c01c",
+        "type": "leaf",
+        "name": "生成了包含三类事项整理结果和待确认清单的 /root/Desktop/team_workspace/unowned_analysis.md 报告",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-9f44f801de0f",
+        "type": "group",
+        "name": "完成了三类事项的识别与分类",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a5bebdd1fe1b",
+            "type": "leaf",
+            "name": "识别了有明确工作内容但无负责人的 unowned tasks",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-920d64adae97",
+            "type": "leaf",
+            "name": "识别了不同来源对负责人说法矛盾的 ambiguous ownership 事项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-f2528fd2899f",
+            "type": "leaf",
+            "name": "识别了任务存在但长时间无进展且相关讨论已停的 stale tasks",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-889f4a736cba",
+        "type": "group",
+        "name": "按置信度执行了 Jira 更新与待确认事项整理",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1a933cea908a",
+            "type": "leaf",
+            "name": "对高置信度事项在新文件 jira_export_updated.csv 中补充了 owner 字段",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-4d82c009af1f",
+            "type": "leaf",
+            "name": "对低置信度事项未改动原任务负责人信息并写入了报告末尾的待确认清单",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "异常处理",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-006af49ee5b7",
+          "type": "leaf",
+          "name": "正确扫描了 meeting_transcripts、slack_export、jira_export.csv 和 project_docs 四类来源中的 action item 线索",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-30a5bfe5c766",
+          "type": "leaf",
+          "name": "准确提取了每个事项的工作内容、负责人线索、时间线和来源证据",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2d4adc2f4d0e",
+          "type": "group",
+          "name": "分类与置信度判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c782c1e02606",
+              "type": "leaf",
+              "name": "准确判断了事项属于 unowned tasks、ambiguous ownership 或 stale tasks 中的哪一类",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-c8590472dc96",
+              "type": "leaf",
+              "name": "正确区分了高置信度事项与低置信度事项的处理分支",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a69a71f1436c",
+          "type": "group",
+          "name": "Jira 更新执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3f1b83ffccaf",
+              "type": "leaf",
+              "name": "正确在 jira_export_updated.csv 中仅为高置信度事项补充了 owner 字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-580e7d6f3cee",
+              "type": "leaf",
+              "name": "正确保持了低置信度事项在更新后的 Jira 文件中未被擅自修改",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-80e25632f55d",
+          "type": "leaf",
+          "name": "生成的 unowned_analysis.md 包含每个事项的分类、证据来源、当前判断依据和待确认对象与问题，能够支持后续人工跟进",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-1cf7149eb0eb",
+          "type": "leaf",
+          "name": "正确识别了文件读写或解析异常并在结果中排除了无法验证的结论或标注了缺失来源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-94f88b0bb313",
+    "language": "zh"
+  },
+  "note": "发现“没人负责”的工作 给agent：公司一个团队过去3个月的 meeting transcript + Slack/chat文档 + Jira/任务文档 + project docs。用户：“帮我找一下团队现在有哪些事情正在推进，但是实际上没有明确负责人。” Agent需要：跨会议、任务和聊天寻找各种 action item；例如会议里说“下周把这个方案确认一下”，但没有创建task；或者task虽然有owner，但owner在聊天里说自己以为是另一个人负责。最终生成 unowned tasks / ambiguous ownership / stale tasks 三类，并给出建议。 进一步要求： 对高置信度的事项直接创建task，对低置信度事项不要擅自操作，而是整理成待确认列表。 难点： “负责人”是隐式信息，而且不同来源可能互相矛盾；测试 implicit state reconstruction + uncertainty calibration + selective action。",
+  "env_description": "team_workspace/：meeting_transcripts/（3场，埋无主action item）、slack_export/（埋owner互相推诿、原负责人离职）、jira_export.csv（10条，含assignee为空、长期停滞、负责人不知情等类型）、project_docs/（Q4目标文档注明灰度切流owner待定）；高/低置信度事项混合，测试选择性执行"
+}

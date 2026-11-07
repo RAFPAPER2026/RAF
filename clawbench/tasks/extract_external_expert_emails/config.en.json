@@ -1,0 +1,306 @@
+{
+  "id": "extract_external_expert_emails",
+  "name": "External Expert Email Extraction",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Email Management",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "From the calendar file nmpa_review_meetings_2023.ics on the desktop, extract the email addresses of all attendees. Remove duplicates and exclude internal email addresses whose suffix is @example-internal.com. If an email has a mailto: prefix, clean it up and keep only the pure email address.\n\nGenerate the results as a Markdown file, save it in the same folder, with the file name external_experts_contact_list.md. List the emails as an unordered list, sorted alphabetically from A to Z.",
+  "rubric": {
+    "query": "From the calendar file nmpa_review_meetings_2023.ics on the desktop, extract the email addresses of all attendees. Remove duplicates and exclude internal email addresses whose suffix is @example-internal.com. If an email has a mailto: prefix, clean it up and keep only the pure email address.\n\nGenerate the results as a Markdown file, save it in the same folder, with the file name external_experts_contact_list.md. List the emails as an unordered list, sorted alphabetically from A to Z.",
+    "query_id": "extract_external_expert_emails",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c57de9f8b131",
+        "type": "leaf",
+        "name": "Correctly read the nmpa_review_meetings_2023.ics file on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-3b87d4503ab8",
+        "type": "group",
+        "name": "External attendee email cleaning objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0d0567d1e5a",
+            "type": "leaf",
+            "name": "Correctly extracted all attendee email addresses from the calendar file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-a784a11ee310",
+            "type": "leaf",
+            "name": "Correctly cleaned the mailto: prefixes from the emails",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-4388e5426fcd",
+            "type": "leaf",
+            "name": "Correctly removed duplicate email addresses",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-7428335ecc89",
+            "type": "leaf",
+            "name": "Correctly excluded email addresses with the suffix @example-internal.com",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-97c4b819837b",
+        "type": "group",
+        "name": "Markdown deliverable production objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ab817541f8cf",
+            "type": "leaf",
+            "name": "Generated the external_experts_contact_list.md file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-29232a806e6f",
+            "type": "leaf",
+            "name": "Saved the Markdown file in the same folder as the source calendar file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-05fa4bb5fd4c",
+          "type": "leaf",
+          "name": "Correctly located the file path of nmpa_review_meetings_2023.ics on the desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ed7392bf63c1",
+          "type": "group",
+          "name": "ICS email extraction quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1f8217e4fd68",
+              "type": "leaf",
+              "name": "Accurately identified the fields in the ICS that contain attendee emails",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-0618388e62c7",
+              "type": "leaf",
+              "name": "Accurately extracted the attendee emails from all events without omitting parsable records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bb1eb519ab10",
+          "type": "group",
+          "name": "Email cleaning and filtering quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2501082f35d8",
+              "type": "leaf",
+              "name": "Accurately removed the mailto: prefixes from the email values",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-ba1b2b46880f",
+              "type": "leaf",
+              "name": "Accurately excluded email addresses with the domain example-internal.com",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-34ab4cb8c64f",
+              "type": "leaf",
+              "name": "Accurately merged identical email addresses that differ in case or appear repeatedly",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7d922b4b2ade",
+          "type": "group",
+          "name": "Markdown deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f1a7e6768832",
+              "type": "leaf",
+              "name": "Correctly sorted the output email addresses alphabetically from A to Z",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-2e2cb77952fb",
+              "type": "leaf",
+              "name": "Correctly wrote each email address in unordered list format",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-c0fbc138099a",
+              "type": "leaf",
+              "name": "The content of the generated Markdown file can be viewed and copied directly by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-26e84ec73d26",
+          "type": "group",
+          "name": "Exception handling and result credibility",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6ca20e4994ba",
+              "type": "leaf",
+              "name": "Recorded and skipped unparsable entries when attendee fields were missing or abnormal in format",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-1f44897c4cab",
+              "type": "leaf",
+              "name": "Did not fabricate email addresses that do not exist in the calendar file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e3c6882e0554",
+    "language": "en"
+  },
+  "note": "Extract external expert emails from ICS calendar file, filter out internal emails, output sorted list in Markdown format"
+}

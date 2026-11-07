@@ -1,0 +1,261 @@
+{
+  "id": "pricing_analysis",
+  "name": "Price Elasticity and Revenue Optimization",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a pricing_history.csv in the pricing_data folder on the desktop.\n\nTask:\n1. Calculate the demand price elasticity between adjacent months.\n   Formula: E = (Q change rate) / (P change rate) = ((Q next month - Q current month) / Q current month) / ((P next month - P current month) / P current month)\n2. Calculate the average price elasticity across all adjacent month pairs\n3. Estimate the optimal price using the average elasticity and the last month's data:\n   P* = |E| / (|E| + 1) × P last\n4. Estimate the maximum revenue at the optimal price:\n   Q* = Q last × (P* / P last)^|E|\n   R* = P* × Q*\n5. Write the results into pricing_analysis.json and save it on the desktop.\n\nOutput format:\n{\n  \"elasticities\": [E1, E2, ...],\n  \"avg_elasticity\": average elasticity value,\n  \"optimal_price\": optimal price,\n  \"max_revenue_estimate\": maximum revenue estimate\n}\n\nExample:\n| month  | price | units_sold | revenue |\n|--------|-------|------------|---------|\n| 2023-01| 10.0  | 100        | 1000.0  |\n| 2023-02| 9.5   | 110        | 1045.0  |\n\nElasticity = ((110-100)/100) / ((9.5-10)/10) = 0.1 / -0.05 = -2.0",
+  "rubric": {
+    "query": "There is a pricing_history.csv in the pricing_data folder on the desktop.\n\nTask:\n1. Calculate the demand price elasticity between adjacent months.\n   Formula: E = (Q change rate) / (P change rate) = ((Q next month - Q current month) / Q current month) / ((P next month - P current month) / P current month)\n2. Calculate the average price elasticity across all adjacent month pairs\n3. Estimate the optimal price using the average elasticity and the last month's data:\n   P* = |E| / (|E| + 1) × P last\n4. Estimate the maximum revenue at the optimal price:\n   Q* = Q last × (P* / P last)^|E|\n   R* = P* × Q*\n5. Write the results into pricing_analysis.json and save it on the desktop.\n\nOutput format:\n{\n  \"elasticities\": [E1, E2, ...],\n  \"avg_elasticity\": average elasticity value,\n  \"optimal_price\": optimal price,\n  \"max_revenue_estimate\": maximum revenue estimate\n}\n\nExample:\n| month  | price | units_sold | revenue |\n|--------|-------|------------|---------|\n| 2023-01| 10.0  | 100        | 1000.0  |\n| 2023-02| 9.5   | 110        | 1045.0  |\n\nElasticity = ((110-100)/100) / ((9.5-10)/10) = 0.1 / -0.05 = -2.0",
+    "query_id": "pricing_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b0c89f49a64a",
+        "type": "leaf",
+        "name": "Correctly read the pricing_history.csv in the pricing_data folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-fe463e38113f",
+        "type": "group",
+        "name": "Price Analysis Calculation Results Completed Correctly",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0c4e815b9ca",
+            "type": "leaf",
+            "name": "Correctly calculated the list of demand price elasticities between all adjacent months",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-e7e8761ee023",
+            "type": "leaf",
+            "name": "Correctly calculated the average price elasticity across all adjacent month pairs",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-8c228f04d10a",
+            "type": "leaf",
+            "name": "Correctly estimated the optimal price and maximum revenue",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-efc6254a6bad",
+        "type": "leaf",
+        "name": "Correctly generated the pricing_analysis.json file on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e363a805ac76",
+          "type": "leaf",
+          "name": "Accurately located and read the pricing_history.csv at the specified path",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8faa93c4a251",
+          "type": "group",
+          "name": "Calculation Process Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1876691f68f2",
+              "type": "leaf",
+              "name": "Accurately paired adjacent-month records in month order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-c35a50e6f5a4",
+              "type": "leaf",
+              "name": "Correctly used the elasticity formula given by the user to process each pair of adjacent-month data",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-1b70bbf5d1fe",
+              "type": "leaf",
+              "name": "Accurately used the last month's price and sales volume to estimate the optimal price and maximum revenue",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-65f04e18409b",
+          "type": "group",
+          "name": "Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4cdbf0235c5f",
+              "type": "leaf",
+              "name": "Identified the calculation-error risk caused by zero or missing values when price or sales volume is used as the denominator",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a80e980e77c8",
+              "type": "leaf",
+              "name": "Took traceable skip or error-reporting actions for the affected month pairs when encountering zero or missing values",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-387102e00762",
+          "type": "group",
+          "name": "Result Delivery Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e9a3705018e2",
+              "type": "leaf",
+              "name": "The generated JSON contains the four specified fields elasticities, avg_elasticity, optimal_price, and max_revenue_estimate",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-10b55b268e7c",
+              "type": "leaf",
+              "name": "The numeric values in the generated JSON are consistent with the calculated results and the file can be parsed normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6167fee06a48",
+              "type": "leaf",
+              "name": "The generated pricing_analysis.json is saved on the desktop",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-30b4e58c1fda",
+          "type": "leaf",
+          "name": "Explained to the user the location of the output file and the key result values",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-ce43e0018bc5",
+    "language": "en"
+  }
+}

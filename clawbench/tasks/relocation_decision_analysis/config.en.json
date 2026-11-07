@@ -1,0 +1,418 @@
+{
+  "id": "relocation_decision_analysis",
+  "name": "Relocation Decision Analysis",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Travel Planning",
+  "ability_category": [
+    "Task Planning",
+    "Long-Context Understanding",
+    "General Planning & Strategy",
+    "Numerical Analysis & Reasoning"
+  ],
+  "ability_category_canonical": [
+    "plan.general",
+    "context.long",
+    "plan.strategy",
+    "plan.numeric"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I am recently considering moving from Nanshan District, Shenzhen to Longgang District. Please help me analyze whether it is worthwhile based on my actual life data.\nThe data is in the relocation_data/ folder on the desktop: commute_records.csv (commute records for the past three months, including company and home coordinates), spending.csv (spending transactions for the past three months), preferences.md (the life preferences I wrote: values commute time, weekend hiking, and likes quiet).\nPlease analyze from three dimensions — changes in commute time (including the estimated commute from the new address to the company), changes in living costs (rent difference estimated at market price), and preference match — and give a recommendation on whether to move and what conditions must be met for the move to be worthwhile. The conclusions should be quantified (for example, X more hours of commuting per month, Y yuan saved on rent), and output to /root/Desktop/搬家决策分析.md.",
+  "rubric": {
+    "query": "I am recently considering moving from Nanshan District, Shenzhen to Longgang District. Please help me analyze whether it is worthwhile based on my actual life data.\nThe data is in the relocation_data/ folder on the desktop: commute_records.csv (commute records for the past three months, including company and home coordinates), spending.csv (spending transactions for the past three months), preferences.md (the life preferences I wrote: values commute time, weekend hiking, and likes quiet).\nPlease analyze from three dimensions — changes in commute time (including the estimated commute from the new address to the company), changes in living costs (rent difference estimated at market price), and preference match — and give a recommendation on whether to move and what conditions must be met for the move to be worthwhile. The conclusions should be quantified (for example, X more hours of commuting per month, Y yuan saved on rent), and output to /root/Desktop/搬家决策分析.md.",
+    "query_id": "relocation_decision_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e0e2d306cadf",
+        "type": "leaf",
+        "name": "Correctly read commute_records.csv, spending.csv, and preferences.md in the relocation_data folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-b9027a7aef58",
+        "type": "group",
+        "name": "Completed the Three-Dimension Relocation Feasibility Analysis",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-df904af5cfc5",
+            "type": "leaf",
+            "name": "Completed a quantified analysis of the commute time change between living in Nanshan District, Shenzhen and Longgang District",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-1a0f25e3d183",
+            "type": "leaf",
+            "name": "Completed a quantified analysis of the living cost change between living in Nanshan District, Shenzhen and Longgang District",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ecb0b564e300",
+            "type": "leaf",
+            "name": "Completed a preference match analysis for living in Nanshan District, Shenzhen versus Longgang District",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-934ae749e04e",
+        "type": "group",
+        "name": "Completed the Actionable Conclusion Output",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f315aacd928a",
+            "type": "leaf",
+            "name": "Gave a clear recommendation on whether moving to Longgang District is worthwhile",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-39eca85e676d",
+            "type": "leaf",
+            "name": "Provided a clear list of conditions that must be met for the move to be worthwhile",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-b26c202c3fc1",
+            "type": "leaf",
+            "name": "Quantified key metrics such as the monthly commute time change and the rent difference in the conclusion",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Communication",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-17f3aa67e5ce",
+        "type": "leaf",
+        "name": "Generated a usable /root/Desktop/搬家决策分析.md file",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-fa202c008a69",
+          "type": "leaf",
+          "name": "Accurately read the company coordinates, current home coordinates, and past-three-month commute record fields in commute_records.csv",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-ca73ae6d07bf",
+          "type": "leaf",
+          "name": "Accurately extracted the housing- and commute-related expense items in spending.csv for the living cost analysis",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-99889035dbaf",
+          "type": "leaf",
+          "name": "Accurately identified the preference constraints in preferences.md regarding commute time, weekend hiking, and a quiet living environment",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Information Filtering",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f7696fb92669",
+          "type": "group",
+          "name": "Commute Time Estimation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2270c1551d47",
+              "type": "leaf",
+              "name": "Correctly estimated the one-way or round-trip commute time change from the new address in Longgang District to the company",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-94c3b4d0bfa2",
+              "type": "leaf",
+              "name": "Correctly converted the past-three-month commute records into the monthly increase or decrease in commute time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-96573518e843",
+          "type": "group",
+          "name": "Living Cost Estimation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1449c1e2fdfb",
+              "type": "leaf",
+              "name": "Correctly used verifiable market rent evidence to estimate the rent difference between Nanshan District and Longgang District",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "General Knowledge",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-6662fb2f6652",
+              "type": "leaf",
+              "name": "Correctly combined the rent difference with the commute-related cost change to obtain the net monthly cost change",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c7a6fa4611e0",
+          "type": "group",
+          "name": "Preference Match Reasoning Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3649db70de0a",
+              "type": "leaf",
+              "name": "Correctly mapped the weekend hiking preference to a comparison of mountain access convenience around Longgang District and Nanshan District",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-ef6c13a73da6",
+              "type": "leaf",
+              "name": "Correctly mapped the quiet-living preference to a comparison of the residential environment characteristics of Longgang District and Nanshan District",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-7a765ef95e38",
+              "type": "leaf",
+              "name": "Correctly combined the preference weights with the commute and cost results to form the basis for the conclusion",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-aa2cfa2ea6a6",
+          "type": "group",
+          "name": "Conclusion Communication Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2b86a18e4948",
+              "type": "leaf",
+              "name": "Gave a single clear conclusion on whether to move or not, without contradictions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-ad997e51f359",
+              "type": "leaf",
+              "name": "Accurately listed quantified condition thresholds for the move to be worthwhile",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-d5b70cd3d411",
+              "type": "leaf",
+              "name": "The reply clearly explains the source or calculation method of the key numbers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c2a9f629431f",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f7aea9f802f4",
+              "type": "leaf",
+              "name": "The generated Markdown file opens normally and has no garbled text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-3c3b4d323fd8",
+              "type": "leaf",
+              "name": "The generated Markdown file contains complete sections such as commute analysis, cost analysis, preference analysis, conclusion, and condition list",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-ee44fda96f79",
+              "type": "leaf",
+              "name": "The tables or lists in the generated Markdown file support the user in directly reading and comparing the Nanshan District and Longgang District options",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-32f540aabfba",
+    "language": "en"
+  },
+  "note": "“I'm recently considering moving; analyze whether it's worthwhile based on my living habits.” Needs: combine: • commute • spending • preferences",
+  "env_description": "relocation_data/: commute_records.csv (55 commute records, one-way about 85 minutes) + spending.csv (includes rent 4500/month) + preferences.md (commute limit 2 hours, rent-increase budget within 1000, Longgang market price 3200)."
+}

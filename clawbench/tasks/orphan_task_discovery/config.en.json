@@ -1,0 +1,258 @@
+{
+  "id": "orphan_task_discovery",
+  "name": "Discover Unowned and Stale Team Tasks",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "Instruction Following",
+    "State Tracking & Consistency",
+    "Result Verification & Self-Check",
+    "Content Constraints & Filtering"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "instruction.follow",
+    "context.state",
+    "reflection.verify",
+    "instruction.constraints"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The team_workspace/ folder on the desktop contains our team's work materials from the past 3 months: meeting transcripts (meeting_transcripts/), chat records (slack_export/), task-system export (jira_export.csv), and project documents (project_docs/).\nHelp me find out: what things is the team currently pushing forward but with no clear owner in practice?\nPlease scan the action items from all sources, for example: a meeting says “let's confirm this plan next week” but no task was created; or a task does have an owner, but the owner says in chat that they thought someone else was responsible for it.\nFinally, organize the results into three categories:\n1. unowned tasks (clear work content but no owner);\n2. ambiguous ownership (different sources contradict each other on who is responsible);\n3. stale tasks (the task exists but has made no progress for a long time and the related discussion has stopped).\nOutput to /root/Desktop/team_workspace/unowned_analysis.md.\nFurther requirement: for high-confidence items (consistent information and sufficient evidence), directly fill in the owner field in jira_export.csv and save it as a new file jira_export_updated.csv; for low-confidence items, do not make changes on your own — organize them into a “to-be-confirmed list” appended to the end of the report, stating who needs to be asked to confirm what.",
+  "rubric": {
+    "query": "The team_workspace/ folder on the desktop contains our team's work materials from the past 3 months: meeting transcripts (meeting_transcripts/), chat records (slack_export/), task-system export (jira_export.csv), and project documents (project_docs/).\nHelp me find out: what things is the team currently pushing forward but with no clear owner in practice?\nPlease scan the action items from all sources, for example: a meeting says “let's confirm this plan next week” but no task was created; or a task does have an owner, but the owner says in chat that they thought someone else was responsible for it.\nFinally, organize the results into three categories:\n1. unowned tasks (clear work content but no owner);\n2. ambiguous ownership (different sources contradict each other on who is responsible);\n3. stale tasks (the task exists but has made no progress for a long time and the related discussion has stopped).\nOutput to /root/Desktop/team_workspace/unowned_analysis.md.\nFurther requirement: for high-confidence items (consistent information and sufficient evidence), directly fill in the owner field in jira_export.csv and save it as a new file jira_export_updated.csv; for low-confidence items, do not make changes on your own — organize them into a “to-be-confirmed list” appended to the end of the report, stating who needs to be asked to confirm what.",
+    "query_id": "orphan_task_discovery",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-19de0805c01c",
+        "type": "leaf",
+        "name": "Generated the /root/Desktop/team_workspace/unowned_analysis.md report containing the three-category item analysis results and the to-be-confirmed list",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-9f44f801de0f",
+        "type": "group",
+        "name": "Completed the identification and classification of the three categories of items",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a5bebdd1fe1b",
+            "type": "leaf",
+            "name": "Identified unowned tasks that have clear work content but no owner",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-920d64adae97",
+            "type": "leaf",
+            "name": "Identified ambiguous ownership items where different sources contradict each other about the owner",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-f2528fd2899f",
+            "type": "leaf",
+            "name": "Identified stale tasks that exist but have made no progress for a long time and whose related discussion has stopped",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-889f4a736cba",
+        "type": "group",
+        "name": "Executed the Jira update and the organization of to-be-confirmed items according to confidence",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1a933cea908a",
+            "type": "leaf",
+            "name": "Filled in the owner field for high-confidence items in the new file jira_export_updated.csv",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-4d82c009af1f",
+            "type": "leaf",
+            "name": "Did not modify the original task owner information for low-confidence items and wrote them into the to-be-confirmed list at the end of the report",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Exception Handling",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-006af49ee5b7",
+          "type": "leaf",
+          "name": "Correctly scanned the action item clues in all four source types: meeting_transcripts, slack_export, jira_export.csv, and project_docs",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-30a5bfe5c766",
+          "type": "leaf",
+          "name": "Accurately extracted the work content, owner clues, timeline, and source evidence for every item",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2d4adc2f4d0e",
+          "type": "group",
+          "name": "Classification and Confidence Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c782c1e02606",
+              "type": "leaf",
+              "name": "Accurately determined which of the three categories each item belongs to: unowned tasks, ambiguous ownership, or stale tasks",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-c8590472dc96",
+              "type": "leaf",
+              "name": "Correctly distinguished the handling branches for high-confidence items and low-confidence items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a69a71f1436c",
+          "type": "group",
+          "name": "Jira Update Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3f1b83ffccaf",
+              "type": "leaf",
+              "name": "Correctly filled in the owner field in jira_export_updated.csv only for high-confidence items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-580e7d6f3cee",
+              "type": "leaf",
+              "name": "Correctly kept low-confidence items unmodified without authorization in the updated Jira file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-80e25632f55d",
+          "type": "leaf",
+          "name": "The generated unowned_analysis.md contains each item's category, evidence source, current basis for judgment, and the person and question to be confirmed, supporting subsequent manual follow-up",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-1cf7149eb0eb",
+          "type": "leaf",
+          "name": "Correctly identified file read/write or parsing exceptions and either excluded unverifiable conclusions from the results or marked the missing sources",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-94f88b0bb313",
+    "language": "en"
+  },
+  "note": "Finding work that “no one is responsible for”. The agent is given: a company team's meeting transcripts from the past 3 months + Slack/chat documents + Jira/task documents + project docs. The user says: “Help me find out what things the team is currently pushing forward but with no clear owner in practice.” The agent needs to: search across meetings, tasks, and chats for all kinds of action items; for example, a meeting says “let's confirm this plan next week” but no task was created; or a task does have an owner, but the owner says in chat that they thought someone else was responsible. Finally, generate the three categories unowned tasks / ambiguous ownership / stale tasks and give recommendations. Further requirement: for high-confidence items, directly create tasks; for low-confidence items, do not act on your own but organize them into a to-be-confirmed list. Difficulty: “owner” is implicit information, and different sources may contradict each other; this tests implicit state reconstruction + uncertainty calibration + selective action.",
+  "env_description": "team_workspace/: meeting_transcripts/ (3 meetings, with unowned action items planted), slack_export/ (owner buck-passing and a departed original owner planted), jira_export.csv (10 records, including types such as empty assignee, long-term stagnation, and owner unaware), project_docs/ (the Q4 goals document notes that the owner for gray-release traffic switching is to be determined); high- and low-confidence items are mixed to test selective execution."
+}

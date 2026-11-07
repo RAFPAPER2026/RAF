@@ -1,0 +1,319 @@
+{
+  "id": "implicit_commitment_recall",
+  "name": "Implicit Commitment Recall",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Long-Document Key-Information Extraction"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "context.longdoc"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "My records of communication with others are scattered in three places: chat_history/ on the desktop (txt exported from chats, one file per contact), meeting_transcripts/ (meeting transcripts), and calendar.ics (my calendar).\nHelp me review what I promised others over the past month. List: who I promised, what the content was, the agreed time, and the current status (completed/to-do/possibly expired). Especially highlight the things whose agreed time has passed but which I may have forgotten.\nOutput to /root/Desktop/承诺清单.md, sorted by time.",
+  "rubric": {
+    "query": "My records of communication with others are scattered in three places: chat_history/ on the desktop (txt exported from chats, one file per contact), meeting_transcripts/ (meeting transcripts), and calendar.ics (my calendar).\nHelp me review what I promised others over the past month. List: who I promised, what the content was, the agreed time, and the current status (completed/to-do/possibly expired). Especially highlight the things whose agreed time has passed but which I may have forgotten.\nOutput to /root/Desktop/承诺清单.md, sorted by time.",
+    "query_id": "implicit_commitment_recall",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4c9157728974",
+        "type": "leaf",
+        "name": "Correctly read the promise-related information from chat_history, meeting_transcripts, and calendar.ics for the past month",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Temporal Reasoning"
+        ]
+      },
+      {
+        "id": "node-693ed0ffd947",
+        "type": "group",
+        "name": "Commitment Review Results Generated",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-5b275fddaf1b",
+            "type": "leaf",
+            "name": "Correctly compiled the list of matters promised to others over the past month",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-f4499d79a631",
+            "type": "leaf",
+            "name": "Correctly annotated each matter's promisee, promised content, agreed time, and current status",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Factual Accuracy",
+              "Context Retention",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-2a25985d1304",
+            "type": "leaf",
+            "name": "Correctly highlighted the matters whose agreed time has passed and that may have been forgotten",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4f738be96880",
+        "type": "leaf",
+        "name": "Successfully generated the time-sorted /root/Desktop/承诺清单.md file",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ac682f8e105d",
+          "type": "leaf",
+          "name": "Accurately limited the past-month time range and retrieved the relevant records from the three data sources accordingly",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Retrieval Strategy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4d18b0a745d4",
+          "type": "group",
+          "name": "Commitment Information Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e8676931ee5e",
+              "type": "leaf",
+              "name": "Accurately identified the sentences or event records that express commitments",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Intent Understanding",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-f35f6564bea6",
+              "type": "leaf",
+              "name": "Accurately excluded chit-chat, non-commitment statements, and records unrelated to requests from others",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-83ae67dff5b8",
+          "type": "group",
+          "name": "Commitment Summarization and Status Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-63131c7e1bd9",
+              "type": "leaf",
+              "name": "Accurately inferred the promisee corresponding to each commitment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-25c139a04097",
+              "type": "leaf",
+              "name": "Accurately extracted the actionable items in the commitment content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-db2141e73ebe",
+              "type": "leaf",
+              "name": "Accurately identified the specific date and time of the agreed time or deadline",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-298fa4561d90",
+              "type": "leaf",
+              "name": "Accurately judged the completed, to-do, or possibly expired status based on the calendar and records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-dc4a82f18a7c",
+          "type": "group",
+          "name": "Result Organization Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-25cdcd8cc80d",
+              "type": "leaf",
+              "name": "Correctly marked separately the matters whose agreed time has passed and whose status is not shown as completed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-421933961580",
+              "type": "leaf",
+              "name": "Correctly output the matters sorted by agreed time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8c7ab66eb0df",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1cb1e4bcbd93",
+              "type": "leaf",
+              "name": "The generated Markdown file contains the required fields for each matter and is normally readable",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-21e4fe91698a",
+              "type": "leaf",
+              "name": "The structure of the generated Markdown file supports viewing by time and identifying the specially marked matters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-bead021e4f29",
+          "type": "group",
+          "name": "Uncertain Information Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-77bfc9dbc075",
+              "type": "leaf",
+              "name": "Explicitly retained uncertainty markers when records were missing, times were unclear, or status could not be confirmed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d913863d90bb",
+              "type": "leaf",
+              "name": "Did not fabricate non-existent promisees, times, or completion statuses",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a9cbf7703b36",
+    "language": "en"
+  },
+  "note": "“What did I promise others over the past month? Which of them may I have already forgotten?”\n\nNeeded:\n\nchat (stored as documents) + meeting transcript + calendar\n\nDifficulty:\n\nimplicit commitment extraction",
+  "env_description": "chat_history/ (chat txt for 5 contacts) + meeting_transcripts/ (2 meeting transcripts) + calendar.ics; implicit commitments are scattered in the data (including overdue unfulfilled ones: returning a book, returning a projector, medical checkups)"
+}

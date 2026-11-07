@@ -1,0 +1,24 @@
+{
+  "meetings": [
+    {"id": "draft-01", "title": "周一站会", "duration_minutes": 15, "topic": "standup", "fixed": true, "date": "2026-03-16", "start_time": "09:00", "end_time": "09:15"},
+    {"id": "draft-02", "title": "周二站会", "duration_minutes": 15, "topic": "standup", "fixed": true, "date": "2026-03-17", "start_time": "09:00", "end_time": "09:15"},
+    {"id": "draft-03", "title": "周三站会", "duration_minutes": 15, "topic": "standup", "fixed": true, "date": "2026-03-18", "start_time": "09:00", "end_time": "09:15"},
+    {"id": "draft-04", "title": "周四站会", "duration_minutes": 15, "topic": "standup", "fixed": true, "date": "2026-03-19", "start_time": "09:00", "end_time": "09:15"},
+    {"id": "draft-05", "title": "周五站会", "duration_minutes": 15, "topic": "standup", "fixed": true, "date": "2026-03-20", "start_time": "09:00", "end_time": "09:15"},
+    {"id": "draft-06", "title": "冲刺计划会", "duration_minutes": 90, "topic": "sprint", "fixed": true, "date": "2026-03-16", "start_time": "10:00", "end_time": "11:30"},
+    {"id": "draft-07", "title": "冲刺评审会", "duration_minutes": 60, "topic": "sprint", "preferred_day": "2026-03-20"},
+    {"id": "draft-08", "title": "冲刺回顾会", "duration_minutes": 45, "topic": "sprint", "preferred_day": "2026-03-20"},
+    {"id": "draft-09", "title": "架构评审", "duration_minutes": 90, "topic": "engineering"},
+    {"id": "draft-10", "title": "代码评审会", "duration_minutes": 60, "topic": "engineering"},
+    {"id": "draft-11", "title": "技术债讨论", "duration_minutes": 45, "topic": "engineering"},
+    {"id": "draft-12", "title": "客户演示", "duration_minutes": 60, "topic": "client", "preferred_day": "2026-03-19"},
+    {"id": "draft-13", "title": "客户反馈评审", "duration_minutes": 30, "topic": "client", "preferred_day": "2026-03-19"},
+    {"id": "draft-14", "title": "产品路线图", "duration_minutes": 60, "topic": "product"},
+    {"id": "draft-15", "title": "功能优先级排序", "duration_minutes": 45, "topic": "product"},
+    {"id": "draft-16", "title": "设计评审", "duration_minutes": 60, "topic": "design"},
+    {"id": "draft-17", "title": "用户体验研究发现", "duration_minutes": 30, "topic": "design"},
+    {"id": "draft-18", "title": "与经理一对一", "duration_minutes": 30, "topic": "personal", "preferred_day": "2026-03-18"},
+    {"id": "draft-19", "title": "团队建设活动", "duration_minutes": 60, "topic": "social", "preferred_day": "2026-03-20"},
+    {"id": "draft-20", "title": "预算评审", "duration_minutes": 45, "topic": "admin"}
+  ]
+}

@@ -1,0 +1,2 @@
+sk-demo-b4e7f8a2c3d915068e4f2b8c7d6a5e19
+# base_url: https://api.example-llm.com/v1

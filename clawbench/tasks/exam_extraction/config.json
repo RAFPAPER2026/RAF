@@ -1,0 +1,303 @@
+{
+  "id": "exam_extraction",
+  "name": "试题提取合并",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "长上下管理"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "context.long"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我把 /root/Desktop 文件夹下所有 .docx 的考试题（每个文件是一套题）中的选择题和填空题提取出来，合并成一份新的 practice_questions.docx放在/root/Desktop，并且把选择题的选项打乱顺序。",
+  "rubric": {
+    "query": "帮我把 /root/Desktop 文件夹下所有 .docx 的考试题（每个文件是一套题）中的选择题和填空题提取出来，合并成一份新的 practice_questions.docx放在/root/Desktop，并且把选择题的选项打乱顺序。",
+    "query_id": "exam_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-93755de58ca3",
+        "type": "leaf",
+        "name": "提取了 /root/Desktop 下所有 .docx 文件中的选择题",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-85ffbfc54d0a",
+        "type": "leaf",
+        "name": "提取了 /root/Desktop 下所有 .docx 文件中的填空题",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-bacfbdee0bdf",
+        "type": "group",
+        "name": "生成并加工目标交付物",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-769241938a8f",
+            "type": "leaf",
+            "name": "将提取出的题目合并生成了 /root/Desktop/practice_questions.docx 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-21ae990bc6ce",
+            "type": "leaf",
+            "name": "对合并结果中的选择题完成了选项顺序打乱",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-19fd7c9a1b57",
+          "type": "leaf",
+          "name": "准确识别了 /root/Desktop 下需要处理的 .docx 文件范围",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7e9dc8e85291",
+          "type": "group",
+          "name": "题型识别与内容筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bce5347ffc2d",
+              "type": "leaf",
+              "name": "准确区分了题目中的选择题类型",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3302da72541f",
+              "type": "leaf",
+              "name": "准确区分了题目中的填空题类型",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-65ebc4ad6107",
+              "type": "leaf",
+              "name": "正确排除了非选择题和非填空题内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fb28a03d2572",
+          "type": "group",
+          "name": "选择题改写处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c6607c870cea",
+              "type": "leaf",
+              "name": "正确保持了每道选择题题干与对应选项的匹配关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c3d09f4f8f34",
+              "type": "leaf",
+              "name": "正确打乱了选择题选项顺序且未遗漏任何原始选项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eeb84b5fc7c1",
+          "type": "group",
+          "name": "合并结果内容完整性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1d5d1a91be28",
+              "type": "leaf",
+              "name": "正确合并了来自多份文档的题目且未重复插入同一道题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3f2b883023b7",
+              "type": "leaf",
+              "name": "准确保留了题目文本中的空格线、编号或题目必要结构信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a35b74da9bf5",
+          "type": "group",
+          "name": "交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4ec1764731e2",
+              "type": "leaf",
+              "name": "生成的 practice_questions.docx 文件可正常打开",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-3c9237811c92",
+              "type": "leaf",
+              "name": "生成的 practice_questions.docx 文件中题目内容无乱码且段落结构可读",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-83e19c2305a3",
+              "type": "leaf",
+              "name": "生成的 practice_questions.docx 文件路径和文件名符合用户要求",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-b2e5dc8a17c5",
+          "type": "group",
+          "name": "异常处理与结果说明",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ad9ba7d8c9cf",
+              "type": "leaf",
+              "name": "遇到损坏文档或无法解析内容时，正确记录了未处理文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-4449f2128475",
+              "type": "leaf",
+              "name": "回复中明确说明了成功处理的文件范围和输出结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-63f16f319af1",
+    "language": "zh"
+  }
+}

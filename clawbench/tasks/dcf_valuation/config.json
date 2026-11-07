@@ -1,0 +1,385 @@
+{
+  "id": "dcf_valuation",
+  "name": "DCF估值计算",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 financial_data 文件夹里有 financials.csv。\n\n任务：\n1. 读取财务数据\n2. 用近3年平均增长率预测未来5年自由现金流\n3. 计算WACC：权益成本=10%，债务成本=5%，税率=25%，债务比例用最新年份数据\n4. 折现预测的FCF并计算终值（永续增长率=2%）\n5. 计算企业价值、股权价值、每股内在价值\n6. 将结果写入 dcf_valuation.json，保存在桌面\n\n输出格式：\n{\n  \"projected_fcf\": [year1, year2, year3, year4, year5],\n  \"wacc\": 0.085,\n  \"terminal_value\": 50000.0,\n  \"enterprise_value\": 65000.0,\n  \"equity_value\": 60000.0,\n  \"intrinsic_value_per_share\": 120.0,\n  \"valuation_summary\": \"undervalued\" or \"overvalued\" or \"fairly_valued\"\n}\n\n估值判断：\n- 内在价值 > 当前价格×1.1 => \"undervalued\"\n- 内在价值 < 当前价格×0.9 => \"overvalued\"\n- 其他 => \"fairly_valued\"",
+  "rubric": {
+    "query": "桌面上 financial_data 文件夹里有 financials.csv。\n\n任务：\n1. 读取财务数据\n2. 用近3年平均增长率预测未来5年自由现金流\n3. 计算WACC：权益成本=10%，债务成本=5%，税率=25%，债务比例用最新年份数据\n4. 折现预测的FCF并计算终值（永续增长率=2%）\n5. 计算企业价值、股权价值、每股内在价值\n6. 将结果写入 dcf_valuation.json，保存在桌面\n\n输出格式：\n{\n  \"projected_fcf\": [year1, year2, year3, year4, year5],\n  \"wacc\": 0.085,\n  \"terminal_value\": 50000.0,\n  \"enterprise_value\": 65000.0,\n  \"equity_value\": 60000.0,\n  \"intrinsic_value_per_share\": 120.0,\n  \"valuation_summary\": \"undervalued\" or \"overvalued\" or \"fairly_valued\"\n}\n\n估值判断：\n- 内在价值 > 当前价格×1.1 => \"undervalued\"\n- 内在价值 < 当前价格×0.9 => \"overvalued\"\n- 其他 => \"fairly_valued\"",
+    "query_id": "dcf_valuation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ba209416e159",
+        "type": "leaf",
+        "name": "正确读取了 financials.csv 中完成DCF所需的财务字段",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-2e65a385b886",
+        "type": "group",
+        "name": "完成了DCF核心估值计算",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f090245a2ada",
+            "type": "leaf",
+            "name": "基于近3年平均增长率正确预测了未来5年自由现金流",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-475eff449fba",
+            "type": "leaf",
+            "name": "根据给定权益成本、债务成本、税率和最新年份债务比例正确计算了WACC",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-fe0591a5fb33",
+            "type": "leaf",
+            "name": "正确折现了5年预测FCF并按2%永续增长率计算了终值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f6b90f57e8c8",
+        "type": "group",
+        "name": "完成了估值结果与结论生成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-5f3e8c7718b8",
+            "type": "leaf",
+            "name": "正确计算了企业价值、股权价值和每股内在价值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-a852b4604e36",
+            "type": "leaf",
+            "name": "根据内在价值与当前价格的阈值规则正确判定了 valuation_summary",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e390e1b8aff1",
+        "type": "group",
+        "name": "完成了指定文件交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-6d35f734174f",
+            "type": "leaf",
+            "name": "生成了名为 dcf_valuation.json 的JSON交付文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-f27eb082510d",
+            "type": "leaf",
+            "name": "将 dcf_valuation.json 保存到了桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-84e24e21e348",
+          "type": "leaf",
+          "name": "正确定位了桌面 financial_data 文件夹中的 financials.csv 文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f53878ba1a81",
+          "type": "leaf",
+          "name": "准确提取了最新年份债务、现金、股数和当前价格等估值所需字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "工具使用",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-64d955796f23",
+          "type": "leaf",
+          "name": "准确计算了近3年自由现金流平均增长率并将其用于5年预测",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "时间推理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-76dddd106770",
+          "type": "group",
+          "name": "WACC计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ae6bfeb8178e",
+              "type": "leaf",
+              "name": "准确使用最新年份债务比例计算了WACC中的债务权重和权益权重",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c2047bccf1cb",
+              "type": "leaf",
+              "name": "准确应用了债务成本税盾计算税后债务成本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-562764af65c3",
+          "type": "group",
+          "name": "折现与终值计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-18eb30dab7b1",
+              "type": "leaf",
+              "name": "准确使用WACC折现了每一期预测自由现金流",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-10b6a088b840",
+              "type": "leaf",
+              "name": "准确使用2%永续增长率和最后一期自由现金流计算了终值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-f1637a19a8af",
+              "type": "leaf",
+              "name": "准确将终值折现回估值时点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0734be28a70a",
+          "type": "group",
+          "name": "估值结论生成质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e183e3fbcade",
+              "type": "leaf",
+              "name": "准确根据企业价值、现金和债务计算了股权价值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-690614d402c7",
+              "type": "leaf",
+              "name": "准确根据股权价值和股数计算了每股内在价值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-8059e9494d1c",
+              "type": "leaf",
+              "name": "准确按照1.1倍和0.9倍当前价格阈值判定了 valuation_summary",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-aae0f161c0b8",
+          "type": "group",
+          "name": "JSON交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4e0ae3a5e293",
+              "type": "leaf",
+              "name": "生成的 dcf_valuation.json 包含了用户指定的全部键名",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f0d7fb62b291",
+              "type": "leaf",
+              "name": "生成的 dcf_valuation.json 中 projected_fcf 为5个数值组成的数组且其余字段为可解析的JSON数值或字符串",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-68e399041d94",
+              "type": "leaf",
+              "name": "生成的 dcf_valuation.json 可正常打开并能直接用于后续程序读取",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-3f5b33dcc8c1",
+    "language": "zh"
+  }
+}

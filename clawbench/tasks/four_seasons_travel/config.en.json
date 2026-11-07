@@ -1,0 +1,231 @@
+{
+  "id": "four_seasons_travel",
+  "name": "Four-Season Travel Vlog Storyboard",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Creative Generation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Based on my travel essay document at /root/Desktop, search for recent popular spring travel activities across the web, create a complete storyboard concept for a four-season travel vlog, format it, and save it to /root/Desktop.",
+  "rubric": {
+    "query": "Based on my travel essay document at /root/Desktop, search for recent popular spring travel activities across the web, create a complete storyboard concept for a four-season travel vlog, format it, and save it to /root/Desktop.",
+    "query_id": "four_seasons_travel",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a453def6602d",
+        "type": "leaf",
+        "name": "Correctly read the usable content of the travel essay document at /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-1d2b577e8cec",
+        "type": "leaf",
+        "name": "Correctly retrieved and extracted recent popular spring travel activity information from across the web",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-825564e9bb89",
+        "type": "group",
+        "name": "Deliverable Production Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-aba52aa40167",
+            "type": "leaf",
+            "name": "Generated a complete storyboard concept document for a four-season travel vlog",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Context Retention",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-734fb1dd8791",
+            "type": "leaf",
+            "name": "Saved the formatted complete four-season travel vlog storyboard concept document to /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-03923ccfa2c5",
+          "type": "leaf",
+          "name": "Accurately extracted location preferences, narrative style, or travel theme clues from the travel essay",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Intent Understanding",
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d79faa0add68",
+          "type": "leaf",
+          "name": "Accurately retrieved recent spring travel activities and prioritized clearly time-sensitive web page or platform content as the basis",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-773ff72b3724",
+          "type": "leaf",
+          "name": "Correctly mapped popular spring activities to the four-season travel theme without confusing seasonal scenes with the applicable time periods of activities",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Temporal Reasoning",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-38e913fbb972",
+          "type": "group",
+          "name": "Storyboard Creative Content Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a0dd2bd83cdc",
+              "type": "leaf",
+              "name": "Accurately generated a storyboard structure divided by the four seasons, with each season containing shot segments that can be filmed independently",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-5962d11f530b",
+              "type": "leaf",
+              "name": "Correctly included key columns such as shot content, filming scene, voiceover or subtitle points, and transition or pacing design in the storyboard",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-d9596bffc2a4",
+              "type": "leaf",
+              "name": "Accurately incorporated the personalized elements from the travel essay without fabricating experiences or preferences that do not exist in the document",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Context Retention",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-aa9f0290bd71",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d31770c69eb1",
+              "type": "leaf",
+              "name": "Correctly generated a document file that opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-91275ddb7fac",
+              "type": "leaf",
+              "name": "Accurately formatted the document, with heading hierarchy, paragraph structure, or table layout that is convenient for direct reading and further editing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-53b3bc45fd66",
+              "type": "leaf",
+              "name": "Correctly saved the file to /root/Desktop with a file name that identifies the four-season travel vlog storyboard content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-55aeb7513a78",
+    "language": "en"
+  },
+  "note": "The response showed that web scraping did not go smoothly and then gave the final reply directly; the content of the generated file was not produced through an online search."
+}

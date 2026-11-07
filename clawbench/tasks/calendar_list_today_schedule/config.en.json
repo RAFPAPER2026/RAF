@@ -1,0 +1,147 @@
+{
+  "id": "calendar_list_today_schedule",
+  "name": "Today Schedule Extraction",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "You have received a calendar file located at `/root/Desktop/calendar.json`, which contains event schedules for multiple days. Please extract all events on **2026-03-15** and write them to the `/root/Desktop/today.json` file, sorted in ascending order of `start_time`. The output format is a JSON object containing an `\"events\"` key whose value is the sorted event array. Each event must retain all its original fields.",
+  "rubric": {
+    "query": "You have received a calendar file located at `/root/Desktop/calendar.json`, which contains event schedules for multiple days. Please extract all events on **2026-03-15** and write them to the `/root/Desktop/today.json` file, sorted in ascending order of `start_time`. The output format is a JSON object containing an `\"events\"` key whose value is the sorted event array. Each event must retain all its original fields.",
+    "query_id": "calendar_list_today_schedule",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4186af99123b",
+        "type": "leaf",
+        "name": "Correctly read the events on 2026-03-15 in /root/Desktop/calendar.json",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-b3c713f8ad36",
+        "type": "leaf",
+        "name": "Successfully generated the /root/Desktop/today.json file whose content is a JSON object containing the events key",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-4330a96486a6",
+        "type": "leaf",
+        "name": "Correctly wrote all events of 2026-03-15 in ascending order of start_time, with every event retaining all its original fields",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Conditional Judgment",
+          "Logical Reasoning",
+          "Temporal Reasoning",
+          "Context Retention",
+          "Factual Accuracy"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-399afc9d7960",
+          "type": "leaf",
+          "name": "Accurately located /root/Desktop/calendar.json and correctly read parsable calendar data",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7d27beab35f7",
+          "type": "leaf",
+          "name": "Correctly filtered the records whose event date equals 2026-03-15",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Information Filtering",
+            "Conditional Judgment",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b884c74d6b8a",
+          "type": "leaf",
+          "name": "Accurately sorted the filtered results in ascending order of start_time",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-42a925a03cb7",
+          "type": "leaf",
+          "name": "Correctly retained all original fields of every event and did not add or fabricate field values",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Context Retention",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-cbb379747dda",
+          "type": "leaf",
+          "name": "The generated /root/Desktop/today.json file can be parsed normally as a JSON object, with only the events key at the top level and its value being an array",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-978ee8d59d04",
+    "language": "en"
+  },
+  "note": "Extract and list events for a specific date from calendar"
+}

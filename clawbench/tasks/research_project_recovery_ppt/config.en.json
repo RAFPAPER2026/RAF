@@ -1,0 +1,488 @@
+{
+  "id": "research_project_recovery_ppt",
+  "name": "Research Project Recovery and Report PPT",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Task Decomposition",
+    "State Tracking & Consistency",
+    "Exception Identification",
+    "General Planning & Strategy"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.state",
+    "reflection.detect",
+    "plan.strategy"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I previously worked on a research project about LLM Agent Evaluation, but I haven't continued it for half a year.\nThe related materials are scattered across papers/, notes/, 实验结果/, 会议记录/, 旧版proposal/, and several PPTs in the research_project/ folder on the desktop. Some files may be outdated, and some file names are very similar.\nPlease:\n1. First restore the project's research objectives at the time, its core hypotheses, the experiments already completed, and the problems currently unresolved — pay special attention to distinguishing “conclusions already verified” from “hypotheses that were only proposed at the time but not verified”;\n2. Review the experiment records, identify the most critical negative results and failed experiments, and analyze whether these failures truly refuted the original hypotheses;\n3. Using the existing materials in the project, redesign the experiment plan most worth continuing, including baseline, ablation, evaluation metrics, and expected results;\n4. Finally generate a research report PPT of no more than 10 pages (saved under research_project/ on the desktop), including research background, existing work, experimental results, problem diagnosis, new experiment design, and next steps.\nNote: if different files conflict about experimental results, clearly point out the conflict in the PPT instead of choosing one version yourself.",
+  "rubric": {
+    "query": "I previously worked on a research project about LLM Agent Evaluation, but I haven't continued it for half a year.\nThe related materials are scattered across papers/, notes/, 实验结果/, 会议记录/, 旧版proposal/, and several PPTs in the research_project/ folder on the desktop. Some files may be outdated, and some file names are very similar.\nPlease:\n1. First restore the project's research objectives at the time, its core hypotheses, the experiments already completed, and the problems currently unresolved — pay special attention to distinguishing “conclusions already verified” from “hypotheses that were only proposed at the time but not verified”;\n2. Review the experiment records, identify the most critical negative results and failed experiments, and analyze whether these failures truly refuted the original hypotheses;\n3. Using the existing materials in the project, redesign the experiment plan most worth continuing, including baseline, ablation, evaluation metrics, and expected results;\n4. Finally generate a research report PPT of no more than 10 pages (saved under research_project/ on the desktop), including research background, existing work, experimental results, problem diagnosis, new experiment design, and next steps.\nNote: if different files conflict about experimental results, clearly point out the conflict in the PPT instead of choosing one version yourself.",
+    "query_id": "research_project_recovery_ppt",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e8d4e7b872e9",
+        "type": "group",
+        "name": "Restored the Project's Current State and Research Thread",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ed176d30423c",
+            "type": "leaf",
+            "name": "Correctly identified the project's research objectives at the time",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-c230374ad135",
+            "type": "leaf",
+            "name": "Correctly identified the project's core hypotheses",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-a1b577890510",
+            "type": "leaf",
+            "name": "Correctly distinguished verified conclusions from unverified hypotheses",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-b1d598f4de9f",
+            "type": "leaf",
+            "name": "Correctly identified the experiments already completed and the problems not yet resolved",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-bc6e69ffb476",
+        "type": "group",
+        "name": "Completed the Failed Experiment and Negative Result Analysis",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-444b6bf0affc",
+            "type": "leaf",
+            "name": "Correctly identified the most critical negative results and failed experiments",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Retrieval Strategy"
+            ]
+          },
+          {
+            "id": "node-d9ffcca0dee9",
+            "type": "leaf",
+            "name": "Correctly analyzed whether the failed results refuted the original hypotheses",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Conditional Judgment",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-10e1dd3c6417",
+        "type": "group",
+        "name": "Completed the Follow-Up Experiment Design",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1703c01f0e26",
+            "type": "leaf",
+            "name": "Proposed an experiment plan most worth continuing based on the existing materials",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3037904323c9",
+            "type": "leaf",
+            "name": "Completely defined the new experiment's baseline, ablation, evaluation metrics, and expected results",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-8d2ab84f7aae",
+        "type": "group",
+        "name": "Produced the Required Research Report PPT Deliverable",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-fa1cc7caa16d",
+            "type": "leaf",
+            "name": "Generated a research report PPT file of no more than 10 pages",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-15324f48d43c",
+            "type": "leaf",
+            "name": "Saved the research report PPT under research_project/ on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-34a318248e1d",
+            "type": "leaf",
+            "name": "Clearly marked in the PPT the experimental results that conflict across different files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Factual Accuracy",
+              "Communication",
+              "Information Filtering"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ac7c7744b309",
+          "type": "group",
+          "name": "Material Retrieval and Version Sorting Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b6d9a6900160",
+              "type": "leaf",
+              "name": "Accurately retrieved the relevant files in papers, notes, 实验结果, 会议记录, 旧版proposal, and the PPTs under research_project/",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-5bffd7f6c9df",
+              "type": "leaf",
+              "name": "Correctly distinguished material versions with similar file names but different content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-62b2920f5f8d",
+              "type": "leaf",
+              "name": "Correctly identified the chronological relationship between outdated materials and subsequently updated materials",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6ee5e440afa6",
+          "type": "group",
+          "name": "Research Status Recovery and Evidence Attribution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0f54da7fad86",
+              "type": "leaf",
+              "name": "Accurately extracted the key content of the research objectives, core hypotheses, experimental setup, and experimental conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-83c562a8e5f0",
+              "type": "leaf",
+              "name": "Accurately determined which conclusions are supported by experimental records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-821ae674082b",
+              "type": "leaf",
+              "name": "Accurately determined which statements remained only at the idea stage in the proposal or meeting records",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3c4a58b02337",
+          "type": "group",
+          "name": "Negative Result Diagnosis and Conflict Identification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1488be01ee4b",
+              "type": "leaf",
+              "name": "Accurately identified the experimental conditions, model settings, or dataset settings corresponding to the negative results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-07cf78b2008d",
+              "type": "leaf",
+              "name": "Accurately determined whether the failed experiment was caused by a design flaw, an implementation problem, or the original hypothesis not holding",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-988e12e46dd1",
+              "type": "leaf",
+              "name": "Accurately pointed out where different files conflict in values or conclusions about the same experimental result",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-422335c1477d",
+          "type": "group",
+          "name": "New Experiment Plan Design Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-aeedd5ed3a66",
+              "type": "leaf",
+              "name": "Correctly designed a baseline directly corresponding to the original research question",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-66d81b3da178",
+              "type": "leaf",
+              "name": "Correctly designed ablations that can isolate the effects of key factors",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-01b138e48da4",
+              "type": "leaf",
+              "name": "Correctly selected evaluation metrics capable of testing the original hypotheses",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Conditional Judgment"
+              ]
+            },
+            {
+              "id": "node-d9e9266b0042",
+              "type": "leaf",
+              "name": "The expected results given are consistent with the existing experimental records and the failure diagnosis",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-ee5b332cba32",
+          "type": "group",
+          "name": "PPT Deliverable Usability and Content Organization Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fc36d7d1a6c2",
+              "type": "leaf",
+              "name": "The generated PPT file opens normally and has no more than 10 pages",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-7dc8ab52b90f",
+              "type": "leaf",
+              "name": "The PPT contains six types of content: research background, existing work, experimental results, problem diagnosis, new experiment design, and next steps",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-e15a8df919e3",
+              "type": "leaf",
+              "name": "The PPT presents verified conclusions, unverified hypotheses, and conflicting results separately",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ca9ec3b2eed4",
+          "type": "group",
+          "name": "Exception Handling and Fabrication Prevention Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-561dd8107a00",
+              "type": "leaf",
+              "name": "Correctly explained the gaps and adjusted the wording of conclusions when files could not be read, results were missing, or records were incomplete",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-2552d91c1da1",
+              "type": "leaf",
+              "name": "Did not fill in missing evidence as experiments or conclusions that had already happened",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-6b27251e8a93",
+    "language": "en"
+  },
+  "note": "I previously worked on a research project about LLM Agent Evaluation, but I haven't continued it for half a year. The related materials are scattered across papers/, notes/, 实验结果/, 会议记录/, 旧版proposal/, and several PPTs, some files may be outdated, and some file names are very similar. Please first restore the project's research objectives, core hypotheses, experiments already completed, and unresolved problems, paying special attention to distinguishing already verified conclusions from hypotheses that were only proposed but not verified. Then review the experiment records, identify the most critical negative results and failed experiments, and analyze whether these failures truly refuted the original hypotheses. Using the existing materials in the project, redesign the experiment plan most worth continuing, including baseline, ablation, evaluation metrics, and expected results. Finally generate a research report PPT of no more than 10 pages, containing research background, existing work, experimental results, problem diagnosis, new experiment design, and next steps; if different files conflict about experimental results, clearly point out the conflict instead of choosing one version yourself.",
+  "env_description": "research_project/: 旧版proposal/ (the H3 directions of v1 and v2 are opposite, so the evolution needs to be identified), notes/, 实验结果/ (exp1 supports H1; exp2 has a planted v1/v2 result conflict: +6.2% p=0.08 vs +3.1% p=0.15, the conflict must be made explicit rather than taking sides; exp3 has evidence refuting H3; exp4 is a failed experiment with a planted discrimination point “detection method failure ≠ hypothesis refuted”), 会议记录/ (the group meeting confirms that exp2-v1 is inconclusive), two similarly named PPT scripts (identical content, both outdated versions, distractors)."
+}

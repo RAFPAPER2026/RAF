@@ -1,0 +1,431 @@
+{
+  "id": "competitor_strategy_summary",
+  "name": "PPT执行摘要生成",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面competitor_analysis文件夹下有个2024_StarMCN_H2_Strategy.pptx，这份PPT有50页，内容很杂。帮我提炼核心数据，生成一份执行摘要，输出到桌面 competitor_analysis/StarMCN_Execution_Summary.docx。\n\n重点两块：一是新签约主播的底薪标准、分成比例、违约金条款；二是虚拟主播的运营成本预估，包括前期采购和每月算力、运营开销。其他赋能、矩阵打法、行业宏观、团队建设这些不要。\n\n文档要控制在一页纸以内，排版紧凑。",
+  "rubric": {
+    "query": "桌面competitor_analysis文件夹下有个2024_StarMCN_H2_Strategy.pptx，这份PPT有50页，内容很杂。帮我提炼核心数据，生成一份执行摘要，输出到桌面 competitor_analysis/StarMCN_Execution_Summary.docx。\n\n重点两块：一是新签约主播的底薪标准、分成比例、违约金条款；二是虚拟主播的运营成本预估，包括前期采购和每月算力、运营开销。其他赋能、矩阵打法、行业宏观、团队建设这些不要。\n\n文档要控制在一页纸以内，排版紧凑。",
+    "query_id": "competitor_strategy_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5922efbd9333",
+        "type": "leaf",
+        "name": "正确读取了桌面 competitor_analysis 文件夹下的 2024_StarMCN_H2_Strategy.pptx 内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-a25de8d5e6e9",
+        "type": "group",
+        "name": "按用户指定的两类重点信息完成了核心数据提炼",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0001a13818ca",
+            "type": "leaf",
+            "name": "提炼了新签约主播的底薪标准",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-675a07beb720",
+            "type": "leaf",
+            "name": "提炼了新签约主播的分成比例",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-b76e25ad0943",
+            "type": "leaf",
+            "name": "提炼了新签约主播的违约金条款",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-829f4aeadc42",
+            "type": "leaf",
+            "name": "提炼了虚拟主播的前期采购成本",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-2bb8802be78c",
+            "type": "leaf",
+            "name": "提炼了虚拟主播的每月算力开销",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-ee8ba5e76198",
+            "type": "leaf",
+            "name": "提炼了虚拟主播的每月运营开销",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9a5b4a71d706",
+        "type": "group",
+        "name": "按指定路径产出了执行摘要文档",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7a107ce954cc",
+            "type": "leaf",
+            "name": "生成了桌面 competitor_analysis/StarMCN_Execution_Summary.docx 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-74b913e67e55",
+            "type": "leaf",
+            "name": "文档内容控制在一页纸以内",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-7749349ab6c9",
+          "type": "leaf",
+          "name": "正确定位了桌面 competitor_analysis 文件夹中的目标 PPT 文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c8a60ea452c6",
+          "type": "group",
+          "name": "关键信息提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-014a8e8912d1",
+              "type": "leaf",
+              "name": "准确提取了与新签约主播底薪标准相关的数值或档位信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-56ad5da591f5",
+              "type": "leaf",
+              "name": "准确提取了与新签约主播分成比例相关的数值或比例信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-81f0c3ca6736",
+              "type": "leaf",
+              "name": "准确提取了与新签约主播违约金条款相关的金额或触发条件信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-fbd12832edd7",
+              "type": "leaf",
+              "name": "准确提取了与虚拟主播前期采购成本相关的项目和金额信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-9b9fb0640769",
+              "type": "leaf",
+              "name": "准确提取了与虚拟主播每月算力开销相关的周期和金额信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-eadf69b3ba26",
+              "type": "leaf",
+              "name": "准确提取了与虚拟主播每月运营开销相关的项目和金额信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-09f11df088d8",
+          "type": "group",
+          "name": "范围筛选与取舍质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ee2a746e852c",
+              "type": "leaf",
+              "name": "正确排除了赋能相关内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-9f8418f9b978",
+              "type": "leaf",
+              "name": "正确排除了矩阵打法相关内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-aa2f2f8f849e",
+              "type": "leaf",
+              "name": "正确排除了行业宏观相关内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-0b02c92c8320",
+              "type": "leaf",
+              "name": "正确排除了团队建设相关内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-e4191c1a8873",
+          "type": "group",
+          "name": "摘要组织与压缩质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-591a8d103f71",
+              "type": "leaf",
+              "name": "正确按主播签约条款与虚拟主播成本两部分组织摘要内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-1a26e7ba0ce5",
+              "type": "leaf",
+              "name": "正确保留了支持管理决策所需的核心数据点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-febf7cb98dbe",
+              "type": "leaf",
+              "name": "正确压缩了非核心说明性文字以满足一页纸限制",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a316ca17b220",
+          "type": "group",
+          "name": "交付文档可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-08922ea61be6",
+              "type": "leaf",
+              "name": "生成的 DOCX 文件可以正常打开",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-acab3c37fc61",
+              "type": "leaf",
+              "name": "生成的 DOCX 文件中标题、分节和数据列表未出现乱码或明显排版错位",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-1bb5f83b9d6f",
+              "type": "leaf",
+              "name": "生成的 DOCX 文件内容在单页内可直接供用户阅读和转发使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-09db779e2338",
+          "type": "group",
+          "name": "异常处理与事实约束质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e8b7e0f623bb",
+              "type": "leaf",
+              "name": "遇到 PPT 提取失败或页面内容异常时，正确尝试了替代读取方式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-6bd72bf7b288",
+              "type": "leaf",
+              "name": "未编造 PPT 中不存在的金额、比例或条款信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-50756292d846",
+    "language": "zh"
+  },
+  "note": "从PPT提炼核心数据生成Word执行摘要"
+}

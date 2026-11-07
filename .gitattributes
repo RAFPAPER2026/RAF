@@ -1,0 +1,29 @@
+# Text
+* text=auto
+
+# Source
+*.py text
+*.ts text
+*.tsx text
+*.json text
+*.md text
+*.toml text
+*.yml text
+*.yaml text
+
+# Binary fixtures / media
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.gif binary
+*.pdf binary
+*.docx binary
+*.doc binary
+*.xlsx binary
+*.pptx binary
+*.zip binary
+*.rar binary
+*.mp4 binary
+*.eml text
+*.ics text

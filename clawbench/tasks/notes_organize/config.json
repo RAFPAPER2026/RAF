@@ -1,0 +1,147 @@
+{
+  "id": "notes_organize",
+  "name": "初中数学笔记整理",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "反思和修复-异常处理和修复",
+    "上下文管理-上下文压缩"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair",
+    "context.compress"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "帮我搜索一下初中数学二年级一学期的学习笔记，把重点内容标出来，再按章节排好，存到/root/Desktop",
+  "rubric": {
+    "query": "帮我搜索一下初中数学二年级一学期的学习笔记，把重点内容标出来，再按章节排好，存到/root/Desktop",
+    "query_id": "notes_organize",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5abd27ce319f",
+        "type": "leaf",
+        "name": "正确检索了初中数学二年级一学期的学习笔记相关内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-7d477bca16f8",
+        "type": "leaf",
+        "name": "按章节整理并标出了重点内容的学习笔记文件已生成到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f0fc476f0db7",
+          "type": "leaf",
+          "name": "准确构造了与初中数学二年级一学期范围匹配的搜索关键词",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-007db79a9792",
+          "type": "leaf",
+          "name": "准确筛选了与初中数学二年级一学期章节内容直接相关的信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4e653575de36",
+          "type": "leaf",
+          "name": "正确按章节顺序组织了学习笔记内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a6207360bd6f",
+          "type": "leaf",
+          "name": "准确标注了各章节中的公式、定理、题型方法等重点内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "通用知识",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0f18eca38998",
+          "type": "leaf",
+          "name": "生成的学习笔记文件可正常打开且内容包含章节标题与重点标注",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-c36738b24ca7",
+          "type": "leaf",
+          "name": "在结果说明中明确告知了保存位置和生成内容范围",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-c19f889ce72d",
+    "language": "zh"
+  },
+  "note": "文件检索、数据分析与整理"
+}

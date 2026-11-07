@@ -1,0 +1,12 @@
+Title: Blockchain Technology and Applications (Version 14)
+Authors: Grace Hopper
+Year: 2024
+Keywords: blockchain; distributed ledger; cryptocurrency
+
+Abstract:
+Blockchain technology enables secure, decentralized ledgers.
+This paper discusses applications beyond cryptocurrencies.
+
+References:
+S. Nakamoto, Bitcoin: A Peer-to-Peer Electronic Cash System, 2008.
+M. Crosby, Blockchain Technology Overview, 2016.

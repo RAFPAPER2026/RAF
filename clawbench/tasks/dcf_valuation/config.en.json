@@ -1,0 +1,385 @@
+{
+  "id": "dcf_valuation",
+  "name": "DCF Valuation",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a financials.csv in the financial_data folder on the desktop.\n\nTasks:\n1. Read the financial data\n2. Use the average growth rate of the last 3 years to project the free cash flow for the next 5 years\n3. Calculate WACC: cost of equity = 10%, cost of debt = 5%, tax rate = 25%, debt ratio using the latest year's data\n4. Discount the projected FCF and calculate the terminal value (perpetual growth rate = 2%)\n5. Calculate the enterprise value, equity value, and intrinsic value per share\n6. Write the results to dcf_valuation.json and save it on the desktop\n\nOutput format:\n{\n  \"projected_fcf\": [year1, year2, year3, year4, year5],\n  \"wacc\": 0.085,\n  \"terminal_value\": 50000.0,\n  \"enterprise_value\": 65000.0,\n  \"equity_value\": 60000.0,\n  \"intrinsic_value_per_share\": 120.0,\n  \"valuation_summary\": \"undervalued\" or \"overvalued\" or \"fairly_valued\"\n}\n\nValuation judgment:\n- Intrinsic value > current price × 1.1 => \"undervalued\"\n- Intrinsic value < current price × 0.9 => \"overvalued\"\n- Otherwise => \"fairly_valued\"",
+  "rubric": {
+    "query": "There is a financials.csv in the financial_data folder on the desktop.\n\nTasks:\n1. Read the financial data\n2. Use the average growth rate of the last 3 years to project the free cash flow for the next 5 years\n3. Calculate WACC: cost of equity = 10%, cost of debt = 5%, tax rate = 25%, debt ratio using the latest year's data\n4. Discount the projected FCF and calculate the terminal value (perpetual growth rate = 2%)\n5. Calculate the enterprise value, equity value, and intrinsic value per share\n6. Write the results to dcf_valuation.json and save it on the desktop\n\nOutput format:\n{\n  \"projected_fcf\": [year1, year2, year3, year4, year5],\n  \"wacc\": 0.085,\n  \"terminal_value\": 50000.0,\n  \"enterprise_value\": 65000.0,\n  \"equity_value\": 60000.0,\n  \"intrinsic_value_per_share\": 120.0,\n  \"valuation_summary\": \"undervalued\" or \"overvalued\" or \"fairly_valued\"\n}\n\nValuation judgment:\n- Intrinsic value > current price × 1.1 => \"undervalued\"\n- Intrinsic value < current price × 0.9 => \"overvalued\"\n- Otherwise => \"fairly_valued\"",
+    "query_id": "dcf_valuation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ba209416e159",
+        "type": "leaf",
+        "name": "Correctly read the financial fields needed to complete the DCF from financials.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-2e65a385b886",
+        "type": "group",
+        "name": "Completed the core DCF valuation calculations",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f090245a2ada",
+            "type": "leaf",
+            "name": "Correctly projected the free cash flow for the next 5 years based on the average growth rate of the last 3 years",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-475eff449fba",
+            "type": "leaf",
+            "name": "Correctly calculated WACC based on the given cost of equity, cost of debt, tax rate, and the debt ratio of the latest year",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-fe0591a5fb33",
+            "type": "leaf",
+            "name": "Correctly discounted the 5-year projected FCF and calculated the terminal value at a 2% perpetual growth rate",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-f6b90f57e8c8",
+        "type": "group",
+        "name": "Completed the generation of valuation results and conclusions",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-5f3e8c7718b8",
+            "type": "leaf",
+            "name": "Correctly calculated the enterprise value, equity value, and intrinsic value per share",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-a852b4604e36",
+            "type": "leaf",
+            "name": "Correctly determined valuation_summary according to the threshold rules between intrinsic value and current price",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e390e1b8aff1",
+        "type": "group",
+        "name": "Completed the specified file delivery",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-6d35f734174f",
+            "type": "leaf",
+            "name": "Generated the JSON deliverable file named dcf_valuation.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-f27eb082510d",
+            "type": "leaf",
+            "name": "Saved dcf_valuation.json on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-84e24e21e348",
+          "type": "leaf",
+          "name": "Correctly located the financials.csv file in the desktop financial_data folder",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f53878ba1a81",
+          "type": "leaf",
+          "name": "Accurately extracted the fields needed for valuation, including the latest year's debt, cash, share count, and current price",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-64d955796f23",
+          "type": "leaf",
+          "name": "Accurately calculated the average growth rate of free cash flow over the last 3 years and used it for the 5-year projection",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Temporal Reasoning",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-76dddd106770",
+          "type": "group",
+          "name": "WACC calculation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ae6bfeb8178e",
+              "type": "leaf",
+              "name": "Accurately calculated the debt weight and equity weight in WACC using the latest year's debt ratio",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c2047bccf1cb",
+              "type": "leaf",
+              "name": "Accurately applied the debt cost tax shield to calculate the after-tax cost of debt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-562764af65c3",
+          "type": "group",
+          "name": "Discounting and terminal value calculation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-18eb30dab7b1",
+              "type": "leaf",
+              "name": "Accurately discounted each period's projected free cash flow using WACC",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-10b6a088b840",
+              "type": "leaf",
+              "name": "Accurately calculated the terminal value using the 2% perpetual growth rate and the last period's free cash flow",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-f1637a19a8af",
+              "type": "leaf",
+              "name": "Accurately discounted the terminal value back to the valuation date",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0734be28a70a",
+          "type": "group",
+          "name": "Valuation conclusion generation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e183e3fbcade",
+              "type": "leaf",
+              "name": "Accurately calculated the equity value from the enterprise value, cash, and debt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-690614d402c7",
+              "type": "leaf",
+              "name": "Accurately calculated the intrinsic value per share from the equity value and share count",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-8059e9494d1c",
+              "type": "leaf",
+              "name": "Accurately determined valuation_summary according to the 1.1x and 0.9x current price thresholds",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-aae0f161c0b8",
+          "type": "group",
+          "name": "JSON deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4e0ae3a5e293",
+              "type": "leaf",
+              "name": "The generated dcf_valuation.json contains all the key names specified by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f0d7fb62b291",
+              "type": "leaf",
+              "name": "In the generated dcf_valuation.json, projected_fcf is an array of 5 numerical values and the remaining fields are parsable JSON numbers or strings",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-68e399041d94",
+              "type": "leaf",
+              "name": "The generated dcf_valuation.json opens normally and can be used directly for subsequent program reading",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-3f5b33dcc8c1",
+    "language": "en"
+  }
+}

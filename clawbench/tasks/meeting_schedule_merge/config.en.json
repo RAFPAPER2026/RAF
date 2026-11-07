@@ -1,0 +1,308 @@
+{
+  "id": "meeting_schedule_merge",
+  "name": "Meeting Schedule Merge to PDF",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following",
+    "Task Decomposition"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow",
+    "plan.decompose"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "In the patent_event_schedules directory on the desktop there are four .ics meeting schedule files: event_internal_review.ics (internal sunscreen formula avoidance design workshop), event_el_packaging.ics (Estée Lauder pump head design patent briefing), event_loreal_q3.ics (L'Oréal anti-aging new ingredient launch), and event_botanical_extracts.ics (plant extract database retrieval training).\n\nPlease read and parse all these .ics files, extract the detailed information of each schedule event such as the subject (SUMMARY), start time (DTSTART), location (LOCATION), and description (DESCRIPTION), and then merge them into one PDF document in ascending order of meeting start time. In terms of layout, each meeting event must occupy a full page by itself; multiple meetings must not be crowded onto the same page, and content must not be truncated by page breaks. In addition, the generated PDF must automatically have global outline bookmarks, with the bookmark names directly using the subject of each meeting.\n\nSave the final output file as patent_event_schedules/Schedule_Summary.pdf on the desktop.",
+  "rubric": {
+    "query": "In the patent_event_schedules directory on the desktop there are four .ics meeting schedule files: event_internal_review.ics (internal sunscreen formula avoidance design workshop), event_el_packaging.ics (Estée Lauder pump head design patent briefing), event_loreal_q3.ics (L'Oréal anti-aging new ingredient launch), and event_botanical_extracts.ics (plant extract database retrieval training).\n\nPlease read and parse all these .ics files, extract the detailed information of each schedule event such as the subject (SUMMARY), start time (DTSTART), location (LOCATION), and description (DESCRIPTION), and then merge them into one PDF document in ascending order of meeting start time. In terms of layout, each meeting event must occupy a full page by itself; multiple meetings must not be crowded onto the same page, and content must not be truncated by page breaks. In addition, the generated PDF must automatically have global outline bookmarks, with the bookmark names directly using the subject of each meeting.\n\nSave the final output file as patent_event_schedules/Schedule_Summary.pdf on the desktop.",
+    "query_id": "meeting_schedule_merge",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ac8e5026649b",
+        "type": "group",
+        "name": "Meeting Schedule Data Extraction Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-108faffea23a",
+            "type": "leaf",
+            "name": "Correctly read the four .ics meeting schedule files required for parsing",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-cc285a6af2e7",
+            "type": "leaf",
+            "name": "Correctly extracted the SUMMARY, DTSTART, LOCATION, and DESCRIPTION information of each schedule event",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9341fe9571e8",
+        "type": "group",
+        "name": "PDF Delivery Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-32eadec05ad0",
+            "type": "leaf",
+            "name": "Generated the merged PDF document in ascending order of meeting start time",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-5e40574865e2",
+            "type": "leaf",
+            "name": "Saved the PDF file as patent_event_schedules/Schedule_Summary.pdf on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-64f1c117f0e6",
+        "type": "group",
+        "name": "PDF Layout and Navigation Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ed3eb6f01b56",
+            "type": "leaf",
+            "name": "Generated a global outline bookmark named after the meeting subject for each meeting event",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-5573b0112239",
+            "type": "leaf",
+            "name": "Made each meeting event occupy a full page by itself in the PDF",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-5302855675ec",
+          "type": "leaf",
+          "name": "Accurately read the four .ics files with the specified file names without omitting or replacing other files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fcb0533df5a2",
+          "type": "group",
+          "name": "Time Parsing and Sorting Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a095f584f688",
+              "type": "leaf",
+              "name": "Accurately parsed the original DTSTART time value of each event and converted it into a sortable start time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-28adb183dc82",
+              "type": "leaf",
+              "name": "Correctly sorted all meeting events in ascending order of start time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-019823f4dcc5",
+          "type": "group",
+          "name": "Event Field Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fcb99583f18d",
+              "type": "leaf",
+              "name": "Accurately extracted the SUMMARY field content of each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-4fb292b8fd1a",
+              "type": "leaf",
+              "name": "Accurately extracted the LOCATION field content of each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-dc59ccaf6489",
+              "type": "leaf",
+              "name": "Accurately extracted the DESCRIPTION field content of each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f93fa4a38e64",
+          "type": "group",
+          "name": "PDF Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-49f70d9f4f54",
+              "type": "leaf",
+              "name": "Each meeting event in the generated PDF is presented completely on a single page without being truncated across pages",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Intent Understanding"
+              ]
+            },
+            {
+              "id": "node-06febe659801",
+              "type": "leaf",
+              "name": "The outline bookmarks of the generated PDF jump normally to the corresponding meeting pages, and the bookmark names are consistent with the SUMMARY",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c88c3d871424",
+              "type": "leaf",
+              "name": "The generated PDF file opens normally and its page order is consistent with the meeting start time order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-d1f861356528",
+          "type": "group",
+          "name": "Exception Handling and Factual Constraint Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7554342f9005",
+              "type": "leaf",
+              "name": "Correctly handled missing or empty .ics fields and retained determinable missing markers in the PDF",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a392d807c872",
+              "type": "leaf",
+              "name": "Did not fabricate meeting field content that does not exist in the .ics files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-f728adc9422a",
+    "language": "en"
+  },
+  "note": "Extract meeting information from multiple ICS files, sort by time, and generate a bookmarked PDF document."
+}

@@ -1,0 +1,266 @@
+{
+  "id": "conversation_tracker",
+  "name": "Conversation Reference Tracker",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Knowledge Capture",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Look at conversation.jsonl in the conversation_data folder on the desktop; it contains a bunch of conversation records, each with id, speaker, text, and timestamp. Some messages reference content said earlier.\n\nAnalyze these conversations and find which messages reference earlier content. Generate a context_map.json and output it to the desktop.\n\nOutput format example:\n{\n  \"total_messages\": <int>,\n  \"speakers\": [\"<speaker1>\", \"<speaker2>\", ...],\n  \"references\": [\n    {\n      \"source_id\": <int message id being referenced>,\n      \"referencing_id\": <int message id that references the source>,\n      \"referencing_speaker\": \"<speaker name>\",\n      \"context_type\": \"<one of: quote, recall, response, correction>\"\n    }\n  ]\n}\n\nSpecific requirements:\n- Count the total number of messages and the list of speakers\n- Represent reference relationships with source_id (the referenced message), referencing_id (the referencing party), referencing_speaker (who is referencing), and context_type\n- context_type can be quote (quoting the original words), recall (bringing up something from before), response (replying), or correction (correcting)\n- Find at least 7 reference relationships\n- Use at least 3 different context_types",
+  "rubric": {
+    "query": "Look at conversation.jsonl in the conversation_data folder on the desktop; it contains a bunch of conversation records, each with id, speaker, text, and timestamp. Some messages reference content said earlier.\n\nAnalyze these conversations and find which messages reference earlier content. Generate a context_map.json and output it to the desktop.\n\nOutput format example:\n{\n  \"total_messages\": <int>,\n  \"speakers\": [\"<speaker1>\", \"<speaker2>\", ...],\n  \"references\": [\n    {\n      \"source_id\": <int message id being referenced>,\n      \"referencing_id\": <int message id that references the source>,\n      \"referencing_speaker\": \"<speaker name>\",\n      \"context_type\": \"<one of: quote, recall, response, correction>\"\n    }\n  ]\n}\n\nSpecific requirements:\n- Count the total number of messages and the list of speakers\n- Represent reference relationships with source_id (the referenced message), referencing_id (the referencing party), referencing_speaker (who is referencing), and context_type\n- context_type can be quote (quoting the original words), recall (bringing up something from before), response (replying), or correction (correcting)\n- Find at least 7 reference relationships\n- Use at least 3 different context_types",
+    "query_id": "conversation_tracker",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5b6240aa8b6e",
+        "type": "leaf",
+        "name": "Correctly read conversation.jsonl in the conversation_data folder on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-eb10aeeb35da",
+        "type": "group",
+        "name": "Basic conversation statistics generated",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0d29b402668",
+            "type": "leaf",
+            "name": "Correctly counted the total number of messages in the conversation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-47eca7b91369",
+            "type": "leaf",
+            "name": "Correctly extracted the list of speakers in the conversation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-598a44a5a076",
+        "type": "group",
+        "name": "Reference relationship analysis results generated",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7f84824f35a2",
+            "type": "leaf",
+            "name": "Correctly identified reference relationships from at least 7 messages to earlier content",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-6196f50fe04a",
+            "type": "leaf",
+            "name": "Correctly covered at least 3 different context_types",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1bc1dec32418",
+        "type": "group",
+        "name": "Target delivery file produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-54bafc1a1c28",
+            "type": "leaf",
+            "name": "Generated the context_map.json file containing the total_messages, speakers, and references fields",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-9b79b9fb8ee2",
+            "type": "leaf",
+            "name": "Output context_map.json to the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-643e39b6cc56",
+          "type": "leaf",
+          "name": "Correctly used a tool that can access the desktop file system and the file path to read conversation.jsonl",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-b31687b4e655",
+          "type": "leaf",
+          "name": "Accurately parsed the id, speaker, text, and timestamp fields of each message",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c8e4f8d07a23",
+          "type": "group",
+          "name": "Reference relationship determination quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-33560089809f",
+              "type": "leaf",
+              "name": "Accurately determined the source_id corresponding to each referencing message",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b08bbf887e6d",
+              "type": "leaf",
+              "name": "Correctly distinguished the reference types among quote, recall, response, and correction",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-737fe9a86cfc",
+          "type": "group",
+          "name": "Multi-turn context processing and exception control",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-de772ec5ac4d",
+              "type": "leaf",
+              "name": "Correctly kept the speakers and time order unconfused when analyzing across multiple messages",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-b484da0ce662",
+              "type": "leaf",
+              "name": "Recorded and excluded uncertain references when encountering messages with missing fields or an undeterminable reference target",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-805316a4ebf2",
+          "type": "leaf",
+          "name": "The generated context_map.json can be parsed normally as JSON, and each item in references contains the source_id, referencing_id, referencing_speaker, and context_type fields",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Factual Accuracy",
+            "Communication"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-726f97674a08",
+          "type": "leaf",
+          "name": "The values of total_messages, speakers, and references in the generated context_map.json are consistent with the source conversation content",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Factual Accuracy",
+            "Information Filtering"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f22c494e0c4b",
+    "language": "en"
+  }
+}

@@ -1,0 +1,555 @@
+{
+  "id": "annual_business_review",
+  "name": "年度业务复盘",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "数据分析",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "数值分析与推理-数据分析与统计检验",
+    "上下文管理-状态跟踪与一致性维护",
+    "指令遵循-内容约束与条件筛选"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "plan.decompose",
+    "plan.numeric",
+    "context.state",
+    "instruction.constraints"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "公司过去4个季度的销售数据分别保存在桌面 sales_review/ 文件夹的 Q1.xlsx、Q2.xlsx、Q3.xlsx、Q4.xlsx 中，另外还有客户反馈（客户反馈.docx）、销售会议记录（销售会议/）和区域负责人汇报（区域汇报/）。\n请帮我制作一份完整的年度业务复盘：\n1. 首先统一不同季度Excel中的字段（各季度字段命名和口径不一致）并检查数据异常；\n2. 分析销售额、客户数量、客单价、区域和销售人员表现的变化；\n3. 不要只找增长和下降——重点找出「数据表现和管理层解释不一致」的地方。例如某区域销售额下降，会议记录认为主要原因是客户流失，请检查客户数据判断这个解释是否成立；\n4. 对于无法从现有数据确定原因的问题，列出可能原因和需要进一步收集的数据；\n5. 最终生成一份管理层可以直接使用的PPT（保存到桌面 sales_review/），并在最后增加一页「我们目前不知道什么」，列出至少5个无法仅凭现有数据回答的问题。",
+  "rubric": {
+    "query": "公司过去4个季度的销售数据分别保存在桌面 sales_review/ 文件夹的 Q1.xlsx、Q2.xlsx、Q3.xlsx、Q4.xlsx 中，另外还有客户反馈（客户反馈.docx）、销售会议记录（销售会议/）和区域负责人汇报（区域汇报/）。\n请帮我制作一份完整的年度业务复盘：\n1. 首先统一不同季度Excel中的字段（各季度字段命名和口径不一致）并检查数据异常；\n2. 分析销售额、客户数量、客单价、区域和销售人员表现的变化；\n3. 不要只找增长和下降——重点找出「数据表现和管理层解释不一致」的地方。例如某区域销售额下降，会议记录认为主要原因是客户流失，请检查客户数据判断这个解释是否成立；\n4. 对于无法从现有数据确定原因的问题，列出可能原因和需要进一步收集的数据；\n5. 最终生成一份管理层可以直接使用的PPT（保存到桌面 sales_review/），并在最后增加一页「我们目前不知道什么」，列出至少5个无法仅凭现有数据回答的问题。",
+    "query_id": "annual_business_review",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-0cd73df883c9",
+        "type": "group",
+        "name": "年度销售数据准备目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bcfcfca816e8",
+            "type": "leaf",
+            "name": "统一了四个季度Excel中的字段并产出了可分析的年度数据集",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-f5d91b76f534",
+            "type": "leaf",
+            "name": "识别了四个季度销售数据中的异常记录或口径异常",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "异常处理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9352c9032f39",
+        "type": "group",
+        "name": "业务表现变化分析目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2464e8f6172f",
+            "type": "leaf",
+            "name": "分析了销售额在四个季度中的变化",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-0dc4a23ef05e",
+            "type": "leaf",
+            "name": "分析了客户数量在四个季度中的变化",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-b1e779fd762e",
+            "type": "leaf",
+            "name": "分析了客单价在四个季度中的变化",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-85177ff4f0ec",
+            "type": "leaf",
+            "name": "分析了区域表现的变化",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-485d011e6a8e",
+            "type": "leaf",
+            "name": "分析了销售人员表现的变化",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-de144cc31d97",
+        "type": "group",
+        "name": "原因验证与未知问题梳理目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1994ff58b7de",
+            "type": "leaf",
+            "name": "识别了数据表现与管理层解释不一致的案例",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "检索策略",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-4ceba6867133",
+            "type": "leaf",
+            "name": "针对无法从现有数据确定原因的问题列出了可能原因",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-0ed2a2168fa9",
+            "type": "leaf",
+            "name": "针对无法从现有数据确定原因的问题列出了需要进一步收集的数据",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-007b818b11bd",
+        "type": "group",
+        "name": "复盘交付物产出目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-65972f421ef1",
+            "type": "leaf",
+            "name": "生成了一份可打开的年度业务复盘PPT文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-9f77fdf9e674",
+            "type": "leaf",
+            "name": "将年度业务复盘PPT保存到桌面 sales_review/ 文件夹",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-c03f0da13ed0",
+            "type": "leaf",
+            "name": "在PPT最后增加了一页列出至少5个无法仅凭现有数据回答的问题",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6bfc4df5b6c8",
+          "type": "group",
+          "name": "年度数据整理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-eae04003eac5",
+              "type": "leaf",
+              "name": "准确识别了四个季度Excel中同义字段的对应关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-003ce3b1a1cd",
+              "type": "leaf",
+              "name": "正确统一了四个季度指标口径中的时间范围和统计单位",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-1e94af3126bd",
+              "type": "leaf",
+              "name": "准确标记了缺失值、重复值、异常值或口径冲突记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6238ed140232",
+          "type": "group",
+          "name": "跨来源证据整合质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bdbe5aae3310",
+              "type": "leaf",
+              "name": "正确使用了客户反馈、销售会议记录和区域负责人汇报中的相关信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-f4a39da6bd7a",
+              "type": "leaf",
+              "name": "准确将文本证据与对应季度、区域、销售人员或客户群体建立了关联",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cd8779cb3406",
+          "type": "group",
+          "name": "业务分析推导质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-805fbd2e5e6a",
+              "type": "leaf",
+              "name": "准确计算了销售额、客户数量和客单价的季度变化",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7460da44be71",
+              "type": "leaf",
+              "name": "准确区分了区域表现变化与销售人员表现变化的影响范围",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-76c878917f9d",
+              "type": "leaf",
+              "name": "正确引用了支持结论的数据指标或记录来源",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-f0a578e0719a",
+          "type": "group",
+          "name": "管理层解释验证质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-02512690e40f",
+              "type": "leaf",
+              "name": "准确识别了管理层解释中的可验证因果主张",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-53705c633d4a",
+              "type": "leaf",
+              "name": "正确使用现有客户数据检验了解释是否被数据支持",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b1a584eb8d5f",
+              "type": "leaf",
+              "name": "明确区分了数据支持、数据反驳和数据不足三种结论",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b70b852c7ba4",
+          "type": "group",
+          "name": "未知问题梳理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-09adec512371",
+              "type": "leaf",
+              "name": "正确列出了无法从现有数据确定原因的问题对应的可检验候选原因",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6507a7d655ea",
+              "type": "leaf",
+              "name": "正确列出了每个未知问题所需补充的数据类型或采集对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-997248fc46fc",
+              "type": "leaf",
+              "name": "列出的未知问题数量不少于5个且与业务复盘结论直接相关",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8d9a3af885d4",
+          "type": "group",
+          "name": "PPT交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-67554cf8a1a7",
+              "type": "leaf",
+              "name": "生成的PPT文件可以正常打开且页面顺序完整",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-ca2f2524d8fc",
+              "type": "leaf",
+              "name": "PPT中包含年度概览、指标变化、解释验证、待补充数据和未知问题页面",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-47e9963b713a",
+              "type": "leaf",
+              "name": "PPT中的图表标题、轴标签、数字格式和文本内容没有乱码或明显错位",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-4de5fa5f7251",
+              "type": "leaf",
+              "name": "PPT内容能够让管理层直接定位结论、证据和待决策问题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-779ecf4040a1",
+          "type": "group",
+          "name": "异常与不确定性处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b2d1ba66a59c",
+              "type": "leaf",
+              "name": "在发现源文件缺失、格式异常或读取失败时记录了受影响范围",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-a311f19b36ab",
+              "type": "leaf",
+              "name": "在证据不足时没有编造原因或缺失数据内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-c7adddc01b72",
+    "language": "zh"
+  },
+  "note": "公司过去4个季度的销售数据分别保存在 Q1.xlsx、Q2.xlsx、Q3.xlsx、Q4.xlsx，另外有客户反馈 客户反馈.docx、销售会议记录 销售会议/ 和区域负责人汇报 区域汇报/。请帮我制作一份完整的年度业务复盘。首先统一不同季度Excel中的字段并检查数据异常，然后分析销售额、客户数量、客单价、区域和销售人员表现的变化。不要只找增长和下降，而是找出“数据表现和管理层解释不一致”的地方。例如某区域销售额下降，但会议记录却认为主要原因是客户流失，请检查客户数据判断这个解释是否成立。对于无法从现有数据确定原因的问题，列出可能原因和需要进一步收集的数据。最终生成一份管理层可以直接使用的PPT，并在最后增加一页“我们目前不知道什么”，列出至少5个无法仅凭现有数据回答的问题。",
+  "env_description": "sales_review/：Q1-Q4四个Excel（中英文字段名不一、Q3只有新/老客户拆分）、客户反馈.docx、销售会议/（埋核心矛盾：管理层归因「行业环境+客户流失」，但华北客户数39→33仅小幅波动，真正异常是Q4客单价69000→51000暴跌且时间与王强休产假吻合）、区域汇报/（王强自己也沿用错误归因「找回流失客户」；「大单延后」说法无法用现有数据验证）"
+}

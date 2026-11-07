@@ -1,0 +1,425 @@
+{
+  "id": "offboarding_handover_assistant",
+  "name": "离职交接助理",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "任务规划-任务分解",
+    "上下文管理-长上下文理解",
+    "反思和修复-异常识别和理解",
+    "上下文管理-状态跟踪与一致性维护",
+    "反思与修复-异常识别与理解"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long",
+    "reflection.detect",
+    "context.state",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我下个月就要离开团队了。桌面 offboarding_workspace/ 文件夹里是我过去半年所有项目相关的材料，包括：项目文档（word/ppt/excel）、邮件、会议转录、聊天记录，还有一个 current_tasks.csv 是当前的项目任务列表。\n请你帮我做好交接：\n1. 从所有材料中找出我实际负责过的项目和隐性职责（有些职责没有写在任何文档里，只在会议和聊天里提过）；\n2. 把我手头的事情分成四类：已完成、正在进行、口头承诺但没有建ticket的、依赖我个人知识/人脉的；\n3. 根据团队其他成员在各项目中的参与情况，为每项工作建议潜在的接手人；\n4. 读取 team_calendar/ 里同事们的日程和工作量，检查你建议的接手人是否可行；\n5. 生成一份完整的交接文档 handover.md（保存到桌面 offboarding_workspace/ 下），并把我名下的 current_tasks.csv 中的任务状态更新为「待交接」，注明建议接手人；\n6. 对找不到owner、或者不同材料信息冲突的部分，不要猜，单独整理成「需要我和主管确认」的清单放在交接文档末尾。",
+  "rubric": {
+    "query": "我下个月就要离开团队了。桌面 offboarding_workspace/ 文件夹里是我过去半年所有项目相关的材料，包括：项目文档（word/ppt/excel）、邮件、会议转录、聊天记录，还有一个 current_tasks.csv 是当前的项目任务列表。\n请你帮我做好交接：\n1. 从所有材料中找出我实际负责过的项目和隐性职责（有些职责没有写在任何文档里，只在会议和聊天里提过）；\n2. 把我手头的事情分成四类：已完成、正在进行、口头承诺但没有建ticket的、依赖我个人知识/人脉的；\n3. 根据团队其他成员在各项目中的参与情况，为每项工作建议潜在的接手人；\n4. 读取 team_calendar/ 里同事们的日程和工作量，检查你建议的接手人是否可行；\n5. 生成一份完整的交接文档 handover.md（保存到桌面 offboarding_workspace/ 下），并把我名下的 current_tasks.csv 中的任务状态更新为「待交接」，注明建议接手人；\n6. 对找不到owner、或者不同材料信息冲突的部分，不要猜，单独整理成「需要我和主管确认」的清单放在交接文档末尾。",
+    "query_id": "offboarding_handover_assistant",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-9ca6a944b338",
+        "type": "group",
+        "name": "职责范围识别目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-97f8ac04d04e",
+            "type": "leaf",
+            "name": "正确识别了过去半年实际负责过的项目",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-1cbbb4b0fc47",
+            "type": "leaf",
+            "name": "正确识别了材料中可追溯的隐性职责",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d3fa61ba1fc8",
+        "type": "group",
+        "name": "事项分类目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-af2c1f9d838b",
+            "type": "leaf",
+            "name": "正确将手头事项归入已完成类别",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-f342f0936059",
+            "type": "leaf",
+            "name": "正确将手头事项归入正在进行类别",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-1040af781ef2",
+            "type": "leaf",
+            "name": "正确将手头事项归入口头承诺但没有建ticket类别",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ca8f48b8288c",
+            "type": "leaf",
+            "name": "正确将手头事项归入依赖个人知识或人脉类别",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4596e15f8e7c",
+        "type": "group",
+        "name": "接手人建议目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-85b70700af25",
+            "type": "leaf",
+            "name": "为各项工作给出了潜在接手人建议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-5fa4de9fe974",
+            "type": "leaf",
+            "name": "根据team_calendar中的日程和工作量完成了接手可行性检查",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "检索策略",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-1064694f67bd",
+        "type": "group",
+        "name": "交付与异常整理目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-21508c72a697",
+            "type": "leaf",
+            "name": "在桌面offboarding_workspace下生成了handover.md交接文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-5fd56e0ee4a2",
+            "type": "leaf",
+            "name": "将current_tasks.csv中相关任务状态更新为待交接并注明建议接手人",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "事实准确性",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-fc699bcee791",
+            "type": "leaf",
+            "name": "将找不到owner或信息冲突的部分整理为需要我和主管确认清单并放在交接文档末尾",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "异常处理",
+              "事实准确性",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-2363c494779d",
+          "type": "group",
+          "name": "源材料获取与信息抽取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4cebadc5e91c",
+              "type": "leaf",
+              "name": "准确检索了offboarding_workspace中项目文档、邮件、会议转录、聊天记录和current_tasks.csv",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-64617a7346bb",
+              "type": "leaf",
+              "name": "准确提取了材料中的项目名称、责任描述、任务状态、参与成员和时间线信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5047a34e8c23",
+          "type": "group",
+          "name": "职责识别与事项分类质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2aa2df204ab7",
+              "type": "leaf",
+              "name": "准确根据会议和聊天中的表述识别了未写入正式文档的职责线索",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "信息筛选",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-95ae883d4425",
+              "type": "leaf",
+              "name": "准确根据证据区分了已完成、正在进行、口头承诺但没有建ticket和依赖个人知识或人脉的事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-100eb2f1c924",
+          "type": "group",
+          "name": "接手人决策与异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-77f2a25f2854",
+              "type": "leaf",
+              "name": "准确根据团队成员在各项目中的历史参与记录匹配了候选接手人",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-8eef810b2a76",
+              "type": "leaf",
+              "name": "准确根据team_calendar中的时间安排和工作量判断了候选接手人的可接手性",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-b4e318d4e677",
+              "type": "leaf",
+              "name": "遇到找不到owner或材料冲突时将事项列入待确认清单而未编造结论",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6127c821c88e",
+          "type": "group",
+          "name": "任务表更新执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b2f9ab0f4888",
+              "type": "leaf",
+              "name": "正确将待交接状态和建议接手人写入current_tasks.csv对应任务记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-934d4119d970",
+              "type": "leaf",
+              "name": "回复中说明了已更新的任务范围和未更新原因明确的例外项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fc1f4c3d121b",
+          "type": "group",
+          "name": "交接文档结果可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-26baa87eaabd",
+              "type": "leaf",
+              "name": "handover.md包含项目与职责概览、四类事项清单、建议接手人、可行性检查结果和待确认清单",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "意图理解",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-4075f12f66c5",
+              "type": "leaf",
+              "name": "handover.md中的事项、接手人和待确认条目能够与源材料或current_tasks.csv记录对应",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-5229d0a80eab",
+              "type": "leaf",
+              "name": "handover.md文件可正常打开且Markdown结构可被后续接手人直接使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-93c3bb285d3e",
+          "type": "leaf",
+          "name": "回复中明确说明了交接文档保存位置和current_tasks.csv更新结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-ee180dee9236",
+    "language": "zh"
+  },
+  "note": "离职 / 项目交接助手 给agent：某员工过去半年所有项目相关的 word / ppt / excel / email / meeting transcript / chat文档，以及当前项目任务列表。用户：“我下个月要离开团队，帮我把所有需要交接的东西整理好，告诉我哪些事情不能直接交给别人，以及帮我准备handover文档。” Agent需要：① 从不同来源找出用户实际负责过的项目和隐性职责；② 区分“已经完成 / 正在进行 / 口头承诺但没有ticket / 依赖用户个人知识”的事情；③ 为每项工作寻找潜在接手人；④ 检查接手人的日程和现有工作量；⑤ 生成handover document，并修改/补充原有项目文档；⑥ 对找不到owner或者信息冲突的部分主动询问。 难点： 用户的“职责”不会完整存在于一个文件里，很多信息需要从历史会议和聊天中推断；测试 cross-source entity resolution + implicit responsibility + conflict resolution + action execution。",
+  "env_description": "offboarding_workspace/：项目文档（2份docx概要+值班排班csv）、emails/（3封，含外部联系人依赖）、meeting_transcripts/（3场，埋3个隐性职责：短信网关降级策略、青云告警规范、带实习生）、chats/（3人，埋口头承诺与未归档个人知识）、current_tasks.csv（8条任务）、team_calendar/（5人ics，埋可行性约束：张磊封闭开发、小林无日历文件需询问）"
+}

@@ -1,0 +1,175 @@
+{
+  "id": "stable_diffusion_deployment",
+  "name": "SD模型部署",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "流程自动化",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我想学一下最新的Stable Diffusion部署，你帮我在GitHub找个下载量最多的仓库，克隆下来并按文档帮我把环境配好。",
+  "rubric": {
+    "query": "我想学一下最新的Stable Diffusion部署，你帮我在GitHub找个下载量最多的仓库，克隆下来并按文档帮我把环境配好。",
+    "query_id": "stable_diffusion_deployment",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-08983d7309f7",
+        "type": "leaf",
+        "name": "正确识别了GitHub上用于Stable Diffusion部署且下载量最高的目标仓库",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-b85764a1e2a1",
+        "type": "leaf",
+        "name": "成功克隆了目标仓库到本地环境",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-bc4a18995331",
+        "type": "leaf",
+        "name": "按照目标仓库文档完成了运行所需环境的安装与配置",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持",
+          "异常处理",
+          "通用知识"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-04ce4df643cd",
+          "type": "leaf",
+          "name": "准确构造了用于查找Stable Diffusion部署仓库的GitHub检索条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-356ecf818c81",
+          "type": "leaf",
+          "name": "正确核对了用于判定下载量最高的可观察指标并据此选定仓库",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d44fb0f41d88",
+          "type": "leaf",
+          "name": "正确执行了仓库克隆命令并使用了与目标仓库一致的仓库地址",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e92781d3be56",
+          "type": "group",
+          "name": "环境配置执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f25e783b8797",
+              "type": "leaf",
+              "name": "准确识别了文档要求的依赖版本与安装顺序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "工具使用",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-02b513a45f7a",
+              "type": "leaf",
+              "name": "正确配置了运行所需的环境变量与依赖组件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a9590d2567ec",
+          "type": "leaf",
+          "name": "在安装或配置失败时，正确识别报错信息并执行了与报错对应的修正操作",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-0acdf672dfe6",
+          "type": "leaf",
+          "name": "向用户说明了已选仓库依据、克隆结果和环境配置结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f73cab25b095",
+    "language": "zh"
+  }
+}

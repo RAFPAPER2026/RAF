@@ -1,0 +1,160 @@
+{
+  "id": "mind_map",
+  "name": "Tang Dynasty History Mind Map",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Handling & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Help me search for ten segments of Tang Dynasty history, save them as files to /root/Desktop, then regenerate a mind map in chronological order and put it on the desktop.",
+  "rubric": {
+    "query": "Help me search for ten segments of Tang Dynasty history, save them as files to /root/Desktop, then regenerate a mind map in chronological order and put it on the desktop.",
+    "query_id": "mind_map",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-61b718451638",
+        "type": "leaf",
+        "name": "Correctly retrieved ten segments of Tang Dynasty history content",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-b90829df887d",
+        "type": "leaf",
+        "name": "Generated and saved the Tang Dynasty history content deliverables as files to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-cb09ff6706f2",
+        "type": "leaf",
+        "name": "Regenerated the mind map after reorganizing chronologically and saved it to the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Temporal Reasoning",
+          "Logical Reasoning",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-179e55e4b778",
+          "type": "leaf",
+          "name": "Accurately constructed retrieval requests related to Tang Dynasty history covering ten different historical segments",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8ac36544d60b",
+          "type": "leaf",
+          "name": "Correctly filtered historical information that belongs to the Tang Dynasty and can be sorted chronologically",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c5ee7d3325d2",
+          "type": "leaf",
+          "name": "Accurately determined the chronological order of the ten historical events",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-97f89e13e838",
+          "type": "leaf",
+          "name": "Correctly generated history content files that are complete and open normally",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1364480dbc57",
+          "type": "leaf",
+          "name": "Correctly generated a mind map file whose node order matches the timeline and that opens normally",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Temporal Reasoning",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7ec5f088fdec",
+          "type": "leaf",
+          "name": "Stated in the reply the saved file type or file name and the desktop save location",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-bc47a532eabd",
+    "language": "en"
+  },
+  "note": "The generated html file opens with no content."
+}

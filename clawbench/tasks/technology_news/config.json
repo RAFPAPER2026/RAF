@@ -1,0 +1,276 @@
+{
+  "id": "technology_news",
+  "name": "科技领域新闻汇总",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "工具调用-Skill 使用"
+  ],
+  "ability_category_canonical": [
+    "tool.skill"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "我是一名科技产品经理，兴趣广泛，平时喜欢看“AI芯片”和“新能源汽车”。请根据我的需求：1、针对这两个兴趣，各找出3条近期热点。2、自动去除那些标题相似、明显是转载同一事件的重复内容，只保留最核心的一个。3、帮我把这些热点，保留标题，总结出摘要。摘要内容汇总到一个叫“科技领域新闻”的word文档，并存放于/root/Desktop上“最新资讯”的文件夹。",
+  "rubric": {
+    "query": "我是一名科技产品经理，兴趣广泛，平时喜欢看“AI芯片”和“新能源汽车”。请根据我的需求：1、针对这两个兴趣，各找出3条近期热点。2、自动去除那些标题相似、明显是转载同一事件的重复内容，只保留最核心的一个。3、帮我把这些热点，保留标题，总结出摘要。摘要内容汇总到一个叫“科技领域新闻”的word文档，并存放于/root/Desktop上“最新资讯”的文件夹。",
+    "query_id": "technology_news",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d38bdfa8156b",
+        "type": "group",
+        "name": "完成两个兴趣主题的热点收集",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-dcbe6267996b",
+            "type": "leaf",
+            "name": "找出了3条AI芯片近期热点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-3106dcef766e",
+            "type": "leaf",
+            "name": "找出了3条新能源汽车近期热点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e2c539d27a8a",
+        "type": "group",
+        "name": "完成热点去重",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9d9d9f2cfd13",
+            "type": "leaf",
+            "name": "去除了标题相似且明显转载同一事件的重复内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-8fde0377780f",
+            "type": "leaf",
+            "name": "每个保留热点对应唯一核心事件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-14e153202bd1",
+        "type": "group",
+        "name": "完成文档交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-86016d43b16d",
+            "type": "leaf",
+            "name": "生成了包含热点标题与摘要的Word文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-18d397f17933",
+            "type": "leaf",
+            "name": "将Word文档存放到/root/Desktop/最新资讯文件夹",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d90144ea2cfe",
+          "type": "leaf",
+          "name": "准确构造了与AI芯片和新能源汽车对应的近期热点检索条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解",
+            "时间推理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-59ee71345a7b",
+          "type": "group",
+          "name": "重复内容判定与保留策略质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9203ab5a88ce",
+              "type": "leaf",
+              "name": "准确识别了标题相似且指向同一事件的候选重复内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-338326877733",
+              "type": "leaf",
+              "name": "正确保留了重复报道中的核心来源或信息最完整的一条",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ce6d8aa467c7",
+          "type": "group",
+          "name": "热点信息提取与摘要质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7fb739089ffb",
+              "type": "leaf",
+              "name": "准确提取了每条保留热点的标题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-629c8626b47d",
+              "type": "leaf",
+              "name": "正确总结了每条保留热点的关键信息且未编造原文不存在的事实",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6f004a39bb3a",
+          "type": "group",
+          "name": "交付文档可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fada9ba4cb2a",
+              "type": "leaf",
+              "name": "正确创建了名为科技领域新闻的Word文档",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-69f658bd76fa",
+              "type": "leaf",
+              "name": "文档内容按热点条目组织且每条均包含标题与对应摘要",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-599c654d8e81",
+              "type": "leaf",
+              "name": "Word文档可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-21a9802cfdaf",
+          "type": "leaf",
+          "name": "在多步执行中正确保持了主题数量、文档名称和保存路径一致",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "上下文保持",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-672ee848f56f",
+    "language": "zh"
+  },
+  "note": "需要联网搜索"
+}

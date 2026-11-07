@@ -1,0 +1,219 @@
+{
+  "id": "auto_research_paper_idea",
+  "name": "Auto Research Paper Idea",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Task Planning",
+    "API Calling",
+    "General Planning & Strategy",
+    "Context Compression & Summarization"
+  ],
+  "ability_category_canonical": [
+    "plan.general",
+    "tool.api",
+    "plan.strategy",
+    "tool.api",
+    "context.compress"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "I am a student who just started my graduate studies and recently became very interested in the auto research direction. Please:\n1. Search the auto research related papers from the last two years (such as AI Scientist, STORM, Agent Laboratory, etc.), and sort out the core methods and unsolved problems of this direction;\n2. Based on the sorting results, help me conceive a publishable research idea and write it as a complete research proposal, including: research motivation, differences from existing work, experimental design plan (datasets, baselines, evaluation metrics, expected conclusions);\n3. Save it as /root/Desktop/research_proposal.md, with the length controlled within 3000 characters.",
+  "rubric": {
+    "query": "I am a student who just started my graduate studies and recently became very interested in the auto research direction. Please:\n1. Search the auto research related papers from the last two years (such as AI Scientist, STORM, Agent Laboratory, etc.), and sort out the core methods and unsolved problems of this direction;\n2. Based on the sorting results, help me conceive a publishable research idea and write it as a complete research proposal, including: research motivation, differences from existing work, experimental design plan (datasets, baselines, evaluation metrics, expected conclusions);\n3. Save it as /root/Desktop/research_proposal.md, with the length controlled within 3000 characters.",
+    "query_id": "auto_research_paper_idea",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-6e0593bcdfaf",
+        "type": "leaf",
+        "name": "Retrieved the auto research related papers from the last two years and extracted the core methods and unsolved problems",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-d94bc1be358c",
+        "type": "group",
+        "name": "Research proposal content generation objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7e63241828ac",
+            "type": "leaf",
+            "name": "Conceived a publishable research idea based on the sorting results",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-7b61d46f0085",
+            "type": "leaf",
+            "name": "Wrote a complete research proposal containing the research motivation, differences from existing work, and experimental design plan",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Context Retention",
+              "Logical Reasoning",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-23d1004f51de",
+        "type": "leaf",
+        "name": "Generated the Markdown research proposal file /root/Desktop/research_proposal.md with the length controlled within 3000 characters",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-230c0cec37e3",
+          "type": "leaf",
+          "name": "Accurately retrieved the representative papers directly related to auto research from the last two years",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7165c208be53",
+          "type": "leaf",
+          "name": "Correctly distilled the core methods of each paper and distinguished verified capabilities from unsolved problems",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bf04d36d7cc5",
+          "type": "group",
+          "name": "Research plan design quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-daf132eaa6a4",
+              "type": "leaf",
+              "name": "Accurately proposed research motivations that directly connect to the sorting results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-4020279436e2",
+              "type": "leaf",
+              "name": "Correctly explained the differences between the research idea and existing work such as AI Scientist, STORM, and Agent Laboratory",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-26b88ad5cd44",
+              "type": "leaf",
+              "name": "Completely provided the experimental design plan covering datasets, baselines, evaluation metrics, and expected conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7c6e6a905fb4",
+          "type": "leaf",
+          "name": "Correctly mapped the paper sorting results into executable and verifiable research hypotheses",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "General Knowledge",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9bf7db353a77",
+          "type": "leaf",
+          "name": "The generated Markdown proposal file is complete and readable and contains all the sections requested by the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4f1f2b40e64a",
+          "type": "leaf",
+          "name": "Did not confuse paper names, time ranges, or proposal constraints during the multi-step retrieval and writing process",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Context Retention",
+            "Temporal Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-9ecbb9cc1b71",
+    "language": "en"
+  },
+  "note": "There are many auto research frameworks recently; as a beginner, I want you to help me build a runnable demo, use auto research ideas to help me conceive a paper idea, and give an experimental design plan",
+  "env_description": "api_key.txt (demo key) + reading_list.md (the user's read/to-read list, containing information gaps)"
+}

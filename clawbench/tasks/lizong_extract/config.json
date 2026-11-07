@@ -1,0 +1,303 @@
+{
+  "id": "lizong_extract",
+  "name": "理综错题文档提取",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "从桌面 exam_review_workspace/高三上期中全科深度复盘与错题集.docx 里，提取从“三、理综失分点剖析与变式训练”这个一级标题开始，到“四、英语作文高频句型”这个一级标题之前的所有内容，保存成一份新文档，文件名是《期中理综错题特训.docx》，放到同一个文件夹下。\n\n提取出来的内容里，原文中红色高亮标注的部分要保留颜色。理综部分的化学方程式、受力分析表格、图片和公式都要完整保留，不能错位或缺失。新文档的第一个段落（也就是那个理综的大标题）必须保持原来的“标题 1”样式。",
+  "rubric": {
+    "query": "从桌面 exam_review_workspace/高三上期中全科深度复盘与错题集.docx 里，提取从“三、理综失分点剖析与变式训练”这个一级标题开始，到“四、英语作文高频句型”这个一级标题之前的所有内容，保存成一份新文档，文件名是《期中理综错题特训.docx》，放到同一个文件夹下。\n\n提取出来的内容里，原文中红色高亮标注的部分要保留颜色。理综部分的化学方程式、受力分析表格、图片和公式都要完整保留，不能错位或缺失。新文档的第一个段落（也就是那个理综的大标题）必须保持原来的“标题 1”样式。",
+    "query_id": "lizong_extract",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4363e4dc26dd",
+        "type": "leaf",
+        "name": "正确定位了桌面 exam_review_workspace/高三上期中全科深度复盘与错题集.docx 源文档",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-78e906138a1e",
+        "type": "group",
+        "name": "目标内容截取完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-29a7c0eecaf4",
+            "type": "leaf",
+            "name": "正确提取了从“三、理综失分点剖析与变式训练”一级标题开始的内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-a8e316aae375",
+            "type": "leaf",
+            "name": "正确排除了“四、英语作文高频句型”一级标题及其后的内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ba5a27981e7e",
+        "type": "leaf",
+        "name": "正确生成了《期中理综错题特训.docx》新文档并保存到同一文件夹下",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      },
+      {
+        "id": "node-1aa76ab89423",
+        "type": "group",
+        "name": "新文档内容与关键格式保留完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e0e1fc3bc0f6",
+            "type": "leaf",
+            "name": "正确保留了原文中红色高亮标注的颜色",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ae47509d7d44",
+            "type": "leaf",
+            "name": "正确保留了化学方程式内容不缺失",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-d2af4f9644e7",
+            "type": "leaf",
+            "name": "正确保留了受力分析表格不缺失",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-a6e4282b9c5d",
+            "type": "leaf",
+            "name": "正确保留了图片不缺失",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-a2ba41ec3d07",
+            "type": "leaf",
+            "name": "正确保留了公式不缺失",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-54e63749dc25",
+            "type": "leaf",
+            "name": "正确保留了新文档第一个段落为原来的“标题 1”样式",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "上下文保持",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-becfbb61bc3f",
+          "type": "leaf",
+          "name": "准确识别了“三、理综失分点剖析与变式训练”和“四、英语作文高频句型”两个一级标题的边界位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "条件判断",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-42e9e26c6b65",
+          "type": "leaf",
+          "name": "正确使用文档处理工具读取并导出指定区间内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-55aadc3a0807",
+          "type": "group",
+          "name": "导出文档的可用性与版式保真质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dafcc6c00eeb",
+              "type": "leaf",
+              "name": "准确保留了红色高亮标注的颜色属性",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-4ab106243f7e",
+              "type": "leaf",
+              "name": "准确保留了化学方程式和公式的字符结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d42a108c5c88",
+              "type": "leaf",
+              "name": "准确保留了表格的行列结构和单元格内容位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-a8b148e24b18",
+              "type": "leaf",
+              "name": "准确保留了图片在对应内容位置可正常显示",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-56d0c3c911eb",
+              "type": "leaf",
+              "name": "准确保留了首段的“标题 1”样式属性",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8208ddcf25aa",
+          "type": "leaf",
+          "name": "准确核对了新文档只包含起始标题到结束标题之前的内容范围",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "上下文保持",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f84f253728a6",
+          "type": "leaf",
+          "name": "正确处理了导出过程中可能出现的样式丢失或对象缺失并进行了修正",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-88dbb0f2b7cf",
+          "type": "leaf",
+          "name": "回复中包含了新文档生成结果和保存位置的明确说明",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-abf3df021197",
+    "language": "zh"
+  },
+  "note": "从Word文档中精准提取理综部分内容，保留格式和高亮"
+}

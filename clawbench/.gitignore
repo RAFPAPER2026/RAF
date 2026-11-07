@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+pytest-of-*/
+*.egg-info/
+
+# 评测产物（不入库）
+results/*/
+!results/.gitkeep
+
+# 容器工作区（仓库根级，由根 .gitignore 的 clawbench/workspace/ 覆盖）
+# 大体积镜像包（Dockerfile / 模板 / 说明保留）
+docker/openclaw/dist/*.tar
+
+# 本地模型/凭据配置
+tasks/openclaw.json
+configs/claude_settings.json
+configs/model_prices.json
+
+# Node
+node_modules/
+dist/
+
+# IDE / 系统
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

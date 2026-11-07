@@ -1,0 +1,215 @@
+{
+  "id": "team_weekly_report_generation",
+  "name": "Team Weekly Report Generation",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Email Management",
+  "ability_category": [
+    "Instruction Following",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "instruction.follow",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There are several email files in the smart_device_project folder on the desktop: progress_zhangsan_v1.eml, progress_zhangsan_final.eml, progress_lisi.eml, progress_wangwu.eml.\n\nHelp me extract the content of these .eml files, organize it into a Markdown weekly report draft, and output it to smart_device_project/weekly_summary.md.\n\nUse a level-2 heading for each team member's name, and under it present the following items as unordered lists: team member name, module responsible for, progress completed this week, plan for next week, current problems encountered.\n\nNote: Zhang San sent two emails; use the one with the latest sending time as authoritative and filter out the older one.",
+  "rubric": {
+    "query": "There are several email files in the smart_device_project folder on the desktop: progress_zhangsan_v1.eml, progress_zhangsan_final.eml, progress_lisi.eml, progress_wangwu.eml.\n\nHelp me extract the content of these .eml files, organize it into a Markdown weekly report draft, and output it to smart_device_project/weekly_summary.md.\n\nUse a level-2 heading for each team member's name, and under it present the following items as unordered lists: team member name, module responsible for, progress completed this week, plan for next week, current problems encountered.\n\nNote: Zhang San sent two emails; use the one with the latest sending time as authoritative and filter out the older one.",
+    "query_id": "team_weekly_report_generation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-845a3dbabe74",
+        "type": "leaf",
+        "name": "Extracted the valid content of each .eml file in the smart_device_project folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-8929247f8ee4",
+        "type": "group",
+        "name": "Handled the Duplicate Email Filtering Requirement for Zhang San",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-fb56d1ae4b9e",
+            "type": "leaf",
+            "name": "Kept the content of Zhang San's latest email by sending time",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-949d02c924f6",
+            "type": "leaf",
+            "name": "Filtered out the content of Zhang San's older email",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-6ec4020718fb",
+        "type": "leaf",
+        "name": "Generated the Markdown weekly report draft and wrote it to smart_device_project/weekly_summary.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d204cf63824b",
+          "type": "leaf",
+          "name": "Correctly read the content and sending-time fields of the target .eml files in the smart_device_project folder",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c28deba7ce4a",
+          "type": "leaf",
+          "name": "Accurately determined which of Zhang San's two emails has the latest sending time",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Temporal Reasoning",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eac08d10001f",
+          "type": "leaf",
+          "name": "Accurately extracted the information for each team member's name, responsible module, progress completed this week, plan for next week, and current problems",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d43fdabfad87",
+          "type": "group",
+          "name": "Weekly Report Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e86f4855cc50",
+              "type": "leaf",
+              "name": "Correctly organized the Markdown structure so that each team member uses a level-2 heading",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-c68644129e49",
+              "type": "leaf",
+              "name": "Correctly organized the team member name, responsible module, progress completed this week, plan for next week, and current problems as unordered list items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-8bed5b08f644",
+              "type": "leaf",
+              "name": "The generated weekly_summary.md file opens normally and the Markdown text has no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2bd4177483fa",
+          "type": "leaf",
+          "name": "Marked missing information instead of fabricating non-existent weekly report content when fields were missing or email content formats were inconsistent",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6effc0a18f01",
+          "type": "leaf",
+          "name": "Explained to the user that Zhang San's latest email was used and that the weekly_summary.md output result was completed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-5ba9fc0bbac7",
+    "language": "en"
+  },
+  "note": "Extract team member progress information from email files and generate a Markdown weekly report."
+}

@@ -1,0 +1,415 @@
+{
+  "id": "weekly_priority_briefing",
+  "name": "每周要事简报",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "任务规划",
+    "上下文管理",
+    "任务规划-通用规划与策略制定",
+    "上下文管理-状态跟踪与一致性维护",
+    "工具使用-CLI调用"
+  ],
+  "ability_category_canonical": [
+    "plan.general",
+    "context.general",
+    "plan.strategy",
+    "context.state",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "请担任我的 Personal Chief of Staff。桌面上有我过去三个月的日程（calendar.ics）、待办清单（todo.md）和目标文档（goals.md，里面写了我的年度目标和当前优先级）。\n请你建立一套每周简报机制：每周一早上8点，梳理出「这周最重要的三件事」——要结合我的长期目标、日历上的既定安排和逾期未完成的事项来判断，并说明每件事为什么重要、建议安排在什么时间。\n第一次先立刻生成本周的简报保存到 /root/Desktop/weekly_briefing/；然后把每周一自动生成的定时任务也配置好，配置文件保存到 /root/Desktop/weekly_briefing/schedule.json。",
+  "rubric": {
+    "query": "请担任我的 Personal Chief of Staff。桌面上有我过去三个月的日程（calendar.ics）、待办清单（todo.md）和目标文档（goals.md，里面写了我的年度目标和当前优先级）。\n请你建立一套每周简报机制：每周一早上8点，梳理出「这周最重要的三件事」——要结合我的长期目标、日历上的既定安排和逾期未完成的事项来判断，并说明每件事为什么重要、建议安排在什么时间。\n第一次先立刻生成本周的简报保存到 /root/Desktop/weekly_briefing/；然后把每周一自动生成的定时任务也配置好，配置文件保存到 /root/Desktop/weekly_briefing/schedule.json。",
+    "query_id": "weekly_priority_briefing",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-dd48b0503fcb",
+        "type": "leaf",
+        "name": "正确读取了桌面上的 calendar.ics、todo.md 和 goals.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-d381372f0b16",
+        "type": "group",
+        "name": "首次每周简报已完成产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4f10bcd5a028",
+            "type": "leaf",
+            "name": "生成了本周简报文件并保存到 /root/Desktop/weekly_briefing/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-2189d25bd015",
+            "type": "leaf",
+            "name": "本周简报包含了这周最重要的三件事",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-4cc3cf1a0a23",
+        "type": "group",
+        "name": "本周简报内容满足用户指定结构",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-96bf95f0ec9a",
+            "type": "leaf",
+            "name": "本周简报为三件最重要的事项分别说明了为什么重要",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-a24a4c7e79fd",
+            "type": "leaf",
+            "name": "本周简报为三件最重要的事项分别给出了建议安排时间",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-6454e5487efc",
+        "type": "group",
+        "name": "自动生成简报的定时任务已配置",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b810df9cbc01",
+            "type": "leaf",
+            "name": "生成了每周一早上8点自动生成简报的定时任务配置文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "时间推理"
+            ]
+          },
+          {
+            "id": "node-da5c6c17b4e8",
+            "type": "leaf",
+            "name": "将定时任务配置文件保存到 /root/Desktop/weekly_briefing/schedule.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-15b435d2a8b6",
+          "type": "group",
+          "name": "源信息读取与提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-73732a661b9a",
+              "type": "leaf",
+              "name": "准确提取了 goals.md 中的年度目标和当前优先级",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-19773666129f",
+              "type": "leaf",
+              "name": "准确提取了 todo.md 中逾期未完成的事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-277cc87859c1",
+              "type": "leaf",
+              "name": "准确提取了 calendar.ics 中本周已有安排的时间信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "时间推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-39cde43a9a6e",
+          "type": "group",
+          "name": "优先级判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c80520dabb1b",
+              "type": "leaf",
+              "name": "准确判断了任务与长期目标和当前优先级的关联程度",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "意图理解",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-41d9c205bf97",
+              "type": "leaf",
+              "name": "准确判断了逾期事项是否应进入本周最重要三件事",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5db68d5cde4e",
+              "type": "leaf",
+              "name": "准确筛选出本周最重要的三件事且未混入第四项或无关事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1766790f2926",
+          "type": "group",
+          "name": "时间安排判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1c55ecb06331",
+              "type": "leaf",
+              "name": "准确识别了本周已有安排中的可用时间段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-874291428f56",
+              "type": "leaf",
+              "name": "正确避免将建议安排时间与日历中已有事项重叠",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-711843ea559d",
+              "type": "leaf",
+              "name": "正确处理了逾期事项与本周既定安排的时序关系",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "条件判断",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7c6a7dffa5ac",
+          "type": "group",
+          "name": "简报交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cd82cd8e844d",
+              "type": "leaf",
+              "name": "生成的本周简报文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b3a817ae323d",
+              "type": "leaf",
+              "name": "简报文件按三件事项分别列出事项内容、重要原因和建议时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-8b8bc0125b18",
+              "type": "leaf",
+              "name": "简报文件中的事项表述与源文件内容一致且未编造不存在的安排或任务",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-acd726e0995c",
+          "type": "group",
+          "name": "定时任务配置质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b83157348f47",
+              "type": "leaf",
+              "name": "正确设置了每周一08:00触发的调度时间字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-bfd708848dc1",
+              "type": "leaf",
+              "name": "schedule.json 中包含了生成简报所需的输入文件位置和输出目录信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-88e78e664a7f",
+              "type": "leaf",
+              "name": "schedule.json 文件可正常解析为有效 JSON",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-21ad0c1ffe3c",
+          "type": "group",
+          "name": "异常处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-42f378fc0e4f",
+              "type": "leaf",
+              "name": "在源文件缺失或解析失败时明确记录了错误对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-fbb09bea83f7",
+              "type": "leaf",
+              "name": "在无法完成自动配置时提供了可执行的补救信息或替代步骤",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a2e4727853f1",
+    "language": "zh"
+  },
+  "note": "Personal Chief of Staff\n“假设你是我的私人助理，每周一早上告诉我这周最重要的三件事。”\n需要：\n持续理解用户目标。",
+  "env_description": "calendar.ics（下周日程+上周遗留）+ todo.md（含逾期项）+ goals.md（年度目标优先级）；需综合判断出本周最重要的三件事并配置定时任务"
+}

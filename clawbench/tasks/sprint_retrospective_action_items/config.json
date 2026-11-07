@@ -1,0 +1,381 @@
+{
+  "id": "sprint_retrospective_action_items",
+  "name": "冲刺复盘任务生成",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面Agile_Tracking文件夹下有个BMS_Sprint_V2.4_Retrospective的md文件，是BMS嵌入式团队V2.4版本的冲刺回顾会纪要。帮我把所有未完成的行动项捞出来，做成一份追踪用的PPTX幻灯片。\n\n纪要里的行动项是checkbox形式，已完成的打勾\"- [x]\"，未完成的是\"- [ ]\"。我只要那些未完成的、并且通过\"@\"指派了具体负责人的条目。\n\n输出演示文稿按负责人分组，每个人独占一页slide，页面标题用负责人名字，正文把他名下的待办任务逐条列出。任务描述里带\"[Urgent]\"标签的，字体设成红色。第一页做数据概览，汇总每个负责人的待办任务总数，按数量从高到低降序排列。\n\n风格极简，纯色背景。输出文件命名为Action_Items_Tracking.pptx，存到Agile_Tracking目录下。",
+  "rubric": {
+    "query": "桌面Agile_Tracking文件夹下有个BMS_Sprint_V2.4_Retrospective的md文件，是BMS嵌入式团队V2.4版本的冲刺回顾会纪要。帮我把所有未完成的行动项捞出来，做成一份追踪用的PPTX幻灯片。\n\n纪要里的行动项是checkbox形式，已完成的打勾\"- [x]\"，未完成的是\"- [ ]\"。我只要那些未完成的、并且通过\"@\"指派了具体负责人的条目。\n\n输出演示文稿按负责人分组，每个人独占一页slide，页面标题用负责人名字，正文把他名下的待办任务逐条列出。任务描述里带\"[Urgent]\"标签的，字体设成红色。第一页做数据概览，汇总每个负责人的待办任务总数，按数量从高到低降序排列。\n\n风格极简，纯色背景。输出文件命名为Action_Items_Tracking.pptx，存到Agile_Tracking目录下。",
+    "query_id": "sprint_retrospective_action_items",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-52af0ed0113e",
+        "type": "leaf",
+        "name": "正确读取了桌面 Agile_Tracking 文件夹下的 BMS_Sprint_V2.4_Retrospective.md 文件内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-d86c90a319bc",
+        "type": "group",
+        "name": "行动项筛选目标达成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ee44bd4b2c9b",
+            "type": "leaf",
+            "name": "正确提取了所有未完成且包含 @负责人的行动项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-e51a74c9bd21",
+            "type": "leaf",
+            "name": "正确排除了已完成或未通过 @ 指派负责人的条目",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5f684b986ef5",
+        "type": "group",
+        "name": "PPTX 交付物生成目标达成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2f13705db4e7",
+            "type": "leaf",
+            "name": "生成了按负责人分组的 Action_Items_Tracking.pptx 演示文稿",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-82509ccd5a4b",
+            "type": "group",
+            "name": "演示文稿内容与保存要求达成",
+            "combinator": "and",
+            "children": [
+              {
+                "id": "node-4ddf1313a165",
+                "type": "leaf",
+                "name": "第一页包含了每个负责人的待办任务总数汇总",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "信息筛选",
+                  "沟通表达"
+                ]
+              },
+              {
+                "id": "node-83f0cbc793a1",
+                "type": "leaf",
+                "name": "第一页按待办任务总数从高到低排列了负责人",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "逻辑推理",
+                  "沟通表达"
+                ]
+              },
+              {
+                "id": "node-42d8f0944cad",
+                "type": "leaf",
+                "name": "每个负责人各自生成了一页以负责人名字为标题的幻灯片",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "意图理解",
+                  "工具使用",
+                  "上下文保持"
+                ]
+              },
+              {
+                "id": "node-89767c7e5d93",
+                "type": "leaf",
+                "name": "每页正文逐条列出了该负责人名下的待办任务",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "信息筛选",
+                  "沟通表达",
+                  "上下文保持"
+                ]
+              },
+              {
+                "id": "node-2249838bfa25",
+                "type": "leaf",
+                "name": "任务描述中带有 [Urgent] 标签的条目被设置为红色字体",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "信息筛选",
+                  "工具使用"
+                ]
+              },
+              {
+                "id": "node-8d481b0926c2",
+                "type": "leaf",
+                "name": "将 Action_Items_Tracking.pptx 保存到了 Agile_Tracking 目录下",
+                "combinator": "and",
+                "children": [],
+                "tags": [
+                  "工具使用"
+                ]
+              }
+            ],
+            "tags": []
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a6afe26e0400",
+          "type": "leaf",
+          "name": "准确定位了桌面 Agile_Tracking 目录中的目标 md 文件并读取完整内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-835ae5307924",
+          "type": "group",
+          "name": "行动项解析与筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8ba761f4eceb",
+              "type": "leaf",
+              "name": "准确识别了 checkbox 语法中 - [ ] 表示未完成状态",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-e0e3fdf9aa18",
+              "type": "leaf",
+              "name": "准确识别了条目中通过 @ 标记的负责人信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-6e085b037e4a",
+              "type": "leaf",
+              "name": "准确排除了 - [x] 条目和未包含 @负责人的条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c62ad7fa88d9",
+          "type": "group",
+          "name": "分组统计与排序质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ab87ed0ac9ed",
+              "type": "leaf",
+              "name": "正确将每条待办任务归入对应的负责人分组",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-207c5fc2c4ac",
+              "type": "leaf",
+              "name": "正确统计了每个负责人的待办任务数量",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c45f5a6f61a6",
+              "type": "leaf",
+              "name": "正确按待办任务数量对负责人执行了降序排序",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-489634f93214",
+          "type": "group",
+          "name": "演示文稿结构与格式执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2e6418c96a41",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的 PPTX 文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-b29438e399ff",
+              "type": "leaf",
+              "name": "演示文稿第一页包含负责人汇总且后续每位负责人各占一页",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-79faf7aac10b",
+              "type": "leaf",
+              "name": "负责人页的标题与该页任务归属的负责人名称一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f8f6eda13f02",
+              "type": "leaf",
+              "name": "带有 [Urgent] 标签的任务在幻灯片中被设置为红色字体",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-948a84643faa",
+          "type": "group",
+          "name": "交付物可用性与文件要求质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-969c8053baaa",
+              "type": "leaf",
+              "name": "演示文稿使用纯色背景且未加入与任务追踪无关的装饰元素",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-afb89319d018",
+              "type": "leaf",
+              "name": "每页任务文本未出现乱码、明显截断或超出页面无法阅读的情况",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-82b748187813",
+              "type": "leaf",
+              "name": "输出文件命名为 Action_Items_Tracking.pptx 且保存位置位于 Agile_Tracking 目录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-00c0189c72e6",
+    "language": "zh"
+  },
+  "note": "从冲刺回顾会议纪要中提取未完成行动项生成PPT追踪幻灯片"
+}

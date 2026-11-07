@@ -1,0 +1,145 @@
+{
+  "id": "music_charts",
+  "name": "朋友圈音乐文案",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "创意生成",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "打开热门音乐榜单网页，提取歌曲名字，搭配创作走心短句，写一个朋友圈文案",
+  "rubric": {
+    "query": "打开热门音乐榜单网页，提取歌曲名字，搭配创作走心短句，写一个朋友圈文案",
+    "query_id": "music_charts",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1ef625a85721",
+        "type": "leaf",
+        "name": "正确打开了热门音乐榜单网页",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-adb5b186b515",
+        "type": "leaf",
+        "name": "正确提取了榜单中的歌曲名字",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-67c0e7899c9f",
+        "type": "leaf",
+        "name": "成功产出了一个包含歌曲名字和走心短句的朋友圈文案",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "沟通表达",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-182e149c6961",
+          "type": "leaf",
+          "name": "正确选择了可访问且与热门音乐榜单对应的网页来源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c68a963fc714",
+          "type": "leaf",
+          "name": "准确提取了网页中实际出现的歌曲名字",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8710f4f822b3",
+          "type": "group",
+          "name": "朋友圈文案结果质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fcbdba5220af",
+              "type": "leaf",
+              "name": "正确在朋友圈文案中引用了已提取的歌曲名字",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-fae49b9843b3",
+              "type": "leaf",
+              "name": "正确为每个引用的歌曲名字搭配了走心短句",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-e6da80d780b8",
+              "type": "leaf",
+              "name": "正确输出了可直接发布的朋友圈文案格式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-59dab1694bc8",
+    "language": "zh"
+  },
+  "note": "pyq文案搭配自己脑海里想到的一些近期热门歌曲。"
+}

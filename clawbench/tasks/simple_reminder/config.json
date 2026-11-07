@@ -1,0 +1,112 @@
+{
+  "id": "simple_reminder",
+  "name": "简单待办提醒",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [],
+  "language": "zh",
+  "prompt": "下周六上午十点，我要去医院看望朋友张三，帮我记录在桌面的'待办.txt'中。",
+  "rubric": {
+    "query": "下周六上午十点，我要去医院看望朋友张三，帮我记录在桌面的'待办.txt'中。",
+    "query_id": "simple_reminder",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-eac93a35d423",
+        "type": "leaf",
+        "name": "正确识别了下周六上午十点去医院看望朋友张三的待办事项信息",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "时间推理",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-0a71990642f0",
+        "type": "leaf",
+        "name": "成功在桌面的待办.txt中写入了该待办事项记录",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6dee92b170c1",
+          "type": "leaf",
+          "name": "准确解析了下周六上午十点对应的日期时间并用于写入",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-01fa953fb7cb",
+          "type": "leaf",
+          "name": "正确定位了桌面的待办.txt并对目标文件执行了写入操作",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b3d5d96d10ae",
+          "type": "leaf",
+          "name": "准确写入了包含医院、朋友张三和看望事项的待办内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-90e70af8b3ad",
+          "type": "leaf",
+          "name": "写入后的待办.txt内容可正常打开且新增记录可被识别为一条独立待办事项",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-efe3ee04163f",
+    "language": "zh"
+  }
+}

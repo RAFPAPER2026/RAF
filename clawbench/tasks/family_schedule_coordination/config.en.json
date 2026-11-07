@@ -1,0 +1,343 @@
+{
+  "id": "family_schedule_coordination",
+  "name": "Family Schedule Coordination",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "Long-Context Understanding",
+    "Constraint Satisfaction & Scheduling",
+    "State Tracking & Consistency"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "context.long",
+    "plan.scheduling",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me arrange the family affairs for next month (2026年10月). The desktop family_calendars/ folder contains the calendars of our family of four (爸爸.ics, 妈妈.ics, 孩子A.ics, 孩子B.ics), and a family_notes.md that records fixed arrangements (such as piano lessons every Wednesday) and to-do items (such as vaccine appointments and parent-teacher meetings).\nPlease: 1) Summarize the whole family's schedule for next month and generate a shared calendar family_october.ics; 2) Mark the items with time conflicts that need coordination; 3) Assign all to-do items to specific dates and responsible persons, ensuring that no one forgets important matters; 4) Generate a textual explanation /root/Desktop/家庭事务安排.md that includes each person's view.",
+  "rubric": {
+    "query": "Help me arrange the family affairs for next month (2026年10月). The desktop family_calendars/ folder contains the calendars of our family of four (爸爸.ics, 妈妈.ics, 孩子A.ics, 孩子B.ics), and a family_notes.md that records fixed arrangements (such as piano lessons every Wednesday) and to-do items (such as vaccine appointments and parent-teacher meetings).\nPlease: 1) Summarize the whole family's schedule for next month and generate a shared calendar family_october.ics; 2) Mark the items with time conflicts that need coordination; 3) Assign all to-do items to specific dates and responsible persons, ensuring that no one forgets important matters; 4) Generate a textual explanation /root/Desktop/家庭事务安排.md that includes each person's view.",
+    "query_id": "family_schedule_coordination",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-6d5b60b58f33",
+        "type": "leaf",
+        "name": "Generated the shared family calendar file family_october.ics for next month",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-c94fdab76cec",
+        "type": "group",
+        "name": "Completed time conflict identification and presentation",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-2ca0782e76a4",
+            "type": "leaf",
+            "name": "Marked the items in the shared calendar with time conflicts that need coordination",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-2e4cca3b44c0",
+            "type": "leaf",
+            "name": "Listed the time conflict items that need coordination in the textual explanation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-cd52e81e79ba",
+        "type": "group",
+        "name": "Completed to-do scheduling and responsibility assignment",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c62780e3e778",
+            "type": "leaf",
+            "name": "Assigned the to-do items in family_notes.md to specific dates in 2026年10月",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Temporal Reasoning"
+            ]
+          },
+          {
+            "id": "node-a038cc47df2b",
+            "type": "leaf",
+            "name": "Assigned a responsible person to each to-do item",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9b0dc8f2fdb2",
+        "type": "group",
+        "name": "Completed the textual explanation delivery",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a4dc48c6f687",
+            "type": "leaf",
+            "name": "Generated the /root/Desktop/家庭事务安排.md file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-0bda04c7db20",
+            "type": "leaf",
+            "name": "Included the respective views of 爸爸, 妈妈, 孩子A, and 孩子B in the textual explanation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-b3e48b36f30f",
+          "type": "leaf",
+          "name": "Correctly read the four personal calendar files in the family_calendars/ directory and family_notes.md",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-cce5b7440fd5",
+          "type": "group",
+          "name": "Source information extraction quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-55c2f9d6b41a",
+              "type": "leaf",
+              "name": "Accurately extracted the calendar events within the 2026年10月 range",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-53e3cc6bf5b6",
+              "type": "leaf",
+              "name": "Correctly identified the fixed arrangements and to-do items in family_notes.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-04923aba0d44",
+          "type": "group",
+          "name": "Conflict identification quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fdcef542b9a2",
+              "type": "leaf",
+              "name": "Accurately determined the items in the shared calendar that have overlapping times or adjacent incompatibilities",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-0dc68bed0fad",
+              "type": "leaf",
+              "name": "Correctly retained the person and time information involved in the conflicting items",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9fa29d7cc22a",
+          "type": "group",
+          "name": "To-do scheduling and task assignment quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-115db35fc3ff",
+              "type": "leaf",
+              "name": "Correctly scheduled each to-do item to a specific date in 2026年10月",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-da1429d5d1c6",
+              "type": "leaf",
+              "name": "Correctly assigned a unique responsible person or a clear co-responsible person to each to-do item",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-2558da6d6d15",
+              "type": "leaf",
+              "name": "Did not omit the important to-do items recorded in family_notes.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9e25a498d2db",
+          "type": "group",
+          "name": "Deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4beeb3264943",
+              "type": "leaf",
+              "name": "The generated family_october.ics file can be opened normally by calendar applications and contains event start time information",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-bce9b3070050",
+              "type": "leaf",
+              "name": "The generated /root/Desktop/家庭事务安排.md file contains the shared overview, conflict items, to-do assignments, and the four people's views",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-35fd8589fe48",
+          "type": "group",
+          "name": "Exception handling and result communication quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-15816b62fa98",
+              "type": "leaf",
+              "name": "Clearly recorded exceptions and took corrective measures when files were missing, parsing failed, or date information was insufficient",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-db2b31c56d19",
+              "type": "leaf",
+              "name": "The reply explains the generated files and their corresponding purposes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e8a64df99a6b",
+    "language": "en"
+  },
+  "note": "Family coordination\n\n“Help me arrange the family affairs for next month, ensuring that no one forgets important matters.”\n\nNeeds:\n\nMulti-person calendar reasoning.",
+  "env_description": "family_calendars/ (ics files of the family of four) + family_notes.md (fixed arrangements + to-do priorities); hard constraints are planted, such as the parent-teacher meeting conflicting with both parents on October 8, and vaccination/driver's license/family portrait"
+}

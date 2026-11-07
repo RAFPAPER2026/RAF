@@ -1,0 +1,177 @@
+{
+  "id": "historical_photos",
+  "name": "历史思维导图总结",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop上有个历史思维导图文件夹，里面存放着三张jpg的图片，将里面的内容总结成一份文档保存在相同文件夹",
+  "rubric": {
+    "query": "/root/Desktop上有个历史思维导图文件夹，里面存放着三张jpg的图片，将里面的内容总结成一份文档保存在相同文件夹",
+    "query_id": "historical_photos",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-516795035141",
+        "type": "leaf",
+        "name": "正确读取了历史思维导图文件夹中的三张jpg图片内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-76b07185a50b",
+        "type": "leaf",
+        "name": "生成了总结文档并保存在历史思维导图文件夹中",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-5a2a6824f4f7",
+          "type": "leaf",
+          "name": "正确定位了/root/Desktop下的历史思维导图文件夹并识别其中需要处理的三张jpg图片",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "检索策略",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5ac2619575f9",
+          "type": "group",
+          "name": "图片内容提取与整合质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a936c10cf290",
+              "type": "leaf",
+              "name": "准确提取了每张jpg图片中的关键信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-07d9df1dc8e4",
+              "type": "leaf",
+              "name": "正确区分了三张jpg图片之间的重复信息与互补信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-84327b73e898",
+          "type": "group",
+          "name": "总结文档内容质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5ae486037c45",
+              "type": "leaf",
+              "name": "正确组织了总结文档的章节或段落结构以覆盖三张jpg图片的主要内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-4aa3c5b1ed48",
+              "type": "leaf",
+              "name": "准确写入了来自图片的关键信息且未加入图片中不存在的事实",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e1601efbf3bf",
+          "type": "group",
+          "name": "交付物可用性与落盘结果",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ee6e15ca915b",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的文档文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-a3ef0313593c",
+              "type": "leaf",
+              "name": "正确将文档保存到历史思维导图文件夹中且文件格式可被最终用户直接使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-a736184cbad3",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,320 @@
+{
+  "id": "meeting_action_items_extraction",
+  "name": "会议待办提取",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "从桌面 AW_Campaign_Notes/AW_SEO_Marketing_Sync.docx 里提取所有待办任务，只保留那些有明确负责人和具体截止时间或承诺交付时间的任务。方向性建议（没有负责人和截止时间的）过滤掉。\n\n按负责人分组，用二级或三级标题区分。每个负责人下面用列表列出任务，每条任务包含：任务描述、涉及的平台或渠道（如官网、小红书、Pinterest、Instagram等）、截止时间。\n\n如果原文中任务提到了“加急”、“ASAP”，或者截止时间距离今天在3天以内，就在该任务前面加一个 🔥 emoji。\n\n输出成 Markdown 文件，保存到桌面 AW_Campaign_Notes/AW_SEO_ActionItems.md。",
+  "rubric": {
+    "query": "从桌面 AW_Campaign_Notes/AW_SEO_Marketing_Sync.docx 里提取所有待办任务，只保留那些有明确负责人和具体截止时间或承诺交付时间的任务。方向性建议（没有负责人和截止时间的）过滤掉。\n\n按负责人分组，用二级或三级标题区分。每个负责人下面用列表列出任务，每条任务包含：任务描述、涉及的平台或渠道（如官网、小红书、Pinterest、Instagram等）、截止时间。\n\n如果原文中任务提到了“加急”、“ASAP”，或者截止时间距离今天在3天以内，就在该任务前面加一个 🔥 emoji。\n\n输出成 Markdown 文件，保存到桌面 AW_Campaign_Notes/AW_SEO_ActionItems.md。",
+    "query_id": "meeting_action_items_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-64f3cfbe018d",
+        "type": "leaf",
+        "name": "正确读取了桌面 AW_Campaign_Notes/AW_SEO_Marketing_Sync.docx 的内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-1ec108a93017",
+        "type": "group",
+        "name": "正确筛选出符合条件的任务",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-22d3701d9317",
+            "type": "leaf",
+            "name": "提取了原文中有明确负责人的待办任务",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-d01abe45946d",
+            "type": "leaf",
+            "name": "提取了原文中有具体截止时间或承诺交付时间的待办任务",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "时间推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-df4ef9e7ca22",
+            "type": "leaf",
+            "name": "过滤掉了原文中没有负责人和截止时间的方向性建议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-04b35b33b59d",
+        "type": "group",
+        "name": "按指定 Markdown 结构产出了结果文件",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-582c027ff253",
+            "type": "leaf",
+            "name": "生成了桌面 AW_Campaign_Notes/AW_SEO_ActionItems.md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-66bb38a063c4",
+            "type": "leaf",
+            "name": "按负责人分组输出了任务列表",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-4a65b07837ee",
+            "type": "leaf",
+            "name": "在每条任务中包含了任务描述、涉及的平台或渠道、截止时间",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-224e957f9b38",
+            "type": "leaf",
+            "name": "对原文中提到加急或ASAP、或截止时间距离今天在3天以内的任务添加了🔥标记",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e1a26b2eac3d",
+          "type": "leaf",
+          "name": "准确读取了文档中的正文内容而未遗漏任务相关段落",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fb8e9cc5b8d8",
+          "type": "group",
+          "name": "任务筛选判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dc74d6c0be5b",
+              "type": "leaf",
+              "name": "准确识别了任务的负责人姓名或明确责任角色",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3a8287d1134a",
+              "type": "leaf",
+              "name": "准确识别了任务的具体截止时间或承诺交付时间表达",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-de8de88e5ecc",
+              "type": "leaf",
+              "name": "准确排除了没有负责人或没有时间承诺的方向性建议",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-55861562c7e2",
+          "type": "group",
+          "name": "结构化整理与优先级标记质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-253e5cd2f21e",
+              "type": "leaf",
+              "name": "正确将相同负责人的任务归并到同一标题分组下",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-2fda500547d2",
+              "type": "leaf",
+              "name": "准确提取了每条任务涉及的平台或渠道信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-d18b692f9896",
+              "type": "leaf",
+              "name": "正确判断了截止时间距离今天是否在3天以内",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-604259bc2d74",
+              "type": "leaf",
+              "name": "准确对原文含有加急或ASAP标记的任务添加了🔥标记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-b1691e202526",
+          "type": "group",
+          "name": "Markdown 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0153b8a14c11",
+              "type": "leaf",
+              "name": "生成的 Markdown 文件可正常打开且为 .md 格式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-7a0328189b78",
+              "type": "leaf",
+              "name": "Markdown 中使用了二级或三级标题区分负责人分组",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-9fc901a7a3e3",
+              "type": "leaf",
+              "name": "每条列表项都包含任务描述、平台或渠道、截止时间三个字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-9efa4fffde53",
+          "type": "leaf",
+          "name": "在执行中识别文档读取失败或字段缺失时采取了重试或跳过处理",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-b34a23b2b6e2",
+    "language": "zh"
+  },
+  "note": "从会议记录中提取待办事项并按负责人整理"
+}

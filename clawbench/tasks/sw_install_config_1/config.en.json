@@ -1,0 +1,328 @@
+{
+  "id": "sw_install_config_1",
+  "name": "Install and Configure Neovim",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Long-Context Understanding",
+    "Exception Handling & Repair",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "reflection.repair",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 500,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "According to the content of 《如何安装和使用Neovim.pdf》 on the desktop, access the network to install and configure Neovim on my computer and complete the configuration. Record your installation process in a docx file, save the screenshots of the completed installation into the docx as well, and place it in the result directory on the desktop.",
+  "rubric": {
+    "query": "According to the content of 《如何安装和使用Neovim.pdf》 on the desktop, access the network to install and configure Neovim on my computer and complete the configuration. Record your installation process in a docx file, save the screenshots of the completed installation into the docx as well, and place it in the result directory on the desktop.",
+    "query_id": "sw_install_config_1",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a30008d7d1cb",
+        "type": "leaf",
+        "name": "Correctly read the content of 《如何安装和使用Neovim.pdf》 on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-6661c4e0997b",
+        "type": "group",
+        "name": "Neovim Installation and Configuration Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-215b652a241a",
+            "type": "leaf",
+            "name": "Correctly installed Neovim on the user's computer",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Retrieval Strategy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-0debc4e338ef",
+            "type": "leaf",
+            "name": "Correctly completed the Neovim configuration",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-764662ee3e9d",
+        "type": "group",
+        "name": "Deliverable Production Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-64d4b09335ba",
+            "type": "leaf",
+            "name": "Correctly generated a docx file recording the installation process",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-0902d102b435",
+            "type": "leaf",
+            "name": "Correctly saved the screenshot of the completed installation into the docx file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-01bf3444ba0c",
+            "type": "leaf",
+            "name": "Correctly placed the docx file in the result directory on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4fc25f4b285f",
+          "type": "leaf",
+          "name": "Accurately extracted the operation requirements related to Neovim installation and configuration from the PDF",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e952fb199b44",
+          "type": "group",
+          "name": "Neovim Installation Path Selection and Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9a34834acf29",
+              "type": "leaf",
+              "name": "Correctly identified the user's computer operating system and the corresponding Neovim installation method",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-8ff737ba7920",
+              "type": "leaf",
+              "name": "Accurately used the installation commands or installer parameters matching the operating system",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4bdc167ba9e2",
+          "type": "group",
+          "name": "Neovim Configuration Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5dccc58b2cde",
+              "type": "leaf",
+              "name": "Correctly created the directory and file where the Neovim configuration file resides",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-89a3107cb363",
+              "type": "leaf",
+              "name": "Accurately wrote configuration content that Neovim can load normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-46aa96eceff9",
+              "type": "leaf",
+              "name": "Correctly verified that the configuration took effect",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-c3d23becb430",
+          "type": "group",
+          "name": "Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-efbfbf82210d",
+              "type": "leaf",
+              "name": "Correctly identified the error messages during installation or configuration",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-8203686401d4",
+              "type": "leaf",
+              "name": "Accurately performed corrective actions targeting the causes of the errors",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a2b095d15428",
+          "type": "group",
+          "name": "DOCX Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5c44a4831243",
+              "type": "leaf",
+              "name": "Correctly generated a docx file that opens normally",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-af2f6d4f2263",
+              "type": "leaf",
+              "name": "Accurately recorded the key steps of installation and configuration and their corresponding results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6d0815412ff3",
+              "type": "leaf",
+              "name": "Correctly inserted screenshots that show the installation completion status",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-389d609a391d",
+              "type": "leaf",
+              "name": "Correctly saved the docx file to the result directory on the desktop with a file name that meets the document format requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2fef3f2d4421",
+          "type": "leaf",
+          "name": "Accurately explained to the user the installation result, configuration result, and where the deliverable is saved",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-eeab430cf4b6",
+    "language": "en"
+  },
+  "note": "Tests the ability to read HTML files, and to learn content and break it down and plan it into actions."
+}

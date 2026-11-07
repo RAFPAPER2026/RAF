@@ -1,0 +1,160 @@
+{
+  "id": "mind_map",
+  "name": "唐朝历史思维导图",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "反思和修复-异常处理和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "帮我搜索十段唐朝历史，按文件保存到/root/Desktop，然后按时间重新生成一份思维导图，放到桌面。",
+  "rubric": {
+    "query": "帮我搜索十段唐朝历史，按文件保存到/root/Desktop，然后按时间重新生成一份思维导图，放到桌面。",
+    "query_id": "mind_map",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-61b718451638",
+        "type": "leaf",
+        "name": "正确检索了十段唐朝历史内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-b90829df887d",
+        "type": "leaf",
+        "name": "按文件生成并保存了唐朝历史内容交付物到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-cb09ff6706f2",
+        "type": "leaf",
+        "name": "按时间重新整理后生成了思维导图并保存到桌面",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "时间推理",
+          "逻辑推理",
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-179e55e4b778",
+          "type": "leaf",
+          "name": "准确构造了与唐朝历史相关的检索请求并覆盖十个不同历史片段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8ac36544d60b",
+          "type": "leaf",
+          "name": "正确筛选了属于唐朝且可按时间排序的历史信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c5ee7d3325d2",
+          "type": "leaf",
+          "name": "准确判断了十段历史事件的时间先后关系",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-97f89e13e838",
+          "type": "leaf",
+          "name": "正确生成了内容完整且可正常打开使用的历史内容文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1364480dbc57",
+          "type": "leaf",
+          "name": "正确生成了节点顺序与时间线一致且可正常打开使用的思维导图文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "时间推理",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7ec5f088fdec",
+          "type": "leaf",
+          "name": "回复中说明了已保存的文件类型或文件名以及桌面保存位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-bc47a532eabd",
+    "language": "zh"
+  },
+  "note": "生成的html文件打开没有内容"
+}

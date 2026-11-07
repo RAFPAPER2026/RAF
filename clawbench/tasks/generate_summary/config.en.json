@@ -1,0 +1,147 @@
+{
+  "id": "generate_summary",
+  "name": "Capital Chapter Summaries",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Help me download the latest edition of 《资本论》 and save it to /root/Desktop. Then write a content summary for each chapter of the book and put it together with the book.",
+  "rubric": {
+    "query": "Help me download the latest edition of 《资本论》 and save it to /root/Desktop. Then write a content summary for each chapter of the book and put it together with the book.",
+    "query_id": "generate_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-82f50f10725c",
+        "type": "leaf",
+        "name": "Successfully downloaded the latest edition of 《资本论》 and saved it to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-da699830b8b3",
+        "type": "leaf",
+        "name": "Generated a content summary file written chapter by chapter for 《资本论》 and saved it in the same location as the book file",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Context Retention",
+          "Tool Usage"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ccb2713854df",
+          "type": "leaf",
+          "name": "Accurately retrieved and identified the available source and version information for the latest edition of 《资本论》",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-e6f42faf452c",
+          "type": "leaf",
+          "name": "Correctly used download and file-writing tools to save the book file to /root/Desktop with a recognizable file name and format",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-bcdcb75d0ecf",
+          "type": "leaf",
+          "name": "Accurately extracted the chapter structure of 《资本论》 to generate summaries chapter by chapter",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9fc766b0c0f8",
+          "type": "leaf",
+          "name": "Correctly wrote a content summary for each chapter without omitting any identified chapter",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6d41e90f9bbf",
+          "type": "leaf",
+          "name": "The generated summary file opens normally and organizes content by chapter in a way that corresponds to the original book structure",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Communication"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3395aa610947",
+          "type": "leaf",
+          "name": "Recorded the error cause and took alternative acquisition or retry measures when downloading failed, the version was unavailable, or chapter parsing was abnormal",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-617c0bdb9a94",
+    "language": "en"
+  }
+}

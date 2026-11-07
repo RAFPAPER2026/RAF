@@ -1,0 +1,3 @@
+【课程讲义节选】Language Modeling from Scratch
+Lecture 1-12（我只下载了，看了Lecture 1的前30分钟）
+内容：数据、架构、训练、评估……

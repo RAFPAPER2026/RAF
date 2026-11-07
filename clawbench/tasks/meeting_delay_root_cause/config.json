@@ -1,0 +1,236 @@
+{
+  "id": "meeting_delay_root_cause",
+  "name": "项目延期根因分析",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "会议协同",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "上下文管理-状态跟踪与一致性维护"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 meeting_archive/ 文件夹里存放着我过去两个月的30场会议资料，每场会议一个子文件夹，里面有 transcript（转录文本）、slides（幻灯片）和 notes（会议纪要）。\n请你跨会议追踪「星辰项目」的延期原因：我印象里陆续提到过 API 开发延期、数据团队等接口、测试无法启动这些问题。\n请梳理出完整的事件因果链（谁在什么会议说了什么、阻塞了什么），分析项目延期的根本原因，并给出下一步的行动建议（按优先级排列）。\n输出一份 Markdown 报告保存到 /root/Desktop/meeting_archive/延期分析报告.md。",
+  "rubric": {
+    "query": "桌面上 meeting_archive/ 文件夹里存放着我过去两个月的30场会议资料，每场会议一个子文件夹，里面有 transcript（转录文本）、slides（幻灯片）和 notes（会议纪要）。\n请你跨会议追踪「星辰项目」的延期原因：我印象里陆续提到过 API 开发延期、数据团队等接口、测试无法启动这些问题。\n请梳理出完整的事件因果链（谁在什么会议说了什么、阻塞了什么），分析项目延期的根本原因，并给出下一步的行动建议（按优先级排列）。\n输出一份 Markdown 报告保存到 /root/Desktop/meeting_archive/延期分析报告.md。",
+    "query_id": "meeting_delay_root_cause",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1dc88fe98443",
+        "type": "leaf",
+        "name": "正确读取了 meeting_archive 中与星辰项目相关的会议资料",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-9828f2fd1209",
+        "type": "group",
+        "name": "完成延期分析报告交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ff5586af0ff2",
+            "type": "leaf",
+            "name": "梳理出了星辰项目延期的完整事件因果链",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-7121954a7585",
+            "type": "leaf",
+            "name": "分析出了星辰项目延期的根本原因",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-13cac38ff16e",
+            "type": "leaf",
+            "name": "给出了按优先级排列的下一步行动建议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "沟通表达",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-e5c895b7af01",
+            "type": "leaf",
+            "name": "生成了 Markdown 报告并保存到 /root/Desktop/meeting_archive/延期分析报告.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d22f41797316",
+          "type": "leaf",
+          "name": "准确检索了 transcript、slides 和 notes 中与星辰项目延期相关的会议资料",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-469d2702fab4",
+          "type": "leaf",
+          "name": "正确对应了每条延期事件的会议时间、发言人、原始表述和被阻塞事项",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "上下文保持",
+            "事实准确性",
+            "时间推理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5e0052b78971",
+          "type": "leaf",
+          "name": "准确推导了 API 开发延期、接口等待和测试未启动之间的先后依赖关系",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "逻辑推理",
+            "时间推理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-66de2ea02c06",
+          "type": "group",
+          "name": "结论与建议质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-391eb5ca858d",
+              "type": "leaf",
+              "name": "正确区分了直接阻塞因素与根本原因",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c7084401445e",
+              "type": "leaf",
+              "name": "给出的行动建议按阻塞消除优先级排序并与分析结论对应",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e4f345fe3012",
+          "type": "group",
+          "name": "Markdown 报告可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-95f291daa5d4",
+              "type": "leaf",
+              "name": "生成的 Markdown 报告包含事件时间线、因果链、根本原因和行动建议四个部分",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-48e389bee761",
+              "type": "leaf",
+              "name": "生成的 Markdown 报告可正常打开且 Markdown 结构未损坏",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f357f4c0502c",
+          "type": "leaf",
+          "name": "在证据不足或资料冲突时标注了不确定项或采取了修正措施",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-6cbaf75c2837",
+    "language": "zh"
+  },
+  "note": "会议智能代理\nScenario\n\n给agent：\n\n过去30场会议：\n\ntranscript\nslides\nnotes\n\n用户：\n\n“告诉我为什么这个项目延期，以及下一步怎么办。”\n\nAgent需要：\n\n跨会议追踪：\n\nMeeting 1:\n\nAPI开发延期\n\nMeeting 7:\n\n数据团队等待接口\n\nMeeting 15:\n\n测试无法开始",
+  "env_description": "meeting_archive/下30个会议文件夹（meeting_01..30），每个含transcript.txt、notes.md、slides.md；星辰项目延期因果链分散埋设（API人力不足→字段定义反复→数据团队空转→造数审批→测试无法启动→性能/安全评审排队）"
+}

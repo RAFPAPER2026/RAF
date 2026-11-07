@@ -1,0 +1,299 @@
+{
+  "id": "forex_arbitrage",
+  "name": "三角套利分析",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 forex_data 文件夹里有 exchange_rates.csv，包含8种货币的汇率矩阵。\n\n任务：\n1. 读取汇率矩阵\n2. 找所有三角套利机会：A货币->B货币->C货币->A货币，检查 rate(A,B)*rate(B,C)*rate(C,A) > 1.0\n3. 计算每个机会的预期利润百分比\n4. 将结果写入 arbitrage_results.json，保存到桌面\n\n输出格式：\n{\n  \"opportunities\": [\n    {\"path\": [\"USD\",\"EUR\",\"GBP\",\"USD\"], \"product\": 1.003, \"profit_pct\": 0.3},\n    ...\n  ],\n  \"total_opportunities\": 5,\n  \"best_opportunity\": {\"path\": [...], \"profit_pct\": 0.5}\n}\n\n说明：只包含利润为正(opportunity)的机会。",
+  "rubric": {
+    "query": "桌面上 forex_data 文件夹里有 exchange_rates.csv，包含8种货币的汇率矩阵。\n\n任务：\n1. 读取汇率矩阵\n2. 找所有三角套利机会：A货币->B货币->C货币->A货币，检查 rate(A,B)*rate(B,C)*rate(C,A) > 1.0\n3. 计算每个机会的预期利润百分比\n4. 将结果写入 arbitrage_results.json，保存到桌面\n\n输出格式：\n{\n  \"opportunities\": [\n    {\"path\": [\"USD\",\"EUR\",\"GBP\",\"USD\"], \"product\": 1.003, \"profit_pct\": 0.3},\n    ...\n  ],\n  \"total_opportunities\": 5,\n  \"best_opportunity\": {\"path\": [...], \"profit_pct\": 0.5}\n}\n\n说明：只包含利润为正(opportunity)的机会。",
+    "query_id": "forex_arbitrage",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1671dec62308",
+        "type": "leaf",
+        "name": "正确读取了 forex_data 文件夹中的 exchange_rates.csv 汇率矩阵",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-687c2201f0e9",
+        "type": "group",
+        "name": "三角套利识别与计算目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-00cab3e58558",
+            "type": "leaf",
+            "name": "正确找出了所有满足三角套利条件的正利润路径",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-e0038806f547",
+            "type": "leaf",
+            "name": "正确计算了每个三角套利机会的预期利润百分比",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-a383c90659a7",
+        "type": "group",
+        "name": "结果文件产出目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-18aecc508a78",
+            "type": "leaf",
+            "name": "生成了包含 opportunities、total_opportunities 和 best_opportunity 字段的 arbitrage_results.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-012dc85ae2b5",
+            "type": "leaf",
+            "name": "将 arbitrage_results.json 保存到了桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-7a26d5efd816",
+          "type": "leaf",
+          "name": "准确读取了 exchange_rates.csv 中的货币代码和汇率数值",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a196cc156de3",
+          "type": "group",
+          "name": "套利机会识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2b99aed5a330",
+              "type": "leaf",
+              "name": "准确枚举了由三种不同货币组成的 A→B→C→A 闭环路径",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-6dbc3e1da637",
+              "type": "leaf",
+              "name": "准确判断了 rate(A,B)*rate(B,C)*rate(C,A) 是否大于 1.0",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-26ea9c64dcf5",
+              "type": "leaf",
+              "name": "正确排除了利润不为正的路径",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-66d639f15095",
+          "type": "group",
+          "name": "套利结果计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-16d0104d6b2d",
+              "type": "leaf",
+              "name": "准确计算了每个机会的 product 数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-044452a976e8",
+              "type": "leaf",
+              "name": "准确根据 product 计算了每个机会的 profit_pct 数值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-66b3b1dc15f1",
+              "type": "leaf",
+              "name": "正确识别了 profit_pct 最大的机会作为 best_opportunity",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-efc17c6bd485",
+          "type": "group",
+          "name": "结果文件可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b7bf4545e78f",
+              "type": "leaf",
+              "name": "生成的 JSON 文件可正常解析为对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5cb2017a34db",
+              "type": "leaf",
+              "name": "生成的 JSON 中 opportunities 列表项都包含 path、product 和 profit_pct 字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-18f6344e6c5b",
+              "type": "leaf",
+              "name": "生成的 JSON 中 total_opportunities 数值与 opportunities 实际数量一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3191823d7b13",
+              "type": "leaf",
+              "name": "生成的 JSON 中 best_opportunity 的 path 和 profit_pct 来自 opportunities 中利润最高的记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-3dbed7e2166f",
+          "type": "leaf",
+          "name": "回复中明确说明了结果文件已写入桌面以及识别到的套利机会数量",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-995dab1285cf",
+    "language": "zh"
+  }
+}

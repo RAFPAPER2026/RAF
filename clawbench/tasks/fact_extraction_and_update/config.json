@@ -1,0 +1,337 @@
+{
+  "id": "fact_extraction_and_update",
+  "name": "事实抽取与更新",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "看一下桌面上 facts_data 文件夹里的 updates.jsonl，里面有一堆事实记录，每条记录包含 id、subject、attribute、value 和 timestamp。有些记录会更新之前的信息，就是同一个 subject 和 attribute 后面出现了新值。\n\n处理完所有记录后，生成一个 JSON 文件输出到桌面，文件名是 current_facts.json。\n\n输出格式示例：\n{\n  \"facts\": [\n    {\n      \"subject\": \"<entity>\",\n      \"attribute\": \"<attribute>\",\n      \"current_value\": \"<latest value>\",\n      \"original_value\": \"<first value, if different from current>\",\n      \"was_updated\": true/false,\n      \"source_id\": <id of the statement that established the current value>\n    }\n  ],\n  \"total_statements\": <int>,\n  \"total_unique_facts\": <int>,\n  \"total_updates\": <int>\n}\n\n具体要求：\n- 找出每个 subject + attribute 组合的最新值\n- 标记哪些事实被更新过（was_updated）\n- 记录当前值的来源 id（source_id）\n- 如果值被更新过，original_value 记录原始值\n- 按 subject 字母顺序排，再按 attribute 字母顺序排\n- facts 数组里每个事实必须包含 subject、attribute、current_value、was_updated、source_id 这些字段",
+  "rubric": {
+    "query": "看一下桌面上 facts_data 文件夹里的 updates.jsonl，里面有一堆事实记录，每条记录包含 id、subject、attribute、value 和 timestamp。有些记录会更新之前的信息，就是同一个 subject 和 attribute 后面出现了新值。\n\n处理完所有记录后，生成一个 JSON 文件输出到桌面，文件名是 current_facts.json。\n\n输出格式示例：\n{\n  \"facts\": [\n    {\n      \"subject\": \"<entity>\",\n      \"attribute\": \"<attribute>\",\n      \"current_value\": \"<latest value>\",\n      \"original_value\": \"<first value, if different from current>\",\n      \"was_updated\": true/false,\n      \"source_id\": <id of the statement that established the current value>\n    }\n  ],\n  \"total_statements\": <int>,\n  \"total_unique_facts\": <int>,\n  \"total_updates\": <int>\n}\n\n具体要求：\n- 找出每个 subject + attribute 组合的最新值\n- 标记哪些事实被更新过（was_updated）\n- 记录当前值的来源 id（source_id）\n- 如果值被更新过，original_value 记录原始值\n- 按 subject 字母顺序排，再按 attribute 字母顺序排\n- facts 数组里每个事实必须包含 subject、attribute、current_value、was_updated、source_id 这些字段",
+    "query_id": "fact_extraction_and_update",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-14e3e95924e5",
+        "type": "leaf",
+        "name": "正确读取了桌面 facts_data 文件夹中的 updates.jsonl 记录",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-6e67ba44362b",
+        "type": "group",
+        "name": "JSON 交付物产出目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-8bbc76356f39",
+            "type": "leaf",
+            "name": "正确生成了包含每个 subject 和 attribute 组合最新事实的 current_facts.json 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-9464cc7e0db3",
+            "type": "leaf",
+            "name": "正确将 current_facts.json 输出到了桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-bc28b31b2b58",
+        "type": "group",
+        "name": "事实汇总结果满足字段与统计要求",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ee25f3044ee7",
+            "type": "leaf",
+            "name": "正确为每个事实记录了当前值对应的 source_id",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-a6c6f6a58940",
+            "type": "leaf",
+            "name": "正确标记了每个事实是否发生过更新",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-fbc0697135d6",
+            "type": "leaf",
+            "name": "值发生更新时正确记录了 original_value",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-56216c0f9676",
+            "type": "leaf",
+            "name": "正确按 subject 和 attribute 字母顺序输出了 facts 数组",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-5e4b48534a4c",
+            "type": "leaf",
+            "name": "正确输出了 total_statements、total_unique_facts 和 total_updates 统计值",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-bc32f80f4882",
+          "type": "leaf",
+          "name": "准确读取了 updates.jsonl 中的全部有效记录且未遗漏记录顺序信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-feae7e4ed39e",
+          "type": "group",
+          "name": "事实归并与更新判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-2b65e712cedb",
+              "type": "leaf",
+              "name": "准确按 subject 和 attribute 对记录进行了归并",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-7a3b61c79dd6",
+              "type": "leaf",
+              "name": "准确识别了每个组合最后一次出现的 value 和对应 id",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3f9a703ff38a",
+              "type": "leaf",
+              "name": "准确识别了每个组合第一次出现的 value 以判断 original_value 是否需要输出",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-799f59fc4033",
+          "type": "group",
+          "name": "统计计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dc99c1537f5a",
+              "type": "leaf",
+              "name": "正确计算了 total_statements 为输入记录总数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-fd2096d41bec",
+              "type": "leaf",
+              "name": "正确计算了 total_unique_facts 为唯一 subject 和 attribute 组合数量",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-3f594f8bb7e3",
+              "type": "leaf",
+              "name": "正确计算了 total_updates 为发生过值变化的事实数量",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5994e4458daa",
+          "type": "group",
+          "name": "交付物结构与可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-173a9e9a9734",
+              "type": "leaf",
+              "name": "正确为每条 facts 项输出了 subject、attribute、current_value、was_updated 和 source_id 必填字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-56b2836fbd86",
+              "type": "leaf",
+              "name": "值未更新时未错误填充 original_value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7207469ad915",
+              "type": "leaf",
+              "name": "正确按 subject 字母顺序和 attribute 字母顺序排列了 facts 数组",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-feb018b1cb32",
+              "type": "leaf",
+              "name": "生成的 current_facts.json 为可正常解析的 JSON 文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6a3c9b26dd4d",
+          "type": "group",
+          "name": "异常与边界情况处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b120487dde65",
+              "type": "leaf",
+              "name": "遇到重复值连续出现时未将其误判为值更新",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-7392304752c9",
+              "type": "leaf",
+              "name": "遇到缺失字段或格式异常记录时采取了可追踪的跳过或报错处理",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-909f3ae5e938",
+    "language": "zh"
+  }
+}

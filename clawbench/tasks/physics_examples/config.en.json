@@ -1,0 +1,157 @@
+{
+  "id": "physics_examples",
+  "name": "Generate Circuit Examples PPT",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Look up ten simple examples related to middle-school physics circuits, with explanations, and organize them into a PPT explaining the examples and put it in /root/Desktop for me.",
+  "rubric": {
+    "query": "Look up ten simple examples related to middle-school physics circuits, with explanations, and organize them into a PPT explaining the examples and put it in /root/Desktop for me.",
+    "query_id": "physics_examples",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1da38870150c",
+        "type": "leaf",
+        "name": "Correctly retrieved ten simple middle-school physics circuit examples and their corresponding explanations",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-4b4edc1d1a18",
+        "type": "leaf",
+        "name": "Successfully generated a PPT file for explaining the examples and placed it in /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-1db0c977cef3",
+          "type": "leaf",
+          "name": "Accurately identified the scope as middle-school physics circuits with the difficulty of simple examples",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "General Knowledge",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0ec3a517a919",
+          "type": "leaf",
+          "name": "Correctly retrieved and filtered ten items directly related to the circuit topic, each containing both the problem and its explanation",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-af9ade7bc928",
+          "type": "leaf",
+          "name": "Correctly used the PPT generation and file-saving tools and wrote the output file to /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fdef9703e0c2",
+          "type": "group",
+          "name": "PPT Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-deb794be5882",
+              "type": "leaf",
+              "name": "Completely organized the ten examples and their corresponding explanations into the PPT slides",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-0bf3f7ac2156",
+              "type": "leaf",
+              "name": "Correctly organized the PPT structure so that the user can explain page by page in the order of problems and explanations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-aa6f20d50e6d",
+              "type": "leaf",
+              "name": "Correctly generated a PPT file that opens normally, with no garbled text or missing content on the slides",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ac82ae8325fe",
+          "type": "leaf",
+          "name": "The reply clearly states that the PPT has been generated and gives its location /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-37b8b51029e8",
+    "language": "en"
+  }
+}

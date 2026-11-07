@@ -1,0 +1,35 @@
+# --- local inputs / migration workspace (never published) ---
+/_inputs/
+/_work/
+
+# --- python ---
+__pycache__/
+*.py[cod]
+.venv/
+.pytest_cache/
+pytest-of-*/
+*.egg-info/
+
+# --- node ---
+node_modules/
+dist/
+
+# --- runtime data (never published) ---
+raf/data/llm_config.json
+raf/data/optimization_runs/
+raf/data/harmony-tasks-scores/
+raf/data/*.xlsx
+clawbench/results/*/
+!clawbench/results/.gitkeep
+clawbench/results/.name_mapping.json
+clawbench/workspace/
+clawbench/tasks/openclaw.json
+clawbench/configs/claude_settings.json
+clawbench/configs/model_prices.json
+clawbench/docker/openclaw/dist/*.tar
+
+# --- IDE / OS ---
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db

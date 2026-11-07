@@ -1,0 +1,378 @@
+{
+  "id": "calendar_conflict_detection",
+  "name": "Calendar Conflict Detection",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Given a calendar file at the desktop path workspace/calendar.json, which contains 12 meeting schedules. Some of the meetings have overlapping times.\n\nPlease detect all schedule conflicts (i.e., pairs of meetings on the same date whose time ranges overlap), and write the results to workspace/conflicts.json.\n\nEach conflict should be represented in the following JSON format:\n```json\n{\n  \"meeting_a\": \"<meeting id>\",\n  \"meeting_b\": \"<meeting id>\",\n  \"date\": \"YYYY-MM-DD\",\n  \"overlap_start\": \"HH:MM\",\n  \"overlap_end\": \"HH:MM\",\n  \"overlap_minutes\": <integer>\n}\n```\n\nFor each conflict pair, meeting_a should be the meeting with the earlier start time (if the start times are the same, take the id with the smaller lexicographic order). Do not list the same conflict pair repeatedly.\n\nOutput requirements: write the results to the desktop workspace/conflicts.json, in the format of a JSON object containing a \"conflicts\" key, with the conflict array sorted in ascending date order, and within the same date sorted in ascending order of meeting_a's id.",
+  "rubric": {
+    "query": "Given a calendar file at the desktop path workspace/calendar.json, which contains 12 meeting schedules. Some of the meetings have overlapping times.\n\nPlease detect all schedule conflicts (i.e., pairs of meetings on the same date whose time ranges overlap), and write the results to workspace/conflicts.json.\n\nEach conflict should be represented in the following JSON format:\n```json\n{\n  \"meeting_a\": \"<meeting id>\",\n  \"meeting_b\": \"<meeting id>\",\n  \"date\": \"YYYY-MM-DD\",\n  \"overlap_start\": \"HH:MM\",\n  \"overlap_end\": \"HH:MM\",\n  \"overlap_minutes\": <integer>\n}\n```\n\nFor each conflict pair, meeting_a should be the meeting with the earlier start time (if the start times are the same, take the id with the smaller lexicographic order). Do not list the same conflict pair repeatedly.\n\nOutput requirements: write the results to the desktop workspace/conflicts.json, in the format of a JSON object containing a \"conflicts\" key, with the conflict array sorted in ascending date order, and within the same date sorted in ascending order of meeting_a's id.",
+    "query_id": "calendar_conflict_detection",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d1d0c0dfab0f",
+        "type": "leaf",
+        "name": "Correctly read the meeting schedules in the desktop workspace/calendar.json",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-7c9ac4d249a4",
+        "type": "group",
+        "name": "Conflict detection results correctly generated",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-eca2536abde5",
+            "type": "leaf",
+            "name": "Correctly identified all meeting pairs on the same date whose time ranges overlap",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-38dd3620adc6",
+            "type": "leaf",
+            "name": "Correctly calculated the overlap start time, overlap end time, and overlap minutes of each conflict pair",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-c8de895c0fa0",
+            "type": "leaf",
+            "name": "Correctly determined the meeting_a and meeting_b results in each conflict object according to the ordering rule",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-7204d1672184",
+            "type": "leaf",
+            "name": "Correctly removed duplicate conflict pairs",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-2a0cb9a3fb11",
+        "type": "group",
+        "name": "Conflict result file produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e2b83039d6ff",
+            "type": "leaf",
+            "name": "Correctly generated a JSON object file containing the conflicts key",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-c213d03d2b1b",
+            "type": "leaf",
+            "name": "Correctly wrote the results to the desktop workspace/conflicts.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-c1f58e2645b7",
+          "type": "leaf",
+          "name": "Accurately read all meeting fields in the desktop workspace/calendar.json and did not fabricate missing data",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4e2df6d6b595",
+          "type": "group",
+          "name": "Conflict determination quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1081c602c3df",
+              "type": "leaf",
+              "name": "Accurately determined whether meetings on the same date only have overlapping time ranges",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-1dbf7ea220ef",
+              "type": "leaf",
+              "name": "Accurately excluded meeting pairs that only touch at the boundary without a time intersection",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-8bd413ee67da",
+              "type": "leaf",
+              "name": "Accurately identified all conflict pairs without omissions or false positives",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-098a83859a94",
+          "type": "group",
+          "name": "Overlap interval calculation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d32dcc478026",
+              "type": "leaf",
+              "name": "Accurately calculated the overlap_start of each conflict pair",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-796c0e7b440c",
+              "type": "leaf",
+              "name": "Accurately calculated the overlap_end of each conflict pair",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3939a1ae6eb8",
+              "type": "leaf",
+              "name": "Accurately calculated the overlap_minutes of each conflict pair as the integer number of minutes of the overlap duration",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-160d5b0e9984",
+          "type": "group",
+          "name": "Result normalization quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bd63b8d33360",
+              "type": "leaf",
+              "name": "Accurately determined meeting_a by preferring the earlier start time and, when the start times are the same, the id with the smaller lexicographic order",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e6c75cd62612",
+              "type": "leaf",
+              "name": "Accurately ensured that the same conflict pair does not appear repeatedly in the results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-8eda32d78768",
+              "type": "leaf",
+              "name": "Accurately sorted the conflicts array by ascending date and, within the same date, by ascending meeting_a id",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-891817c18b17",
+          "type": "group",
+          "name": "Deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-971eec0ee38b",
+              "type": "leaf",
+              "name": "The generated conflicts.json can be parsed normally as a JSON object",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a31c3cd664bb",
+              "type": "leaf",
+              "name": "The generated conflicts.json contains a conflicts key at the top level whose value is an array of conflict objects",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-8e2d77379596",
+              "type": "leaf",
+              "name": "Every conflict object contains the six fields meeting_a, meeting_b, date, overlap_start, overlap_end, and overlap_minutes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-0298ba97a6df",
+          "type": "group",
+          "name": "Exception and state handling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e2406bd3b95b",
+              "type": "leaf",
+              "name": "Identified errors when the input file was missing or fields were abnormal during execution and stopped outputting untrustworthy results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-12e1eb1a29c4",
+              "type": "leaf",
+              "name": "Kept the input path and output path unconfused after multi-step processing during execution",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-dac1f7c9da78",
+    "language": "en"
+  },
+  "note": "Detect calendar meeting time conflicts and calculate the overlap duration"
+}

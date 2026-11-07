@@ -1,0 +1,277 @@
+{
+  "id": "chinese_essay",
+  "name": "Chinese Essay Samples Collection",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "plan.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me find 5 excellent sample essays of high school Chinese writing for each category — narrative essays, argumentative essays, and practical application essays — attach two highlight analyses to each essay, and generate a docx document placed on /root/Desktop",
+  "rubric": {
+    "query": "Help me find 5 excellent sample essays of high school Chinese writing for each category — narrative essays, argumentative essays, and practical application essays — attach two highlight analyses to each essay, and generate a docx document placed on /root/Desktop",
+    "query_id": "chinese_essay",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8a51e464ea0f",
+        "type": "group",
+        "name": "Completed the collection task for the three categories of sample essays",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-e0a4d4fd6f0e",
+            "type": "leaf",
+            "name": "Found 5 excellent sample essays of high school Chinese narrative writing",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-76202a795230",
+            "type": "leaf",
+            "name": "Found 5 excellent sample essays of high school Chinese argumentative writing",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-4339bdcf752c",
+            "type": "leaf",
+            "name": "Found 5 excellent sample essays of high school Chinese practical application writing",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-7c59090007d4",
+        "type": "group",
+        "name": "Completed the result organization and file delivery",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-69d818ba924a",
+            "type": "leaf",
+            "name": "Attached two highlight analysis sentences to each sample essay",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "General Knowledge",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-c30485425289",
+            "type": "leaf",
+            "name": "Generated a docx document containing all the sample essays and analysis content",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-6138a65c332d",
+            "type": "leaf",
+            "name": "Placed the docx document on /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-970626d404d3",
+          "type": "leaf",
+          "name": "Accurately constructed category keywords for retrieving high school Chinese sample essays",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-69e266b79130",
+          "type": "group",
+          "name": "Sample essay category filtering quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1d912154b849",
+              "type": "leaf",
+              "name": "Accurately selected 5 high school Chinese sample essays that match the narrative essay category",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-5e6e5a5c20e0",
+              "type": "leaf",
+              "name": "Accurately selected 5 high school Chinese sample essays that match the argumentative essay category",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-0743b0c445cd",
+              "type": "leaf",
+              "name": "Accurately selected 5 high school Chinese sample essays that match the practical application writing category",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-3bc9b44f234d",
+          "type": "group",
+          "name": "Sample essay analysis organization quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-545960817817",
+              "type": "leaf",
+              "name": "Correctly maintained a one-to-one correspondence between each sample essay and its highlight analysis",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-34fe812fcb7b",
+              "type": "leaf",
+              "name": "Accurately distilled two highlight analysis sentences for each sample essay that can be located in the body text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-28d4f21ca67d",
+          "type": "group",
+          "name": "docx deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fffb5a188dd7",
+              "type": "leaf",
+              "name": "Correctly used a document tool to generate a docx-format file",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-6e71f7acf52e",
+              "type": "leaf",
+              "name": "The generated docx document opens normally and its content contains no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-227386cfdb2e",
+              "type": "leaf",
+              "name": "In the generated docx document, the three categories of sample essays are clearly grouped and each essay includes the full text plus two analysis sentences",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-605d4f1326ea",
+          "type": "leaf",
+          "name": "Correctly supplemented the retrieval or changed sources when the retrieval results were insufficient or the sources were abnormal",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Retrieval Strategy",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-f16b34bad3d3",
+    "language": "en"
+  }
+}

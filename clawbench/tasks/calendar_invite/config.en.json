@@ -1,0 +1,271 @@
+{
+  "id": "calendar_invite",
+  "name": "Calendar Invite Generation",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a Word file in the talent_review_schedule folder on the desktop, named roughly “2024年度人才盘点会议排期”. Extract all sessions in this file whose meeting type is marked as “正式圆桌会”, and generate a .ics calendar invitation file for each session. Meetings of other types (such as preparatory meetings and review meetings) do not need to be handled.\n\nIn each .ics file, set the organizer uniformly to organizer@example.com, and add a reminder 15 minutes in advance. For attendees, only add those who have complete email addresses; those for whom the document only lists a name without an email do not need to be added.\n\nName the output files in the format “会议主题_会议日期YYYYMMDD.ics”, for example “大客户部人才盘点_20241115.ics”. Put all generated files back into the talent_review_schedule folder.",
+  "rubric": {
+    "query": "There is a Word file in the talent_review_schedule folder on the desktop, named roughly “2024年度人才盘点会议排期”. Extract all sessions in this file whose meeting type is marked as “正式圆桌会”, and generate a .ics calendar invitation file for each session. Meetings of other types (such as preparatory meetings and review meetings) do not need to be handled.\n\nIn each .ics file, set the organizer uniformly to organizer@example.com, and add a reminder 15 minutes in advance. For attendees, only add those who have complete email addresses; those for whom the document only lists a name without an email do not need to be added.\n\nName the output files in the format “会议主题_会议日期YYYYMMDD.ics”, for example “大客户部人才盘点_20241115.ics”. Put all generated files back into the talent_review_schedule folder.",
+    "query_id": "calendar_invite",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5321530d8ec3",
+        "type": "leaf",
+        "name": "Correctly located the Word file on the desktop named roughly “2024年度人才盘点会议排期”",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-7dd403460fd8",
+        "type": "leaf",
+        "name": "Correctly extracted all sessions in the document whose meeting type is marked “正式圆桌会”",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-8c23c855e1ea",
+        "type": "leaf",
+        "name": "Generated one .ics calendar invitation file for each “正式圆桌会” session",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention",
+          "Conditional Judgment"
+        ]
+      },
+      {
+        "id": "node-e3ba11108663",
+        "type": "group",
+        "name": "Output file delivery completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7e59c9a90151",
+            "type": "leaf",
+            "name": "All generated .ics files were put back into the talent_review_schedule folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-b425411cc227",
+            "type": "leaf",
+            "name": "All generated .ics file names conform to the “会议主题_会议日期YYYYMMDD.ics” format",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-80ee075f7154",
+          "type": "leaf",
+          "name": "Accurately found the Word file in the talent_review_schedule folder that matches “2024年度人才盘点会议排期”",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-839a6b211b5d",
+          "type": "leaf",
+          "name": "Accurately identified the records whose meeting type field is “正式圆桌会” and excluded other meeting types",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7656edba4676",
+          "type": "group",
+          "name": "Calendar invitation content construction quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bcbd2a19ae32",
+              "type": "leaf",
+              "name": "Correctly extracted the meeting subject and meeting date of each session for generating the file names",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-0f91c5e54a38",
+              "type": "leaf",
+              "name": "Correctly converted the meeting dates into the YYYYMMDD format in the file names",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-ad03bec28d3d",
+              "type": "leaf",
+              "name": "Correctly wrote the organizer organizer@example.com for each meeting",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-fbabb268e2a9",
+              "type": "leaf",
+              "name": "Correctly wrote a reminder 15 minutes in advance for each meeting",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-c0535a1a9c57",
+              "type": "leaf",
+              "name": "Correctly added only the attendees in the document who have complete email addresses",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0924fd87b0d0",
+          "type": "group",
+          "name": "Deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-97bb95756e98",
+              "type": "leaf",
+              "name": "The generated .ics files can be opened normally by common calendar programs and recognized as valid calendar invitations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-7df8c250a5f2",
+              "type": "leaf",
+              "name": "The meeting time, organizer, attendee, and reminder fields in the generated .ics files are consistent with the source document and the user's requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-8ad7021694ff",
+          "type": "group",
+          "name": "Exception handling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-163c10c0ad1a",
+              "type": "leaf",
+              "name": "Correctly located the target file or target fields when the document name was only an approximate match or the document structure was irregular",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Retrieval Strategy",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-77ee646f23ba",
+              "type": "leaf",
+              "name": "Correctly excluded attendees who only had a name but no email and did not fabricate email addresses",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-72f42a1c3f14",
+    "language": "en"
+  },
+  "note": "Generate iCalendar (.ics) calendar invitation files based on the formal roundtable meeting information in a Word document"
+}

@@ -1,0 +1,294 @@
+{
+  "id": "next_travel_plan",
+  "name": "Next Trip Plan Optimization",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Travel Planning",
+  "ability_category": [
+    "API Calling"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Find all trip memos on the computer, combine them with real-time high-speed rail or flight ticket prices and remaining ticket information, optimize my next travel plan, calculate the total transportation cost for me, and set a departure reminder; save the plan to /root/Desktop.",
+  "rubric": {
+    "query": "Find all trip memos on the computer, combine them with real-time high-speed rail or flight ticket prices and remaining ticket information, optimize my next travel plan, calculate the total transportation cost for me, and set a departure reminder; save the plan to /root/Desktop.",
+    "query_id": "next_travel_plan",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-b400e31fa65d",
+        "type": "leaf",
+        "name": "Correctly found and read the trip memos on the computer",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-9fe62d76eb59",
+        "type": "group",
+        "name": "Trip Plan Delivery and Reminder Setting Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3eb1857f4a1e",
+            "type": "leaf",
+            "name": "Correctly generated the file containing the optimized trip plan and total transportation cost and saved it to /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-015d26709e96",
+            "type": "leaf",
+            "name": "Correctly set the departure reminder for the next trip",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Temporal Reasoning",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-9836174823a5",
+          "type": "leaf",
+          "name": "Accurately retrieved the travel-related trip memo files on the computer",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-96a506d3183c",
+          "type": "group",
+          "name": "Trip Information Parsing Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f90d4515f492",
+              "type": "leaf",
+              "name": "Correctly extracted the departure place, destination, and travel time of the next trip",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Context Retention",
+                "Factual Accuracy",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-fab4189c496b",
+              "type": "leaf",
+              "name": "Accurately identified the constraint information used to optimize the plan",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Logical Reasoning",
+                "Information Filtering",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-406cdbd72ac5",
+          "type": "group",
+          "name": "Real-Time Ticketing Information Acquisition Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9288e735230a",
+              "type": "leaf",
+              "name": "Correctly queried the high-speed rail ticket prices and remaining tickets matching the next trip time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-1f3814f3fde9",
+              "type": "leaf",
+              "name": "Correctly queried the flight ticket prices and remaining tickets matching the next trip time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-95ac801de006",
+              "type": "leaf",
+              "name": "Retried or switched to other information sources when query failures or missing results were identified",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Retrieval Strategy",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e16994d54f0c",
+          "type": "group",
+          "name": "Trip Plan Optimization and Cost Calculation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-85cb78c70fd3",
+              "type": "leaf",
+              "name": "Accurately compared the ticket price and remaining ticket differences between the high-speed rail and flight options",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-beab5027dbb9",
+              "type": "leaf",
+              "name": "Correctly calculated the total transportation cost of the chosen option",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-7a5aaa1fd992",
+              "type": "leaf",
+              "name": "Correctly selected a feasible next trip plan that satisfies the trip time conditions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-830ee5968b31",
+          "type": "group",
+          "name": "Delivered File Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-428968c244dd",
+              "type": "leaf",
+              "name": "The generated plan file contains the departure place, destination, travel time, candidate transportation modes, ticket prices, remaining tickets, and total cost",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6e7acbc49136",
+              "type": "leaf",
+              "name": "The generated plan file opens normally and its content has no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-0f65263b4611",
+              "type": "leaf",
+              "name": "The generated plan file clearly marks the recommended plan and the departure reminder time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4084e0d12452",
+          "type": "leaf",
+          "name": "Accurately stated the plan save location and reminder setting result to the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-63a5537892a7",
+    "language": "en"
+  }
+}

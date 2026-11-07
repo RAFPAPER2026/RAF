@@ -1,0 +1,288 @@
+{
+  "id": "excel_plugin_generation",
+  "name": "Excel Valuation Plugin Development",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Process Automation",
+  "ability_category": [
+    "Tool Use",
+    "Task Planning"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Develop an Excel valuation plugin with the commonly used DCF, PE, and PB valuation formulas embedded, so that clicking a button automatically calculates a stock's fair price, supports manual adjustment of parameters, and the plugin is saved as an Excel add-in. Provide a verifiable example file and place it in the excel插件 folder on /root/Desktop.",
+  "rubric": {
+    "query": "Develop an Excel valuation plugin with the commonly used DCF, PE, and PB valuation formulas embedded, so that clicking a button automatically calculates a stock's fair price, supports manual adjustment of parameters, and the plugin is saved as an Excel add-in. Provide a verifiable example file and place it in the excel插件 folder on /root/Desktop.",
+    "query_id": "excel_plugin_generation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-56ee92679ace",
+        "type": "group",
+        "name": "Excel valuation plugin functionality completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-6a1ee7da067b",
+            "type": "leaf",
+            "name": "Developed an Excel plugin containing the DCF, PE, and PB valuation functions with button-triggered calculation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-0fcd5a0802e5",
+            "type": "leaf",
+            "name": "Provided an input area or configuration entry in the plugin for manually adjusting valuation parameters",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-a58d1bbca5a3",
+        "type": "group",
+        "name": "Deliverables generated and placed in the specified location",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b8c8c1960f1f",
+            "type": "leaf",
+            "name": "Saved the plugin as an add-in file that Excel can load",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-b660fa1075d8",
+            "type": "leaf",
+            "name": "Generated an example Excel file that can be used to verify the plugin's functionality",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-7f841938b1b4",
+            "type": "leaf",
+            "name": "Placed the add-in file and the example file in the excel插件 folder on /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2785b33ccac5",
+          "type": "leaf",
+          "name": "Correctly chose an Excel add-in implementation approach and generated an add-in format recognizable by Excel",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "General Knowledge",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d4a60e86bf26",
+          "type": "group",
+          "name": "Valuation model implementation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7b7b0a19965d",
+              "type": "leaf",
+              "name": "Accurately implemented the key input and output relationships required for the DCF valuation calculation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-a80075d7022a",
+              "type": "leaf",
+              "name": "Accurately implemented the key input and output relationships required for the PE valuation calculation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f830a17c5fbd",
+              "type": "leaf",
+              "name": "Accurately implemented the key input and output relationships required for the PB valuation calculation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-847539cdfca6",
+          "type": "group",
+          "name": "Interaction and parameter linkage quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1a139402f42d",
+              "type": "leaf",
+              "name": "Correctly bound the button operation to the valuation calculation process",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-fccf6942336d",
+              "type": "leaf",
+              "name": "Correctly passed the manually adjusted parameters into the corresponding valuation formula calculations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-521e4d3eb305",
+          "type": "group",
+          "name": "Example deliverable verifiability and usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-50b7f64cbdc6",
+              "type": "leaf",
+              "name": "The example file contains test data and an operation entry that can directly trigger the plugin calculation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-7c8d5a17edad",
+              "type": "leaf",
+              "name": "The preset data in the example file can produce valuation results that can be checked",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-c4a9822d2345",
+              "type": "leaf",
+              "name": "The example file opens normally and its formulas, buttons, and cell contents have no garbled characters or reference errors",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-723a1bd5f982",
+          "type": "group",
+          "name": "Exception handling and result explanation quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1a5801f60902",
+              "type": "leaf",
+              "name": "Identified and corrected errors during execution such as Excel macro, add-in saving, or path writing failures",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-cb9c789bfb29",
+              "type": "leaf",
+              "name": "Explained the add-in installation method, the purpose of the example file, and the verification steps to the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-fcd5251a0bda",
+    "language": "en"
+  }
+}

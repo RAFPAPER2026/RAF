@@ -1,0 +1,275 @@
+{
+  "id": "festival_pr_summary",
+  "name": "舆情摘要提炼",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面festival_pr_crisis文件夹下有个'粉丝长文吐槽汇总.md'文件。帮我提炼核心摘要，只聚焦两个维度：粉丝对VIP区和普通区票价梯度的不满点；黄牛用脚本代抢的实锤线索。\n\n其他饭圈互撕、拉踩的废话过滤掉。摘要控制在400字以内，用Markdown格式，两个维度用不同层级标题隔开。保存到桌面 festival_pr_crisis/摘要汇报.md。",
+  "rubric": {
+    "query": "桌面festival_pr_crisis文件夹下有个'粉丝长文吐槽汇总.md'文件。帮我提炼核心摘要，只聚焦两个维度：粉丝对VIP区和普通区票价梯度的不满点；黄牛用脚本代抢的实锤线索。\n\n其他饭圈互撕、拉踩的废话过滤掉。摘要控制在400字以内，用Markdown格式，两个维度用不同层级标题隔开。保存到桌面 festival_pr_crisis/摘要汇报.md。",
+    "query_id": "festival_pr_summary",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4fd4a867a830",
+        "type": "leaf",
+        "name": "正确读取了桌面 festival_pr_crisis 文件夹中的《粉丝长文吐槽汇总.md》内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-5c13056c24e2",
+        "type": "group",
+        "name": "按指定范围和格式完成摘要内容",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-897dfd8a2073",
+            "type": "leaf",
+            "name": "生成了仅聚焦 VIP区和普通区票价梯度不满点的摘要内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-5c48c80834c9",
+            "type": "leaf",
+            "name": "生成了仅聚焦黄牛用脚本代抢实锤线索的摘要内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-525d29cd9c5e",
+            "type": "leaf",
+            "name": "过滤掉了饭圈互撕和拉踩等无关内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理"
+            ]
+          },
+          {
+            "id": "node-40f4ced7a35b",
+            "type": "leaf",
+            "name": "将摘要控制在400字以内并使用 Markdown 的不同层级标题分隔两个维度",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-2ee4c22a69a4",
+        "type": "leaf",
+        "name": "在桌面 festival_pr_crisis 路径下产出了《摘要汇报.md》文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-0abaa5488fd1",
+          "type": "leaf",
+          "name": "正确定位并读取了桌面 festival_pr_crisis 文件夹中的目标 Markdown 文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8d1fcbdb6bfc",
+          "type": "group",
+          "name": "信息筛选质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7a3d7005ff02",
+              "type": "leaf",
+              "name": "准确筛选了与 VIP区和普通区票价梯度相关的原文信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-12ab0a5f3624",
+              "type": "leaf",
+              "name": "准确筛选了与黄牛用脚本代抢实锤线索相关的原文信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-83b458b4b731",
+              "type": "leaf",
+              "name": "正确排除了饭圈互撕和拉踩等与任务无关的原文信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d6a9b00fb427",
+          "type": "group",
+          "name": "摘要提炼质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-81ad4de2f3f1",
+              "type": "leaf",
+              "name": "准确依据原文提炼了票价梯度不满点的核心结论",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-57fac9a9be96",
+              "type": "leaf",
+              "name": "准确依据原文提炼了黄牛脚本代抢的证据线索来源或表现形式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-70eb3504b846",
+              "type": "leaf",
+              "name": "未编造原文中不存在的指控、数据或结论",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2b607c7ba6b5",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4e451fac68a0",
+              "type": "leaf",
+              "name": "正确使用 Markdown 标题区分了两个摘要维度",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-b30a7155de03",
+              "type": "leaf",
+              "name": "摘要正文总字数控制在400字以内",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-ae063d7bf648",
+              "type": "leaf",
+              "name": "输出文件内容可正常打开且 Markdown 文本无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-516e295049a4",
+          "type": "leaf",
+          "name": "正确将摘要内容写入桌面 festival_pr_crisis/摘要汇报.md 路径",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-89b9d8b53172",
+    "language": "zh"
+  },
+  "note": "从粉丝吐槽长文中提炼核心舆情摘要"
+}

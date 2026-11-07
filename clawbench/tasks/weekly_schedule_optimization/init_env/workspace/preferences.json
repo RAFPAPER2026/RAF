@@ -1,0 +1,8 @@
+{
+  "business_hours": {"start": "09:00", "end": "17:00"},
+  "min_gap_after_long_meetings_minutes": 15,
+  "long_meeting_threshold_minutes": 60,
+  "preferred_focus_blocks": [
+    {"day": "2026-03-17", "start": "13:00", "end": "15:00", "description": "深度工作时段 - 避免安排会议"}
+  ]
+}

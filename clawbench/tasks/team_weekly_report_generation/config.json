@@ -1,0 +1,215 @@
+{
+  "id": "team_weekly_report_generation",
+  "name": "小组项目周报生成",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "邮件管理",
+  "ability_category": [
+    "遵从能力-指令遵从",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "instruction.follow",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面smart_device_project文件夹下有几个邮件文件：progress_zhangsan_v1.eml、progress_zhangsan_final.eml、progress_lisi.eml、progress_wangwu.eml。\n\n帮我把这些.eml文件内容提取出来，整理成Markdown周报草稿，输出到 smart_device_project/weekly_summary.md。\n\n每个组员姓名用二级标题，下面各项内容用无序列表：组员姓名、负责的模块、本周完成进度、下周计划、目前遇到的问题。\n\n注意：张三发了两封邮件，以发送时间最新的那封为准，旧的过滤掉。",
+  "rubric": {
+    "query": "桌面smart_device_project文件夹下有几个邮件文件：progress_zhangsan_v1.eml、progress_zhangsan_final.eml、progress_lisi.eml、progress_wangwu.eml。\n\n帮我把这些.eml文件内容提取出来，整理成Markdown周报草稿，输出到 smart_device_project/weekly_summary.md。\n\n每个组员姓名用二级标题，下面各项内容用无序列表：组员姓名、负责的模块、本周完成进度、下周计划、目前遇到的问题。\n\n注意：张三发了两封邮件，以发送时间最新的那封为准，旧的过滤掉。",
+    "query_id": "team_weekly_report_generation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-845a3dbabe74",
+        "type": "leaf",
+        "name": "提取了 smart_device_project 文件夹中各 .eml 文件的有效内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-8929247f8ee4",
+        "type": "group",
+        "name": "处理了张三重复邮件筛选要求",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-fb56d1ae4b9e",
+            "type": "leaf",
+            "name": "按发送时间保留了张三最新的一封邮件内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理",
+              "信息筛选"
+            ]
+          },
+          {
+            "id": "node-949d02c924f6",
+            "type": "leaf",
+            "name": "过滤掉了张三较旧的一封邮件内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-6ec4020718fb",
+        "type": "leaf",
+        "name": "生成了 Markdown 周报草稿并写入 smart_device_project/weekly_summary.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d204cf63824b",
+          "type": "leaf",
+          "name": "正确读取了 smart_device_project 文件夹中的目标 .eml 文件内容与发送时间字段",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c28deba7ce4a",
+          "type": "leaf",
+          "name": "准确判断了张三两封邮件中发送时间最新的一封",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "条件判断",
+            "时间推理",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eac08d10001f",
+          "type": "leaf",
+          "name": "准确提取了每位组员的姓名、负责模块、本周完成进度、下周计划、目前问题对应信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d43fdabfad87",
+          "type": "group",
+          "name": "周报交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e86f4855cc50",
+              "type": "leaf",
+              "name": "正确组织了每位组员使用二级标题的 Markdown 结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-c68644129e49",
+              "type": "leaf",
+              "name": "正确组织了组员姓名、负责的模块、本周完成进度、下周计划、目前遇到的问题为无序列表项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-8bed5b08f644",
+              "type": "leaf",
+              "name": "生成的 weekly_summary.md 文件可正常打开且 Markdown 文本无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2bd4177483fa",
+          "type": "leaf",
+          "name": "在缺失字段或邮件内容格式不一致时标记缺失信息而未编造不存在的周报内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6effc0a18f01",
+          "type": "leaf",
+          "name": "向用户说明了已采用张三最新邮件并完成 weekly_summary.md 输出结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-5ba9fc0bbac7",
+    "language": "zh"
+  },
+  "note": "从邮件文件提取组员进度信息生成Markdown周报"
+}

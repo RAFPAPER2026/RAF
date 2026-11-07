@@ -1,0 +1,320 @@
+{
+  "id": "meeting_action_items_extraction",
+  "name": "Meeting Action Item Extraction",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "CLI Invocation",
+    "Instruction Following"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "From AW_Campaign_Notes/AW_SEO_Marketing_Sync.docx on the desktop, extract all to-do tasks and keep only those with a clear owner and a specific deadline or committed delivery time. Filter out directional suggestions (those without an owner and deadline).\n\nGroup by owner and distinguish them with level-2 or level-3 headings. Under each owner, list the tasks; each task must include: task description, the platform or channel involved (such as the official website, Xiaohongshu, Pinterest, Instagram, etc.), and the deadline.\n\nIf a task in the original text mentions “加急”, “ASAP”, or its deadline is within 3 days from today, add a 🔥 emoji in front of that task.\n\nOutput as a Markdown file and save it to AW_Campaign_Notes/AW_SEO_ActionItems.md on the desktop.",
+  "rubric": {
+    "query": "From AW_Campaign_Notes/AW_SEO_Marketing_Sync.docx on the desktop, extract all to-do tasks and keep only those with a clear owner and a specific deadline or committed delivery time. Filter out directional suggestions (those without an owner and deadline).\n\nGroup by owner and distinguish them with level-2 or level-3 headings. Under each owner, list the tasks; each task must include: task description, the platform or channel involved (such as the official website, Xiaohongshu, Pinterest, Instagram, etc.), and the deadline.\n\nIf a task in the original text mentions “加急”, “ASAP”, or its deadline is within 3 days from today, add a 🔥 emoji in front of that task.\n\nOutput as a Markdown file and save it to AW_Campaign_Notes/AW_SEO_ActionItems.md on the desktop.",
+    "query_id": "meeting_action_items_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-64f3cfbe018d",
+        "type": "leaf",
+        "name": "Correctly read the content of AW_Campaign_Notes/AW_SEO_Marketing_Sync.docx on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-1ec108a93017",
+        "type": "group",
+        "name": "Correctly Filtered Out Tasks That Meet the Conditions",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-22d3701d9317",
+            "type": "leaf",
+            "name": "Extracted the to-do tasks in the original text that have a clear owner",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-d01abe45946d",
+            "type": "leaf",
+            "name": "Extracted the to-do tasks in the original text that have a specific deadline or committed delivery time",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-df4ef9e7ca22",
+            "type": "leaf",
+            "name": "Filtered out the directional suggestions in the original text that have no owner and no deadline",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-04b35b33b59d",
+        "type": "group",
+        "name": "Result File Produced According to the Specified Markdown Structure",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-582c027ff253",
+            "type": "leaf",
+            "name": "Generated the AW_Campaign_Notes/AW_SEO_ActionItems.md file on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-66bb38a063c4",
+            "type": "leaf",
+            "name": "Output the task list grouped by owner",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-4a65b07837ee",
+            "type": "leaf",
+            "name": "Each task includes the task description, the platform or channel involved, and the deadline",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-224e957f9b38",
+            "type": "leaf",
+            "name": "Added a 🔥 marker to tasks that the original text marks as urgent or ASAP, or whose deadline is within 3 days from today",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e1a26b2eac3d",
+          "type": "leaf",
+          "name": "Accurately read the body content of the document without omitting task-related paragraphs",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fb8e9cc5b8d8",
+          "type": "group",
+          "name": "Task Filtering Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dc74d6c0be5b",
+              "type": "leaf",
+              "name": "Accurately identified the task owner's name or explicit responsible role",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3a8287d1134a",
+              "type": "leaf",
+              "name": "Accurately identified the specific deadline or committed delivery time expression of each task",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-de8de88e5ecc",
+              "type": "leaf",
+              "name": "Accurately excluded directional suggestions without an owner or time commitment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-55861562c7e2",
+          "type": "group",
+          "name": "Structured Organization and Priority Marking Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-253e5cd2f21e",
+              "type": "leaf",
+              "name": "Correctly grouped tasks of the same owner under the same heading",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-2fda500547d2",
+              "type": "leaf",
+              "name": "Accurately extracted the platform or channel information involved in each task",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d18b692f9896",
+              "type": "leaf",
+              "name": "Correctly determined whether the deadline is within 3 days from today",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-604259bc2d74",
+              "type": "leaf",
+              "name": "Accurately added the 🔥 marker to the tasks marked as urgent or ASAP in the original text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-b1691e202526",
+          "type": "group",
+          "name": "Markdown Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0153b8a14c11",
+              "type": "leaf",
+              "name": "The generated Markdown file opens normally and is in .md format",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-7a0328189b78",
+              "type": "leaf",
+              "name": "The Markdown uses level-2 or level-3 headings to distinguish owner groups",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-9fc901a7a3e3",
+              "type": "leaf",
+              "name": "Every list item contains the three fields: task description, platform or channel, and deadline",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-9efa4fffde53",
+          "type": "leaf",
+          "name": "Took retry or skip measures when document read failures or missing fields were identified during execution",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-b34a23b2b6e2",
+    "language": "en"
+  },
+  "note": "Extract action items from meeting notes and organize by assignee"
+}

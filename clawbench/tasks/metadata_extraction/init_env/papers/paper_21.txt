@@ -1,0 +1,13 @@
+Title: Deep Learning for Natural Language Processing (Version 21)
+Authors: Alice Smith; Bob Johnson
+Year: 2018
+Keywords: deep learning; NLP; neural networks
+
+Abstract:
+This paper explores deep learning techniques applied to
+natural language processing tasks. We show improvements over
+traditional methods.
+
+References:
+J. Doe, Machine Learning Basics, 2015.
+K. Lee, Neural Networks and Applications, 2017.

@@ -1,0 +1,319 @@
+{
+  "id": "weekly_schedule_optimization",
+  "name": "Optimize Weekly Meeting Schedule",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "You will be given the following files:\n- /root/Desktop/draft_schedule.json — 20 unscheduled meetings for the week from March 16 to March 20, 2026\n- /root/Desktop/workspace/preferences.json — scheduling preferences and constraints\n\nPlease optimize the schedule by assigning each meeting to a specific date and time slot, following these rules:\n\n## Rules\n\n1. **No conflicts:** No two meetings in the optimized schedule may overlap in time.\n2. **Working hours only:** All meetings must be scheduled between 09:00 and 17:00.\n3. **Include all meetings:** Every meeting in the draft must appear in the optimized schedule.\n4. **Respect fixed meetings:** Meetings marked with `\"fixed\": true` must keep their original date and time unchanged.\n5. **Respect preferred days:** If a meeting has a `\"preferred_day\"` field, schedule it on that date if possible.\n6. **Topic grouping:** Meetings with the same `\"topic\"` should be scheduled on the same day if possible.\n7. **Long meeting buffers:** For meetings longer than 60 minutes, leave at least a 15-minute buffer after them.\n\n## Output\n\nWrite the optimized schedule to /root/Desktop/workspace/optimized_schedule.json as a JSON object containing a `\"meetings\"` array. Each meeting must retain all original fields and have its `\"date\"`, `\"start_time\"`, and `\"end_time\"` fields updated.",
+  "rubric": {
+    "query": "You will be given the following files:\n- /root/Desktop/draft_schedule.json — 20 unscheduled meetings for the week from March 16 to March 20, 2026\n- /root/Desktop/workspace/preferences.json — scheduling preferences and constraints\n\nPlease optimize the schedule by assigning each meeting to a specific date and time slot, following these rules:\n\n## Rules\n\n1. **No conflicts:** No two meetings in the optimized schedule may overlap in time.\n2. **Working hours only:** All meetings must be scheduled between 09:00 and 17:00.\n3. **Include all meetings:** Every meeting in the draft must appear in the optimized schedule.\n4. **Respect fixed meetings:** Meetings marked with `\"fixed\": true` must keep their original date and time unchanged.\n5. **Respect preferred days:** If a meeting has a `\"preferred_day\"` field, schedule it on that date if possible.\n6. **Topic grouping:** Meetings with the same `\"topic\"` should be scheduled on the same day if possible.\n7. **Long meeting buffers:** For meetings longer than 60 minutes, leave at least a 15-minute buffer after them.\n\n## Output\n\nWrite the optimized schedule to /root/Desktop/workspace/optimized_schedule.json as a JSON object containing a `\"meetings\"` array. Each meeting must retain all original fields and have its `\"date\"`, `\"start_time\"`, and `\"end_time\"` fields updated.",
+    "query_id": "weekly_schedule_optimization",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5c8ed121d4ff",
+        "type": "leaf",
+        "name": "Generated the optimized_schedule.json file containing a \"meetings\" array",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-90e6a1372e51",
+        "type": "group",
+        "name": "Schedule Result Completeness Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3d489b4cee83",
+            "type": "leaf",
+            "name": "Assigned a specific date and time slot to every meeting in the draft",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Temporal Reasoning"
+            ]
+          },
+          {
+            "id": "node-28cfa66cbb6b",
+            "type": "leaf",
+            "name": "Retained all original fields of every meeting and updated the \"date\", \"start_time\", and \"end_time\" fields",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c9fd0d7f0c7e",
+        "type": "group",
+        "name": "Hard Constraint Satisfaction Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f4b0d7c8da02",
+            "type": "leaf",
+            "name": "Fixed meetings kept their original date and time unchanged",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning"
+            ]
+          },
+          {
+            "id": "node-fdf7f1ffee24",
+            "type": "leaf",
+            "name": "All meetings are scheduled between 09:00 and 17:00 with no time overlap",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Conditional Judgment"
+            ]
+          },
+          {
+            "id": "node-fe5397d914ac",
+            "type": "leaf",
+            "name": "At least a 15-minute gap was left after meetings longer than 60 minutes",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ba0a3f859df8",
+        "type": "group",
+        "name": "Preferred Day Handling Objectives",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-c572a2bde334",
+            "type": "leaf",
+            "name": "Meetings with a \"preferred_day\" were scheduled on their preferred date",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Conditional Judgment"
+            ]
+          },
+          {
+            "id": "node-6d36e48df307",
+            "type": "leaf",
+            "name": "Meetings that could not be scheduled on their preferred date were still assigned another specific date and time slot",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-457a79a31f5e",
+          "type": "leaf",
+          "name": "Accurately read all meeting fields and time information in the draft schedule",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Factual Accuracy",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-8842a3ee4ead",
+          "type": "leaf",
+          "name": "Correctly read the schedule constraints and scheduling preferences in the preferences file",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5842768ea369",
+          "type": "group",
+          "name": "Scheduling Constraint Reasoning Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-232dc80f64e2",
+              "type": "leaf",
+              "name": "Accurately determined the scope of the constraint that fixed meetings cannot be moved",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-1e185dbd768d",
+              "type": "leaf",
+              "name": "Accurately calculated the end time of each meeting and the available time slots",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-dad08ff2bced",
+              "type": "leaf",
+              "name": "Accurately determined the impact of the 15-minute buffer after long meetings on subsequent scheduling",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c846b4993281",
+          "type": "group",
+          "name": "Scheduling Decision Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bc7a6eeabd54",
+              "type": "leaf",
+              "name": "Correctly selected time slots that produce no overlaps to schedule all meetings",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-cf44ed25614b",
+              "type": "leaf",
+              "name": "Correctly prioritized scheduling meetings with a \"preferred_day\" on the corresponding date",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Conditional Judgment",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-528fea36f113",
+              "type": "leaf",
+              "name": "Correctly prioritized grouping meetings with the same \"topic\" on the same day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "General Knowledge",
+                "Logical Reasoning",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-8856607d6fd8",
+          "type": "leaf",
+          "name": "The output optimized_schedule.json can be parsed normally as JSON and every meeting object has complete, usable fields",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-e3efebf75351",
+          "type": "group",
+          "name": "Result Consistency and Exception Handling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b7c7ef11ecdc",
+              "type": "leaf",
+              "name": "Kept the correspondence between meeting identifiers and original fields unmixed before and after writing the results",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-9cca1d387817",
+              "type": "leaf",
+              "name": "Made traceable trade-offs for unsatisfied preferences when constraint conflicts occurred, without fabricating non-existent free time",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Factual Accuracy",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-eb8079642823",
+    "language": "en"
+  },
+  "note": "Optimize the weekly meeting schedule, following rules on no conflicts, working hours, fixed meetings, preferred days, topic grouping, and long-meeting buffers."
+}

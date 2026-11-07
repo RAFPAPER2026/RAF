@@ -1,0 +1,170 @@
+{
+  "id": "international_meetting_arrangements",
+  "name": "跨时区会议协调",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "context.long"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop尚有三个人的日程安排文件，请你协调美东时间（UTC-5）的A、北京时间（UTC+8）的B和柏林时间（UTC+1）的C，在5月第一个完整工作周内，找到三人共同空闲的90分钟时段安排战略会议，帮我记录在桌面的'安排.txt'中。",
+  "rubric": {
+    "query": "/root/Desktop尚有三个人的日程安排文件，请你协调美东时间（UTC-5）的A、北京时间（UTC+8）的B和柏林时间（UTC+1）的C，在5月第一个完整工作周内，找到三人共同空闲的90分钟时段安排战略会议，帮我记录在桌面的'安排.txt'中。",
+    "query_id": "international_meetting_arrangements",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-02589b30f23e",
+        "type": "leaf",
+        "name": "正确读取了桌面上三个人的日程安排文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-4a1eea31521e",
+        "type": "group",
+        "name": "战略会议安排结果已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d0892b7a1ffe",
+            "type": "leaf",
+            "name": "正确找到了5月第一个完整工作周内三人共同空闲的90分钟时段",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "时间推理",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-63adf7cfd9a4",
+            "type": "leaf",
+            "name": "正确将战略会议安排结果写入了桌面的安排.txt文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4bd8c20186d5",
+          "type": "leaf",
+          "name": "准确定位了桌面上与A、B、C对应的日程安排文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3f4f5a636471",
+          "type": "leaf",
+          "name": "准确换算了A、B、C所在时区与5月第一个完整工作周的对应时间范围",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2ff183940d0f",
+          "type": "leaf",
+          "name": "准确识别了三人日程中的占用时段并据此判断共同空闲的90分钟窗口",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "条件判断",
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c9e08542f6a8",
+          "type": "group",
+          "name": "结果记录质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-04e82e7751d7",
+              "type": "leaf",
+              "name": "正确选择了落在5月第一个完整工作周内的会议时段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "条件判断"
+              ]
+            },
+            {
+              "id": "node-b4d4c3eaaced",
+              "type": "leaf",
+              "name": "正确将会议主题和确定的时段记录到安排.txt中",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-abf4bdb26f90",
+              "type": "leaf",
+              "name": "安排.txt中的记录包含可直接使用的日期、开始时间、结束时间和时区标注",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-94d5ccfe9115",
+    "language": "zh"
+  }
+}

@@ -1,0 +1,212 @@
+{
+  "id": "review_notes",
+  "name": "复习笔记合并",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我/root/Desktop有两个版本的《数据结构》复习笔记：notes_v1.docx 和 notes_v2.docx。帮我合并成一个新文档 notes_merged.docx放在/root/Desktop，如果同一个知识点在两版中描述不一致，用红色标出差异，并在末尾列出所有冲突点。",
+  "rubric": {
+    "query": "我/root/Desktop有两个版本的《数据结构》复习笔记：notes_v1.docx 和 notes_v2.docx。帮我合并成一个新文档 notes_merged.docx放在/root/Desktop，如果同一个知识点在两版中描述不一致，用红色标出差异，并在末尾列出所有冲突点。",
+    "query_id": "review_notes",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-7da37ef6c7c8",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop 下的 notes_v1.docx 和 notes_v2.docx",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-13d9b1a07abe",
+        "type": "leaf",
+        "name": "生成了放在 /root/Desktop 的 notes_merged.docx 合并文档",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      },
+      {
+        "id": "node-df6f72ace0df",
+        "type": "group",
+        "name": "冲突处理结果已写入合并文档",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9866576cf749",
+            "type": "leaf",
+            "name": "对同一知识点描述不一致的内容用红色标出了差异",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-a5b88db7770e",
+            "type": "leaf",
+            "name": "在合并文档末尾列出了所有冲突点",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "上下文保持",
+              "沟通表达",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-a306f8e0acf0",
+          "type": "leaf",
+          "name": "正确选择了可读取和写入 DOCX 的工具并使用了准确的文件路径",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2291ebf72a80",
+          "type": "leaf",
+          "name": "准确识别了两版笔记中可对应的同一知识点内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-64ca9bcb67df",
+          "type": "group",
+          "name": "冲突识别质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e8a846e6af11",
+              "type": "leaf",
+              "name": "准确判断了哪些知识点描述存在实质性不一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a2729b1c3884",
+              "type": "leaf",
+              "name": "正确提取了每个冲突点对应的差异内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-baab7c36340d",
+          "type": "group",
+          "name": "合并文档结果可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4f16a523d9fc",
+              "type": "leaf",
+              "name": "正确将存在差异的文本设置为红色字体",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-28b8d9a59de1",
+              "type": "leaf",
+              "name": "正确将所有冲突点汇总追加在文档末尾",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-bbdac82bb467",
+              "type": "leaf",
+              "name": "生成的 notes_merged.docx 可正常打开且红色标注与末尾冲突清单可直接查看",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-b44abad2c810",
+          "type": "leaf",
+          "name": "在读取失败、文档损坏或格式异常时识别了错误并停止编造合并结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-48ebbd3e1aa3",
+    "language": "zh"
+  }
+}

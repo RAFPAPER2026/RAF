@@ -1,0 +1,276 @@
+{
+  "id": "wacc_calculation",
+  "name": "WACC计算",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-API 调用"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 financial_data 文件夹里有两张表：balance_sheet.csv 和 income_statement.csv。\n\n任务：\n1. 读取这两个财务文件\n2. 计算以下数据：\n   - 权益的市场价值（从资产负债表）\n   - 债务的市场价值（从资产负债表）\n   - 权益成本（CAPM模型：无风险利率=3%，市场回报=8%，beta=1.2）\n   - 债务成本（利息费用/总债务）\n   - 税率（所得税/税前收入）\n3. 计算权益和债务在资本结构中的权重\n4. 用公式计算 WACC：\n   WACC = (E/V)*Re + (D/V)*Rd*(1-Tc)\n   E=权益市场价值, D=债务市场价值, V=E+D\n   Re=权益成本, Rd=债务成本, Tc=税率\n5. 将结果写入 wacc_report.json，保存在桌面\n\n输出格式：\n{\n    \"equity_weight\": 0.6,\n    \"debt_weight\": 0.4,\n    \"cost_of_equity\": 0.09,\n    \"cost_of_debt\": 0.05,\n    \"tax_rate\": 0.2174,\n    \"final_wacc\": 计算值\n}\n\n说明：所有数值保留4位小数。",
+  "rubric": {
+    "query": "桌面上 financial_data 文件夹里有两张表：balance_sheet.csv 和 income_statement.csv。\n\n任务：\n1. 读取这两个财务文件\n2. 计算以下数据：\n   - 权益的市场价值（从资产负债表）\n   - 债务的市场价值（从资产负债表）\n   - 权益成本（CAPM模型：无风险利率=3%，市场回报=8%，beta=1.2）\n   - 债务成本（利息费用/总债务）\n   - 税率（所得税/税前收入）\n3. 计算权益和债务在资本结构中的权重\n4. 用公式计算 WACC：\n   WACC = (E/V)*Re + (D/V)*Rd*(1-Tc)\n   E=权益市场价值, D=债务市场价值, V=E+D\n   Re=权益成本, Rd=债务成本, Tc=税率\n5. 将结果写入 wacc_report.json，保存在桌面\n\n输出格式：\n{\n    \"equity_weight\": 0.6,\n    \"debt_weight\": 0.4,\n    \"cost_of_equity\": 0.09,\n    \"cost_of_debt\": 0.05,\n    \"tax_rate\": 0.2174,\n    \"final_wacc\": 计算值\n}\n\n说明：所有数值保留4位小数。",
+    "query_id": "wacc_calculation",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-087c053de47c",
+        "type": "leaf",
+        "name": "正确读取了 balance_sheet.csv 和 income_statement.csv 中计算 WACC 所需的数据字段",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-610d9d32f064",
+        "type": "group",
+        "name": "完成了 WACC 所需指标与结果计算",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-5a1cf58fe576",
+            "type": "leaf",
+            "name": "正确计算了权益的市场价值、债务的市场价值、权益成本、债务成本和税率",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-be156826173a",
+            "type": "leaf",
+            "name": "正确计算了权益和债务在资本结构中的权重以及 final_wacc",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0de6d6716c3b",
+        "type": "leaf",
+        "name": "生成了符合指定字段结构的 wacc_report.json 并保存在桌面",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d4d3c79eb987",
+          "type": "leaf",
+          "name": "准确定位并读取了 financial_data 文件夹中的两份源文件且未混淆资产负债表与利润表字段来源",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b3f02398ab71",
+          "type": "group",
+          "name": "源数据提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d979201d90d9",
+              "type": "leaf",
+              "name": "准确提取了资产负债表中用于计算权益市场价值和债务市场价值的字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-36ca9bc3815a",
+              "type": "leaf",
+              "name": "准确提取了利润表中用于计算利息费用、税前收入和所得税的字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6820be4dd2aa",
+          "type": "group",
+          "name": "财务公式应用质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0fe572b6887b",
+              "type": "leaf",
+              "name": "正确应用了 CAPM 公式计算权益成本并使用无风险利率3%、市场回报8%和beta 1.2",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-9d25b5e0c12e",
+              "type": "leaf",
+              "name": "正确应用了利息费用除以总债务计算债务成本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-80aa35e82a6d",
+              "type": "leaf",
+              "name": "正确应用了所得税除以税前收入计算税率",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-f7d2ef1f29ac",
+              "type": "leaf",
+              "name": "正确应用了 E/V、D/V 和 WACC 公式完成资本结构权重与最终 WACC 计算",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7272e5bf126d",
+          "type": "group",
+          "name": "异常处理与事实约束",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-68a9607eff2b",
+              "type": "leaf",
+              "name": "在字段缺失、命名不一致或数值无法直接使用时，正确识别并采取了可追溯的替代或修正处理",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-cebdbb6e2160",
+              "type": "leaf",
+              "name": "未编造源文件中不存在的财务数值或字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-276b4e95f76b",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1b315be8476b",
+              "type": "leaf",
+              "name": "生成的 wacc_report.json 可被正常打开并解析为有效 JSON",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-74481bb7fa74",
+              "type": "leaf",
+              "name": "生成的 wacc_report.json 包含 equity_weight、debt_weight、cost_of_equity、cost_of_debt、tax_rate 和 final_wacc 六个指定字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-0c85f0c27b04",
+              "type": "leaf",
+              "name": "生成的 wacc_report.json 中所有数值均保留4位小数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-2b571f464174",
+    "language": "zh"
+  }
+}

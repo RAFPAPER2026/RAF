@@ -1,0 +1,7 @@
+papers/目录：
+- Reflexion_2023.pdf
+- SelfRefine_2023.pdf
+- ReAct_2023.pdf
+- AgentBench_2023.pdf
+- tau-bench_2024.pdf
+（笔记中的引用见notes/）

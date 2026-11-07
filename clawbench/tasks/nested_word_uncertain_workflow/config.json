@@ -1,0 +1,352 @@
+{
+  "id": "nested_word_uncertain_workflow",
+  "name": "嵌套文档季报处理",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解",
+    "反思和修复-异常识别和理解",
+    "工具使用-CLI调用",
+    "反思与修复-异常识别与理解"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "reflection.detect",
+    "tool.cli",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上有个 project_archive 文件夹，里面按项目嵌套存放着多份 Word 文档。请帮我完成下面的事：\n1. 筛选出所有文件名或正文首页标记为「2024年度·重要」的季度报告，子文件夹里的也要找；\n2. 把筛选出的文档统一修改落款日期为 2025-01-31；\n3. 逐份总结核心内容（每份不超过200字），并翻译成英文；\n4. 根据所有总结生成一份逻辑思维导图，保存到桌面。\n我的助理说一共应该有8份这样的报告，请处理好后告诉我结果。",
+  "rubric": {
+    "query": "桌面上有个 project_archive 文件夹，里面按项目嵌套存放着多份 Word 文档。请帮我完成下面的事：\n1. 筛选出所有文件名或正文首页标记为「2024年度·重要」的季度报告，子文件夹里的也要找；\n2. 把筛选出的文档统一修改落款日期为 2025-01-31；\n3. 逐份总结核心内容（每份不超过200字），并翻译成英文；\n4. 根据所有总结生成一份逻辑思维导图，保存到桌面。\n我的助理说一共应该有8份这样的报告，请处理好后告诉我结果。",
+    "query_id": "nested_word_uncertain_workflow",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-246946267bb6",
+        "type": "group",
+        "name": "完成目标报告筛选",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bb6265cf374b",
+            "type": "leaf",
+            "name": "正确筛选了 project_archive 中所有文件名标记为 2024年度·重要 的季度报告",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "检索策略",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ca72fa863036",
+            "type": "leaf",
+            "name": "正确筛选了 project_archive 中正文首页标记为 2024年度·重要 的季度报告",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d9ad7605a065",
+        "type": "leaf",
+        "name": "正确将筛选出的季度报告落款日期修改为 2025-01-31",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-55c13882eb8b",
+        "type": "group",
+        "name": "完成总结与导图交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d90729fdc801",
+            "type": "leaf",
+            "name": "正确生成了每份筛选报告不超过200字的中文核心内容总结",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "逻辑推理",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-44a683aa3e9f",
+            "type": "leaf",
+            "name": "正确生成了每份筛选报告对应的英文翻译",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "沟通表达",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-618dbf431f6a",
+            "type": "leaf",
+            "name": "正确生成并保存了基于所有总结的逻辑思维导图文件到桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5648e1ed4bfe",
+        "type": "leaf",
+        "name": "正确告知了最终处理结果并说明筛选出的报告数量是否为8份",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "条件判断",
+          "事实准确性",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f31af484927f",
+          "type": "group",
+          "name": "文档检索与读取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ed93e4c7a48c",
+              "type": "leaf",
+              "name": "准确定位了桌面上的 project_archive 文件夹及其所有嵌套子文件夹中的 Word 文档",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-08bbbb4ee613",
+              "type": "leaf",
+              "name": "准确识别了 Word 文档中可读取的正文首页内容用于标记判断",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "信息筛选",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-05d781e761b6",
+          "type": "group",
+          "name": "筛选判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d0aa48238ee7",
+              "type": "leaf",
+              "name": "准确判断了文件名或正文首页任一位置出现 2024年度·重要 即应纳入筛选",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-b83ba7ab536f",
+              "type": "leaf",
+              "name": "准确核对了筛选结果数量并识别是否与8份预期一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-25beba9d44e8",
+          "type": "group",
+          "name": "批量修改执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-063ddff08ec6",
+              "type": "leaf",
+              "name": "正确仅修改了已筛选报告的落款日期为 2025-01-31",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7750e230ae6e",
+              "type": "leaf",
+              "name": "准确保持了文档除目标日期外的其余内容未被误改",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e631484038f8",
+          "type": "group",
+          "name": "总结与翻译质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-041fa8958d53",
+              "type": "leaf",
+              "name": "准确提取了每份报告的核心信息用于生成不超过200字的中文总结",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-9f6cb949ca33",
+              "type": "leaf",
+              "name": "准确翻译了每份中文总结且保留原总结的关键信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "通用知识",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-17222318627e",
+          "type": "group",
+          "name": "思维导图交付质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5e3cc70bf06e",
+              "type": "leaf",
+              "name": "正确依据所有报告总结组织了可区分主题层级的思维导图内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-e5eb1114a012",
+              "type": "leaf",
+              "name": "生成的思维导图文件可正常打开且节点文字无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-36d8e516ce52",
+              "type": "leaf",
+              "name": "生成的思维导图文件包含全部已筛选报告对应的要点节点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f43be554ef17",
+          "type": "leaf",
+          "name": "回复中包含了已处理文件数量、是否与8份预期一致、导图保存位置和异常情况说明",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "异常处理",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-fcb3efb7a3f6",
+    "language": "zh"
+  },
+  "note": "给嵌套文件，给特殊要求筛选一系列word。要求修改内容并做一系列复杂操作，总结，翻译，并根据总结画逻辑地图。但是部分文件筛选不到，【刚好rubrics or 分支】创建或者与人确认或者重新搜都ok，测试的是环境和人描述的不一致的复杂情况",
+  "env_description": "嵌套project_archive目录，含6份「2024年度·重要」标记word、1份草稿态重要报告及若干干扰文档；用户称8份，实际可确认的少于8份，测试环境与描述不一致的应对"
+}

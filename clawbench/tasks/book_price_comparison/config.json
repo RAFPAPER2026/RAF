@@ -1,0 +1,160 @@
+{
+  "id": "book_price_comparison",
+  "name": "书单京东比价",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "信息检索",
+  "ability_category": [
+    "工具调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "/root/Desktop有一个“书单.txt”，里面每行是一本书名。帮我把每本书在京东上的当前售价爬下来，生成一个价格对比表，存成csv文件到同路径。",
+  "rubric": {
+    "query": "/root/Desktop有一个“书单.txt”，里面每行是一本书名。帮我把每本书在京东上的当前售价爬下来，生成一个价格对比表，存成csv文件到同路径。",
+    "query_id": "book_price_comparison",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d51115fda5df",
+        "type": "leaf",
+        "name": "正确读取了书单.txt中的全部书名",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-44d7bd7fd47e",
+        "type": "leaf",
+        "name": "正确获取了每本书在京东上的当前售价",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "检索策略",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-cf9cebdfabbd",
+        "type": "leaf",
+        "name": "生成了包含书名与售价的价格对比表csv文件并保存到同路径",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-24be3f66ed1e",
+          "type": "leaf",
+          "name": "正确读取了书单.txt中每一行书名且未遗漏空行以外的条目",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-926df4e78b8f",
+          "type": "leaf",
+          "name": "准确构造了每本书在京东上的检索请求并定位到对应商品价格",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5f69fca2296c",
+          "type": "leaf",
+          "name": "正确处理了未找到结果或价格抓取失败的书目并在结果中保留可判定标记",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f7b47cc1a0cc",
+          "type": "leaf",
+          "name": "准确将抓取到的售价与对应书名一一匹配且未发生跨书目混淆",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "上下文保持",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7ce4f83cc4fd",
+          "type": "leaf",
+          "name": "生成的csv文件可正常打开且包含可直接使用的列结构与逐行价格结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f96b3a51bcd1",
+          "type": "leaf",
+          "name": "回复中明确说明了csv文件的保存位置以及无法获取价格的书目结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "异常处理"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-2b0544b78b65",
+    "language": "zh"
+  }
+}

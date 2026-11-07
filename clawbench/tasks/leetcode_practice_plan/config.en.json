@@ -1,0 +1,221 @@
+{
+  "id": "leetcode_practice_plan",
+  "name": "LeetCode Practice Plan",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me scrape the Hot100 problem list on LeetCode and save it to /root/Desktop, categorized by difficulty, and then give me a practice plan of 3 problems per day.",
+  "rubric": {
+    "query": "Help me scrape the Hot100 problem list on LeetCode and save it to /root/Desktop, categorized by difficulty, and then give me a practice plan of 3 problems per day.",
+    "query_id": "leetcode_practice_plan",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-563e42fb106c",
+        "type": "leaf",
+        "name": "Correctly scraped the LeetCode Hot100 problem list",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-77c7bd6415f0",
+        "type": "group",
+        "name": "Study Materials and Practice Plan Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-10e004d479e5",
+            "type": "leaf",
+            "name": "Generated the difficulty-categorized problem list deliverable",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-7296d9c286a4",
+            "type": "leaf",
+            "name": "Generated the practice plan deliverable with 3 problems per day",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Temporal Reasoning",
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-fd7a050ae6b8",
+        "type": "leaf",
+        "name": "Saved the deliverables to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-0f091d647aac",
+          "type": "leaf",
+          "name": "Accurately selected an information source from which the LeetCode Hot100 problem list could be obtained",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-42682963c57d",
+          "type": "leaf",
+          "name": "Accurately extracted the problem names and corresponding difficulty information",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-9bee2ef9c334",
+          "type": "leaf",
+          "name": "Correctly completed the classification by problem difficulty without omitting any scraped problems",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Information Filtering",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0216880070bc",
+          "type": "group",
+          "name": "Practice Plan Scheduling Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9dab199f30f5",
+              "type": "leaf",
+              "name": "Correctly calculated the number of days required to complete all problems at 3 problems per day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-877e7f74066e",
+              "type": "leaf",
+              "name": "Correctly assigned 3 non-duplicate problems to each day",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6aed0f55e18a",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-80a5ce798e43",
+              "type": "leaf",
+              "name": "The generated categorized problem list file opens normally and contains problem name and difficulty fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-2610b38a9b63",
+              "type": "leaf",
+              "name": "The generated practice plan file opens normally and each day has a clear date or day identifier",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-55c70c53b40b",
+          "type": "leaf",
+          "name": "Recorded the exception and took retry or fallback measures when scraping failed or fields were missing",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-4a0be62b6d9c",
+    "language": "en"
+  }
+}

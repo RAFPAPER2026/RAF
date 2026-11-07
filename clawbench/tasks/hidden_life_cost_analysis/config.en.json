@@ -1,0 +1,320 @@
+{
+  "id": "hidden_life_cost_analysis",
+  "name": "Hidden Life Cost Analysis",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding",
+    "Numerical Analysis & Reasoning",
+    "State Tracking & Consistency"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "plan.numeric",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me analyze my living habits and see which things are secretly wasting my time and money.\nThe data is all on the desktop: calendar.ics (schedule for the past three months), bank_records.csv (bank transactions for the past three months, with remarks), subscriptions.txt (all the services I subscribe to, with prices), habits.md (my own record of daily habits).\nPlease cross-analyze this data and identify: 1) subscriptions or spending that cost money but are used very rarely; 2) habitual arrangements that take up a lot of time but are of low value; 3) expenses that can be consolidated or cancelled. Each conclusion must be supported by data evidence (how much money/how many hours were spent), and estimate the amount of money and time that can be saved each month.\nOutput to /root/Desktop/生活成本分析.md.",
+  "rubric": {
+    "query": "Help me analyze my living habits and see which things are secretly wasting my time and money.\nThe data is all on the desktop: calendar.ics (schedule for the past three months), bank_records.csv (bank transactions for the past three months, with remarks), subscriptions.txt (all the services I subscribe to, with prices), habits.md (my own record of daily habits).\nPlease cross-analyze this data and identify: 1) subscriptions or spending that cost money but are used very rarely; 2) habitual arrangements that take up a lot of time but are of low value; 3) expenses that can be consolidated or cancelled. Each conclusion must be supported by data evidence (how much money/how many hours were spent), and estimate the amount of money and time that can be saved each month.\nOutput to /root/Desktop/生活成本分析.md.",
+    "query_id": "hidden_life_cost_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-7e7759061009",
+        "type": "leaf",
+        "name": "Correctly read the four data files on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-cc163f36df12",
+        "type": "group",
+        "name": "Living Cost Analysis Deliverable Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0bf4706a796f",
+            "type": "leaf",
+            "name": "Generated an analysis document containing conclusions on low-frequency, high-spend subscriptions or expenses with data evidence",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-3aac367dd656",
+            "type": "leaf",
+            "name": "Generated an analysis document containing conclusions on time-consuming, low-value habitual arrangements with data evidence",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "Temporal Reasoning"
+            ]
+          },
+          {
+            "id": "node-9bb52d6cf58f",
+            "type": "leaf",
+            "name": "Generated an analysis document containing conclusions on expenses that can be consolidated or cancelled with data evidence",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Logical Reasoning",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-862526191120",
+            "type": "leaf",
+            "name": "Wrote every conclusion into /root/Desktop/生活成本分析.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-8327c318a760",
+          "type": "leaf",
+          "name": "Accurately read the analysis-relevant data in calendar.ics, bank_records.csv, subscriptions.txt, and habits.md",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e64c8e687607",
+          "type": "group",
+          "name": "Cross-File Data Integration Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-325a964e5389",
+              "type": "leaf",
+              "name": "Accurately linked the subscriptions list with the corresponding expense records in the bank transactions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d988cd58d75c",
+              "type": "leaf",
+              "name": "Accurately calculated the usage frequency, total amount, and monthly average amount of each type of subscription or expense over the past three months",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-42faf4ac613d",
+              "type": "leaf",
+              "name": "Accurately calculated the total time and monthly average time occupied by habitual arrangements over the past three months",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-18861113c426",
+          "type": "group",
+          "name": "Conclusion Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-273d0b00dc21",
+              "type": "leaf",
+              "name": "Correctly identified subscriptions or expenses that cost money but are used very rarely",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-67247d133fb2",
+              "type": "leaf",
+              "name": "Correctly identified habitual arrangements that take up a lot of time but are of low value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-c7c4320b5284",
+              "type": "leaf",
+              "name": "Correctly identified expenses that can be consolidated or cancelled",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-96bc924aa155",
+              "type": "leaf",
+              "name": "Did not fabricate expense records, usage records, or time records that do not exist in the data files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a6540afb1249",
+          "type": "group",
+          "name": "Quantitative Estimation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-00c15af32735",
+              "type": "leaf",
+              "name": "Every conclusion is supported by a traceable data evidence value",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-6713ea90da36",
+              "type": "leaf",
+              "name": "Every conclusion estimates the amount of money that can be saved per month",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c9763584b86d",
+              "type": "leaf",
+              "name": "Every conclusion estimates the amount of time that can be saved per month",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-e65646b8db88",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-3dafab44e52f",
+              "type": "leaf",
+              "name": "The output Markdown file contains a sectioned structure for the three types of conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-54b6cb0a3631",
+              "type": "leaf",
+              "name": "The correspondence between amounts, durations, and conclusions in the output Markdown file can be used directly by the user for decision-making",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-9f3d77446806",
+              "type": "leaf",
+              "name": "The output Markdown file opens normally with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1f762cf1a9a8",
+    "language": "en"
+  },
+  "note": "My hidden living costs\n“Analyze my living habits. Which things are secretly wasting my time and money?”\nNeeded:\n• calendar\n• bank records\n• subscriptions\n• habits",
+  "env_description": "calendar.ics (four types of schedules: English classes/gaming sessions/fishing/gym) + bank_records.csv (three months of transactions, including subscription deductions) + subscriptions.txt + habits.md; the low-usage subscriptions and time sinks are planted so that they can be cross-verified"
+}

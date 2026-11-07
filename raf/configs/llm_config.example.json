@@ -1,0 +1,8 @@
+{
+  "base_url": "https://your-openai-compatible-endpoint/v1",
+  "api_key": "YOUR_API_KEY",
+  "model": "your-model-id",
+  "temperature": 0.2,
+  "max_tokens": 4096,
+  "timeout": 300
+}

@@ -1,0 +1,154 @@
+{
+  "id": "download_rl_paper",
+  "name": "arXiv Paper Search Script",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me write a Python script that calls the arXiv API to search for papers whose titles contain “reinforcement learning”, and outputs them in reverse chronological order by year into a markdown table, saved to /root/Desktop.",
+  "rubric": {
+    "query": "Help me write a Python script that calls the arXiv API to search for papers whose titles contain “reinforcement learning”, and outputs them in reverse chronological order by year into a markdown table, saved to /root/Desktop.",
+    "query_id": "download_rl_paper",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-06ef31492bdc",
+        "type": "leaf",
+        "name": "Wrote a Python script that calls the arXiv API to search for papers whose titles contain reinforcement learning",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Retrieval Strategy"
+        ]
+      },
+      {
+        "id": "node-e342a886d447",
+        "type": "leaf",
+        "name": "Generated the script output as a markdown table sorted in reverse chronological order by year",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Logical Reasoning",
+          "Temporal Reasoning",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-55171bd9ca84",
+        "type": "leaf",
+        "name": "Saved the Python script to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-669487768bde",
+          "type": "leaf",
+          "name": "Accurately constructed the arXiv API query parameters to match papers whose titles contain reinforcement learning",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-a0defed9c58e",
+          "type": "leaf",
+          "name": "Correctly extracted the paper titles, publication dates or years, and arXiv links for generating the table",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-177b1a9eb0bb",
+          "type": "leaf",
+          "name": "Correctly sorted the search results from newest to oldest by year",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Temporal Reasoning",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8f721658c429",
+          "type": "leaf",
+          "name": "The generated markdown table contains a header and row-by-row paper records and can be rendered directly in markdown",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-840037f330e3",
+          "type": "leaf",
+          "name": "The script content includes error handling branches for request failures or parsing failures",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7261ab4bd70a",
+          "type": "leaf",
+          "name": "Used a file path and Python file extension consistent with the task requirements when writing the script to /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-d979cb73c1ce",
+    "language": "en"
+  }
+}

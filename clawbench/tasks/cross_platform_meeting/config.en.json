@@ -1,0 +1,308 @@
+{
+  "id": "cross_platform_meeting",
+  "name": "Cross-Platform Meeting Email",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Under the desktop cross_platform_sync_meetings folder there are four ics files: meeting_ps5_render_conflict.ics, meeting_ios_memory_leak.ics, meeting_xbox_api_deprecate.ics, meeting_android_build_farm.ics.\n\nPlease look at the DESCRIPTION field of these files and extract the four pieces of information: platform, core conflict module, estimated fix hours, and responsible owner. Then generate a .eml-format report email and save it to desktop cross_platform_sync_meetings/v3_conflict_summary.eml. The email body should list these four dimensions in a Markdown table.\n\nNote: the estimated fix hours must uniformly use the \"X小时\" format, with 1 day equal to 8 hours for conversion. If the hours are not mentioned, fill in \"待定\".",
+  "rubric": {
+    "query": "Under the desktop cross_platform_sync_meetings folder there are four ics files: meeting_ps5_render_conflict.ics, meeting_ios_memory_leak.ics, meeting_xbox_api_deprecate.ics, meeting_android_build_farm.ics.\n\nPlease look at the DESCRIPTION field of these files and extract the four pieces of information: platform, core conflict module, estimated fix hours, and responsible owner. Then generate a .eml-format report email and save it to desktop cross_platform_sync_meetings/v3_conflict_summary.eml. The email body should list these four dimensions in a Markdown table.\n\nNote: the estimated fix hours must uniformly use the \"X小时\" format, with 1 day equal to 8 hours for conversion. If the hours are not mentioned, fill in \"待定\".",
+    "query_id": "cross_platform_meeting",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-2dd55cc73aa4",
+        "type": "leaf",
+        "name": "Correctly read the DESCRIPTION fields of the four specified ics files",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-b9b07c057f97",
+        "type": "group",
+        "name": "Meeting information organization objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9287f801f478",
+            "type": "leaf",
+            "name": "Correctly extracted the platform, core conflict module, estimated fix hours, and responsible owner from the four files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-cd1109429412",
+            "type": "leaf",
+            "name": "Correctly filled the unmentioned hours as 待定 and converted days into the X小时 format",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning",
+              "Logical Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-323f1ba72bd0",
+        "type": "group",
+        "name": "Email delivery objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-526f0f45026b",
+            "type": "leaf",
+            "name": "Successfully generated a report email file in eml format",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Intent Understanding"
+            ]
+          },
+          {
+            "id": "node-1eb26eab26cd",
+            "type": "leaf",
+            "name": "Correctly saved the email file to desktop cross_platform_sync_meetings/v3_conflict_summary.eml",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-035243ac40f3",
+            "type": "leaf",
+            "name": "The email body contains the platform, core conflict module, estimated fix hours, and responsible owner listed in a Markdown table",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Communication",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d34939673b40",
+          "type": "leaf",
+          "name": "Correctly located the four specified ics files in the desktop cross_platform_sync_meetings directory",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Intent Understanding"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3ee4bc71b668",
+          "type": "group",
+          "name": "Field extraction accuracy",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a404bb12992e",
+              "type": "leaf",
+              "name": "Accurately extracted the platform information in DESCRIPTION",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-99901f3d69af",
+              "type": "leaf",
+              "name": "Accurately extracted the core conflict module information in DESCRIPTION",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7b35dd998df1",
+              "type": "leaf",
+              "name": "Accurately extracted the responsible owner information in DESCRIPTION",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-3272f9493da8",
+          "type": "group",
+          "name": "Work-hours judgment and formatting quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0df5a8328ce1",
+              "type": "leaf",
+              "name": "Accurately identified whether DESCRIPTION mentions the estimated fix hours",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-c2dd5441c322",
+              "type": "leaf",
+              "name": "Correctly converted day-based hours into the X小时 format at 1 day equals 8 hours",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-b03a32a42404",
+              "type": "leaf",
+              "name": "Correctly filled missing hours as 待定",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-808b05346cb1",
+          "type": "group",
+          "name": "Email deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-888a7c3f4228",
+              "type": "leaf",
+              "name": "Correctly generated one row of Markdown table content for each of the four meetings",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-891f9a7508db",
+              "type": "leaf",
+              "name": "Correctly included the platform, core conflict module, estimated fix hours, and responsible owner in the table columns",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-e07e7c02e310",
+              "type": "leaf",
+              "name": "The correctly generated eml file can be recognized normally by email clients as email content, and the body contains a Markdown table",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-ba69bc9c30ee",
+          "type": "group",
+          "name": "Multi-file processing stability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bc7d4d8b0d4c",
+              "type": "leaf",
+              "name": "Correctly maintained a one-to-one correspondence between the four files and the corresponding meeting information during extraction and email generation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-37903e89ee79",
+              "type": "leaf",
+              "name": "Correctly handled null filling and result output when DESCRIPTION fields were missing or formats were inconsistent",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-50ad695c1d0c",
+    "language": "en"
+  },
+  "note": "Extract meeting information from ICS calendar files and generate a report email"
+}

@@ -1,0 +1,277 @@
+{
+  "id": "portfolio_risk_metrics",
+  "name": "组合风险指标计算",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 portfolio_data 文件夹里有 portfolio_returns.csv，包含500个交易日的每日收益数据，列：date, return。\n\n任务：\n1. 读取CSV文件\n2. 计算：日均收益、标准差、年化收益(×252)、年化波动率(×√252)\n3. 计算VaR（95%和99%置信度，历史模拟法：排序后取分位数）\n4. 计算夏普比率：(年化收益 - 无风险利率) / 年化波动率，无风险利率=0.04\n5. 从累计收益计算最大回撤\n6. 将结果写入 risk_report.json，保存在桌面\n\n输出格式：\n{\n  \"mean_daily_return\": 0.0005,\n  \"daily_std\": 0.015,\n  \"annualized_return\": 0.126,\n  \"annualized_volatility\": 0.238,\n  \"var_95\": -0.023,\n  \"var_99\": -0.035,\n  \"sharpe_ratio\": 0.36,\n  \"max_drawdown\": -0.15,\n  \"risk_rating\": \"moderate\"\n}\n\n风险评级规则：\n- sharpe < 0.5 => \"poor\"\n- 0.5-1.0 => \"moderate\"\n- 1.0-2.0 => \"good\"\n- > 2.0 => \"excellent\"",
+  "rubric": {
+    "query": "桌面上 portfolio_data 文件夹里有 portfolio_returns.csv，包含500个交易日的每日收益数据，列：date, return。\n\n任务：\n1. 读取CSV文件\n2. 计算：日均收益、标准差、年化收益(×252)、年化波动率(×√252)\n3. 计算VaR（95%和99%置信度，历史模拟法：排序后取分位数）\n4. 计算夏普比率：(年化收益 - 无风险利率) / 年化波动率，无风险利率=0.04\n5. 从累计收益计算最大回撤\n6. 将结果写入 risk_report.json，保存在桌面\n\n输出格式：\n{\n  \"mean_daily_return\": 0.0005,\n  \"daily_std\": 0.015,\n  \"annualized_return\": 0.126,\n  \"annualized_volatility\": 0.238,\n  \"var_95\": -0.023,\n  \"var_99\": -0.035,\n  \"sharpe_ratio\": 0.36,\n  \"max_drawdown\": -0.15,\n  \"risk_rating\": \"moderate\"\n}\n\n风险评级规则：\n- sharpe < 0.5 => \"poor\"\n- 0.5-1.0 => \"moderate\"\n- 1.0-2.0 => \"good\"\n- > 2.0 => \"excellent\"",
+    "query_id": "portfolio_risk_metrics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-52e062169651",
+        "type": "leaf",
+        "name": "正确读取了 portfolio_returns.csv 中的收益数据",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-50394f9d86e0",
+        "type": "group",
+        "name": "风险指标计算目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f07ce0094822",
+            "type": "leaf",
+            "name": "正确计算了日均收益、标准差、年化收益、年化波动率、VaR95、VaR99、夏普比率和最大回撤",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-73c857f96639",
+            "type": "leaf",
+            "name": "正确判定了 risk_rating 的等级结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ef8c718f7b16",
+        "type": "leaf",
+        "name": "生成了包含指定字段的 risk_report.json 文件并保存到桌面",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持",
+          "意图理解"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-ed2c8b226e92",
+          "type": "leaf",
+          "name": "准确定位了桌面上 portfolio_data 文件夹中的 portfolio_returns.csv 文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9e0a620c62d3",
+          "type": "group",
+          "name": "输入数据处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cc1f8b7c2996",
+              "type": "leaf",
+              "name": "正确读取了 date 和 return 列中的有效数据记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-cf67142eb3f8",
+              "type": "leaf",
+              "name": "识别了缺失值或非数值收益数据并采取了可追踪的处理动作",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-b127665d58a5",
+          "type": "group",
+          "name": "核心计算与判级质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ab943193117e",
+              "type": "leaf",
+              "name": "正确按 252 个交易日计算了年化收益和年化波动率",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-f386f8d86bd7",
+              "type": "leaf",
+              "name": "正确按历史模拟法排序并提取了 95% 和 99% VaR 分位数",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ca9cd59f8098",
+              "type": "leaf",
+              "name": "正确使用无风险利率 0.04 计算了夏普比率",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-460f93772c04",
+              "type": "leaf",
+              "name": "正确基于累计收益序列计算了最大回撤",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5eac3196e616",
+              "type": "leaf",
+              "name": "正确按给定区间映射了 risk_rating 等级",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-084b97771ab4",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1fd65b037f86",
+              "type": "leaf",
+              "name": "生成的 risk_report.json 可正常解析为 JSON 对象",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-7215f56d49ac",
+              "type": "leaf",
+              "name": "生成的 risk_report.json 包含用户要求的 8 个数值字段和 1 个 risk_rating 字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-c1ee8bf44006",
+              "type": "leaf",
+              "name": "生成的 risk_report.json 中各字段名称与用户指定名称完全一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-eba5a20aa1b7",
+          "type": "leaf",
+          "name": "向用户明确说明了 risk_report.json 的保存位置和主要计算结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-dc5d7f64b3ee",
+    "language": "zh"
+  }
+}

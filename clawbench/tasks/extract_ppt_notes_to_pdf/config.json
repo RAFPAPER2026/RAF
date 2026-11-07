@@ -1,0 +1,237 @@
+{
+  "id": "extract_ppt_notes_to_pdf",
+  "name": "PPT备注转PDF",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-CLI 调用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "从桌面 history_review/二模冲刺_历史必修一串讲.pptx 里提取每页的演讲者备注。封面、目录页那些没有备注的跳过，只提取有内容的。每段备注前面加上页码，格式是“第X页：”。\n\n把提取出来的内容生成一个 PDF 文件，正文用宋体、小四号字（12pt），行距 1.5 倍。文件保存到同一个 history_review 文件夹下，命名为“历史必修一_考点补充.pdf”。",
+  "rubric": {
+    "query": "从桌面 history_review/二模冲刺_历史必修一串讲.pptx 里提取每页的演讲者备注。封面、目录页那些没有备注的跳过，只提取有内容的。每段备注前面加上页码，格式是“第X页：”。\n\n把提取出来的内容生成一个 PDF 文件，正文用宋体、小四号字（12pt），行距 1.5 倍。文件保存到同一个 history_review 文件夹下，命名为“历史必修一_考点补充.pdf”。",
+    "query_id": "extract_ppt_notes_to_pdf",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-8fe2f2212af4",
+        "type": "leaf",
+        "name": "正确提取了PPT中所有有内容的演讲者备注",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-91c4372f9fbb",
+        "type": "leaf",
+        "name": "正确跳过了封面、目录页等没有备注内容的页面",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "条件判断",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-8c8a2be0cdc5",
+        "type": "leaf",
+        "name": "正确按“第X页：”格式为每段备注添加了页码标识",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-fc04c270eb23",
+        "type": "leaf",
+        "name": "正确生成并保存了名为“历史必修一_考点补充.pdf”的PDF文件到history_review文件夹下",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "意图理解"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d0af3f8f4646",
+          "type": "leaf",
+          "name": "准确定位了桌面history_review文件夹中的目标PPT文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-897ab9f0e479",
+          "type": "group",
+          "name": "备注提取判断质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-78f8a7197a28",
+              "type": "leaf",
+              "name": "准确读取了每一页的演讲者备注内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-8516cb596903",
+              "type": "leaf",
+              "name": "准确判断了备注是否为空白或无内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2422b249c1b1",
+          "type": "group",
+          "name": "内容整理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-14dca3f0c39a",
+              "type": "leaf",
+              "name": "正确保留了备注内容的原始信息而未编造不存在的文本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-94de7da96b2d",
+              "type": "leaf",
+              "name": "正确按对应页码为每段备注添加了“第X页：”前缀",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-643650e17d61",
+          "type": "group",
+          "name": "PDF交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1db82cd8bdd2",
+              "type": "leaf",
+              "name": "正确生成了可正常打开的PDF文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-850a8a7bdcbe",
+              "type": "leaf",
+              "name": "PDF正文使用了宋体且字号为12pt",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-3923da504435",
+              "type": "leaf",
+              "name": "PDF正文设置了1.5倍行距",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-0e4bac4c1ff5",
+              "type": "leaf",
+              "name": "PDF中的备注文本按页码顺序组织且内容可直接阅读使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-3630f1ff1f1b",
+          "type": "leaf",
+          "name": "在读取备注或生成PDF失败时正确识别错误并采取了修正措施",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "逻辑推理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-aaa1f0017e84",
+    "language": "zh"
+  },
+  "note": "从 PPTX 中提取演讲者备注并生成排版后的 PDF"
+}

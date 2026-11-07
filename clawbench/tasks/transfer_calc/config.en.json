@@ -1,0 +1,282 @@
+{
+  "id": "transfer_calc",
+  "name": "Summarize Latest Open-Source Benchmark Papers",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Identification",
+    "Exception Handling & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.detect",
+    "reflection.repair"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Search for the latest open-source benchmark papers for large models, summarize them for me, and save the notes in /root/Desktop.",
+  "rubric": {
+    "query": "Search for the latest open-source benchmark papers for large models, summarize them for me, and save the notes in /root/Desktop.",
+    "query_id": "transfer_calc",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-235522534619",
+        "type": "group",
+        "name": "Paper Search Objectives Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-76a96257f10a",
+            "type": "leaf",
+            "name": "Correctly searched for the latest open-source benchmark papers for large models",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-8d7e1edfe395",
+            "type": "leaf",
+            "name": "Correctly identified the papers directly related to the topic of open-source benchmarks for large models",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-aac00af4a33d",
+        "type": "group",
+        "name": "Summary and Delivery Objectives Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-cd9174c74638",
+            "type": "leaf",
+            "name": "Correctly summarized the key information of the latest open-source benchmark papers for large models that were retrieved",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-533dd996b9ae",
+            "type": "leaf",
+            "name": "Produced the paper summary deliverable in /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2ff94cdae5d8",
+          "type": "leaf",
+          "name": "Accurately constructed the query conditions for retrieving the latest open-source benchmark papers for large models",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2572842e6cff",
+          "type": "group",
+          "name": "Paper Filtering and Timeliness Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8138bbaf83ea",
+              "type": "leaf",
+              "name": "Accurately filtered out large-model papers that are unrelated to benchmarks or not open-source",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-02317ee99733",
+              "type": "leaf",
+              "name": "Accurately judged the recency of the papers based on publication time or version information",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Temporal Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-2798dedba673",
+          "type": "group",
+          "name": "Summary Content Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d13245d561d3",
+              "type": "leaf",
+              "name": "Correctly extracted key information from each paper, such as task scope, method characteristics, datasets, or evaluation dimensions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-c90b1629577f",
+              "type": "leaf",
+              "name": "Accurately distinguished the conclusions in the original papers from summary content induced by the agent itself",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-e5f606399fe7",
+              "type": "leaf",
+              "name": "Did not fabricate paper names, authors, conclusions, or open-source information that were not retrieved",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-ca0305002257",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c8851278694c",
+              "type": "leaf",
+              "name": "The generated summary file opens normally, with no abnormality in file format or content encoding",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            },
+            {
+              "id": "node-7271104e7591",
+              "type": "leaf",
+              "name": "The generated summary file contains a directly usable paper list and corresponding abstract structure",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-5dbfb577b02d",
+              "type": "leaf",
+              "name": "The generated summary file clearly identifies the topic as a summary of the latest large-model open-source benchmark papers, either in its file name in /root/Desktop or in its content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-b824804f7ac6",
+          "type": "group",
+          "name": "Execution Consistency Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-cb19fb79893c",
+              "type": "leaf",
+              "name": "Correctly used retrieval and file-writing tools and provided parameters consistent with the goal",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-b1f90f20e031",
+              "type": "leaf",
+              "name": "Maintained consistency in the topic recency of the papers and the save location throughout the multi-step search-summarize-write process",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Intent Understanding"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-c18bc4b49a9d",
+    "language": "en"
+  },
+  "note": "File retrieval, data analysis, and organization."
+}

@@ -1,0 +1,329 @@
+{
+  "id": "apac_tax_calendar",
+  "name": "APAC Tax Calendar Generation",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a file '亚太区税务非工作日备忘_2024H2.md' in the desktop APAC_Tax_Calendar_Project folder.\n\nHelp me extract the key dates from the memo and generate an ics calendar file. The date entries in the memo fall into three tag categories: '法定公众假期', '税务机关休假日', '内部调休建议'. Only the first two categories are needed; skip '内部调休建议'. The date format is YYYY-MM-DD, and events spanning consecutive multiple days must be correctly handled as date ranges.\n\nSet each calendar event as an all-day event, with the busy/free status marked as transparent (TRANSP:TRANSPARENT). Name the output file APAC_Tax_Holidays_2024H2.ics and put it under the desktop APAC_Tax_Calendar_Project/.",
+  "rubric": {
+    "query": "There is a file '亚太区税务非工作日备忘_2024H2.md' in the desktop APAC_Tax_Calendar_Project folder.\n\nHelp me extract the key dates from the memo and generate an ics calendar file. The date entries in the memo fall into three tag categories: '法定公众假期', '税务机关休假日', '内部调休建议'. Only the first two categories are needed; skip '内部调休建议'. The date format is YYYY-MM-DD, and events spanning consecutive multiple days must be correctly handled as date ranges.\n\nSet each calendar event as an all-day event, with the busy/free status marked as transparent (TRANSP:TRANSPARENT). Name the output file APAC_Tax_Holidays_2024H2.ics and put it under the desktop APAC_Tax_Calendar_Project/.",
+    "query_id": "apac_tax_calendar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-ca9013fed64c",
+        "type": "leaf",
+        "name": "Correctly read the 亚太区税务非工作日备忘_2024H2.md file in the desktop APAC_Tax_Calendar_Project folder",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-e99ea66b8650",
+        "type": "group",
+        "name": "Key date filtering objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-77eb87832fc0",
+            "type": "leaf",
+            "name": "Correctly extracted the date entries tagged 法定公众假期",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-f3e38022b120",
+            "type": "leaf",
+            "name": "Correctly extracted the date entries tagged 税务机关休假日",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-6d2eb96464fe",
+            "type": "leaf",
+            "name": "Correctly skipped the date entries tagged 内部调休建议",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-25ea3898bc4b",
+        "type": "group",
+        "name": "ICS delivery objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4c6ddead617f",
+            "type": "leaf",
+            "name": "Correctly generated single-day date entries as all-day ICS events",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-0f871fc3aced",
+            "type": "leaf",
+            "name": "Correctly generated date entries spanning consecutive multiple days as ICS date-range events",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-22a1e2c54f09",
+            "type": "leaf",
+            "name": "Correctly generated the calendar file named APAC_Tax_Holidays_2024H2.ics and placed it in the desktop APAC_Tax_Calendar_Project directory",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-4bb1e52ca7dd",
+          "type": "leaf",
+          "name": "Correctly located the desktop APAC_Tax_Calendar_Project directory and read the content of the specified Markdown file",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-83df390bccc6",
+          "type": "group",
+          "name": "Date entry identification and filtering quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-b8b2ba23c306",
+              "type": "leaf",
+              "name": "Accurately identified whether the tag of each date entry is 法定公众假期 or 税务机关休假日",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Conditional Judgment",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-2cf844159949",
+              "type": "leaf",
+              "name": "Accurately excluded the date entries tagged 内部调休建议",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-9c67515aef95",
+              "type": "leaf",
+              "name": "Accurately extracted the date values in the Markdown that conform to the YYYY-MM-DD format",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Retrieval Strategy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-893263f2301c",
+          "type": "group",
+          "name": "ICS event modeling quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-64886a8f681c",
+              "type": "leaf",
+              "name": "Accurately determined the start and end date boundaries of entries spanning consecutive multiple days",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6cdb10339d8f",
+              "type": "leaf",
+              "name": "Correctly wrote all-day events as date-type events without specific times",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-1baad9359332",
+              "type": "leaf",
+              "name": "Correctly wrote TRANSP:TRANSPARENT for each event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d61168514a04",
+          "type": "group",
+          "name": "ICS deliverable usability quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-bd5e834174a0",
+              "type": "leaf",
+              "name": "The generated ICS file contains a basic calendar structure that can be parsed by calendar clients",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-f9c9b4ff8f6e",
+              "type": "leaf",
+              "name": "The number of events in the generated ICS file matches the number of retained date entries",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-71cc3312565a",
+              "type": "leaf",
+              "name": "The generated ICS file is saved as APAC_Tax_Holidays_2024H2.ics and can be opened normally in the desktop APAC_Tax_Calendar_Project directory",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a1f18dfbd5aa",
+          "type": "group",
+          "name": "Exception handling and result feedback quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d837acd20213",
+              "type": "leaf",
+              "name": "Performed relocation or retry operations when writing the file failed or the path did not exist",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-71fd956f677d",
+              "type": "leaf",
+              "name": "Explained the output file name and save location to the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-01ea4ee36c86",
+    "language": "en"
+  },
+  "note": "Extract tax non-working days from a Markdown memo and generate an ICS calendar"
+}

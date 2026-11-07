@@ -1,0 +1,302 @@
+{
+  "id": "holiday_arrangements",
+  "name": "Labor Day Three-Day Travel Plan",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Travel Planning",
+  "ability_category": [
+    "Skill Usage"
+  ],
+  "ability_category_canonical": [
+    "tool.skill"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "For the Labor Day holiday I want to go out and have fun. Please help me plan a 3-day itinerary. I am based in Shenzhen and want to visit the 3 cities of Huizhou, Shantou, and Chaozhou to experience the local scenery and food. Please recommend 3 attractions and 1-2 kinds of food for each city, and avoid popular crowded places. The total budget is 3000 yuan. Taking into account factors such as transportation, accommodation, food, and weather conditions, give a reasonable itinerary and put it in '旅游安排.md' on /root/Desktop.",
+  "rubric": {
+    "query": "For the Labor Day holiday I want to go out and have fun. Please help me plan a 3-day itinerary. I am based in Shenzhen and want to visit the 3 cities of Huizhou, Shantou, and Chaozhou to experience the local scenery and food. Please recommend 3 attractions and 1-2 kinds of food for each city, and avoid popular crowded places. The total budget is 3000 yuan. Taking into account factors such as transportation, accommodation, food, and weather conditions, give a reasonable itinerary and put it in '旅游安排.md' on /root/Desktop.",
+    "query_id": "holiday_arrangements",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-5d49e6066d2e",
+        "type": "leaf",
+        "name": "Generated the 旅游安排.md file containing the 3-day itinerary",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Intent Understanding"
+        ]
+      },
+      {
+        "id": "node-eac7f75708af",
+        "type": "group",
+        "name": "Destination and Recommendation Content Achieved",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-725d752c2d87",
+            "type": "leaf",
+            "name": "Covered the itinerary for all 3 cities: Huizhou, Shantou, and Chaozhou",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-6f893e211356",
+            "type": "leaf",
+            "name": "Recommended 3 attractions for each city",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Retrieval Strategy"
+            ]
+          },
+          {
+            "id": "node-05f9c9810d34",
+            "type": "leaf",
+            "name": "Recommended 1-2 kinds of food for each city",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "General Knowledge"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-b21c7896ee86",
+        "type": "group",
+        "name": "Constraints Satisfied",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-77125a88f9a0",
+            "type": "leaf",
+            "name": "Gave an arrangement whose total budget does not exceed 3000 yuan",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-d97356fe6684",
+            "type": "leaf",
+            "name": "The itinerary avoids popular crowded attractions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-84ac1b576279",
+            "type": "leaf",
+            "name": "The itinerary incorporated transportation, accommodation, food, and weather factors",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Temporal Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-d0e459d1079e",
+          "type": "leaf",
+          "name": "Accurately identified the deliverable path and Markdown file format requested by the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-7222c3191d4e",
+          "type": "group",
+          "name": "Destination Information Acquisition Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-45c364bff51c",
+              "type": "leaf",
+              "name": "Accurately selected non-popular, visitable attractions in Huizhou, Shantou, and Chaozhou",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-99fa97539d8e",
+              "type": "leaf",
+              "name": "Correctly extracted 1-2 kinds of food that represent local specialties for each city",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-669b701a338a",
+          "type": "group",
+          "name": "Itinerary Planning Reasoning Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-47970179f963",
+              "type": "leaf",
+              "name": "Accurately determined the travel order across Shenzhen, Huizhou, Shantou, and Chaozhou within 3 days",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-0034e99494fc",
+              "type": "leaf",
+              "name": "Correctly estimated whether transportation, accommodation, and food costs can be kept within 3000 yuan",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-edd75f8df870",
+              "type": "leaf",
+              "name": "Accurately adjusted the daily activity arrangements based on weather conditions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Temporal Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-100f83c2c41b",
+          "type": "group",
+          "name": "Result Writing Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6699e623e73e",
+              "type": "leaf",
+              "name": "Correctly used a file-writing tool to save the result to /root/Desktop/旅游安排.md",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-bcc330cee782",
+              "type": "leaf",
+              "name": "The written Markdown file contains a day-by-day itinerary, budget, and city recommendation content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-253d9552e501",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9604531a0dc8",
+              "type": "leaf",
+              "name": "The Markdown file opens normally with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-badad5215d66",
+              "type": "leaf",
+              "name": "The daily itinerary, transportation, accommodation, food, and budget information in the Markdown file is specific enough to be directly executed",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-31b935871168",
+              "type": "leaf",
+              "name": "The attraction and food recommendations in the Markdown file are grouped by city and easy for the user to look up",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-1196929da474",
+    "language": "en"
+  },
+  "note": "Requires an online search."
+}

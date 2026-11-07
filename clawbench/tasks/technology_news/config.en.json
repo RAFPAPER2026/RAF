@@ -1,0 +1,276 @@
+{
+  "id": "technology_news",
+  "name": "Technology News Summary Document",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Resource Acquisition",
+  "ability_category": [
+    "Skill Usage"
+  ],
+  "ability_category_canonical": [
+    "tool.skill"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "I am a technology product manager with broad interests, and I usually like reading about “AI芯片” and “新能源汽车”. Please, according to my needs: 1. For each of these two interests, find 3 recent hot topics. 2. Automatically remove duplicate content that has similar titles and clearly reposts the same event, keeping only the most essential one. 3. Help me keep the titles of these hot topics and summarize an abstract for each. Collect the abstract content into a Word document named “科技领域新闻” and store it in the “最新资讯” folder on /root/Desktop.",
+  "rubric": {
+    "query": "I am a technology product manager with broad interests, and I usually like reading about “AI芯片” and “新能源汽车”. Please, according to my needs: 1. For each of these two interests, find 3 recent hot topics. 2. Automatically remove duplicate content that has similar titles and clearly reposts the same event, keeping only the most essential one. 3. Help me keep the titles of these hot topics and summarize an abstract for each. Collect the abstract content into a Word document named “科技领域新闻” and store it in the “最新资讯” folder on /root/Desktop.",
+    "query_id": "technology_news",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d38bdfa8156b",
+        "type": "group",
+        "name": "Hot Topic Collection for the Two Interest Themes Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-dcbe6267996b",
+            "type": "leaf",
+            "name": "Found 3 recent hot topics on AI chips",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-3106dcef766e",
+            "type": "leaf",
+            "name": "Found 3 recent hot topics on new energy vehicles",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e2c539d27a8a",
+        "type": "group",
+        "name": "Hot Topic Deduplication Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9d9d9f2cfd13",
+            "type": "leaf",
+            "name": "Removed duplicate content with similar titles that clearly reposts the same event",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-8fde0377780f",
+            "type": "leaf",
+            "name": "Each retained hot topic corresponds to a unique core event",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-14e153202bd1",
+        "type": "group",
+        "name": "Document Delivery Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-86016d43b16d",
+            "type": "leaf",
+            "name": "Generated a Word document containing the hot topic titles and abstracts",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-18d397f17933",
+            "type": "leaf",
+            "name": "Stored the Word document in the /root/Desktop/最新资讯 folder",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d90144ea2cfe",
+          "type": "leaf",
+          "name": "Accurately constructed recent-hot-topic search criteria corresponding to AI chips and new energy vehicles",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Intent Understanding",
+            "Temporal Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-59ee71345a7b",
+          "type": "group",
+          "name": "Duplicate Content Determination and Retention Strategy Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9203ab5a88ce",
+              "type": "leaf",
+              "name": "Accurately identified candidate duplicate content with similar titles that points to the same event",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-338326877733",
+              "type": "leaf",
+              "name": "Correctly retained the core source or the most complete item among duplicate reports",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ce6d8aa467c7",
+          "type": "group",
+          "name": "Hot Topic Information Extraction and Summary Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7fb739089ffb",
+              "type": "leaf",
+              "name": "Accurately extracted the title of each retained hot topic",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-629c8626b47d",
+              "type": "leaf",
+              "name": "Correctly summarized the key information of each retained hot topic without fabricating facts not present in the original text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6f004a39bb3a",
+          "type": "group",
+          "name": "Delivered Document Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fada9ba4cb2a",
+              "type": "leaf",
+              "name": "Correctly created a Word document named 科技领域新闻",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-69f658bd76fa",
+              "type": "leaf",
+              "name": "The document content is organized by hot topic items, each containing a title and its corresponding abstract",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-599c654d8e81",
+              "type": "leaf",
+              "name": "The Word document opens normally with no garbled text",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-21a9802cfdaf",
+          "type": "leaf",
+          "name": "Correctly kept the number of topics, the document name, and the save path consistent throughout the multi-step execution",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Context Retention",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-672ee848f56f",
+    "language": "en"
+  },
+  "note": "Requires online search."
+}

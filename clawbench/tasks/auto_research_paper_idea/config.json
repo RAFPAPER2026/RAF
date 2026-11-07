@@ -1,0 +1,220 @@
+{
+  "id": "auto_research_paper_idea",
+  "name": "自动科研论文构思",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "任务规划",
+    "工具调用-API 调用",
+    "任务规划-通用规划与策略制定",
+    "工具使用-API调用",
+    "上下文管理-上下文压缩与摘要"
+  ],
+  "ability_category_canonical": [
+    "plan.general",
+    "tool.api",
+    "plan.strategy",
+    "tool.api",
+    "context.compress"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "我是一名刚读研的学生，最近对 auto research 方向很感兴趣。请你：\n1. 检索近两年 auto research 相关的论文（如 AI Scientist、STORM、Agent Laboratory 等），梳理该方向的核心方法与尚未解决的问题；\n2. 基于梳理结果，帮我构思一个可发表的研究 idea，写成一份完整的研究提案，包含：研究动机、与现有工作的差异点、实验设计方案（数据集、基线、评测指标、预期结论）；\n3. 保存为 /root/Desktop/research_proposal.md，字数控制在3000字以内。",
+  "rubric": {
+    "query": "我是一名刚读研的学生，最近对 auto research 方向很感兴趣。请你：\n1. 检索近两年 auto research 相关的论文（如 AI Scientist、STORM、Agent Laboratory 等），梳理该方向的核心方法与尚未解决的问题；\n2. 基于梳理结果，帮我构思一个可发表的研究 idea，写成一份完整的研究提案，包含：研究动机、与现有工作的差异点、实验设计方案（数据集、基线、评测指标、预期结论）；\n3. 保存为 /root/Desktop/research_proposal.md，字数控制在3000字以内。",
+    "query_id": "auto_research_paper_idea",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-6e0593bcdfaf",
+        "type": "leaf",
+        "name": "检索了近两年 auto research 相关论文并提取了核心方法与尚未解决的问题",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-d94bc1be358c",
+        "type": "group",
+        "name": "研究提案内容生成目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7e63241828ac",
+            "type": "leaf",
+            "name": "基于梳理结果构思了一个可发表的研究 idea",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "通用知识"
+            ]
+          },
+          {
+            "id": "node-7b61d46f0085",
+            "type": "leaf",
+            "name": "写出了包含研究动机、与现有工作的差异点和实验设计方案的完整研究提案",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "上下文保持",
+              "逻辑推理",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-23d1004f51de",
+        "type": "leaf",
+        "name": "生成了字数控制在3000字以内的 Markdown 研究提案文件 /root/Desktop/research_proposal.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-230c0cec37e3",
+          "type": "leaf",
+          "name": "准确检索了近两年与 auto research 直接相关的代表性论文",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7165c208be53",
+          "type": "leaf",
+          "name": "正确提炼了各论文的核心方法并区分了已验证能力与未解决问题",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bf04d36d7cc5",
+          "type": "group",
+          "name": "研究方案设计质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-daf132eaa6a4",
+              "type": "leaf",
+              "name": "准确提出了与梳理结果直接衔接的研究动机",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-4020279436e2",
+              "type": "leaf",
+              "name": "正确说明了研究 idea 与 AI Scientist、STORM、Agent Laboratory 等现有工作的差异点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-26b88ad5cd44",
+              "type": "leaf",
+              "name": "完整给出了数据集、基线、评测指标和预期结论的实验设计方案",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7c6e6a905fb4",
+          "type": "leaf",
+          "name": "正确将论文梳理结果映射为可执行且可验证的研究假设",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "通用知识",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9bf7db353a77",
+          "type": "leaf",
+          "name": "生成的 Markdown 提案文件内容完整可读且包含用户要求的全部章节",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4f1f2b40e64a",
+          "type": "leaf",
+          "name": "在多步检索与写作过程中未混淆论文名称、时间范围和提案约束条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "上下文保持",
+            "时间推理",
+            "事实准确性"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-9ecbb9cc1b71",
+    "language": "zh"
+  },
+  "note": "最近很多auto research框架很多，作为初学者，我想让你帮我搭一个可运行的demo，运用auto research的思想帮我构思一个论文idea并给出实验设计方案",
+  "env_description": "api_key.txt（演示key）+ reading_list.md（用户已读/待读清单，含信息缺口）"
+}

@@ -1,0 +1,236 @@
+{
+  "id": "process_guide",
+  "name": "教资报名指引",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我查询教师资格证考试的报名时间和流程，生成报名提醒，根据官方报名网站信息生成报名指引文件放在/root/Desktop/",
+  "rubric": {
+    "query": "帮我查询教师资格证考试的报名时间和流程，生成报名提醒，根据官方报名网站信息生成报名指引文件放在/root/Desktop/",
+    "query_id": "process_guide",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-99c434b12f13",
+        "type": "leaf",
+        "name": "正确查询了教师资格证考试的报名时间",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-a766594d4872",
+        "type": "leaf",
+        "name": "正确查询了教师资格证考试的报名流程",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-1d8feda86295",
+        "type": "leaf",
+        "name": "成功生成了报名提醒",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "时间推理",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-23c4a106c9c9",
+        "type": "group",
+        "name": "报名指引文件交付完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-03a3725127b7",
+            "type": "leaf",
+            "name": "生成了报名指引文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-1e5fcb5b04f3",
+            "type": "leaf",
+            "name": "将报名指引文件放在了/root/Desktop/",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5d3575b9a367",
+          "type": "leaf",
+          "name": "准确检索了官方报名网站并使用官方页面作为报名时间依据",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f55179b30b89",
+          "type": "leaf",
+          "name": "准确提取了报名流程中的关键步骤与顺序",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "逻辑推理",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-c721d63fd677",
+          "type": "leaf",
+          "name": "正确识别了报名提醒所依据的报名时间节点",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理",
+            "上下文保持",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-acc300bbaa76",
+          "type": "group",
+          "name": "报名提醒执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1c865124ef11",
+              "type": "leaf",
+              "name": "准确生成了与报名时间对应的提醒内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "时间推理",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-6a707503b7cd",
+              "type": "leaf",
+              "name": "正确设置了提醒触发时间或提醒条件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "时间推理",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-bae192a33bdc",
+          "type": "group",
+          "name": "报名指引文件可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-86aa4d83bfda",
+              "type": "leaf",
+              "name": "正确引用了官方报名网站中的时间信息与流程信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "信息筛选",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-9d717bba71af",
+              "type": "leaf",
+              "name": "文件内容包含报名入口、报名步骤和时间信息的明确说明",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-69389e4e6625",
+              "type": "leaf",
+              "name": "生成的报名指引文件可正常打开且文件内容无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-d0cebddaab0f",
+    "language": "zh"
+  }
+}

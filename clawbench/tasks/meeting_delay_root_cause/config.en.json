@@ -1,0 +1,236 @@
+{
+  "id": "meeting_delay_root_cause",
+  "name": "Project Delay Root Cause Analysis",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Long-Context Understanding",
+    "State Tracking & Consistency"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "context.state"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The meeting_archive/ folder on the desktop stores the materials of my 30 meetings over the past two months; each meeting has a subfolder containing a transcript, slides, and notes.\nPlease trace across meetings the reasons for the delay of “星辰项目”: as I recall, issues such as API development delays, the data team waiting for interfaces, and testing being unable to start were mentioned one after another.\nPlease sort out the complete causal chain of events (who said what in which meeting, and what was blocked), analyze the root cause of the project delay, and give next-step action recommendations (arranged by priority).\nOutput a Markdown report and save it to /root/Desktop/meeting_archive/延期分析报告.md.",
+  "rubric": {
+    "query": "The meeting_archive/ folder on the desktop stores the materials of my 30 meetings over the past two months; each meeting has a subfolder containing a transcript, slides, and notes.\nPlease trace across meetings the reasons for the delay of “星辰项目”: as I recall, issues such as API development delays, the data team waiting for interfaces, and testing being unable to start were mentioned one after another.\nPlease sort out the complete causal chain of events (who said what in which meeting, and what was blocked), analyze the root cause of the project delay, and give next-step action recommendations (arranged by priority).\nOutput a Markdown report and save it to /root/Desktop/meeting_archive/延期分析报告.md.",
+    "query_id": "meeting_delay_root_cause",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1dc88fe98443",
+        "type": "leaf",
+        "name": "Correctly read the meeting materials related to 星辰项目 in meeting_archive",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-9828f2fd1209",
+        "type": "group",
+        "name": "Delay Analysis Report Deliverable Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-ff5586af0ff2",
+            "type": "leaf",
+            "name": "Sorted out the complete event causal chain of the 星辰项目 delay",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Context Retention",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-7121954a7585",
+            "type": "leaf",
+            "name": "Analyzed the root cause of the 星辰项目 delay",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-13cac38ff16e",
+            "type": "leaf",
+            "name": "Gave next-step action recommendations arranged by priority",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Communication",
+              "General Knowledge"
+            ]
+          },
+          {
+            "id": "node-e5c895b7af01",
+            "type": "leaf",
+            "name": "Generated the Markdown report and saved it to /root/Desktop/meeting_archive/延期分析报告.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-d22f41797316",
+          "type": "leaf",
+          "name": "Accurately retrieved the meeting materials in transcript, slides, and notes related to the 星辰项目 delay",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-469d2702fab4",
+          "type": "leaf",
+          "name": "Correctly matched each delay event's meeting time, speaker, original statement, and blocked items",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Context Retention",
+            "Factual Accuracy",
+            "Temporal Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-5e0052b78971",
+          "type": "leaf",
+          "name": "Accurately derived the sequential dependency relationships among the API development delay, interface waiting, and testing not starting",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Temporal Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-66de2ea02c06",
+          "type": "group",
+          "name": "Conclusion and Recommendation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-391eb5ca858d",
+              "type": "leaf",
+              "name": "Correctly distinguished direct blocking factors from root causes",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-c7084401445e",
+              "type": "leaf",
+              "name": "The action recommendations are ordered by blocker-elimination priority and correspond to the analysis conclusions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Communication",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e4f345fe3012",
+          "type": "group",
+          "name": "Markdown Report Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-95f291daa5d4",
+              "type": "leaf",
+              "name": "The generated Markdown report contains four parts: event timeline, causal chain, root cause, and action recommendations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-48e389bee761",
+              "type": "leaf",
+              "name": "The generated Markdown report opens normally and its Markdown structure is not broken",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f357f4c0502c",
+          "type": "leaf",
+          "name": "Marked uncertain items or took corrective measures when evidence was insufficient or materials conflicted",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-6cbaf75c2837",
+    "language": "en"
+  },
+  "note": "Meeting intelligence agent\nScenario\n\nGiven to the agent:\n\n30 meetings from the past:\n\ntranscript\nslides\nnotes\n\nUser:\n\n“Tell me why this project is delayed, and what to do next.”\n\nThe agent needs to:\n\nCross-meeting tracking:\n\nMeeting 1:\n\nAPI development delay\n\nMeeting 7:\n\nData team waiting for interfaces\n\nMeeting 15:\n\nTesting cannot start",
+  "env_description": "meeting_archive/ has 30 meeting folders (meeting_01..30), each containing transcript.txt, notes.md, and slides.md; the causal chain of the 星辰项目 delay is scattered throughout (insufficient API staffing → repeated field definition changes → data team idling → data generation approval → testing cannot start → performance/security review queue)"
+}

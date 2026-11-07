@@ -1,0 +1,151 @@
+{
+  "id": "exam_classification",
+  "name": "Exam Paper Classification",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a “高考试卷” folder on /root/Desktop, in which Chinese, mathematics, and English exam papers from past years are scattered. Please classify them into the three subjects of Chinese, mathematics, and English within that folder, then split the content of all English exam papers into a new exam paper and save it to /root/Desktop.",
+  "rubric": {
+    "query": "There is a “高考试卷” folder on /root/Desktop, in which Chinese, mathematics, and English exam papers from past years are scattered. Please classify them into the three subjects of Chinese, mathematics, and English within that folder, then split the content of all English exam papers into a new exam paper and save it to /root/Desktop.",
+    "query_id": "exam_classification",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-7be97123bc03",
+        "type": "leaf",
+        "name": "Completed the classification of the exam papers in the “高考试卷” folder by the three subjects of Chinese, mathematics, and English",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-c37f9c8977b7",
+        "type": "leaf",
+        "name": "Generated a new exam paper file assembled from the split content of all English exam papers and saved it to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Context Retention"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-af51a3246fcc",
+          "type": "leaf",
+          "name": "Accurately identified the subject of each exam paper in the “高考试卷” folder",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0480b6e38be6",
+          "type": "leaf",
+          "name": "Correctly performed the file classification operation without omitting or misplacing exam papers",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention",
+            "Exception Handling"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-489ff6d8d9a3",
+          "type": "leaf",
+          "name": "Accurately extracted the question content from all English exam papers for reassembling the new exam paper",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-1b1425f13b85",
+          "type": "group",
+          "name": "English new exam paper deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8031c4bd8f4a",
+              "type": "leaf",
+              "name": "Correctly organized the structure of the new exam paper so that the question content can be read and used continuously",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-16d2baad5161",
+              "type": "leaf",
+              "name": "The generated new exam paper file opens normally with no garbled characters or missing content",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-81f205d5dc6e",
+          "type": "leaf",
+          "name": "Correctly recorded and handled abnormal files when the file type could not be identified or the content was abnormal",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Conditional Judgment"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-fe85487a6505",
+    "language": "en"
+  }
+}

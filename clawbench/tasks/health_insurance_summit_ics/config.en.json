@@ -1,0 +1,224 @@
+{
+  "id": "health_insurance_summit_ics",
+  "name": "Health Insurance Summit ICS Calendar",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Schedule Planning",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a Markdown file on the desktop: root/Desktop/health_insurance_summit_schedule/summit_agenda_2024.md, which contains the summit schedule divided into different venues. You need to parse the agendas of all venues in this file and merge them into one .ics calendar file, saved to root/Desktop/health_insurance_summit_schedule/summit_calendar_merged.ics.\n\nNote: if multiple sub-forums have agendas in the same time slot, retain all of them; do not omit or overwrite any session because of time overlap.\n\nThe title format of each calendar event should be uniformly written as: [venue abbreviation]-agenda topic, for example [TPA网络]-外部医疗资源对接研讨. In addition, state in the event's location or notes field which sub-forum it belongs to.\n\nAll events must be set with a reminder 15 minutes in advance.",
+  "rubric": {
+    "query": "There is a Markdown file on the desktop: root/Desktop/health_insurance_summit_schedule/summit_agenda_2024.md, which contains the summit schedule divided into different venues. You need to parse the agendas of all venues in this file and merge them into one .ics calendar file, saved to root/Desktop/health_insurance_summit_schedule/summit_calendar_merged.ics.\n\nNote: if multiple sub-forums have agendas in the same time slot, retain all of them; do not omit or overwrite any session because of time overlap.\n\nThe title format of each calendar event should be uniformly written as: [venue abbreviation]-agenda topic, for example [TPA网络]-外部医疗资源对接研讨. In addition, state in the event's location or notes field which sub-forum it belongs to.\n\nAll events must be set with a reminder 15 minutes in advance.",
+    "query_id": "health_insurance_summit_ics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-58ceb51b560a",
+        "type": "leaf",
+        "name": "Correctly read the agenda information of all venues in summit_agenda_2024.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-67354e1f2b46",
+        "type": "group",
+        "name": "Calendar File Produced and Saved to the Specified Location",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b2202a730ac9",
+            "type": "leaf",
+            "name": "Successfully generated the summit_calendar_merged.ics file containing all parsed agenda events",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-10f4178ea12e",
+            "type": "leaf",
+            "name": "Saved summit_calendar_merged.ics to root/Desktop/health_insurance_summit_schedule/summit_calendar_merged.ics",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-9cb0563610ca",
+        "type": "group",
+        "name": "Calendar Events Satisfy the User-Specified Rules",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-0d56e23fb9ff",
+            "type": "leaf",
+            "name": "Used the “[venue abbreviation]-agenda topic” title format for every event",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-3e30232c0ab0",
+            "type": "leaf",
+            "name": "Specified the sub-forum to which each event belongs in its location or notes field",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering"
+            ]
+          },
+          {
+            "id": "node-c2d868f297fc",
+            "type": "leaf",
+            "name": "Set a 15-minute advance reminder for all events",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-0099f32e8859",
+            "type": "leaf",
+            "name": "Retained all agenda events of different sub-forums in the same time slot without omission or overwriting due to overlap",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Temporal Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-1e0c082eca93",
+          "type": "leaf",
+          "name": "Accurately extracted all venue, agenda topic, date, and start/end time information from the Markdown",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-7400f35671f7",
+          "type": "leaf",
+          "name": "Accurately determined that agendas of different venues in the same time slot must each be generated as an independent event",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Temporal Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-ec181ff3be95",
+          "type": "leaf",
+          "name": "Correctly constructed the title, sub-forum attribution field, and 15-minute advance reminder parameter for each event",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-4b75e7568410",
+          "type": "leaf",
+          "name": "The correctly generated .ics file can be imported normally by calendar applications and all event entries are complete and usable",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-fa8062cd1dfa",
+          "type": "leaf",
+          "name": "Performed observable correction or retry operations when parsing missing fields, abnormal time formats, or write failures occurred",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7df0ec319156",
+          "type": "leaf",
+          "name": "Clearly stated the output file path and the retention of multiple agendas in overlapping time slots in the reply",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-9a66481c92a0",
+    "language": "en"
+  },
+  "note": "Parse the Markdown summit schedule and generate an ICS calendar file containing parallel events."
+}

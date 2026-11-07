@@ -1,0 +1,209 @@
+{
+  "id": "contact_list_management",
+  "name": "Contact List Merge",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There are two contact files on the desktop: workspace/contacts_a.json and workspace/contacts_b.json. Merge them into one list and deduplicate by email (case-insensitive). If the same email appears in both files, keep the record from file b. Finally sort by email in alphabetical order, and save to workspace/merged_contacts.json on the desktop, in the format of a JSON array. Each contact has the fields name, email, phone, and department.",
+  "rubric": {
+    "query": "There are two contact files on the desktop: workspace/contacts_a.json and workspace/contacts_b.json. Merge them into one list and deduplicate by email (case-insensitive). If the same email appears in both files, keep the record from file b. Finally sort by email in alphabetical order, and save to workspace/merged_contacts.json on the desktop, in the format of a JSON array. Each contact has the fields name, email, phone, and department.",
+    "query_id": "contact_list_management",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a8689392a5ce",
+        "type": "leaf",
+        "name": "Correctly read the contact lists in workspace/contacts_a.json and workspace/contacts_b.json",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Retrieval Strategy"
+        ]
+      },
+      {
+        "id": "node-934440960993",
+        "type": "group",
+        "name": "Correctly generated the merged contact list",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-4e781d5c1585",
+            "type": "leaf",
+            "name": "Completed contact deduplication by email in a case-insensitive way",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-b9c61b48708e",
+            "type": "leaf",
+            "name": "Kept the contact record from contacts_b.json when the same email appears in both files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-f05555896d96",
+            "type": "leaf",
+            "name": "Output the merged contact list in alphabetical order of email",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Temporal Reasoning"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c8d3daf20595",
+        "type": "group",
+        "name": "Completed the target file delivery",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a7184a1965db",
+            "type": "leaf",
+            "name": "Generated the workspace/merged_contacts.json file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-53318b33c32c",
+            "type": "leaf",
+            "name": "Saved the merge result in JSON array format",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-8bfc81130122",
+          "type": "leaf",
+          "name": "Correctly read all contact records in the two input files",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a90024551ce1",
+          "type": "leaf",
+          "name": "Accurately identified duplicate contacts whose emails are the same but differ in letter case",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-60976d2783a9",
+          "type": "leaf",
+          "name": "Correctly chose the record from contacts_b.json as the retained result in the case of duplicate emails",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Conditional Judgment",
+            "Logical Reasoning",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-6bdf276c8f18",
+          "type": "leaf",
+          "name": "Correctly sorted the final contact list in alphabetical order of email",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-15bff335888a",
+          "type": "leaf",
+          "name": "The output merged_contacts.json file can be parsed normally as a JSON array, and each contact item contains the four fields name, email, phone, and department",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-03dedfa67c6c",
+          "type": "leaf",
+          "name": "Explained the output file path and the merge and deduplication rules applied to the user",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-2bc6c9eed005",
+    "language": "en"
+  },
+  "note": "Merge two contact list JSON files, deduplicate by email address, and produce a single unified contact list"
+}

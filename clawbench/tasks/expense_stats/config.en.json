@@ -1,0 +1,129 @@
+{
+  "id": "expense_stats",
+  "name": "Monthly Expense Statistics",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Financial Advisory",
+  "ability_category": [
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "tool.cli"
+  ],
+  "difficulty": "easy",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me calculate how much I spent on daily expenses this month in total, and see which item cost the most; the details are in /root/Desktop家庭月度日常开销明细.md.",
+  "rubric": {
+    "query": "Help me calculate how much I spent on daily expenses this month in total, and see which item cost the most; the details are in /root/Desktop家庭月度日常开销明细.md.",
+    "query_id": "expense_stats",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a28c1228591f",
+        "type": "leaf",
+        "name": "Correctly read this month's expense details from /root/Desktop家庭月度日常开销明细.md",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Information Filtering"
+        ]
+      },
+      {
+        "id": "node-b870d0e2ea80",
+        "type": "leaf",
+        "name": "Correctly calculated the total amount of daily expenses this month",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Logical Reasoning",
+          "Factual Accuracy",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-e357eb1fe544",
+        "type": "leaf",
+        "name": "Correctly identified the expense item with the highest amount this month",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Logical Reasoning",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-f94d1d00841a",
+          "type": "leaf",
+          "name": "Correctly read all valid expense records from /root/Desktop家庭月度日常开销明细.md",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Information Filtering"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-3f73dce3d9e7",
+          "type": "leaf",
+          "name": "Accurately identified the amount records that belong to this month and should be counted as daily expenses",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Conditional Judgment",
+            "Information Filtering",
+            "Temporal Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8c9b35538649",
+          "type": "leaf",
+          "name": "Accurately calculated the amounts of each expense category and compared the highest spending item based on that",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Logical Reasoning",
+            "Factual Accuracy",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-4d3b825af9b8",
+          "type": "leaf",
+          "name": "The reply contains a clear explanation of the total expense amount and the highest spending item",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-847c01bf1fda",
+    "language": "en"
+  },
+  "note": "File retrieval, data analysis, and organization"
+}

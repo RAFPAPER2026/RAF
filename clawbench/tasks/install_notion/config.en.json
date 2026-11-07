@@ -1,0 +1,331 @@
+{
+  "id": "install_notion",
+  "name": "Install Notion and Import Documents",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Creative Generation",
+  "ability_category": [
+    "Tool Use"
+  ],
+  "ability_category_canonical": [
+    "tool.use"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me download and install Notion, import the contents of all documents in /root/Desktop whose file names contain 「计划」 into newly created pages, automatically categorize them by date and generate a weekly schedule view, and put a screenshot in /root/Desktop.",
+  "rubric": {
+    "query": "Help me download and install Notion, import the contents of all documents in /root/Desktop whose file names contain 「计划」 into newly created pages, automatically categorize them by date and generate a weekly schedule view, and put a screenshot in /root/Desktop.",
+    "query_id": "install_notion",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-68030d8e9a52",
+        "type": "group",
+        "name": "Notion Installation Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-89008ecc6fe4",
+            "type": "leaf",
+            "name": "Successfully downloaded the Notion installer",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Retrieval Strategy"
+            ]
+          },
+          {
+            "id": "node-bab542d39bc1",
+            "type": "leaf",
+            "name": "Successfully completed the Notion installation",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Exception Handling"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-885db3a8f01f",
+        "type": "group",
+        "name": "Document Import Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-9b0bdc30ec9a",
+            "type": "leaf",
+            "name": "Correctly identified all documents in /root/Desktop whose file names contain 「计划」",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-54d129f735ff",
+            "type": "leaf",
+            "name": "Successfully imported the content of these documents into the newly created Notion pages",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-c5d63267dbfd",
+        "type": "group",
+        "name": "Schedule Organization and Delivery Objective",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-02f9ec337e37",
+            "type": "leaf",
+            "name": "Successfully categorized the imported content by date",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Logical Reasoning"
+            ]
+          },
+          {
+            "id": "node-61abbb20e950",
+            "type": "leaf",
+            "name": "Successfully generated a usable weekly schedule view",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Temporal Reasoning",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-95832ab00771",
+            "type": "leaf",
+            "name": "Successfully saved a screenshot of the weekly schedule view to /root/Desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-b2006d7b7164",
+          "type": "group",
+          "name": "Notion Acquisition and Installation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7797f985ff1d",
+              "type": "leaf",
+              "name": "Correctly selected a Notion installer compatible with the current system",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-d9bb9cb50948",
+              "type": "leaf",
+              "name": "Accurately handled permission and dependency errors during download or installation",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e1ab4da73066",
+          "type": "group",
+          "name": "Document Retrieval and Content Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f8b5c4564884",
+              "type": "leaf",
+              "name": "Accurately retrieved all target documents under /root/Desktop whose file names contain 「计划」",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-f86f428e1869",
+              "type": "leaf",
+              "name": "Correctly read the body content of each target document without mixing in content from non-target files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-23737b0f4b6c",
+              "type": "leaf",
+              "name": "Correctly maintained the correspondence between each imported passage and its original document source",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-cf2f4e082620",
+          "type": "group",
+          "name": "Date Classification and Weekly View Construction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-e1ad92e805f8",
+              "type": "leaf",
+              "name": "Accurately identified the date information in the documents and mapped it to the corresponding week",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-453895a97d0f",
+              "type": "leaf",
+              "name": "Correctly handled the classification branches for missing dates or content with multiple dates",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Exception Handling",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-c84cb2969cbd",
+              "type": "leaf",
+              "name": "Correctly created database fields or equivalent structures in Notion that support filtering by date",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Logical Reasoning"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a53331316ef1",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c77fdf7df21e",
+              "type": "leaf",
+              "name": "The generated weekly schedule view opens normally and displays entries organized by week",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Temporal Reasoning"
+              ]
+            },
+            {
+              "id": "node-c613809e589f",
+              "type": "leaf",
+              "name": "The entry titles and date fields in the generated weekly schedule view are not missing",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-fa8fda82fd11",
+              "type": "leaf",
+              "name": "The page structure contains two directly usable parts: an imported content area and a weekly schedule view area",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-ed81a7ef962b",
+              "type": "leaf",
+              "name": "The screenshot file saved to /root/Desktop opens normally and clearly shows the dates and entries in the weekly schedule view",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2bf831ba85b2",
+          "type": "leaf",
+          "name": "Clearly stated in the reply the installation result, the scope of imported documents, the classification result, and the screenshot save location",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-caf154efeab5",
+    "language": "en"
+  }
+}

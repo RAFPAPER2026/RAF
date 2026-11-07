@@ -1,0 +1,24 @@
+{
+  "name": "get_weather",
+  "description": "查询指定城市的实时天气",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "city": {
+        "type": "string",
+        "description": "城市名，如：北京"
+      },
+      "unit": {
+        "type": "string",
+        "enum": [
+          "celsius",
+          "fahrenheit"
+        ],
+        "description": "温度单位，默认celsius"
+      }
+    },
+    "required": [
+      "city"
+    ]
+  }
+}

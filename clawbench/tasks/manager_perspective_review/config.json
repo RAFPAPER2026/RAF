@@ -1,0 +1,210 @@
+{
+  "id": "manager_perspective_review",
+  "name": "经理视角季度复盘",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "文档处理",
+  "ability_category": [
+    "上下文管理-上下文压缩",
+    "上下文管理-长上下文理解",
+    "上下文管理-上下文压缩与摘要"
+  ],
+  "ability_category_canonical": [
+    "context.compress",
+    "context.long",
+    "context.compress"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "假设你是我的直属 manager。桌面上 work_records/ 文件夹里是我这个季度的工作产出：项目文档、周报、代码提交记录和会议纪要。\n请你认真读完这些材料，以 manager 的视角回答：你觉得我这个季度最大的风险是什么（比如交付质量、沟通协作、优先级管理等维度）？哪些事情做得好但被低估了？哪些地方我自以为做得不错但其实有隐患？\n要求有具体的证据引用（来自哪份材料），不要泛泛而谈。输出一份 /root/Desktop/季度review.md。",
+  "rubric": {
+    "query": "假设你是我的直属 manager。桌面上 work_records/ 文件夹里是我这个季度的工作产出：项目文档、周报、代码提交记录和会议纪要。\n请你认真读完这些材料，以 manager 的视角回答：你觉得我这个季度最大的风险是什么（比如交付质量、沟通协作、优先级管理等维度）？哪些事情做得好但被低估了？哪些地方我自以为做得不错但其实有隐患？\n要求有具体的证据引用（来自哪份材料），不要泛泛而谈。输出一份 /root/Desktop/季度review.md。",
+    "query_id": "manager_perspective_review",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a0efb0c2b327",
+        "type": "leaf",
+        "name": "正确读取了 work_records/ 文件夹中的季度材料",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-5399cfcab492",
+        "type": "group",
+        "name": "完成季度 review 交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-308fb409117c",
+            "type": "leaf",
+            "name": "生成了包含本季度最大风险判断的季度 review 文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-e8f4739f403b",
+            "type": "leaf",
+            "name": "生成了包含做得好但被低估事项的季度 review 文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ce0392bfa327",
+            "type": "leaf",
+            "name": "生成了包含自以为做得不错但其实有隐患事项的季度 review 文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-d27488d2cf4a",
+            "type": "leaf",
+            "name": "在季度 review 文档中引用了材料来源证据",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "事实准确性",
+              "信息筛选",
+              "沟通表达"
+            ]
+          },
+          {
+            "id": "node-ba3af04dd1a7",
+            "type": "leaf",
+            "name": "将季度 review 文档产出为 /root/Desktop/季度review.md 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f1c0a01d182e",
+          "type": "leaf",
+          "name": "正确遍历了 work_records/ 文件夹并覆盖项目文档、周报、代码提交记录和会议纪要四类材料",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1fcec202bca1",
+          "type": "leaf",
+          "name": "准确提取了能支撑风险判断和表现评估的具体证据片段及其来源材料",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-31e4b31a2610",
+          "type": "leaf",
+          "name": "准确区分了最大风险、被低估的优点和存在隐患的强项三类判断",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "意图理解",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-0bf1ed8792fe",
+          "type": "group",
+          "name": "评估结论表达质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6ac3d42712ee",
+              "type": "leaf",
+              "name": "正确引用了对应材料名称或文件来源定位每条核心判断",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-09e7cd257054",
+              "type": "leaf",
+              "name": "输出内容包含风险类别及其对交付或协作影响的具体说明",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d6baa3945cdf",
+          "type": "leaf",
+          "name": "生成的 /root/Desktop/季度review.md 文件采用 Markdown 结构组织且内容可直接供用户阅读使用",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "沟通表达"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-46a3e1929cf9",
+    "language": "zh"
+  },
+  "note": "老板视角审查我的工作\n\n“如果你是我的manager，根据我最近一个季度的工作记录，你觉得我最大的风险是什么？”\n\n需要：\n\n阅读产出\n分析工作模式\n找不足",
+  "env_description": "work_records/含项目文档（埋有回滚方案TODO隐患）、周报（埋有被低估贡献）、代码提交记录csv、会议纪要（埋有评审被点名风险）"
+}

@@ -1,0 +1,163 @@
+{
+  "id": "game_repair",
+  "name": "Fix Snake Game Bug",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Tool Use",
+    "Reflection & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "The Snake game in /root/Desktop/ has problems when running. Please fix it for me and write a debugging note.",
+  "rubric": {
+    "query": "The Snake game in /root/Desktop/ has problems when running. Please fix it for me and write a debugging note.",
+    "query_id": "game_repair",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-166493000eaf",
+        "type": "leaf",
+        "name": "Fixed the runtime problem of the Snake game in /root/Desktop/",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Exception Handling"
+        ]
+      },
+      {
+        "id": "node-2b6fc0355e48",
+        "type": "leaf",
+        "name": "Produced a debugging note deliverable",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-fd9f21b60832",
+          "type": "leaf",
+          "name": "Accurately located the specific error cause that prevented the Snake game from running properly",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Logical Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-5ae2063ed2e7",
+          "type": "leaf",
+          "name": "Correctly modified the relevant code or configuration and eliminated the runtime error or abnormal behavior",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Exception Handling",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a4b1d54f77cb",
+          "type": "group",
+          "name": "Debugging Note Content Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-08e689b60da1",
+              "type": "leaf",
+              "name": "Correctly documented the reproduction steps and trigger conditions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-be93649b7870",
+              "type": "leaf",
+              "name": "Correctly documented the root cause analysis and the corresponding fix actions",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Exception Handling",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-2c8582143e61",
+              "type": "leaf",
+              "name": "Correctly documented the post-fix verification results and remaining limitations",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3c2cd16184b4",
+          "type": "leaf",
+          "name": "Correctly used tools or commands capable of reading project files, editing code, and executing programs",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-2fc923bb1555",
+          "type": "leaf",
+          "name": "The reply included the fix results, the location or content summary of the debugging note, and follow-up verification methods that can be executed",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-fe2d40f92d9c",
+    "language": "en"
+  }
+}

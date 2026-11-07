@@ -1,0 +1,300 @@
+{
+  "id": "deep_learning_assests",
+  "name": "论文下载与翻译",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "资料获取",
+  "ability_category": [
+    "任务规划-任务分解",
+    "工具调用-Skill 使用"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.skill"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": false,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "帮我找5篇关于‘深度学习在图像识别中的应用’的论文，从arXiv下载PDF，如果论文是英文，选择最新的一篇论文翻译成中文，所有的资料保存到/root/Desktop的‘论文’文件夹，文件名用标题，翻译后的用翻译后的标题。",
+  "rubric": {
+    "query": "帮我找5篇关于‘深度学习在图像识别中的应用’的论文，从arXiv下载PDF，如果论文是英文，选择最新的一篇论文翻译成中文，所有的资料保存到/root/Desktop的‘论文’文件夹，文件名用标题，翻译后的用翻译后的标题。",
+    "query_id": "deep_learning_assests",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-91c96b9cc38a",
+        "type": "leaf",
+        "name": "正确检索了5篇关于深度学习在图像识别中的应用的论文",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-0bd382c706c2",
+        "type": "leaf",
+        "name": "从arXiv下载并生成了5篇论文的PDF文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-17f5760713c0",
+        "type": "group",
+        "name": "英文论文翻译目标",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-c2bec33b8274",
+            "type": "leaf",
+            "name": "5篇论文中存在英文论文时，选择了最新的一篇英文论文并生成了中文翻译文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "时间推理",
+              "逻辑推理",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-46170daa77cc",
+            "type": "leaf",
+            "name": "5篇论文中不存在英文论文时，未生成翻译文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-e967a03c5db4",
+        "type": "group",
+        "name": "资料保存目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7a2e82d7507f",
+            "type": "leaf",
+            "name": "在/root/Desktop的论文文件夹中保存了5篇PDF文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-f84c4958fe84",
+            "type": "leaf",
+            "name": "5篇PDF文件名使用了各自论文标题",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-07996190be56",
+            "type": "leaf",
+            "name": "翻译文件保存在/root/Desktop的论文文件夹中且文件名使用了翻译后的标题",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-1b34b603b2ae",
+          "type": "leaf",
+          "name": "准确构造了与深度学习、图像识别、应用相关的检索条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4a71bf56d83b",
+          "type": "leaf",
+          "name": "正确筛选了主题与图像识别应用直接相关的5篇论文",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-f57f5dc0419d",
+          "type": "group",
+          "name": "英文论文选择质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-51b97f8148ff",
+              "type": "leaf",
+              "name": "准确识别了5篇论文中哪些论文为英文",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5dda175bd277",
+              "type": "leaf",
+              "name": "正确比较了英文论文的发布时间并选出了最新的一篇",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9aa419eb4d3b",
+          "type": "group",
+          "name": "PDF获取执行质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ef95a9228a78",
+              "type": "leaf",
+              "name": "正确使用arXiv来源链接下载了对应论文的PDF文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-01d38b7f315d",
+              "type": "leaf",
+              "name": "正确处理了下载失败或链接不可用的情况并完成重试或替代获取",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-83f7497171cf",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fae25f887930",
+              "type": "leaf",
+              "name": "生成的PDF文件可以正常打开且与对应论文标题一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-96efdae88ab4",
+              "type": "leaf",
+              "name": "生成的中文翻译文件包含原论文的主要内容且文本编码正常无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-1a1088a148ba",
+              "type": "leaf",
+              "name": "保存的文件命名与用户要求一致且均位于/root/Desktop的论文文件夹中",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-e24b152224a6",
+          "type": "leaf",
+          "name": "向用户说明了已保存的论文标题、翻译对象和保存位置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-d3bca186f14b",
+    "language": "zh"
+  },
+  "note": "需要联网搜索"
+}

@@ -1,0 +1,350 @@
+{
+  "id": "portfolio_var_cvar",
+  "name": "组合风险VaR分析",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "财务咨询",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上 portfolio_data 文件夹里有 portfolio_returns.csv，包含500天的历史收益率数据。\n\n任务：\n1. 读取 portfolio_returns.csv\n2. 计算以下风险指标：\n   - 95% VaR（历史模拟法）\n   - 99% VaR（历史模拟法）\n   - 95% CVaR（历史模拟法）\n   - 99% CVaR（历史模拟法）\n   - 95% VaR（参数法，正态分布）\n   - 99% VaR（参数法，正态分布）\n   - 95% CVaR（参数法，正态分布）\n   - 99% CVaR（参数法，正态分布）\n3. 判断哪种方法（历史模拟法 or 参数法）得出的风险估计更保守\n4. 将结果写入 risk_report.json，保存到桌面\n\n输出格式：\n{\n    \"historical\": {\n        \"var_95\": -0.0234,\n        \"var_99\": -0.0345,\n        \"cvar_95\": -0.0289,\n        \"cvar_99\": -0.0421\n    },\n    \"parametric\": {\n        \"var_95\": -0.0211,\n        \"var_99\": -0.0312,\n        \"cvar_95\": -0.0265,\n        \"cvar_99\": -0.0387\n    },\n    \"summary\": \"historical method is more conservative\"\n}\n\n说明：\n- VaR = 在给定置信水平下，投资组合在特定时间内可能遭受的最大损失\n- CVaR = 在VaR突破情况下的平均损失（也称为 Expected Shortfall）\n- 历史模拟法：用历史数据的分位数计算\n- 参数法：用正态分布的均值和标准差计算",
+  "rubric": {
+    "query": "桌面上 portfolio_data 文件夹里有 portfolio_returns.csv，包含500天的历史收益率数据。\n\n任务：\n1. 读取 portfolio_returns.csv\n2. 计算以下风险指标：\n   - 95% VaR（历史模拟法）\n   - 99% VaR（历史模拟法）\n   - 95% CVaR（历史模拟法）\n   - 99% CVaR（历史模拟法）\n   - 95% VaR（参数法，正态分布）\n   - 99% VaR（参数法，正态分布）\n   - 95% CVaR（参数法，正态分布）\n   - 99% CVaR（参数法，正态分布）\n3. 判断哪种方法（历史模拟法 or 参数法）得出的风险估计更保守\n4. 将结果写入 risk_report.json，保存到桌面\n\n输出格式：\n{\n    \"historical\": {\n        \"var_95\": -0.0234,\n        \"var_99\": -0.0345,\n        \"cvar_95\": -0.0289,\n        \"cvar_99\": -0.0421\n    },\n    \"parametric\": {\n        \"var_95\": -0.0211,\n        \"var_99\": -0.0312,\n        \"cvar_95\": -0.0265,\n        \"cvar_99\": -0.0387\n    },\n    \"summary\": \"historical method is more conservative\"\n}\n\n说明：\n- VaR = 在给定置信水平下，投资组合在特定时间内可能遭受的最大损失\n- CVaR = 在VaR突破情况下的平均损失（也称为 Expected Shortfall）\n- 历史模拟法：用历史数据的分位数计算\n- 参数法：用正态分布的均值和标准差计算",
+    "query_id": "portfolio_var_cvar",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-3aa6ecb5dda4",
+        "type": "leaf",
+        "name": "正确读取了桌面 portfolio_data 文件夹中的 portfolio_returns.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-9f8ad02ac857",
+        "type": "group",
+        "name": "风险分析结果已完成",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-1b01769b70a8",
+            "type": "leaf",
+            "name": "正确计算了历史模拟法的 95% VaR、99% VaR、95% CVaR 和 99% CVaR",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "时间推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-0ad65ea80e8c",
+            "type": "leaf",
+            "name": "正确计算了参数法（正态分布）的 95% VaR、99% VaR、95% CVaR 和 99% CVaR",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "通用知识",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-f5b15dd1f819",
+            "type": "leaf",
+            "name": "正确判断了历史模拟法与参数法中哪一种风险估计更保守",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-587b6868cacf",
+        "type": "group",
+        "name": "风险报告文件已交付",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-39ba5d52965e",
+            "type": "leaf",
+            "name": "生成了包含 historical、parametric 和 summary 字段的 risk_report.json",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-cdc3eebf392c",
+            "type": "leaf",
+            "name": "将 risk_report.json 保存到了桌面",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-01002e07f0af",
+          "type": "leaf",
+          "name": "准确定位并读取了桌面 portfolio_data 文件夹中的 portfolio_returns.csv 文件内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-dd87c061aa92",
+          "type": "group",
+          "name": "数据预处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-70d45f27e772",
+              "type": "leaf",
+              "name": "准确识别了用于收益率计算的数值列",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-801c13e5baaa",
+              "type": "leaf",
+              "name": "正确处理了缺失值、非数值单元格或空行对风险指标计算的影响",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "信息筛选",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-03a1dc68432c",
+          "type": "group",
+          "name": "历史模拟法计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fd92445887ae",
+              "type": "leaf",
+              "name": "准确按历史模拟法分位数计算了 95% 和 99% VaR",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-f47f400917b7",
+              "type": "leaf",
+              "name": "准确按 VaR 阈值以下样本平均值计算了 95% 和 99% CVaR",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-7d4c24cef2ec",
+              "type": "leaf",
+              "name": "准确保持了损失指标的符号方向与用户要求示例一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-98ea9dc3326e",
+          "type": "group",
+          "name": "参数法计算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f3f8d8931cb7",
+              "type": "leaf",
+              "name": "准确基于样本均值和样本标准差计算了正态分布参数法的 95% 和 99% VaR",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3410db9def6a",
+              "type": "leaf",
+              "name": "准确使用正态分布尾部期望公式计算了 95% 和 99% CVaR",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-3414d5c3e3d6",
+              "type": "leaf",
+              "name": "准确使用了与 95% 和 99% 置信水平对应的正态分位点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a3c9302890b7",
+          "type": "group",
+          "name": "保守性判断与结果说明质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0002908b4761",
+              "type": "leaf",
+              "name": "准确依据更负的 VaR 与 CVaR 数值比较两种方法的保守性",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-99d174bd2293",
+              "type": "leaf",
+              "name": "回复中包含了保守性判断结果与比较依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8afe56867b86",
+          "type": "group",
+          "name": "交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-41ba9a5f7cfe",
+              "type": "leaf",
+              "name": "risk_report.json 可被标准 JSON 解析器正常打开和解析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-bcc21b9e16d9",
+              "type": "leaf",
+              "name": "risk_report.json 中各字段名称与用户要求的 historical、parametric、summary 完全一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-5125fdb723cc",
+              "type": "leaf",
+              "name": "risk_report.json 中八个风险指标均为数值类型且 summary 为字符串类型",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-91ace29f45a8",
+    "language": "zh"
+  }
+}

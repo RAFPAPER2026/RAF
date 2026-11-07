@@ -1,0 +1,207 @@
+{
+  "id": "monte_carlo",
+  "name": "Monte Carlo Method Notes",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Handling & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Search for papers on the Monte Carlo method, save them to /root/Desktop, extract the core points, make concise notes, and put them on the desktop.",
+  "rubric": {
+    "query": "Search for papers on the Monte Carlo method, save them to /root/Desktop, extract the core points, make concise notes, and put them on the desktop.",
+    "query_id": "monte_carlo",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d2894e777b0c",
+        "type": "leaf",
+        "name": "Retrieved and located papers related to the Monte Carlo method",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Retrieval Strategy",
+          "Information Filtering",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-9d88e1ebaa83",
+        "type": "leaf",
+        "name": "Produced and saved the retrieved paper files to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention"
+        ]
+      },
+      {
+        "id": "node-6d4724ccd4d0",
+        "type": "leaf",
+        "name": "Extracted the core points of the papers and produced concise notes to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Logical Reasoning",
+          "Information Filtering",
+          "Communication",
+          "Tool Usage"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-18aaf81b58b9",
+          "type": "leaf",
+          "name": "Accurately constructed search conditions consistent with the Monte Carlo method paper retrieval objective",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Retrieval Strategy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ff973acbed5d",
+          "type": "leaf",
+          "name": "Correctly filtered the results directly related to the Monte Carlo method that can serve as paper sources",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Information Filtering",
+            "Factual Accuracy",
+            "General Knowledge"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3d347d201504",
+          "type": "leaf",
+          "name": "Correctly used download or save tools to write the paper files to /root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Context Retention"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-16982c1f0c70",
+          "type": "group",
+          "name": "Note Content Extraction Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9888c3e5e970",
+              "type": "leaf",
+              "name": "Accurately extracted the research questions in the papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning"
+              ]
+            },
+            {
+              "id": "node-ef0f07a9c209",
+              "type": "leaf",
+              "name": "Accurately extracted the method mechanisms or algorithm points in the papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-abcef707e8af",
+              "type": "leaf",
+              "name": "Accurately extracted the main conclusions or applicable scenarios in the papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a74109321220",
+          "type": "group",
+          "name": "Note Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c0933f29df75",
+              "type": "leaf",
+              "name": "The note file contains a mapping between paper titles and their corresponding key points",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-424a44017c25",
+              "type": "leaf",
+              "name": "The note file content is organized item by item and can be consulted directly by the user",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-7242aaafc6fb",
+              "type": "leaf",
+              "name": "The note file opens normally with no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-80dba2b5e685",
+    "language": "en"
+  },
+  "note": "The reply content is complete, and all key points in the original text are covered."
+}

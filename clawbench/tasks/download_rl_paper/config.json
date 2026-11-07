@@ -1,0 +1,154 @@
+{
+  "id": "download_rl_paper",
+  "name": "arXiv检索脚本",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "CLI调用"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我用 Python 写一个脚本，调用 arXiv API 搜索标题中包含 “reinforcement learning” 的论文，按年份倒序输出到一个 markdown 表格里，保存到/root/Desktop。",
+  "rubric": {
+    "query": "帮我用 Python 写一个脚本，调用 arXiv API 搜索标题中包含 “reinforcement learning” 的论文，按年份倒序输出到一个 markdown 表格里，保存到/root/Desktop。",
+    "query_id": "download_rl_paper",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-06ef31492bdc",
+        "type": "leaf",
+        "name": "编写了调用 arXiv API 搜索标题中包含 reinforcement learning 的 Python 脚本",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "检索策略"
+        ]
+      },
+      {
+        "id": "node-e342a886d447",
+        "type": "leaf",
+        "name": "生成了按年份倒序排列的 markdown 表格脚本输出结果",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "逻辑推理",
+          "时间推理",
+          "信息筛选"
+        ]
+      },
+      {
+        "id": "node-55171bd9ca84",
+        "type": "leaf",
+        "name": "将 Python 脚本保存到了 /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-669487768bde",
+          "type": "leaf",
+          "name": "准确构造了 arXiv API 查询参数以匹配标题中包含 reinforcement learning 的论文",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "意图理解",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-a0defed9c58e",
+          "type": "leaf",
+          "name": "正确提取了论文标题、发布日期或年份和 arXiv 链接用于生成表格",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-177b1a9eb0bb",
+          "type": "leaf",
+          "name": "正确按照年份从新到旧排序了搜索结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "时间推理",
+            "逻辑推理"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-8f721658c429",
+          "type": "leaf",
+          "name": "生成的 markdown 表格包含表头和逐行论文记录且可直接用于 markdown 渲染",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-840037f330e3",
+          "type": "leaf",
+          "name": "脚本内容包含请求失败或解析失败时的错误处理分支",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-7261ab4bd70a",
+          "type": "leaf",
+          "name": "将脚本写入 /root/Desktop 时使用了与任务要求一致的文件路径和 Python 文件扩展名",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-d979cb73c1ce",
+    "language": "zh"
+  }
+}

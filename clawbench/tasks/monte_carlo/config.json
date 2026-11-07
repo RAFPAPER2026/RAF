@@ -1,0 +1,207 @@
+{
+  "id": "monte_carlo",
+  "name": "蒙特卡罗方法笔记",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用-Skill 使用",
+    "反思和修复-异常处理和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "zh",
+  "prompt": "搜索蒙特卡罗方法的论文，存到/root/Desktop上，并且提炼核心要点，做成简洁笔记，放到桌面。",
+  "rubric": {
+    "query": "搜索蒙特卡罗方法的论文，存到/root/Desktop上，并且提炼核心要点，做成简洁笔记，放到桌面。",
+    "query_id": "monte_carlo",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-d2894e777b0c",
+        "type": "leaf",
+        "name": "检索并定位了与蒙特卡罗方法相关的论文",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "检索策略",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-9d88e1ebaa83",
+        "type": "leaf",
+        "name": "将检索到的论文文件产出并保存到了/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "上下文保持"
+        ]
+      },
+      {
+        "id": "node-6d4724ccd4d0",
+        "type": "leaf",
+        "name": "提炼了论文核心要点并产出简洁笔记到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "逻辑推理",
+          "信息筛选",
+          "沟通表达",
+          "工具使用"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-18aaf81b58b9",
+          "type": "leaf",
+          "name": "准确构造了与蒙特卡罗方法论文检索目标一致的搜索条件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "检索策略"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-ff973acbed5d",
+          "type": "leaf",
+          "name": "正确筛选了与蒙特卡罗方法直接相关且可作为论文来源的结果",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-3d347d201504",
+          "type": "leaf",
+          "name": "正确使用了下载或保存工具将论文文件写入/root/Desktop",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-16982c1f0c70",
+          "type": "group",
+          "name": "笔记内容提炼质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9888c3e5e970",
+              "type": "leaf",
+              "name": "准确提取了论文中的研究问题",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-ef0f07a9c209",
+              "type": "leaf",
+              "name": "准确提取了论文中的方法机制或算法要点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-abcef707e8af",
+              "type": "leaf",
+              "name": "准确提取了论文中的主要结论或适用场景",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a74109321220",
+          "type": "group",
+          "name": "笔记交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c0933f29df75",
+              "type": "leaf",
+              "name": "笔记文件包含论文标题与对应要点映射",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-424a44017c25",
+              "type": "leaf",
+              "name": "笔记文件内容分条组织且可直接供用户查阅",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-7242aaafc6fb",
+              "type": "leaf",
+              "name": "笔记文件可正常打开且无乱码",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-80dba2b5e685",
+    "language": "zh"
+  },
+  "note": "回答内容完整，原文中关键点都有"
+}

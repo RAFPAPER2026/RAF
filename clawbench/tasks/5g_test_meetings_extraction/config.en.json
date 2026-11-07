@@ -1,0 +1,304 @@
+{
+  "id": "5g_test_meetings_extraction",
+  "name": "5G Test Meeting Extraction",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Meeting Coordination",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "From the calendar file calendar_extraction_task/work_calendar_2023.ics on the desktop, filter out all meetings this year that are related to 5G core network testing. Criteria: the meeting title or description must contain both the words “5G” and “测试”; if either one is missing, it does not count. Directly remove meetings whose status is CANCELLED. Generate a Markdown document from the filtered results and save it in the same folder, with the file name 5G_Test_Meetings_Summary.md. Group the document by month, using the “YYYY年MM月” format for level-2 headings, for example ## 2023年03月. Under each month, use an unordered list to list every meeting of that month, and each entry must include the meeting's specific time range, meeting subject, and location.",
+  "rubric": {
+    "query": "From the calendar file calendar_extraction_task/work_calendar_2023.ics on the desktop, filter out all meetings this year that are related to 5G core network testing. Criteria: the meeting title or description must contain both the words “5G” and “测试”; if either one is missing, it does not count. Directly remove meetings whose status is CANCELLED. Generate a Markdown document from the filtered results and save it in the same folder, with the file name 5G_Test_Meetings_Summary.md. Group the document by month, using the “YYYY年MM月” format for level-2 headings, for example ## 2023年03月. Under each month, use an unordered list to list every meeting of that month, and each entry must include the meeting's specific time range, meeting subject, and location.",
+    "query_id": "5g_test_meetings_extraction",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-c8bcddc65366",
+        "type": "leaf",
+        "name": "Correctly read the desktop calendar file calendar_extraction_task/work_calendar_2023.ics",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-5b9544a8a8b8",
+        "type": "group",
+        "name": "Correctly completed the meeting filtering",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-60454941ac54",
+            "type": "leaf",
+            "name": "Correctly filtered out this year's meetings whose title or description contains both “5G” and “测试”",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ed716641d69a",
+            "type": "leaf",
+            "name": "Correctly excluded meetings whose status is CANCELLED",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Information Filtering",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-0e29e86f1061",
+        "type": "group",
+        "name": "Correctly produced the specified Markdown deliverable",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a1630c01d827",
+            "type": "leaf",
+            "name": "Generated the 5G_Test_Meetings_Summary.md Markdown document",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-4fd5247d1efa",
+            "type": "leaf",
+            "name": "Saved 5G_Test_Meetings_Summary.md in the same folder as the source calendar file",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-725383aa408c",
+          "type": "leaf",
+          "name": "Correctly located and read the contents of the desktop calendar_extraction_task/work_calendar_2023.ics file",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Tool Usage",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-abf6a0235392",
+          "type": "group",
+          "name": "Meeting filtering judgment quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-61848d4fdd13",
+              "type": "leaf",
+              "name": "Accurately identified the keyword matching conditions in the meeting title and description fields",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Intent Understanding",
+                "Conditional Judgment",
+                "Information Filtering"
+              ]
+            },
+            {
+              "id": "node-a37cb94ddf9e",
+              "type": "leaf",
+              "name": "Accurately identified the meeting status field and excluded meetings whose value is CANCELLED",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-9ddc9b3d532f",
+              "type": "leaf",
+              "name": "Accurately limited the meeting records to the current year",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-92133448cced",
+          "type": "group",
+          "name": "Meeting information extraction quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-92ae11e44681",
+              "type": "leaf",
+              "name": "Correctly extracted the start time and end time of every meeting",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-668875bca002",
+              "type": "leaf",
+              "name": "Correctly extracted the subject of every meeting",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-9df0be1dbfde",
+              "type": "leaf",
+              "name": "Correctly extracted the location of every meeting",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-77441d9dcfb5",
+          "type": "group",
+          "name": "Markdown deliverable usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-0740fcf402ba",
+              "type": "leaf",
+              "name": "Correctly grouped the meetings by month under level-2 headings in the “YYYY年MM月” format",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Temporal Reasoning",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-d923a6db9e1c",
+              "type": "leaf",
+              "name": "Correctly wrote each meeting as an unordered list item containing the specific time range, meeting subject, and location",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Communication",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-3b7ca650acde",
+              "type": "leaf",
+              "name": "The generated Markdown document opens normally, and its heading levels and list syntax can be correctly parsed by a Markdown renderer",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-62d7cf5f0993",
+          "type": "group",
+          "name": "Quality of execution exception handling and result explanation",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f774de4c25af",
+              "type": "leaf",
+              "name": "Correctly identified the error and took corrective or notification measures when reading failed, fields were missing, or the format was abnormal",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-6ce5bf8907d9",
+              "type": "leaf",
+              "name": "Clearly stated the output file name and save location in the reply",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-d8ee193a6b54",
+    "language": "en"
+  },
+  "note": "Extract 5G test-related meetings from an ICS calendar file and generate a Markdown summary"
+}

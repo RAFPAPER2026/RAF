@@ -1,0 +1,456 @@
+{
+  "id": "research_checkpoint_recovery",
+  "name": "研究断点恢复",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "知识沉淀",
+  "ability_category": [
+    "上下文管理-长上下文理解",
+    "任务规划-任务分解",
+    "上下文管理-状态跟踪与一致性维护",
+    "任务规划-通用规划与策略制定"
+  ],
+  "ability_category_canonical": [
+    "context.long",
+    "plan.decompose",
+    "context.state",
+    "plan.strategy"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面 research_archive/ 文件夹里是我过去一年做的一个研究方向（agent评估）的全部材料：论文PDF、阅读笔记（notes/）、实验代码说明、实验日志（experiment_logs/）、Git提交记录、给导师的汇报文档和会议记录。这个项目已经停滞半年了。\n我忘了当时这个 idea 做到哪里了，请帮我恢复这个研究项目的全貌：\n1. 恢复当时的 research question（可能需要从汇报文档和笔记里拼出来）；\n2. 找出已经验证过和已被否定的 hypothesis；\n3. 根据实验日志判断哪些实验结果是可信的（注意：有几组实验中途改过配置，结果可能不可比）；\n4. 还原最后一次工作时的具体状态（最后在做什么、卡在哪里）；\n5. 找出当时记录但没有解决的 open questions；\n6. 检查我后来（停滞期间）新写的零散笔记，看有没有新想法可以接上原研究；\n7. 最后生成一份「研究状态重建报告」保存到 /root/Desktop/research_archive/research_state.md，并给出下一步最值得做的实验计划（按优先级排列）。",
+  "rubric": {
+    "query": "桌面 research_archive/ 文件夹里是我过去一年做的一个研究方向（agent评估）的全部材料：论文PDF、阅读笔记（notes/）、实验代码说明、实验日志（experiment_logs/）、Git提交记录、给导师的汇报文档和会议记录。这个项目已经停滞半年了。\n我忘了当时这个 idea 做到哪里了，请帮我恢复这个研究项目的全貌：\n1. 恢复当时的 research question（可能需要从汇报文档和笔记里拼出来）；\n2. 找出已经验证过和已被否定的 hypothesis；\n3. 根据实验日志判断哪些实验结果是可信的（注意：有几组实验中途改过配置，结果可能不可比）；\n4. 还原最后一次工作时的具体状态（最后在做什么、卡在哪里）；\n5. 找出当时记录但没有解决的 open questions；\n6. 检查我后来（停滞期间）新写的零散笔记，看有没有新想法可以接上原研究；\n7. 最后生成一份「研究状态重建报告」保存到 /root/Desktop/research_archive/research_state.md，并给出下一步最值得做的实验计划（按优先级排列）。",
+    "query_id": "research_checkpoint_recovery",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1fca6aee765b",
+        "type": "leaf",
+        "name": "正确提取了该研究项目的 research question",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-bba5ce61145f",
+        "type": "group",
+        "name": "研究证据状态已恢复",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7d3cac136c40",
+            "type": "leaf",
+            "name": "正确整理了已验证过的 hypothesis",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-375b8b7dafcb",
+            "type": "leaf",
+            "name": "正确整理了已被否定的 hypothesis",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-e553d80cf5cd",
+            "type": "leaf",
+            "name": "正确标记了因配置变更而不可直接比较的实验结果",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断",
+              "逻辑推理",
+              "异常处理"
+            ]
+          },
+          {
+            "id": "node-344633ae0cff",
+            "type": "leaf",
+            "name": "正确判断了哪些实验结果可信",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "条件判断",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ad144dc41623",
+        "type": "group",
+        "name": "项目当前衔接状态已恢复",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-17a79cdfcad3",
+            "type": "leaf",
+            "name": "正确还原了最后一次工作时的具体状态",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "上下文保持",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-0343783650ee",
+            "type": "leaf",
+            "name": "正确提取了当时记录但未解决的 open questions",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "事实准确性",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-6ac2a8db3033",
+            "type": "leaf",
+            "name": "正确识别了停滞期间零散笔记中可接续原研究的新想法",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "逻辑推理",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-cb96b3c63376",
+        "type": "group",
+        "name": "最终交付物已产出",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-851b918ec3ff",
+            "type": "leaf",
+            "name": "成功生成了研究状态重建报告文件 research_state.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          },
+          {
+            "id": "node-cc0cec3a66c3",
+            "type": "leaf",
+            "name": "正确写入了 /root/Desktop/research_archive/research_state.md",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-fe32aa430110",
+            "type": "leaf",
+            "name": "报告中包含了按优先级排列的下一步实验计划",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "沟通表达"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-050859855025",
+          "type": "group",
+          "name": "材料检索与范围界定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7dc44caf5fe3",
+              "type": "leaf",
+              "name": "准确检索了汇报文档、阅读笔记、实验日志、代码说明、Git提交记录和会议记录中的相关内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "工具使用",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-3a3d632b4b49",
+              "type": "leaf",
+              "name": "正确区分了停滞前材料与停滞期间新增零散笔记",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "条件判断",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-672ae81d709d",
+          "type": "group",
+          "name": "研究内容重建与时间线推理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6c020098ff60",
+              "type": "leaf",
+              "name": "准确拼接了跨文档出现的 research question 表述",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "逻辑推理",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-7fa3c7599445",
+              "type": "leaf",
+              "name": "正确区分了 hypothesis、open questions 和执行计划三类记录",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-faa6ae360759",
+              "type": "leaf",
+              "name": "准确根据时间顺序还原了最后一次工作的任务链条",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "上下文保持",
+                "逻辑推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-c6f83a1e22cc",
+          "type": "group",
+          "name": "实验可信度判定质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-c021986e8219",
+              "type": "leaf",
+              "name": "准确识别了实验过程中发生的配置变更节点",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-c3ca78b7155c",
+              "type": "leaf",
+              "name": "正确依据配置一致性判断了结果是否可以横向比较",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-be27997b7af4",
+              "type": "leaf",
+              "name": "正确依据日志完整性、运行状态和记录证据判断了实验结果可信度",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "异常处理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-1f1f67b511c1",
+          "type": "group",
+          "name": "研究延续方案设计质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-6e16fc03ff6e",
+              "type": "leaf",
+              "name": "正确从停滞期间新增笔记中筛出了与原研究问题直接相关的新想法",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "上下文保持",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-5108bd9f96fe",
+              "type": "leaf",
+              "name": "正确说明了每个新想法与原研究主线的连接依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-170cb387f870",
+              "type": "leaf",
+              "name": "正确按证据强弱和依赖关系排列了下一步实验计划的优先级",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "条件判断",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-09594e19ae6b",
+          "type": "group",
+          "name": "交付物可用性与可追溯性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ab432c724b88",
+              "type": "leaf",
+              "name": "生成的 research_state.md 包含研究问题、hypothesis状态、实验可信度、最后工作状态、open questions、新想法和实验计划各独立章节",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "意图理解"
+              ]
+            },
+            {
+              "id": "node-6ae5a9f0b709",
+              "type": "leaf",
+              "name": "生成的 research_state.md 中每项结论都标注了对应的材料来源或证据位置",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "沟通表达",
+                "信息筛选"
+              ]
+            },
+            {
+              "id": "node-fdba21a90f95",
+              "type": "leaf",
+              "name": "生成的 research_state.md 可以正常打开且为 Markdown 格式文本",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-61363c9a284a",
+          "type": "group",
+          "name": "证据不足场景处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f5111fff6bdd",
+              "type": "leaf",
+              "name": "在发现缺失文件、日志中断或记录冲突时，正确说明了证据不足的范围",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-f2bf20cd9c1a",
+              "type": "leaf",
+              "name": "在证据不足时，没有将推测内容表述为已经确认的事实",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-bcc1e0848e58",
+    "language": "zh"
+  },
+  "note": "研究项目“断点恢复” 给agent：用户过去一年某个研究方向的 论文PDF + 阅读笔记 + 实验代码说明 + experiment logs + Git commit notes + Word/PPT汇报 + 会议记录，其中项目已经停滞半年。用户：“我忘了当时这个idea做到哪里了。帮我恢复这个研究项目，并告诉我现在最值得继续做什么。” Agent需要：① 恢复当时的research question；② 找出已经验证/否定的hypothesis；③ 根据实验记录判断哪些结果可信；④ 找到最后一次工作的具体状态；⑤ 找出当时没有解决的open questions；⑥ 搜索用户自己的notes，判断有没有后来出现的新想法可以接上；⑦ 最后生成“research state reconstruction”，并给出下一步实验计划。 难点： 这是一个很典型的 long-term memory + temporal reconstruction + research reasoning case，而且“最后做到哪里”往往不存在于单一文件里。",
+  "env_description": "research_archive/：notes/（4份，含停滞期间的新笔记可接上原研究）、experiment_logs/（4份，埋实验配置变更导致结果不可比、最后一次实验的卡点）、git_log.txt（WIP提交显示最后卡在DAG解析器）、汇报/（最后的open questions）、papers/README.md；research question需从多文件拼出"
+}

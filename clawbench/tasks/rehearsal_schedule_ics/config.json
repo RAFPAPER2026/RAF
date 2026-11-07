@@ -1,0 +1,352 @@
+{
+  "id": "rehearsal_schedule_ics",
+  "name": "彩排任务ICS排期",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "日程规划",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "遵从能力-指令遵从"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "instruction.follow"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "simple",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "从桌面 Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx 里提取所有带“【待办-仿真组】”和“【待办-机械组】”标记的任务，其他部门的不要。\n\n每个任务后面有预期完成时间。如果只写了日期没写具体时间，就把日历事件的开始时间设为当天下午2点，持续2小时（到下午4点）。如果写了具体时间，就按文档里的来。\n\n事件标题直接用任务描述。生成一个 .ics 文件，命名为“彩排任务排期表.ics”，保存到桌面 Project_Beast_Simulation/ 目录下。",
+  "rubric": {
+    "query": "从桌面 Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx 里提取所有带“【待办-仿真组】”和“【待办-机械组】”标记的任务，其他部门的不要。\n\n每个任务后面有预期完成时间。如果只写了日期没写具体时间，就把日历事件的开始时间设为当天下午2点，持续2小时（到下午4点）。如果写了具体时间，就按文档里的来。\n\n事件标题直接用任务描述。生成一个 .ics 文件，命名为“彩排任务排期表.ics”，保存到桌面 Project_Beast_Simulation/ 目录下。",
+    "query_id": "rehearsal_schedule_ics",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-1bc58612ba17",
+        "type": "leaf",
+        "name": "正确读取了桌面 Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx 文档内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-cb87c5793fd1",
+        "type": "group",
+        "name": "待办任务筛选目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c52492e7252d",
+            "type": "leaf",
+            "name": "正确提取了所有带“【待办-仿真组】”标记的任务及其预期完成时间",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "检索策略",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-6d5b134164ca",
+            "type": "leaf",
+            "name": "正确提取了所有带“【待办-机械组】”标记的任务及其预期完成时间",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "信息筛选",
+              "检索策略",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-66b0a29a9a08",
+            "type": "leaf",
+            "name": "正确排除了其他部门标记的任务",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5a4f062b5c7d",
+        "type": "group",
+        "name": "日历交付物生成目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-98a9222bfbcf",
+            "type": "leaf",
+            "name": "只写日期的任务被设置为当天下午2点开始且下午4点结束",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-fa1a3db53411",
+            "type": "leaf",
+            "name": "写明具体时间的任务按文档中的时间生成了日历事件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理",
+              "逻辑推理",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-ee44206357e4",
+            "type": "leaf",
+            "name": "事件标题直接使用了任务描述",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-71f649bd05b0",
+            "type": "leaf",
+            "name": "生成了名为“彩排任务排期表.ics”的文件并保存到桌面 Project_Beast_Simulation/ 目录下",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-2cffde85f9ab",
+          "type": "leaf",
+          "name": "正确定位了桌面 Project_Beast_Simulation/巨兽机甲数字化彩排沟通纪要_V2.docx 文件并使用可读取 .docx 内容的方式获取正文",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "检索策略",
+            "异常处理"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a9ee905bec77",
+          "type": "group",
+          "name": "任务筛选与提取质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4dee1449ca52",
+              "type": "leaf",
+              "name": "准确识别了“【待办-仿真组】”标记对应的任务边界和任务描述",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-0e3876df5acd",
+              "type": "leaf",
+              "name": "准确识别了“【待办-机械组】”标记对应的任务边界和任务描述",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-8fd2bdc13d3b",
+              "type": "leaf",
+              "name": "准确排除了未带“【待办-仿真组】”或“【待办-机械组】”标记的任务",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "信息筛选",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-6de1f78bd078",
+          "type": "group",
+          "name": "时间解析与事件换算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9457b0fd82b6",
+              "type": "leaf",
+              "name": "准确提取了每个任务对应的预期完成日期",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-5dabc19e8ad3",
+              "type": "leaf",
+              "name": "准确识别了预期完成时间中是否写明具体时刻",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "条件判断",
+                "时间推理",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-e5d655027072",
+              "type": "leaf",
+              "name": "只写日期的任务被正确换算为14:00开始和16:00结束",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-542b8b999e86",
+              "type": "leaf",
+              "name": "写明具体时间的任务被正确换算为与文档一致的开始时间和结束时间",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理",
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-0f391f69fe3c",
+          "type": "group",
+          "name": "日历交付物可用性质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-a8be3b5f130d",
+              "type": "leaf",
+              "name": "正确将每个事件标题设置为对应任务描述原文",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "事实准确性",
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-2df45ddeba11",
+              "type": "leaf",
+              "name": "生成的 .ics 文件包含全部目标任务且每个事件都具有可被日历应用读取的开始时间和结束时间字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-c47e72679367",
+              "type": "leaf",
+              "name": "生成的 .ics 文件扩展名、文件名和保存目录与用户要求一致",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "意图理解",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f33d59c694be",
+          "type": "group",
+          "name": "异常处理与结果说明质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-9e675b068761",
+              "type": "leaf",
+              "name": "在文档读取失败、时间字段缺失或保存失败时，识别了具体错误并采取了对应修正或告知动作",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "工具使用",
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-ca0c31a26077",
+              "type": "leaf",
+              "name": "回复中包含了已生成文件的位置以及提取到的任务处理结果说明",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持",
+                "意图理解"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-e7e4bf0433d1",
+    "language": "zh"
+  },
+  "note": "从会议纪要提取特定部门待办生成ICS日历文件"
+}

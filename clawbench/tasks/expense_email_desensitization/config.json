@@ -1,0 +1,350 @@
+{
+  "id": "expense_email_desensitization",
+  "name": "差旅报销邮件脱敏",
+  "version": "1.0",
+  "primary_scenario": "基础办公与效率",
+  "secondary_scenario": "邮件管理",
+  "ability_category": [
+    "工具调用-CLI 调用",
+    "上下文管理-长上下文理解"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "桌面上有个 travel_expense_emails 文件夹，里面有这三封 .eml 邮件：顾问A_华东区经销商走访报销.eml，顾问B_上海工厂灌装线测时差旅.eml，顾问C_5S巡检项目住宿报销.eml。\n\n把这三封邮件的正文内容都提取出来，合并成一份 Markdown 文档，保存到同一个文件夹下。邮件正文里的身份证号（18位数字）和银行卡号（16到19位数字）全部用星号 * 替换掉。\n\n然后再把同样的脱敏内容生成一份 PDF 文件，加上打开密码，密码是 Travel2023!。",
+  "rubric": {
+    "query": "桌面上有个 travel_expense_emails 文件夹，里面有这三封 .eml 邮件：顾问A_华东区经销商走访报销.eml，顾问B_上海工厂灌装线测时差旅.eml，顾问C_5S巡检项目住宿报销.eml。\n\n把这三封邮件的正文内容都提取出来，合并成一份 Markdown 文档，保存到同一个文件夹下。邮件正文里的身份证号（18位数字）和银行卡号（16到19位数字）全部用星号 * 替换掉。\n\n然后再把同样的脱敏内容生成一份 PDF 文件，加上打开密码，密码是 Travel2023!。",
+    "query_id": "expense_email_desensitization",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-a7e5533c4315",
+        "type": "group",
+        "name": "邮件正文提取与合并目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-a9440e06a13e",
+            "type": "leaf",
+            "name": "提取了三封指定 .eml 邮件的正文内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "工具使用",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-c04dc55fe9a4",
+            "type": "leaf",
+            "name": "合并了三封邮件的正文内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-ccafd2000da5",
+        "type": "group",
+        "name": "敏感信息脱敏目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-7a3751416e17",
+            "type": "leaf",
+            "name": "替换了邮件正文中的18位身份证号为星号",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          },
+          {
+            "id": "node-a387de6ecd2f",
+            "type": "leaf",
+            "name": "替换了邮件正文中的16到19位银行卡号为星号",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "信息筛选",
+              "事实准确性"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d69245b6ef20",
+        "type": "group",
+        "name": "交付物生成目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-f03ea338b4a0",
+            "type": "leaf",
+            "name": "生成了保存在同一文件夹下的 Markdown 文档",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-4dc709d577c8",
+            "type": "leaf",
+            "name": "生成了保存在同一文件夹下的 PDF 文件",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          },
+          {
+            "id": "node-05f28328c4a1",
+            "type": "leaf",
+            "name": "为 PDF 文件设置了打开密码 Travel2023!",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "工具使用"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-6317b64f92f3",
+          "type": "leaf",
+          "name": "准确定位了桌面上 travel_expense_emails 文件夹中的三封指定 .eml 文件",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "工具使用",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-2f561337542c",
+          "type": "group",
+          "name": "邮件内容解析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-fbefd41400f1",
+              "type": "leaf",
+              "name": "正确提取了每封 .eml 邮件的正文内容而未混入邮件头字段",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-35b551bd9fc0",
+              "type": "leaf",
+              "name": "正确保持了三封邮件正文之间的边界信息以支持合并输出",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "信息筛选"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e2cc3d369415",
+          "type": "group",
+          "name": "脱敏处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-021859cc6acb",
+              "type": "leaf",
+              "name": "准确识别了正文中所有18位数字身份证号模式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-0f5328e37515",
+              "type": "leaf",
+              "name": "准确识别了正文中所有16到19位数字银行卡号模式",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "信息筛选",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-def5244840c3",
+              "type": "leaf",
+              "name": "正确替换了已识别敏感号码且未改动非敏感正文内容",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "工具使用"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-d0cbce472fe5",
+          "type": "group",
+          "name": "Markdown 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-616bd2c71367",
+              "type": "leaf",
+              "name": "正确生成了包含三封脱敏正文内容的 Markdown 文档结构",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-2d9ecbe9a227",
+              "type": "leaf",
+              "name": "生成的 Markdown 文档内容完整且可供用户直接阅读使用",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-9d3c8015ea92",
+          "type": "group",
+          "name": "PDF 交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-82e9317431e8",
+              "type": "leaf",
+              "name": "正确生成了包含三封脱敏正文内容的 PDF 文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-4bf20a586cc8",
+              "type": "leaf",
+              "name": "生成的 PDF 文件可以正常打开且打开密码为 Travel2023!",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "异常处理"
+              ]
+            },
+            {
+              "id": "node-961e43251cde",
+              "type": "leaf",
+              "name": "PDF 中的脱敏内容排版可读且无乱码或内容缺失",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-40afad96d0d6",
+          "type": "group",
+          "name": "结果沟通质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d98af202e375",
+              "type": "leaf",
+              "name": "在结果反馈中明确说明了已生成的 Markdown 和 PDF 文件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-9cc4255d3e36",
+              "type": "leaf",
+              "name": "在结果反馈中明确说明了已执行身份证号和银行卡号脱敏",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-b2118765337c",
+    "language": "zh"
+  },
+  "note": "从 .eml 文件中提取邮件内容，对身份证号、银行卡号等敏感信息脱敏，输出 Markdown 与加密 PDF"
+}

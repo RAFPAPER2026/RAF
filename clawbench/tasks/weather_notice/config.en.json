@@ -1,0 +1,148 @@
+{
+  "id": "weather_notice",
+  "name": "Tokyo Rainfall Monitoring Cron Job",
+  "version": "1.0",
+  "primary_scenario": "Personal Life Assistant",
+  "secondary_scenario": "Travel Planning",
+  "ability_category": [
+    "Tool Use",
+    "Reflection & Repair"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "Help me write a scheduled task that monitors tomorrow's precipitation intensity in Tokyo. If it exceeds 30mm, send a system notification via Bash to remind me to change my ticket. Save the scheduled task configuration json file to /root/Desktop.",
+  "rubric": {
+    "query": "Help me write a scheduled task that monitors tomorrow's precipitation intensity in Tokyo. If it exceeds 30mm, send a system notification via Bash to remind me to change my ticket. Save the scheduled task configuration json file to /root/Desktop.",
+    "query_id": "weather_notice",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e799b90b1fd8",
+        "type": "leaf",
+        "name": "Generated a scheduled task configuration json file that monitors tomorrow's precipitation intensity in Tokyo and triggers a Bash system notification when it exceeds 30mm",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage"
+        ]
+      },
+      {
+        "id": "node-6c4f92251c5d",
+        "type": "leaf",
+        "name": "Saved the scheduled task configuration json file to /root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6ca019360a47",
+          "type": "leaf",
+          "name": "Accurately identified the monitoring target as tomorrow's precipitation intensity in Tokyo with a threshold of 30mm",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Temporal Reasoning",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-08c63382a531",
+          "type": "leaf",
+          "name": "Correctly constructed the retrieval parameters or API request parameters for obtaining tomorrow's precipitation intensity data for Tokyo",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Retrieval Strategy",
+            "Information Filtering",
+            "Tool Usage"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4b54a67ebfac",
+          "type": "leaf",
+          "name": "Correctly wrote the execution command that sends a system notification via Bash when the 30mm threshold is exceeded",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Tool Usage",
+            "Logical Reasoning",
+            "Communication"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a8479d05a1a0",
+          "type": "group",
+          "name": "Scheduled Task Configuration JSON File Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7df71738a3f2",
+              "type": "leaf",
+              "name": "The json file contains the schedule time, data acquisition method, threshold judgment condition, and notification command",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-286af0411bff",
+              "type": "leaf",
+              "name": "The json file format can be parsed normally by a standard JSON parser",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-96ab4b64859b",
+          "type": "leaf",
+          "name": "Provided error handling configuration for when weather data cannot be obtained or the notification command fails to execute",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-0613dc5c6820",
+    "language": "en"
+  }
+}

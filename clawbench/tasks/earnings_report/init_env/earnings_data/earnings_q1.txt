@@ -1,0 +1,11 @@
+QUARTERLY EARNINGS REPORT - Q1 2024
+========================================
+Revenue: 12500
+Cost of Revenue: 7674
+Gross Profit: 4826
+Operating Income: 1707
+Net Income: 1265
+EPS: 2.53
+Gross Margin: 38.6%
+Operating Margin: 13.7%
+Net Margin: 10.1%

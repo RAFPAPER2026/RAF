@@ -1,0 +1,350 @@
+{
+  "id": "nested_word_uncertain_workflow",
+  "name": "Nested Word Report Processing",
+  "version": "1.0",
+  "primary_scenario": "Basic Office and Productivity",
+  "secondary_scenario": "Document Processing",
+  "ability_category": [
+    "CLI Invocation",
+    "Long-Context Understanding",
+    "Exception Identification"
+  ],
+  "ability_category_canonical": [
+    "tool.cli",
+    "context.long",
+    "reflection.detect",
+    "tool.cli",
+    "reflection.detect"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 600,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "There is a project_archive folder on the desktop, containing multiple Word documents nested by project. Please help me complete the following:\n1. Filter out all quarterly reports whose file name or first page of the body is marked 「2024年度·重要」, including those in subfolders;\n2. Uniformly change the signature date of the filtered documents to 2025-01-31;\n3. Summarize the core content of each one (no more than 200 characters each) and translate it into English;\n4. Generate a logical mind map based on all the summaries and save it to the desktop.\nMy assistant said there should be 8 such reports in total; please handle it and tell me the result.",
+  "rubric": {
+    "query": "There is a project_archive folder on the desktop, containing multiple Word documents nested by project. Please help me complete the following:\n1. Filter out all quarterly reports whose file name or first page of the body is marked 「2024年度·重要」, including those in subfolders;\n2. Uniformly change the signature date of the filtered documents to 2025-01-31;\n3. Summarize the core content of each one (no more than 200 characters each) and translate it into English;\n4. Generate a logical mind map based on all the summaries and save it to the desktop.\nMy assistant said there should be 8 such reports in total; please handle it and tell me the result.",
+    "query_id": "nested_word_uncertain_workflow",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-246946267bb6",
+        "type": "group",
+        "name": "Target Report Filtering Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-bb6265cf374b",
+            "type": "leaf",
+            "name": "Correctly filtered all quarterly reports in project_archive whose file name is marked 2024年度·重要",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Retrieval Strategy",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-ca72fa863036",
+            "type": "leaf",
+            "name": "Correctly filtered the quarterly reports in project_archive whose first page of the body is marked 2024年度·重要",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Tool Usage",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-d9ad7605a065",
+        "type": "leaf",
+        "name": "Correctly changed the signature date of the filtered quarterly reports to 2025-01-31",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Tool Usage",
+          "Context Retention",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-55c13882eb8b",
+        "type": "group",
+        "name": "Summary and Mind Map Delivery Completed",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-d90729fdc801",
+            "type": "leaf",
+            "name": "Correctly generated a Chinese core-content summary of no more than 200 characters for each filtered report",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Intent Understanding",
+              "Information Filtering",
+              "Logical Reasoning",
+              "Communication"
+            ]
+          },
+          {
+            "id": "node-44a683aa3e9f",
+            "type": "leaf",
+            "name": "Correctly generated the English translation corresponding to each filtered report",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Communication",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-618dbf431f6a",
+            "type": "leaf",
+            "name": "Correctly generated and saved the logical mind map file based on all summaries to the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-5648e1ed4bfe",
+        "type": "leaf",
+        "name": "Correctly reported the final processing result and stated whether the number of filtered reports was 8",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Conditional Judgment",
+          "Factual Accuracy",
+          "Communication"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f31af484927f",
+          "type": "group",
+          "name": "Document Retrieval and Reading Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-ed93e4c7a48c",
+              "type": "leaf",
+              "name": "Accurately located the project_archive folder on the desktop and the Word documents in all its nested subfolders",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-08bbbb4ee613",
+              "type": "leaf",
+              "name": "Accurately identified the readable first-page body content of the Word documents for the marking judgment",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Information Filtering",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-05d781e761b6",
+          "type": "group",
+          "name": "Filtering Judgment Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-d0aa48238ee7",
+              "type": "leaf",
+              "name": "Accurately determined that the report should be included if 2024年度·重要 appears in either the file name or the first page of the body",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-b83ba7ab536f",
+              "type": "leaf",
+              "name": "Accurately checked the number of filtered results and identified whether it matched the expected 8",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-25beba9d44e8",
+          "type": "group",
+          "name": "Batch Modification Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-063ddff08ec6",
+              "type": "leaf",
+              "name": "Correctly modified only the signature date of the filtered reports to 2025-01-31",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-7750e230ae6e",
+              "type": "leaf",
+              "name": "Accurately kept the rest of the document content unchanged apart from the target date",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Factual Accuracy",
+                "Exception Handling"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-e631484038f8",
+          "type": "group",
+          "name": "Summarization and Translation Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-041fa8958d53",
+              "type": "leaf",
+              "name": "Accurately extracted the core information of each report to generate a Chinese summary of no more than 200 characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-9f6cb949ca33",
+              "type": "leaf",
+              "name": "Accurately translated each Chinese summary while retaining the key information of the original summary",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Communication",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-17222318627e",
+          "type": "group",
+          "name": "Mind Map Delivery Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-5e3cc70bf06e",
+              "type": "leaf",
+              "name": "Correctly organized the mind map content with distinguishable topic hierarchy based on all report summaries",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Context Retention",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-e5eb1114a012",
+              "type": "leaf",
+              "name": "The generated mind map file opens normally and its node text has no garbled characters",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-36d8e516ce52",
+              "type": "leaf",
+              "name": "The generated mind map file contains the key point nodes corresponding to all filtered reports",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-f43be554ef17",
+          "type": "leaf",
+          "name": "The reply included the number of processed files, whether it matched the expected 8, the mind map save location, and an explanation of abnormalities",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Exception Handling",
+            "Factual Accuracy"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-fcb3efb7a3f6",
+    "language": "en"
+  },
+  "note": "The user is given nested files and special requirements to filter a series of Word documents. The requirements are to modify the content and perform a series of complex operations, summarize, translate, and draw a logic map based on the summaries. However, some files cannot be filtered out; 【just the rubrics or branches】 creating, confirming with the person, or searching again are all okay; what is tested is the complex situation where the environment does not match the person's description.",
+  "env_description": "Nested project_archive directory, containing 6 Word documents marked “2024年度·重要”, 1 draft-state important report, and several interference documents; the user says there should be 8, but fewer than 8 can actually be confirmed, testing the response to an environment–description mismatch"
+}

@@ -1,0 +1,148 @@
+{
+  "id": "weather_notice",
+  "name": "东京降水定时提醒",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "出行建议",
+  "ability_category": [
+    "工具调用",
+    "反思和修复"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "reflection.general"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "帮我写个定时任务监控明天东京的降水强度，如果超过 30mm 就通过 Bash 发个系统通知提醒我改签，定时任务配置的json文件保存到/root/Desktop",
+  "rubric": {
+    "query": "帮我写个定时任务监控明天东京的降水强度，如果超过 30mm 就通过 Bash 发个系统通知提醒我改签，定时任务配置的json文件保存到/root/Desktop",
+    "query_id": "weather_notice",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e799b90b1fd8",
+        "type": "leaf",
+        "name": "生成了用于监控明天东京降水强度并在超过30mm时触发Bash系统通知的定时任务配置json文件",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-6c4f92251c5d",
+        "type": "leaf",
+        "name": "将定时任务配置json文件保存到了/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-6ca019360a47",
+          "type": "leaf",
+          "name": "准确识别了监控对象为明天东京的降水强度且阈值为30mm",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "时间推理",
+            "事实准确性"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-08c63382a531",
+          "type": "leaf",
+          "name": "正确构造了用于获取东京明天降水强度数据的检索参数或API请求参数",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-4b54a67ebfac",
+          "type": "leaf",
+          "name": "正确编写了超过30mm时通过Bash发送系统通知的执行命令",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "工具使用",
+            "逻辑推理",
+            "沟通表达"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-a8479d05a1a0",
+          "type": "group",
+          "name": "定时任务配置json文件可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-7df71738a3f2",
+              "type": "leaf",
+              "name": "json文件中包含了调度时间、数据获取方式、阈值判断条件和通知命令",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持",
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-286af0411bff",
+              "type": "leaf",
+              "name": "json文件格式可被标准JSON解析器正常解析",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-96ab4b64859b",
+          "type": "leaf",
+          "name": "在无法获取天气数据或通知命令执行失败时提供了错误处理配置",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "异常处理",
+            "工具使用"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-0613dc5c6820",
+    "language": "zh"
+  }
+}

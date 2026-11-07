@@ -1,0 +1,305 @@
+[
+  {
+    "id": "rubric-seed00000001",
+    "query": "查看我本周的日程安排，如果有会议冲突帮我调整一下，再新建一个明天下午3点的项目专利讨论的提醒",
+    "query_id": "query-seed00000001",
+    "prompt_version": "v5.10",
+    "completion_rubric": [
+      {
+        "id": "node-seed00000001",
+        "type": "leaf",
+        "name": "正确读取了本周日程安排",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-seed00000002",
+        "type": "group",
+        "name": "会议冲突处理目标",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-seed00000003",
+            "type": "leaf",
+            "name": "有冲突时，建议了新时间或自行调整了日程",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "逻辑推理",
+              "异常处理"
+            ]
+          },
+          {
+            "id": "node-seed00000004",
+            "type": "leaf",
+            "name": "无冲突时，成功创建了明天下午三点的提醒",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "工具使用",
+              "时间推理"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 6,
+        "node": {
+          "id": "node-seed00000005",
+          "type": "group",
+          "name": "冲突处理与决策质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-seed00000006",
+              "type": "leaf",
+              "name": "没有漏判任何时间重叠的会议，也没有把不相邻的会议误判为冲突",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理"
+              ]
+            },
+            {
+              "id": "node-seed00000007",
+              "type": "group",
+              "name": "处理路径与实际情况匹配",
+              "combinator": "or",
+              "children": [
+                {
+                  "id": "node-seed00000008",
+                  "type": "leaf",
+                  "name": "有冲突时：调整了日程时间而不仅仅是提示存在冲突",
+                  "combinator": "and",
+                  "children": [],
+                  "tags": [
+                    "异常处理"
+                  ]
+                },
+                {
+                  "id": "node-seed00000009",
+                  "type": "leaf",
+                  "name": "无冲突时：直接创建了提醒而没有多余的询问或操作",
+                  "combinator": "and",
+                  "children": [],
+                  "tags": [
+                    "工具使用"
+                  ]
+                }
+              ],
+              "tags": []
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 2,
+        "node": {
+          "id": "node-seed00000010",
+          "type": "group",
+          "name": "日程信息处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-seed00000011",
+              "type": "leaf",
+              "name": "日程读取覆盖了本周每一天，没有遗漏任何日程条目",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-seed00000012",
+              "type": "leaf",
+              "name": "明天下午3点被正确解析为具体日期和时间的值",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "时间推理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1,
+        "node": {
+          "id": "node-seed00000013",
+          "type": "group",
+          "name": "用户沟通得当",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-seed00000014",
+              "type": "leaf",
+              "name": "调整日程时：说明了被调整会议的原时间、新时间及避开冲突的判断依据",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            },
+            {
+              "id": "node-seed00000015",
+              "type": "leaf",
+              "name": "无冲突时：准确识别了无冲突状态且跳过调整步骤，未引入不必要的日程修改",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ]
+  },
+  {
+    "id": "rubric-seed00000002",
+    "query": "根据我的旅行备忘录，生成一份详细的行程安排，包含每天的时间规划和注意事项",
+    "query_id": "query-seed00000002",
+    "prompt_version": "v5.10",
+    "completion_rubric": [
+      {
+        "id": "node-seed00000016",
+        "type": "leaf",
+        "name": "正确读取了旅行备忘录的内容",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用"
+        ]
+      },
+      {
+        "id": "node-seed00000017",
+        "type": "group",
+        "name": "行程文档交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-seed00000018",
+            "type": "leaf",
+            "name": "行程按天组织了每一天的内容",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "条件判断"
+            ]
+          },
+          {
+            "id": "node-seed00000019",
+            "type": "leaf",
+            "name": "每天都有对应的时间规划",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "时间推理"
+            ]
+          },
+          {
+            "id": "node-seed00000020",
+            "type": "leaf",
+            "name": "每天都有对应的注意事项",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 2,
+        "node": {
+          "id": "node-seed00000021",
+          "type": "leaf",
+          "name": "备忘录的读取没有遗漏关键信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "信息筛选"
+          ]
+        }
+      },
+      {
+        "weight": 6,
+        "node": {
+          "id": "node-seed00000022",
+          "type": "group",
+          "name": "行程文档整体质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-seed00000023",
+              "type": "leaf",
+              "name": "各天之间的目的地顺序在地理和交通上合理，没有出现折返或绕路",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-seed00000024",
+              "type": "leaf",
+              "name": "备忘录中的日期、地点、偏好、约束都已纳入行程，没有遗漏",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-seed00000025",
+              "type": "leaf",
+              "name": "每天各活动的时间安排合理，没有出现明显过高或过低的预估",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-seed00000026",
+              "type": "leaf",
+              "name": "每天的注意事项与该天行程场景直接相关，不是泛泛的通用提醒",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理"
+              ]
+            },
+            {
+              "id": "node-seed00000027",
+              "type": "leaf",
+              "name": "日期、时间段、活动内容三层排列清晰，便于逐天执行",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ]
+  }
+]

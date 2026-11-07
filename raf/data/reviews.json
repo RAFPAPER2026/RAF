@@ -1,0 +1,15 @@
+[
+  {
+    "id": "review-seed00000001",
+    "rubric_id": "rubric-seed00000001",
+    "prompt_version": "v5.10",
+    "completion_score": 4,
+    "quality_score": 4,
+    "notes": [
+      "OR 组分支覆盖了冲突/无冲突两条路径，区分度不错",
+      "权重分配符合重要性×难度体系",
+      "部分叶子可进一步打磨行为锚点"
+    ],
+    "created_at": "2026-08-05T14:30:00+08:00"
+  }
+]

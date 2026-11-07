@@ -1,0 +1,333 @@
+{
+  "id": "statistical_analysis",
+  "name": "Experimental Data Hypothesis Testing",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Task Decomposition",
+    "CLI Invocation"
+  ],
+  "ability_category_canonical": [
+    "plan.decompose",
+    "tool.cli"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "en",
+  "prompt": "## Task Description\n\nThere is a CSV file `/root/Desktop/experiment_data.csv` on your desktop, containing experimental measurement data grouped by the categorical variable `group`. Each row has two columns:\n\n- `group`: group label (string)\n- `measurement`: numeric measurement value (floating point)\n\nYour task is to perform a statistical hypothesis test to determine whether there are significant differences between the groups.\n\n## Specific Requirements\n\n1. **Choose the test method**:\n   - If there are exactly two groups, perform an independent two-sample t-test\n   - If there are three or more groups, perform one-way analysis of variance (ANOVA)\n\n2. **Calculate the effect size**:\n   - For two groups: use Cohen's d\n   - For three or more groups: use eta squared\n\n3. **Output files**:\n\n   Create two output files on the desktop:\n\n   **File 1: `/root/Desktop/stats_results.csv`**, containing the following columns:\n   - `test`: name of the test performed (`t-test` or `ANOVA`)\n   - `statistic`: value of the test statistic (floating point)\n   - `p_value`: p-value of the test (floating point)\n   - `effect_size`: effect size (floating point)\n   - `significant`: boolean value indicating whether the result is significant at the significance level α=0.05\n\n   **File 2: `/root/Desktop/stats_summary.json`**, containing a JSON object with the keys:\n   - `test`: test name\n   - `statistic`: test statistic\n   - `p_value`: p-value\n   - `effect_size`: effect size\n   - `significant`: boolean value\n\n## Technical Requirements\n\n- Read the input data from `/root/Desktop/experiment_data.csv`\n- Perform the appropriate statistical test according to the number of groups\n- Use a significance level of α=0.05\n- Write the results to the specified output files\n- You may use Python libraries such as `scipy` and `numpy`\n- Keep reasonable precision for the numeric values in the output files (e.g., 4 decimal places)\n- The `significant` field: `true` if p_value < 0.05, otherwise `false`",
+  "rubric": {
+    "query": "## Task Description\n\nThere is a CSV file `/root/Desktop/experiment_data.csv` on your desktop, containing experimental measurement data grouped by the categorical variable `group`. Each row has two columns:\n\n- `group`: group label (string)\n- `measurement`: numeric measurement value (floating point)\n\nYour task is to perform a statistical hypothesis test to determine whether there are significant differences between the groups.\n\n## Specific Requirements\n\n1. **Choose the test method**:\n   - If there are exactly two groups, perform an independent two-sample t-test\n   - If there are three or more groups, perform one-way analysis of variance (ANOVA)\n\n2. **Calculate the effect size**:\n   - For two groups: use Cohen's d\n   - For three or more groups: use eta squared\n\n3. **Output files**:\n\n   Create two output files on the desktop:\n\n   **File 1: `/root/Desktop/stats_results.csv`**, containing the following columns:\n   - `test`: name of the test performed (`t-test` or `ANOVA`)\n   - `statistic`: value of the test statistic (floating point)\n   - `p_value`: p-value of the test (floating point)\n   - `effect_size`: effect size (floating point)\n   - `significant`: boolean value indicating whether the result is significant at the significance level α=0.05\n\n   **File 2: `/root/Desktop/stats_summary.json`**, containing a JSON object with the keys:\n   - `test`: test name\n   - `statistic`: test statistic\n   - `p_value`: p-value\n   - `effect_size`: effect size\n   - `significant`: boolean value\n\n## Technical Requirements\n\n- Read the input data from `/root/Desktop/experiment_data.csv`\n- Perform the appropriate statistical test according to the number of groups\n- Use a significance level of α=0.05\n- Write the results to the specified output files\n- You may use Python libraries such as `scipy` and `numpy`\n- Keep reasonable precision for the numeric values in the output files (e.g., 4 decimal places)\n- The `significant` field: `true` if p_value < 0.05, otherwise `false`",
+    "query_id": "statistical_analysis",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-e1de64cc58c0",
+        "type": "leaf",
+        "name": "Correctly read the group and measurement data in /root/Desktop/experiment_data.csv",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Tool Usage",
+          "Factual Accuracy"
+        ]
+      },
+      {
+        "id": "node-cd4104928ab4",
+        "type": "group",
+        "name": "Statistical Test Result Delivery Completed per the Group-Count Branch",
+        "combinator": "or",
+        "children": [
+          {
+            "id": "node-44c504c8922d",
+            "type": "leaf",
+            "name": "When there were exactly two groups, generated /root/Desktop/stats_results.csv and /root/Desktop/stats_summary.json containing the t-test results",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-13b107345e39",
+            "type": "leaf",
+            "name": "When there were three or more groups, generated /root/Desktop/stats_results.csv and /root/Desktop/stats_summary.json containing the ANOVA results",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Tool Usage"
+            ]
+          }
+        ],
+        "tags": []
+      },
+      {
+        "id": "node-33fb894633ec",
+        "type": "group",
+        "name": "Statistical Result Content Fully Produced",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-b6caf5d72997",
+            "type": "leaf",
+            "name": "Correctly calculated the test statistic and wrote it into both output files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-9bc424f4f2f7",
+            "type": "leaf",
+            "name": "Correctly calculated the p-value and wrote it into both output files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "Factual Accuracy",
+              "Tool Usage"
+            ]
+          },
+          {
+            "id": "node-7337f254e87e",
+            "type": "leaf",
+            "name": "Correctly calculated the corresponding effect size and wrote it into both output files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Logical Reasoning",
+              "General Knowledge",
+              "Factual Accuracy"
+            ]
+          },
+          {
+            "id": "node-772a64c61d54",
+            "type": "leaf",
+            "name": "Correctly determined significant based on p_value < 0.05 and wrote it into both output files",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Conditional Judgment",
+              "Logical Reasoning",
+              "Factual Accuracy"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-273f93325356",
+          "type": "leaf",
+          "name": "Accurately identified the number of unique groups in the data and selected the test method accordingly",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Conditional Judgment",
+            "Logical Reasoning"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-17fc82e6c466",
+          "type": "group",
+          "name": "Statistical Test Execution Quality",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-487026ba353f",
+              "type": "leaf",
+              "name": "Correctly performed an independent two-sample t-test when the data had exactly two groups",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            },
+            {
+              "id": "node-506a03f52d1c",
+              "type": "leaf",
+              "name": "Correctly performed one-way ANOVA when the data had three or more groups",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Conditional Judgment",
+                "Tool Usage",
+                "General Knowledge"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-075ea22eaf17",
+          "type": "group",
+          "name": "Effect Size Calculation Quality",
+          "combinator": "or",
+          "children": [
+            {
+              "id": "node-3a58f6baee54",
+              "type": "leaf",
+              "name": "Accurately calculated Cohen's d for the two-group case",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-040ea61f135b",
+              "type": "leaf",
+              "name": "Accurately calculated eta squared for the three-or-more-group case",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "General Knowledge",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9c651ed6967a",
+          "type": "group",
+          "name": "Result Output Consistency",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f9e46dd2809e",
+              "type": "leaf",
+              "name": "Correctly kept the statistic, p_value, and effect_size values at readable fixed precision and consistent across both files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Context Retention",
+                "Factual Accuracy",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-01e8ec5c3175",
+              "type": "leaf",
+              "name": "Correctly wrote the significant field as a boolean value and kept it consistent across both files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Context Retention",
+                "Tool Usage"
+              ]
+            },
+            {
+              "id": "node-cbd6ad5274a8",
+              "type": "leaf",
+              "name": "Correctly wrote the test field as t-test or ANOVA and kept it consistent across both files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Factual Accuracy",
+                "Context Retention",
+                "Tool Usage"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-e07aac74e726",
+          "type": "group",
+          "name": "Deliverable Usability",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-dbbcd3234aeb",
+              "type": "leaf",
+              "name": "stats_results.csv contains the five columns test, statistic, p_value, effect_size, and significant",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-6b50cca4c847",
+              "type": "leaf",
+              "name": "stats_summary.json can be parsed as a JSON object containing the five keys test, statistic, p_value, effect_size, and significant",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-8015232c379f",
+              "type": "leaf",
+              "name": "Both output files open normally and their field values can be read by subsequent programs",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Exception Handling",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-00ef8c94eb50",
+          "type": "leaf",
+          "name": "Gave an error explanation when reading the input file failed or the number of groups was insufficient for the test, and avoided writing fabricated statistical results",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Exception Handling",
+            "Factual Accuracy",
+            "Tool Usage"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-53350bed84d9",
+    "language": "en"
+  },
+  "note": "Statistical hypothesis testing task; the appropriate test method needs to be selected according to the number of data groups."
+}

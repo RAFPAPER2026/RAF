@@ -1,0 +1,310 @@
+{
+  "id": "paper_search_1",
+  "name": "Summarize Paper and Download Top 5 References",
+  "version": "1.0",
+  "primary_scenario": "Learning and Knowledge Management",
+  "secondary_scenario": "Learning Assistance",
+  "ability_category": [
+    "Skill Usage",
+    "Exception Handling & Repair",
+    "Context Compression & Summarization"
+  ],
+  "ability_category_canonical": [
+    "tool.skill",
+    "reflection.repair",
+    "context.compress"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "complex",
+  "timeout_seconds": 500,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [
+    "baidu-search"
+  ],
+  "language": "en",
+  "prompt": "Summarize the core content of 《Benchmarking Instruction Following of Large Language Models in Agentic Scenarios》 on the desktop, find the first 5 references it cites and download them, package them into a compressed file and place it in the result directory on the desktop, and also output a table saved to the result directory. The table should include the name, download link, authors, and main problem addressed for each of these 5 papers.",
+  "rubric": {
+    "query": "Summarize the core content of 《Benchmarking Instruction Following of Large Language Models in Agentic Scenarios》 on the desktop, find the first 5 references it cites and download them, package them into a compressed file and place it in the result directory on the desktop, and also output a table saved to the result directory. The table should include the name, download link, authors, and main problem addressed for each of these 5 papers.",
+    "query_id": "paper_search_1",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-febb0cf1f4d5",
+        "type": "leaf",
+        "name": "Correctly summarized the core content of 《Benchmarking Instruction Following of Large Language Models in Agentic Scenarios》 on the desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "Intent Understanding",
+          "Information Filtering",
+          "Factual Accuracy",
+          "Communication"
+        ]
+      },
+      {
+        "id": "node-5b401e85e628",
+        "type": "group",
+        "name": "Reference Collection and Delivery Objectives",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-c2115c8ed5c0",
+            "type": "leaf",
+            "name": "Correctly identified the first 5 references in the paper's reference list",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Information Filtering",
+              "Factual Accuracy",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-4e849509c04d",
+            "type": "leaf",
+            "name": "Successfully downloaded the files of the first 5 references",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Retrieval Strategy",
+              "Tool Usage",
+              "Exception Handling"
+            ]
+          },
+          {
+            "id": "node-153a8035885a",
+            "type": "leaf",
+            "name": "Generated a compressed archive containing the 5 reference files in the result directory on the desktop",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Context Retention"
+            ]
+          },
+          {
+            "id": "node-b8219595b922",
+            "type": "leaf",
+            "name": "Generated a table file in the result directory on the desktop containing the name, download link, authors, and main problem addressed for the 5 papers",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "Tool Usage",
+              "Information Filtering",
+              "Communication"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-9a30ba0cacdf",
+          "type": "leaf",
+          "name": "Accurately located the target paper file on the desktop and extracted its core arguments, task setup, evaluation dimensions, and main conclusions",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Intent Understanding",
+            "Information Filtering",
+            "Factual Accuracy"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a93513293515",
+          "type": "group",
+          "name": "Reference Identification Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-276924366f4b",
+              "type": "leaf",
+              "name": "Accurately extracted the first 5 entries from the target paper's reference list",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Factual Accuracy",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-6bbf1dfb6168",
+              "type": "leaf",
+              "name": "Correctly distinguished the order of reference entries from the order of first appearance in the body text and used the reference-list order as the standard for the first 5 papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Logical Reasoning",
+                "Factual Accuracy"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-a0a4fb55613d",
+          "type": "group",
+          "name": "Reference Download Execution Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-f0f79cf25412",
+              "type": "leaf",
+              "name": "Accurately retrieved downloadable sources corresponding one-to-one with the 5 references",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Retrieval Strategy",
+                "Tool Usage",
+                "Factual Accuracy"
+              ]
+            },
+            {
+              "id": "node-342ac607acb9",
+              "type": "leaf",
+              "name": "Took corrective actions such as re-searching or switching sources when encountering dead links, access restrictions, or same-name ambiguity",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Exception Handling",
+                "Retrieval Strategy",
+                "Conditional Judgment"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-d4de69c762c1",
+          "type": "group",
+          "name": "Result Table Content Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-70fa194958e4",
+              "type": "leaf",
+              "name": "The generated table contains a name field for each of the 5 papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-c77f7b425dc0",
+              "type": "leaf",
+              "name": "The generated table contains a download link field for each of the 5 papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-907b9e22aec6",
+              "type": "leaf",
+              "name": "The generated table contains an authors field for each of the 5 papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-68474ac5a52b",
+              "type": "leaf",
+              "name": "The generated table contains a main problem addressed field for each of the 5 papers",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Information Filtering",
+                "Logical Reasoning",
+                "Communication"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-7da75fb770c5",
+          "type": "group",
+          "name": "Deliverable Usability Quality",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-da79b93c2a24",
+              "type": "leaf",
+              "name": "The compressed archive actually contains the 5 downloaded reference files",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            },
+            {
+              "id": "node-bd2272a2a7b0",
+              "type": "leaf",
+              "name": "The table file opens normally and its field structure matches the user's requirements",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Communication"
+              ]
+            },
+            {
+              "id": "node-ad327d596e17",
+              "type": "leaf",
+              "name": "The compressed archive opens normally and is located in the result directory on the desktop",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "Tool Usage",
+                "Context Retention"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-6c4d60fd2b74",
+          "type": "leaf",
+          "name": "Clearly explained to the user the summary results, download results, archive location, and table location",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "Communication",
+            "Context Retention"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-292a96ade99a",
+    "language": "en"
+  },
+  "note": "Tests web search ability and long-context recognition ability."
+}

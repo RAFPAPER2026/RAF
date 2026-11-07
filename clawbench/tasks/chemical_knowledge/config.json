@@ -1,0 +1,198 @@
+{
+  "id": "chemical_knowledge",
+  "name": "化学模拟试卷生成",
+  "version": "1.0",
+  "primary_scenario": "学习与知识管理",
+  "secondary_scenario": "学习辅助",
+  "ability_category": [
+    "工具调用",
+    "任务规划"
+  ],
+  "ability_category_canonical": [
+    "tool.use",
+    "plan.general"
+  ],
+  "difficulty": "hard",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "根据/root/Desktop上 knowledge_points.txt 里的知识点范围，生成一份包含 20 道题的化学模拟试卷，要有选择题和填空题",
+  "rubric": {
+    "query": "根据/root/Desktop上 knowledge_points.txt 里的知识点范围，生成一份包含 20 道题的化学模拟试卷，要有选择题和填空题",
+    "query_id": "chemical_knowledge",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-44d980e712b2",
+        "type": "leaf",
+        "name": "正确读取了 /root/Desktop/knowledge_points.txt 中的知识点范围",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "信息筛选",
+          "工具使用",
+          "事实准确性"
+        ]
+      },
+      {
+        "id": "node-e5266e6317f7",
+        "type": "group",
+        "name": "化学模拟试卷交付目标",
+        "combinator": "and",
+        "children": [
+          {
+            "id": "node-3e1f26eb2080",
+            "type": "leaf",
+            "name": "生成了包含 20 道化学题目的模拟试卷",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-5b93deb94a21",
+            "type": "leaf",
+            "name": "试卷同时包含了选择题和填空题两种题型",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "上下文保持"
+            ]
+          },
+          {
+            "id": "node-3e3486ab7b9f",
+            "type": "leaf",
+            "name": "生成的试卷题目内容属于 knowledge_points.txt 指定的知识点范围",
+            "combinator": "and",
+            "children": [],
+            "tags": [
+              "意图理解",
+              "事实准确性",
+              "通用知识"
+            ]
+          }
+        ],
+        "tags": []
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-aa8f38274811",
+          "type": "leaf",
+          "name": "准确提取了 knowledge_points.txt 中与出题范围相关的知识点信息",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "检索策略",
+            "信息筛选",
+            "事实准确性",
+            "工具使用"
+          ]
+        }
+      },
+      {
+        "weight": 2.0,
+        "node": {
+          "id": "node-063517ba9766",
+          "type": "leaf",
+          "name": "正确规划了选择题和填空题的题量分配以使总题数为 20",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "逻辑推理",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-cefa70b8f57e",
+          "type": "leaf",
+          "name": "准确依据 knowledge_points.txt 的知识点范围编写题目且未引入范围外内容",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "事实准确性",
+            "通用知识"
+          ]
+        }
+      },
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-5a43a7abe638",
+          "type": "group",
+          "name": "试卷内容编写质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-be2dba807955",
+              "type": "leaf",
+              "name": "正确编写了选择题的题干与选项且选项数量完整",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-a8c3c38f0a96",
+              "type": "leaf",
+              "name": "正确编写了填空题的题干且留空位置与作答内容对应",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "通用知识",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-58725458af47",
+          "type": "leaf",
+          "name": "生成的试卷文本按题型分组并包含连续题号，便于用户直接使用",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-35e5d4300b19",
+          "type": "leaf",
+          "name": "生成的试卷内容完整可用，20 道题均可独立作答且无乱码或明显缺题漏项",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "沟通表达",
+            "事实准确性",
+            "上下文保持"
+          ]
+        }
+      }
+    ],
+    "id": "rubric-3238e909c893",
+    "language": "zh"
+  }
+}

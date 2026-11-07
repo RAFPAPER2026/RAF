@@ -1,0 +1,15 @@
+{
+  "dimensions": [
+    { "key": "task_understanding", "name": "任务理解", "name_en": "Task Understanding", "levels": 5 },
+    { "key": "task_planning", "name": "任务规划", "name_en": "Task Planning", "levels": 5 },
+    { "key": "tool_usage", "name": "工具调用", "name_en": "Tool Usage", "levels": 5 },
+    { "key": "reflection_recovery", "name": "反思修复", "name_en": "Reflection & Recovery", "levels": 5 }
+  ],
+  "pass_threshold": 0.75,
+  "legacy_dimension_mapping": {
+    "task_understanding": "task_understanding",
+    "task_completion": "task_planning",
+    "error_handling": "reflection_recovery",
+    "tool_usage": "tool_usage"
+  }
+}

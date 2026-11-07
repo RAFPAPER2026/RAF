@@ -1,0 +1,234 @@
+{
+  "id": "family_travel",
+  "name": "亲子出游规划",
+  "version": "1.0",
+  "primary_scenario": "个人生活助手",
+  "secondary_scenario": "出行建议",
+  "ability_category": [
+    "工具调用-API调用"
+  ],
+  "ability_category_canonical": [
+    "tool.api"
+  ],
+  "difficulty": "medium",
+  "environment_complexity": "moderate",
+  "timeout_seconds": 300,
+  "verifier_type": "manual",
+  "env_init_needed": true,
+  "skills": [],
+  "language": "zh",
+  "prompt": "下个月全家 3 口从深圳去青岛亲子旅游 3 天，帮我规划全家往返最优交通方式，计算旅游总预算，生成简易出行手册放到/root/Desktop。",
+  "rubric": {
+    "query": "下个月全家 3 口从深圳去青岛亲子旅游 3 天，帮我规划全家往返最优交通方式，计算旅游总预算，生成简易出行手册放到/root/Desktop。",
+    "query_id": "family_travel",
+    "prompt_version": "v5.1",
+    "completion_rubric": [
+      {
+        "id": "node-4d9b5a3e6930",
+        "type": "leaf",
+        "name": "确定了下个月深圳到青岛全家3口往返的最优交通方式",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "条件判断",
+          "逻辑推理",
+          "时间推理"
+        ]
+      },
+      {
+        "id": "node-6c58a8a19f3c",
+        "type": "leaf",
+        "name": "计算了亲子旅游3天的总预算",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "意图理解",
+          "逻辑推理",
+          "事实准确性",
+          "通用知识"
+        ]
+      },
+      {
+        "id": "node-ee50d911e8a0",
+        "type": "leaf",
+        "name": "生成了可打开的简易出行手册文件并放到/root/Desktop",
+        "combinator": "and",
+        "children": [],
+        "tags": [
+          "工具使用",
+          "沟通表达"
+        ]
+      }
+    ],
+    "quality_rubric": [
+      {
+        "weight": 3.0,
+        "node": {
+          "id": "node-f1b5dfdaaaa3",
+          "type": "leaf",
+          "name": "准确识别了下个月出行时间范围、出发地、目的地、人数和亲子出行约束",
+          "combinator": "and",
+          "children": [],
+          "tags": [
+            "意图理解",
+            "上下文保持"
+          ]
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-b9585dd7d64d",
+          "type": "group",
+          "name": "交通方案分析质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-8be2dfa671b0",
+              "type": "leaf",
+              "name": "正确检索了深圳到青岛往返可选交通方案的班次、时长和价格信息",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "检索策略",
+                "信息筛选",
+                "工具使用",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-ec4de7d843a2",
+              "type": "leaf",
+              "name": "准确比较了可选交通方案在总耗时、总费用和亲子出行便利性上的差异",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "时间推理",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 4.0,
+        "node": {
+          "id": "node-eb55a35a868a",
+          "type": "group",
+          "name": "预算测算质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-1c595af47a30",
+              "type": "leaf",
+              "name": "正确列出了总预算包含的费用项目及对应金额",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性",
+                "通用知识"
+              ]
+            },
+            {
+              "id": "node-d881409d01f6",
+              "type": "leaf",
+              "name": "准确计算了3口之家3天行程的总预算汇总结果",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "逻辑推理",
+                "事实准确性"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 6.0,
+        "node": {
+          "id": "node-fd8cb842831a",
+          "type": "group",
+          "name": "出行手册交付物可用性",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-aefa1a576839",
+              "type": "leaf",
+              "name": "生成的出行手册文件可正常打开且文件格式与内容编码正常",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "工具使用"
+              ]
+            },
+            {
+              "id": "node-b35563a5997e",
+              "type": "leaf",
+              "name": "生成的出行手册包含交通方案、预算明细、每日行程要点和出行注意事项",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "上下文保持"
+              ]
+            },
+            {
+              "id": "node-b92739e4335d",
+              "type": "leaf",
+              "name": "生成的出行手册中的信息组织支持用户直接查看和出行前准备",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "沟通表达",
+                "通用知识"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      },
+      {
+        "weight": 1.0,
+        "node": {
+          "id": "node-a31084c9157f",
+          "type": "group",
+          "name": "不确定信息处理质量",
+          "combinator": "and",
+          "children": [
+            {
+              "id": "node-4eb7adb90640",
+              "type": "leaf",
+              "name": "在缺少具体出发日期、儿童年龄或偏好信息时明确标注了假设条件",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "异常处理",
+                "沟通表达",
+                "事实准确性"
+              ]
+            },
+            {
+              "id": "node-114e8ffe903e",
+              "type": "leaf",
+              "name": "未将无法确认的班次、价格或景点开放信息表述为已核实事实",
+              "combinator": "and",
+              "children": [],
+              "tags": [
+                "事实准确性",
+                "异常处理"
+              ]
+            }
+          ],
+          "tags": []
+        }
+      }
+    ],
+    "id": "rubric-4a1365e1535b",
+    "language": "zh"
+  }
+}
